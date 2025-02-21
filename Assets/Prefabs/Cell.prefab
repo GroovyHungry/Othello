@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8102987858214441239}
   - component: {fileID: 4672041378291288601}
-  - component: {fileID: 2679216080225381292}
+  - component: {fileID: 6186612218392572849}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -79,7 +79,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.875, y: 0.875}
   m_EdgeRadius: 0
---- !u!114 &2679216080225381292
+--- !u!114 &6186612218392572849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,6 +88,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7360379777006541496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8921b618ec0b0a47bf229e3e7b1f44b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d6992928af19234f986b433845a5193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whitePiecePrefab: {fileID: 5437276141327510056, guid: 13aad453b4c24d64b83f038a54b73594, type: 3}
+  BlackPiecePrefab: {fileID: 7924353096850009660, guid: c13e265720bfcf14488ea85ac262b5df, type: 3}
+  x: 0
+  y: 0

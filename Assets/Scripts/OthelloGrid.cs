@@ -12,16 +12,22 @@ public class OthelloGrid : MonoBehaviour
 
     void GenerateGrid()
     {
-        // 🔴 `OthelloGrid` の中心を `(0,0)` にするためのオフセット
         float offset = (gridSize - 1) / 2.0f; 
 
         for (int x = 0; x < gridSize; x++)
         {
             for (int y = 0; y < gridSize; y++)
             {
-                Vector3 position = new Vector3(x - offset, y - offset, 0); // 🔄 中央揃え
+                Vector3 position = new Vector3(x - offset, y - offset, 0);
                 GameObject cell = Instantiate(cellPrefab, position, Quaternion.identity, transform);
                 cell.name = $"Cell ({x},{y})";
+
+                OthelloCell cellScript = cell.GetComponent<OthelloCell>();
+                if(cellScript != null)
+                {
+                    cellScript.x = x;
+                    cellScript.y = y;
+                }
             }
         }
     }
