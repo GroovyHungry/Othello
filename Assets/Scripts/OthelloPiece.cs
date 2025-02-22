@@ -13,7 +13,6 @@ public class OthelloPiece : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     public void Place()
     {
         if (gameObject.tag == "White")
@@ -31,19 +30,26 @@ public class OthelloPiece : MonoBehaviour
         if (gameObject.tag == "White")
         {
             animator.SetTrigger("FlipWhiteToBlackTrigger"); // 白 → 黒
-            gameObject.tag = "Black";
-            spriteRenderer.sprite = blackSprite;
+            Invoke("ChangeToBlack", 0.5f);
         }
         else
         {
             animator.SetTrigger("FlipBlackToWhiteTrigger"); // 黒 → 白
-            gameObject.tag = "White";
-            spriteRenderer.sprite = whiteSprite;
+            Invoke("ChangeToWhite", 0.5f);
         }
-        Debug.Log($"After Flip: {gameObject.name} position: {transform.position}");
     }
-    private void SetIdleState()
+
+    private void ChangeToBlack()
     {
-        animator.SetTrigger("IdleFlag");
+        gameObject.tag = "Black";
+        spriteRenderer.sprite = blackSprite;
+        animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
+    }
+
+    private void ChangeToWhite()
+    {
+        gameObject.tag = "White";
+        spriteRenderer.sprite = whiteSprite;
+        animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
     }
 }

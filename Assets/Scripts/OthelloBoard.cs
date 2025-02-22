@@ -93,4 +93,29 @@ public class OthelloBoard : MonoBehaviour
     {
         return x >= 0 && x < gridSize && y >= 0 && y < gridSize;
     }
+        private void Update()
+    {
+        int whiteCount = 0;
+        int blackCount = 0;
+
+        for (int x = 0; x < gridSize; x++)
+        {
+            for (int y = 0; y < gridSize; y++)
+            {
+                if (boardState[x, y] != null)
+                {
+                    if (boardState[x, y].tag == "White")
+                    {
+                        whiteCount++;
+                    }
+                    else if (boardState[x, y].tag == "Black")
+                    {
+                        blackCount++;
+                    }
+                }
+            }
+        }
+
+        Debug.Log($"White: {whiteCount}, Black: {blackCount}");
+    }
 }
