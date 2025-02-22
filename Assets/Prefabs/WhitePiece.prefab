@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4985713701523766166}
   - component: {fileID: 2895321701289118809}
   - component: {fileID: 8221718158412574748}
+  - component: {fileID: -5366068966630263786}
   m_Layer: 0
   m_Name: WhitePiece
   m_TagString: White
@@ -125,3 +126,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteSprite: {fileID: 1466534349645989513, guid: 5fdb6714484e14e5bbf5ba476e6df71b, type: 3}
   blackSprite: {fileID: 7117120919343822205, guid: ca2e7e485685b485685370b77cfbf786, type: 3}
+--- !u!111 &-5366068966630263786
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5437276141327510056}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: dbd4285967d4b4258aa5f3867cb14994, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

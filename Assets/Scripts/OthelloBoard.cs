@@ -22,6 +22,7 @@ public class OthelloBoard : MonoBehaviour
     public void PlacePiece(int x, int y, GameObject piece)
     {
         boardState[x, y] = piece;
+        piece.GetComponent<OthelloPiece>().Place();
         CheckAndFlipPieces(x, y, piece.tag); // 🔥 置いた後に裏返せるかチェック
     }
 
