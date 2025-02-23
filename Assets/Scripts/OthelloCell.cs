@@ -3,26 +3,24 @@ using UnityEngine;
 public class OthelloCell : MonoBehaviour
 {
     public GameObject whitePiecePrefab;
-    public GameObject BlackPiecePrefab;
+    public GameObject blackPiecePrefab; // 🔥 変数名を統一（大文字を修正）
 
-    private bool isOccupied = false;
-    private static bool isWhiteTurn = true;
+    private bool isOccupied = false; // 🔥 初期配置時に影響しないようにする
 
     public int x, y;
 
     private void OnMouseDown()
     {
-        if(!isOccupied && OthelloBoard.Instance.IsCellEmpty(x, y))
+        if (!isOccupied && OthelloBoard.Instance.IsCellEmpty(x, y))
         {
             GameObject piece = Instantiate(
-                isWhiteTurn ? whitePiecePrefab : BlackPiecePrefab,
+                OthelloBoard.Instance.IsWhiteTurn() ? whitePiecePrefab : blackPiecePrefab,
                 transform.position,
                 Quaternion.identity
             );
 
             isOccupied = true;
             OthelloBoard.Instance.PlacePiece(x, y, piece);
-            isWhiteTurn = !isWhiteTurn;
         }
     }
 }

@@ -7,6 +7,11 @@ public class OthelloBoard : MonoBehaviour
     private const int gridSize = 8;
     private GameObject[,] boardState = new GameObject[gridSize, gridSize];
 
+    private bool isWhiteTurn = false;
+
+    public GameObject whitePiecePrefab;
+    public GameObject blackPiecePrefab;
+
     void Awake()
     {
         if (Instance == null)
@@ -19,11 +24,30 @@ public class OthelloBoard : MonoBehaviour
         }
     }
 
+    // void Start()
+    // {
+    //     InitializeBoard(); // 🔥 初期配置
+    // }
+
+    // private void InitializeBoard()
+    // {
+    //     int centerX = gridSize / 2;
+    //     int centerY = gridSize / 2;
+
+    //     PlacePiece(centerX - 1, centerY - 1, Instantiate(blackPiecePrefab, transform.position, Quaternion.identity)); // 左上 黒
+    //     PlacePiece(centerX, centerY, Instantiate(blackPiecePrefab, transform.position, Quaternion.identity)); // 右下 黒
+    //     PlacePiece(centerX - 1, centerY, Instantiate(whitePiecePrefab, transform.position, Quaternion.identity)); // 左下 白
+    //     PlacePiece(centerX, centerY - 1, Instantiate(whitePiecePrefab, transform.position, Quaternion.identity)); // 右上 白
+    // }
+
     public void PlacePiece(int x, int y, GameObject piece)
     {
         boardState[x, y] = piece;
         piece.GetComponent<OthelloPiece>().Place();
-        CheckAndFlipPieces(x, y, piece.tag); // 🔥 置いた後に裏返せるかチェック
+        CheckAndFlipPieces(x, y, piece.tag);
+
+        isWhiteTurn = !isWhiteTurn;
+        Debug.Log($"Turn: {(isWhiteTurn ? "White" : "Black")}");
     }
 
     public bool IsCellEmpty(int x, int y)
@@ -37,7 +61,6 @@ public class OthelloBoard : MonoBehaviour
         return boardState[x, y];
     }
 
-    // 🔥 追加：指定した座標で相手の駒を挟めるかチェックし、裏返す
     private void CheckAndFlipPieces(int x, int y, string currentTag)
     {
         int[,] directions = {
@@ -93,7 +116,8 @@ public class OthelloBoard : MonoBehaviour
     {
         return x >= 0 && x < gridSize && y >= 0 && y < gridSize;
     }
-        private void Update()
+
+    private void Update()
     {
         int whiteCount = 0;
         int blackCount = 0;
@@ -117,5 +141,10 @@ public class OthelloBoard : MonoBehaviour
         }
 
         Debug.Log($"White: {whiteCount}, Black: {blackCount}");
+    }
+
+    public bool IsWhiteTurn()
+    {
+        return isWhiteTurn;
     }
 }
