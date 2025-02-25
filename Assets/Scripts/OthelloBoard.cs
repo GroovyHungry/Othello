@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class OthelloBoard : MonoBehaviour
 {
@@ -24,21 +26,26 @@ public class OthelloBoard : MonoBehaviour
         }
     }
 
-    // void Start()
-    // {
-    //     InitializeBoard(); // 🔥 初期配置
-    // }
+    void Start()
+    {
+        StartCoroutine(InitializeBoard()); // 🔥 コルーチンで実行
+    }
 
-    // private void InitializeBoard()
-    // {
-    //     int centerX = gridSize / 2;
-    //     int centerY = gridSize / 2;
+    private IEnumerator InitializeBoard()
+    {
+        float waitTime = 0.1f;
 
-    //     PlacePiece(centerX - 1, centerY - 1, Instantiate(blackPiecePrefab, transform.position, Quaternion.identity)); // 左上 黒
-    //     PlacePiece(centerX, centerY, Instantiate(blackPiecePrefab, transform.position, Quaternion.identity)); // 右下 黒
-    //     PlacePiece(centerX - 1, centerY, Instantiate(whitePiecePrefab, transform.position, Quaternion.identity)); // 左下 白
-    //     PlacePiece(centerX, centerY - 1, Instantiate(whitePiecePrefab, transform.position, Quaternion.identity)); // 右上 白
-    // }
+        PlacePiece(3, 4, Instantiate(blackPiecePrefab, new Vector3(-0.5f, 0.5f, 0), Quaternion.identity)); // 左上 黒
+        yield return new WaitForSeconds(waitTime);
+
+        PlacePiece(4, 3, Instantiate(blackPiecePrefab, new Vector3(0.5f, -0.5f, 0), Quaternion.identity)); // 右下 黒
+        yield return new WaitForSeconds(waitTime);
+
+        PlacePiece(3, 3, Instantiate(whitePiecePrefab, new Vector3(-0.5f, -0.5f, 0), Quaternion.identity)); // 左下 白
+        yield return new WaitForSeconds(waitTime);
+
+        PlacePiece(4, 4, Instantiate(whitePiecePrefab, new Vector3(0.5f, 0.5f, 0), Quaternion.identity)); // 右上 白
+    }
 
     public void PlacePiece(int x, int y, GameObject piece)
     {
@@ -68,48 +75,52 @@ public class OthelloBoard : MonoBehaviour
             { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }  // 斜め方向
         };
 
+        List<GameObject> piecesToFlip = new List<GameObject>(); // 🔥 ひっくり返す駒のリスト
+
         for (int i = 0; i < directions.GetLength(0); i++)
         {
             int dx = directions[i, 0];
             int dy = directions[i, 1];
-            FlipInDirection(x, y, dx, dy, currentTag);
+            piecesToFlip.AddRange(GetFlippablePieces(x, y, dx, dy, currentTag)); // 🔥 ひっくり返せる駒をリストに追加
+        }
+
+        // 🔥 すべての駒をまとめてひっくり返す
+        foreach (GameObject piece in piecesToFlip)
+        {
+            piece.GetComponent<OthelloPiece>().Flip();
         }
     }
 
-    private void FlipInDirection(int x, int y, int dx, int dy, string currentTag)
+    // 🔥 ひっくり返せる駒を取得する関数
+    private List<GameObject> GetFlippablePieces(int x, int y, int dx, int dy, string currentTag)
     {
+        List<GameObject> flippablePieces = new List<GameObject>();
         int checkX = x + dx;
         int checkY = y + dy;
         bool foundOpponent = false;
-        GameObject[] toFlip = new GameObject[gridSize];
 
-        int flipCount = 0;
         while (IsValidPosition(checkX, checkY))
         {
             GameObject checkPiece = boardState[checkX, checkY];
 
-            if (checkPiece == null) return; // 空のマスなら終了
+            if (checkPiece == null) return new List<GameObject>(); // 🔥 空のマスなら終了（無効）
 
             if (checkPiece.tag != currentTag)
             {
-                // 相手の駒を見つけた → 挟める可能性あり
-                toFlip[flipCount++] = checkPiece;
+                flippablePieces.Add(checkPiece); // 🔥 相手の駒をリストに追加
                 foundOpponent = true;
             }
-            else if (foundOpponent)
+            else
             {
-                // 自分の駒に戻ったので、挟んだ駒を裏返す
-                for (int i = 0; i < flipCount; i++)
-                {
-                    toFlip[i].GetComponent<OthelloPiece>().Flip();
-                }
-                return;
+                if (foundOpponent) return flippablePieces; // 🔥 挟めている場合、リストを返す
+                return new List<GameObject>(); // 🔥 挟めなかったら無効
             }
-            else return; // 挟めていなければ何もしない
 
             checkX += dx;
             checkY += dy;
         }
+
+        return new List<GameObject>(); // 🔥 どの条件にも当てはまらなかった場合
     }
 
     private bool IsValidPosition(int x, int y)
