@@ -11,7 +11,10 @@ public class OthelloCell : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!isOccupied && OthelloBoard.Instance.IsCellEmpty(x, y))
+        if (OthelloBoard.initializing) return;
+        if (OthelloBoard.Waiting) return;
+
+        if (!isOccupied && OthelloBoard.Instance.IsValidMove(x, y, OthelloBoard.Instance.IsWhiteTurn() ? "White" : "Black"))
         {
             GameObject piece = Instantiate(
                 OthelloBoard.Instance.IsWhiteTurn() ? whitePiecePrefab : blackPiecePrefab,

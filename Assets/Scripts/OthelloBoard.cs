@@ -5,6 +5,8 @@ using System.Collections;
 public class OthelloBoard : MonoBehaviour
 {
     public static OthelloBoard Instance;
+    public static bool Waiting = false;
+    public static bool initializing = false;
 
     private const int gridSize = 8;
     private GameObject[,] boardState = new GameObject[gridSize, gridSize];
@@ -35,27 +37,101 @@ public class OthelloBoard : MonoBehaviour
     {
         float waitTime = 0.1f;
 
-        PlacePiece(3, 4, Instantiate(blackPiecePrefab, new Vector3(-0.5f, 0.5f, 0), Quaternion.identity)); // 左上 黒
-        yield return new WaitForSeconds(waitTime);
+        initializing = true;
 
-        PlacePiece(4, 3, Instantiate(blackPiecePrefab, new Vector3(0.5f, -0.5f, 0), Quaternion.identity)); // 右下 黒
+        PlacePiece(3, 4, Instantiate(blackPiecePrefab, new Vector3(-0.5f, 0.5f, 0), Quaternion.identity)); // 左上 黒
         yield return new WaitForSeconds(waitTime);
 
         PlacePiece(3, 3, Instantiate(whitePiecePrefab, new Vector3(-0.5f, -0.5f, 0), Quaternion.identity)); // 左下 白
         yield return new WaitForSeconds(waitTime);
 
+        PlacePiece(4, 3, Instantiate(blackPiecePrefab, new Vector3(0.5f, -0.5f, 0), Quaternion.identity)); // 右下 黒
+        yield return new WaitForSeconds(waitTime);
+
         PlacePiece(4, 4, Instantiate(whitePiecePrefab, new Vector3(0.5f, 0.5f, 0), Quaternion.identity)); // 右上 白
+
+        initializing = false;
     }
 
     public void PlacePiece(int x, int y, GameObject piece)
     {
+        StartCoroutine(PlacePieceCoroutine(x, y, piece));
+    }
+
+    private IEnumerator PlacePieceCoroutine(int x, int y, GameObject piece)
+    {
+        Waiting = true;
+
         boardState[x, y] = piece;
         piece.GetComponent<OthelloPiece>().Place();
-        CheckAndFlipPieces(x, y, piece.tag);
+
+        yield return StartCoroutine(CheckAndFlipPieces(x, y, piece.tag));
 
         isWhiteTurn = !isWhiteTurn;
-        Debug.Log($"Turn: {(isWhiteTurn ? "White" : "Black")}");
+        Waiting = false;
     }
+
+    // public void HighlightValidMoves()
+    // {
+    //     foreach (OthelloCell cell in FindObjectsOfType<OthelloCell>())
+    //     {
+    //         if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
+    //         {
+    //             cell.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0.5f); // 🔥 緑の半透明に
+    //         }
+    //         else
+    //         {
+    //             cell.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1); // 🔥 元の色に戻す
+    //         }
+    //     }
+    // }
+
+    public bool IsValidMove(int x, int y, string currentTag)
+    {
+        if (!IsCellEmpty(x, y)) return false;
+
+        int[,] directions = {
+            { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
+            { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }
+        };
+
+        for (int i = 0; i < directions.GetLength(0); i++)
+        {
+            int dx = directions[i, 0];
+            int dy = directions[i, 1];
+
+            if (CanFlipDirection(x, y, dx, dy, currentTag))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool CanFlipDirection(int x, int y, int dx, int dy, string currentTag)
+    {
+        int checkX = x + dx;
+        int checkY = y + dy;
+        bool foundOpponent = false;
+
+        while (IsValidPosition(checkX, checkY))
+        {
+            GameObject checkPiece = boardState[checkX, checkY];
+
+            if (checkPiece.tag != currentTag)
+            {
+                foundOpponent = true;
+            }
+            else
+            {
+                return foundOpponent;
+            }
+            checkX += dx;
+            checkY += dy;
+        }
+        return false;
+    }
+
 
     public bool IsCellEmpty(int x, int y)
     {
@@ -68,26 +144,33 @@ public class OthelloBoard : MonoBehaviour
         return boardState[x, y];
     }
 
-    private void CheckAndFlipPieces(int x, int y, string currentTag)
+    private IEnumerator CheckAndFlipPieces(int x, int y, string currentTag)
     {
         int[,] directions = {
-            { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 }, // 水平方向 & 垂直方向
-            { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }  // 斜め方向
+            { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
+            { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }
         };
 
-        List<GameObject> piecesToFlip = new List<GameObject>(); // 🔥 ひっくり返す駒のリスト
+        List<GameObject> piecesToFlip = new List<GameObject>();
 
         for (int i = 0; i < directions.GetLength(0); i++)
         {
             int dx = directions[i, 0];
             int dy = directions[i, 1];
-            piecesToFlip.AddRange(GetFlippablePieces(x, y, dx, dy, currentTag)); // 🔥 ひっくり返せる駒をリストに追加
+            piecesToFlip.AddRange(GetFlippablePieces(x, y, dx, dy, currentTag));
         }
 
-        // 🔥 すべての駒をまとめてひっくり返す
+        yield return StartCoroutine(FlipPieces(piecesToFlip));
+    }
+
+    private IEnumerator FlipPieces(List<GameObject> piecesToFlip)
+    {
+        float i = 0;
         foreach (GameObject piece in piecesToFlip)
         {
             piece.GetComponent<OthelloPiece>().Flip();
+            yield return new WaitForSeconds(0.2f - 0.033f * i);
+            i ++;
         }
     }
 
@@ -150,7 +233,6 @@ public class OthelloBoard : MonoBehaviour
                 }
             }
         }
-
         Debug.Log($"White: {whiteCount}, Black: {blackCount}");
     }
 
