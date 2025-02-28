@@ -11,6 +11,7 @@ public class OthelloCell : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Debug.Log($"clicked Cell num is {x}, {y}");
         if (OthelloBoard.initializing) return;
         if (OthelloBoard.Waiting) return;
 

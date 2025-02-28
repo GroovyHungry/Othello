@@ -18,7 +18,7 @@ public class OthelloGrid : MonoBehaviour
         {
             for (int y = 0; y < gridSize; y++)
             {
-                Vector3 position = new Vector3(x - offset, y - offset, 0);
+                Vector3 position = new Vector3(x - offset, y - offset, -5);
                 GameObject cell = Instantiate(cellPrefab, position, Quaternion.identity, transform);
                 cell.name = $"Cell ({x},{y})";
 

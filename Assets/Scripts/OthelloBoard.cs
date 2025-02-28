@@ -16,6 +16,8 @@ public class OthelloBoard : MonoBehaviour
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
 
+    public Sprite Highlighting;
+
     void Awake()
     {
         if (Instance == null)
@@ -71,20 +73,26 @@ public class OthelloBoard : MonoBehaviour
         Waiting = false;
     }
 
-    // public void HighlightValidMoves()
-    // {
-    //     foreach (OthelloCell cell in FindObjectsOfType<OthelloCell>())
-    //     {
-    //         if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
-    //         {
-    //             cell.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0.5f); // 🔥 緑の半透明に
-    //         }
-    //         else
-    //         {
-    //             cell.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1); // 🔥 元の色に戻す
-    //         }
-    //     }
-    // }
+    public void HighlightValidMoves()
+    {
+        foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
+        {
+            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            Color color = sr.color; // 現在の色を取得
+
+            if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
+            {
+                color.a = 1.0f; // 🔥 透明度を100%（不透明）にする
+            }
+            else
+            {
+                color.a = 0.0f; // 🔥 透明度を0%（完全に透明）にする
+            }
+
+            sr.color = color; // 変更したカラーを適用
+        }
+    }
+
 
     public bool IsValidMove(int x, int y, string currentTag)
     {
@@ -116,6 +124,8 @@ public class OthelloBoard : MonoBehaviour
 
         while (IsValidPosition(checkX, checkY))
         {
+            if (boardState[checkX, checkY] == null) return false;
+
             GameObject checkPiece = boardState[checkX, checkY];
 
             if (checkPiece.tag != currentTag)
@@ -233,7 +243,11 @@ public class OthelloBoard : MonoBehaviour
                 }
             }
         }
-        Debug.Log($"White: {whiteCount}, Black: {blackCount}");
+        if (!initializing && !Waiting)
+        {
+            HighlightValidMoves();
+        }
+        // Debug.Log($"White: {whiteCount}, Black: {blackCount}, now White Turn is {isWhiteTurn}");
     }
 
     public bool IsWhiteTurn()
