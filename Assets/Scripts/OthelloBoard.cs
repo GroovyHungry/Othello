@@ -57,43 +57,51 @@ public class OthelloBoard : MonoBehaviour
 
     public void PlacePiece(int x, int y, GameObject piece)
     {
+
         StartCoroutine(PlacePieceCoroutine(x, y, piece));
     }
 
     private IEnumerator PlacePieceCoroutine(int x, int y, GameObject piece)
     {
-        Waiting = true;
-
         boardState[x, y] = piece;
         piece.GetComponent<OthelloPiece>().Place();
 
         yield return StartCoroutine(CheckAndFlipPieces(x, y, piece.tag));
 
         isWhiteTurn = !isWhiteTurn;
-        Waiting = false;
     }
 
     public void HighlightValidMoves()
     {
+        List<OthelloCell> validCells = new List<OthelloCell>();
+        List<OthelloCell> invalidCells = new List<OthelloCell>();
+
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
-            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-            Color color = sr.color; // 現在の色を取得
-
             if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
             {
-                color.a = 1.0f; // 🔥 透明度を100%（不透明）にする
+                validCells.Add(cell);
             }
             else
             {
-                color.a = 0.0f; // 🔥 透明度を0%（完全に透明）にする
+                invalidCells.Add(cell);
             }
+        }
 
-            sr.color = color; // 変更したカラーを適用
+        // まとめて有効手をハイライト
+        foreach (OthelloCell cell in validCells)
+        {
+            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f); // 不透明
+        }
+
+        // まとめて無効手を透明に
+        foreach (OthelloCell cell in invalidCells)
+        {
+            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f); // 透明
         }
     }
-
-
     public bool IsValidMove(int x, int y, string currentTag)
     {
         if (!IsCellEmpty(x, y)) return false;
@@ -171,17 +179,20 @@ public class OthelloBoard : MonoBehaviour
         }
 
         yield return StartCoroutine(FlipPieces(piecesToFlip));
+        HighlightValidMoves();
     }
 
     private IEnumerator FlipPieces(List<GameObject> piecesToFlip)
     {
+        Waiting = true;
         float i = 0;
         foreach (GameObject piece in piecesToFlip)
         {
             piece.GetComponent<OthelloPiece>().Flip();
-            yield return new WaitForSeconds(0.2f - 0.033f * i);
+            yield return new WaitForSeconds(0.1f - 0.033f * i);
             i ++;
         }
+        Waiting = false;
     }
 
     // 🔥 ひっくり返せる駒を取得する関数
@@ -243,8 +254,10 @@ public class OthelloBoard : MonoBehaviour
                 }
             }
         }
+
         if (!initializing && !Waiting)
         {
+            Debug.Log($"{Waiting}{initializing}");
             HighlightValidMoves();
         }
         // Debug.Log($"White: {whiteCount}, Black: {blackCount}, now White Turn is {isWhiteTurn}");
