@@ -12,7 +12,7 @@ public class OthelloGrid : MonoBehaviour
 
     void GenerateGrid()
     {
-        float offset = (gridSize - 1) / 2.0f; 
+        float offset = (gridSize - 1) / 2.0f;
 
         for (int x = 0; x < gridSize; x++)
         {

@@ -3,28 +3,36 @@ using UnityEngine;
 public class OthelloCell : MonoBehaviour
 {
     public GameObject whitePiecePrefab;
-    public GameObject blackPiecePrefab; // 🔥 変数名を統一（大文字を修正）
+    public GameObject blackPiecePrefab;
 
-    private bool isOccupied = false; // 🔥 初期配置時に影響しないようにする
+    private bool isOccupied = false;
 
     public int x, y;
 
     private void OnMouseDown()
     {
-        // Debug.Log($"clicked Cell num is {x}, {y}");
-        if (OthelloBoard.initializing) return;
-        if (OthelloBoard.Waiting) return;
+        if (OthelloManager.initializing) return;
+        if (OthelloManager.Waiting) return;
 
-        if (!isOccupied && OthelloBoard.Instance.IsValidMove(x, y, OthelloBoard.Instance.IsWhiteTurn() ? "White" : "Black"))
+        // 今のターンの色
+        string currentTag = OthelloManager.Instance.IsWhiteTurn() ? "White" : "Black";
+
+        // 合法手チェック
+        if (!isOccupied && OthelloManager.Instance.IsValidMove(x, y, currentTag))
         {
-            GameObject piece = Instantiate(
-                OthelloBoard.Instance.IsWhiteTurn() ? whitePiecePrefab : blackPiecePrefab,
-                transform.position,
-                Quaternion.identity
-            );
+            // コマの生成
+            GameObject piecePrefab = (currentTag == "White") ? whitePiecePrefab : blackPiecePrefab;
+            GameObject piece = Instantiate(piecePrefab, transform.position, Quaternion.identity);
+            piece.tag = currentTag; // タグ設定（重要）
 
+            // 盤面への配置
+            OthelloManager.Instance.GetBoard().PlacePiece(x, y, piece, currentTag);
+
+            // ターン終了（交代）
+            OthelloManager.Instance.EndTurn();
+
+            // 占有済み設定
             isOccupied = true;
-            OthelloBoard.Instance.PlacePiece(x, y, piece);
         }
     }
 }
