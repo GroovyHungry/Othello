@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 public class OthelloManager : MonoBehaviour
 {
@@ -24,10 +25,10 @@ public class OthelloManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    void Start()
+    private async UniTaskVoid Start()
     {
         board = GetComponent<OthelloBoard>(); // 同じGameObjectにアタッチされたOthelloBoard参照
-        StartCoroutine(InitializeBoard());
+        await InitializeBoard();
     }
 
     public void ShowFlipMarker(bool show)
@@ -39,24 +40,24 @@ public class OthelloManager : MonoBehaviour
     }
 
     // 初期配置
-    private IEnumerator InitializeBoard()
+    private async UniTask InitializeBoard()
     {
         initializing = true;
         float waitTime = 0.1f;
 
-        yield return PlaceInitialPiece(3, 4, blackPiecePrefab, waitTime);
-        yield return PlaceInitialPiece(3, 3, whitePiecePrefab, waitTime);
-        yield return PlaceInitialPiece(4, 3, blackPiecePrefab, waitTime);
-        yield return PlaceInitialPiece(4, 4, whitePiecePrefab, waitTime);
+        await PlaceInitialPiece(3, 4, blackPiecePrefab, waitTime);
+        await PlaceInitialPiece(3, 3, whitePiecePrefab, waitTime);
+        await PlaceInitialPiece(4, 3, blackPiecePrefab, waitTime);
+        await PlaceInitialPiece(4, 4, whitePiecePrefab, waitTime);
 
         initializing = false;
     }
 
-    private IEnumerator PlaceInitialPiece(int x, int y, GameObject prefab, float waitTime)
+    private async UniTask PlaceInitialPiece(int x, int y, GameObject prefab, float waitTime)
     {
         GameObject piece = Instantiate(prefab, new Vector3(x - 3.5f, y - 3.5f, 0), Quaternion.identity);
-        board.PlacePiece(x, y, piece, piece.tag);
-        yield return new WaitForSeconds(waitTime);
+        await board.PlacePiece(x, y, piece, piece.tag);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
     }
 
     // ターン情報

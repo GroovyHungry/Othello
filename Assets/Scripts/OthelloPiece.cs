@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 public class OthelloPiece : MonoBehaviour
 {
@@ -13,43 +15,51 @@ public class OthelloPiece : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void Place()
+    private float GetAnimationClipLength(string animationName)
+    {
+        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
+        foreach(var clip in ac.animationClips)
+        {
+            if(clip.name == animationName)
+            {
+                return clip.length;
+            }
+        }
+        return 0.5f;
+    }
+    public async UniTask Place() // async化
     {
         if (gameObject.tag == "White")
         {
-            animator.SetTrigger("PlaceWhiteTrigger"); // 白のコマを置くアニメーション
+            animator.SetTrigger("PlaceWhiteTrigger");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.1f));
         }
         else
         {
-            animator.SetTrigger("PlaceBlackTrigger"); // 黒のコマを置くアニメーション
+            animator.SetTrigger("PlaceBlackTrigger");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.1f));
         }
     }
 
-    public void Flip()
+    public async UniTask Flip()
     {
+        float flipDuration = GetAnimationClipLength("FlipWhitePiece");
+        Debug.Log(flipDuration.GetType());
         if (gameObject.tag == "White")
         {
             animator.SetTrigger("FlipWhiteToBlackTrigger"); // 白 → 黒
-            Invoke("ChangeToBlack", 0.5f);
+            gameObject.tag = "Black";
+            spriteRenderer.sprite = blackSprite;
+            await UniTask.Delay(System.TimeSpan.FromSeconds(flipDuration));
+            animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
         }
         else
         {
             animator.SetTrigger("FlipBlackToWhiteTrigger"); // 黒 → 白
-            Invoke("ChangeToWhite", 0.5f);
+            gameObject.tag = "White";
+            spriteRenderer.sprite = whiteSprite;
+            await UniTask.Delay(System.TimeSpan.FromSeconds(flipDuration));
+            animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
         }
-    }
-
-    private void ChangeToBlack()
-    {
-        gameObject.tag = "Black";
-        spriteRenderer.sprite = blackSprite;
-        animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
-    }
-
-    private void ChangeToWhite()
-    {
-        gameObject.tag = "White";
-        spriteRenderer.sprite = whiteSprite;
-        animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
     }
 }

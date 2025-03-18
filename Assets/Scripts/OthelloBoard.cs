@@ -1,27 +1,25 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 public class OthelloBoard : MonoBehaviour
 {
     private const int gridSize = 8;
+    private static readonly int[,] directions = {
+        { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
+        { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }
+    };
     private GameObject[,] boardState = new GameObject[gridSize, gridSize];
 
     // コマを配置し、ひっくり返せる駒があれば反転処理
-    public void PlacePiece(int x, int y, GameObject piece, string tag)
-    {
-        StartCoroutine(PlacePieceCoroutine(x, y, piece, tag));
-    }
-
-    // コマ配置のコルーチン
-    private IEnumerator PlacePieceCoroutine(int x, int y, GameObject piece, string tag)
+    public async UniTask PlacePiece(int x, int y, GameObject piece, string tag)
     {
         boardState[x, y] = piece;
-        piece.GetComponent<OthelloPiece>().Place(); // アニメーション
+        await piece.GetComponent<OthelloPiece>().Place(); // アニメーション
 
-        yield return CheckAndFlipPieces(x, y, tag);
+        await CheckAndFlipPieces(x, y, tag);
     }
-
     // 指定座標が空かどうか
     public bool IsCellEmpty(int x, int y) => boardState[x, y] == null;
 
@@ -29,9 +27,9 @@ public class OthelloBoard : MonoBehaviour
     public GameObject GetPiece(int x, int y) => boardState[x, y];
 
     // ひっくり返す処理の開始
-    private IEnumerator CheckAndFlipPieces(int x, int y, string currentTag)
+    // 同期で一括取得（変更なし）
+    private List<GameObject> CheckAndFlipPieces(int x, int y, string currentTag)
     {
-        int[,] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 }, { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 } };
         List<GameObject> piecesToFlip = new List<GameObject>();
 
         for (int i = 0; i < directions.GetLength(0); i++)
@@ -41,19 +39,21 @@ public class OthelloBoard : MonoBehaviour
             piecesToFlip.AddRange(GetFlippablePieces(x, y, dx, dy, currentTag));
         }
 
-        yield return FlipPieces(piecesToFlip);
+        return piecesToFlip;
     }
-
     // 実際にひっくり返すコルーチン
-    private IEnumerator FlipPieces(List<GameObject> piecesToFlip)
+    private async UniTask FlipPieces(List<GameObject> piecesToFlip)
     {
         OthelloManager.Waiting = true;
-        float delay = 0.1f;
+
+        // 並列実行
+        var flipTasks = new List<UniTask>();
         foreach (GameObject piece in piecesToFlip)
         {
-            piece.GetComponent<OthelloPiece>().Flip(); // アニメーション
-            yield return new WaitForSeconds(delay);
+            flipTasks.Add(piece.GetComponent<OthelloPiece>().Flip());
         }
+        await UniTask.WhenAll(flipTasks); // 全ての反転が終わるまで待機
+
         OthelloManager.Waiting = false;
     }
 
