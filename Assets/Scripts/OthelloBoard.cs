@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
@@ -15,10 +14,19 @@ public class OthelloBoard : MonoBehaviour
     // コマを配置し、ひっくり返せる駒があれば反転処理
     public async UniTask PlacePiece(int x, int y, GameObject piece, string tag)
     {
+        OthelloManager.Waiting = true;
+
         boardState[x, y] = piece;
         await piece.GetComponent<OthelloPiece>().Place(); // アニメーション
 
-        await CheckAndFlipPieces(x, y, tag);
+        List<GameObject> piecesToFlip = CheckAndFlipPieces(x, y, tag);
+        if (piecesToFlip.Count > 0)
+        {
+            await FlipPieces(piecesToFlip);
+        }
+        // await FlipPieces(piecesToFlip);
+
+        OthelloManager.Waiting = false;
     }
     // 指定座標が空かどうか
     public bool IsCellEmpty(int x, int y) => boardState[x, y] == null;
@@ -44,17 +52,15 @@ public class OthelloBoard : MonoBehaviour
     // 実際にひっくり返すコルーチン
     private async UniTask FlipPieces(List<GameObject> piecesToFlip)
     {
-        OthelloManager.Waiting = true;
+        float interval = 0.1f;
 
         // 並列実行
         var flipTasks = new List<UniTask>();
         foreach (GameObject piece in piecesToFlip)
         {
-            flipTasks.Add(piece.GetComponent<OthelloPiece>().Flip());
+            await piece.GetComponent<OthelloPiece>().Flip();
         }
-        await UniTask.WhenAll(flipTasks); // 全ての反転が終わるまで待機
-
-        OthelloManager.Waiting = false;
+        // await UniTask.WhenAll(flipTasks); // 全ての反転が終わるまで待機
     }
 
     // ひっくり返せるコマをリストアップする

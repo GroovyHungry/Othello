@@ -14,7 +14,8 @@ public class OthelloManager : MonoBehaviour
     private bool isWhiteTurn = false;
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
-    public Sprite Highlighting;
+    public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
+    public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設定
     private OthelloBoard board;
 
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
@@ -23,6 +24,7 @@ public class OthelloManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+        Application.targetFrameRate = 60; // フレームレートを60FPSに固定
     }
 
     private async UniTaskVoid Start()
@@ -119,12 +121,12 @@ public class OthelloManager : MonoBehaviour
     // 盤面の範囲チェック
     private bool IsValidPosition(int x, int y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
 
-    // 合法手のハイライト表示
     public void HighlightValidMoves()
     {
         List<OthelloCell> validCells = new List<OthelloCell>();
         List<OthelloCell> invalidCells = new List<OthelloCell>();
 
+        // すべての OthelloCell を取得
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
             if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
@@ -137,20 +139,65 @@ public class OthelloManager : MonoBehaviour
             }
         }
 
-        // 合法手 → 不透明
+        // 合法手 → 半透明のスプライトを設定
         foreach (OthelloCell cell in validCells)
         {
             SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
+
+            // 白のターンなら白のスプライト、黒のターンなら黒のスプライト
+            sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
+
+            // 半透明に設定
+            if(isWhiteTurn)
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.3f);
+            }
+            else
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+            }
         }
 
-        // 非合法手 → 透明
+        // 非合法手 → 透明にする
         foreach (OthelloCell cell in invalidCells)
         {
             SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
         }
     }
+
+    // 合法手のハイライト表示
+    // public void HighlightValidMoves()
+    // {
+    //     List<OthelloCell> validCells = new List<OthelloCell>();
+    //     List<OthelloCell> invalidCells = new List<OthelloCell>();
+
+    //     foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
+    //     {
+    //         if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
+    //         {
+    //             validCells.Add(cell);
+    //         }
+    //         else
+    //         {
+    //             invalidCells.Add(cell);
+    //         }
+    //     }
+
+    //     // 合法手 → 不透明
+    //     foreach (OthelloCell cell in validCells)
+    //     {
+    //         SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+    //         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
+    //     }
+
+    //     // 非合法手 → 透明
+    //     foreach (OthelloCell cell in invalidCells)
+    //     {
+    //         SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+    //         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+    //     }
+    // }
 
     // ターンごとの状況管理（駒数カウント）
     private void Update()
