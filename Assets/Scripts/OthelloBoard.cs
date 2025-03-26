@@ -52,7 +52,7 @@ public class OthelloBoard : MonoBehaviour
     // 実際にひっくり返すコルーチン
     private async UniTask FlipPieces(List<GameObject> piecesToFlip)
     {
-        float interval = 0.1f;
+        // float interval = 0.1f;
 
         // 並列実行
         var flipTasks = new List<UniTask>();
