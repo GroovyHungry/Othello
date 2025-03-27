@@ -33,6 +33,21 @@ public class OthelloManager : MonoBehaviour
         await InitializeBoard();
     }
 
+    public void UpdateScoreUI()
+	{
+		UpdateScore(CountPieces(true), whiteDigit1, whiteDigit2);
+		UpdateScore(CountPieces(false), blackDigit1, blackDigit2);
+	}
+
+	void UpdateScore(int score, Image digit1, Image digit2)
+	{
+		int tens = score / 10;
+		int ones = score % 10;
+
+		digit1.sprite = numberSprites[tens];
+		digit2.sprite = numberSprites[ones];
+	}
+
     public void ShowFlipMarker(bool show)
     {
         if (flipMarker != null)
@@ -163,6 +178,31 @@ public class OthelloManager : MonoBehaviour
         {
             SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+        }
+    }
+    public int CountPieces(bool isWhite)
+    {
+        int whiteCount = 0;
+        int blackCount = 0;
+        for (int x = 0; x < gridSize; x++)
+        {
+            for (int y = 0; y < gridSize; y++)
+            {
+                GameObject piece = board.GetPiece(x, y);
+                if (piece != null)
+                {
+                    if (piece.tag == "White") whiteCount++;
+                    else if (piece.tag == "Black") blackCount++;
+                }
+            }
+        }
+        if (isWhite)
+        {
+            return whiteCount;
+        }
+        else
+        {
+            return blackCount;
         }
     }
 
