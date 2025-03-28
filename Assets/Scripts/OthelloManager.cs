@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using UnityEngine.UI;
 
 public class OthelloManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class OthelloManager : MonoBehaviour
     private bool isWhiteTurn = false;
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
+    public Image whiteDigit1;
+    public Image whiteDigit2;
+    public Image blackDigit1;
+    public Image blackDigit2;
+    public Sprite[] numSprites;
     public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
     public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設定
     private OthelloBoard board;
@@ -25,11 +31,12 @@ public class OthelloManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         Application.targetFrameRate = 60; // フレームレートを60FPSに固定
+        board = GetComponent<OthelloBoard>();
     }
 
     private async UniTaskVoid Start()
     {
-        board = GetComponent<OthelloBoard>(); // 同じGameObjectにアタッチされたOthelloBoard参照
+        // board = GetComponent<OthelloBoard>(); // 同じGameObjectにアタッチされたOthelloBoard参照
         await InitializeBoard();
     }
 
@@ -37,6 +44,8 @@ public class OthelloManager : MonoBehaviour
 	{
 		UpdateScore(CountPieces(true), whiteDigit1, whiteDigit2);
 		UpdateScore(CountPieces(false), blackDigit1, blackDigit2);
+        Debug.Log(CountPieces(true));
+        Debug.Log(CountPieces(false));
 	}
 
 	void UpdateScore(int score, Image digit1, Image digit2)
@@ -44,8 +53,8 @@ public class OthelloManager : MonoBehaviour
 		int tens = score / 10;
 		int ones = score % 10;
 
-		digit1.sprite = numberSprites[tens];
-		digit2.sprite = numberSprites[ones];
+		digit1.sprite = numSprites[tens];
+		digit2.sprite = numSprites[ones];
 	}
 
     public void ShowFlipMarker(bool show)
@@ -261,6 +270,7 @@ public class OthelloManager : MonoBehaviour
         if (!initializing && !Waiting)
         {
             HighlightValidMoves(); // ターンごとにハイライト更新
+            UpdateScoreUI();
         }
 
         // Debug.Log($"White: {whiteCount}, Black: {blackCount}, Turn: {(isWhiteTurn ? "White" : "Black")}");
