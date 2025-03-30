@@ -131,10 +131,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3
-      y: 26
-      width: 14
-      height: 14
+      x: 2
+      y: 25
+      width: 16
+      height: 16
     spriteID: 568b4cb8f78b1624aa7d6d980beb5bc0
     spriteBone: []
     spriteOutline: []
@@ -153,9 +153,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3
-      y: 47
-      width: 14
-      height: 14
+      y: 45
+      width: 16
+      height: 16
     spriteID: ee94f3faf544e0140938593886fb15a9
     spriteBone: []
     spriteOutline: []
@@ -173,10 +173,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 14
-      height: 14
+      x: 3
+      y: 3
+      width: 16
+      height: 16
     spriteID: 989da76fa36f9d94ea76b77b28221dfc
     spriteBone: []
     spriteOutline: []
@@ -195,9 +195,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 25
-      y: 4
-      width: 14
-      height: 14
+      y: 2
+      width: 16
+      height: 16
     spriteID: 9ce6ae55fe612b343bf3613cdc9654b8
     spriteBone: []
     spriteOutline: []
@@ -215,10 +215,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 25
-      y: 25
-      width: 14
-      height: 14
+      x: 24
+      y: 24
+      width: 16
+      height: 16
     spriteID: 84b2d5dcbcd00994c885d56e301b9b8d
     spriteBone: []
     spriteOutline: []

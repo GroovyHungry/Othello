@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98422198b957c48e0b8448c49802f9fe
+guid: f69a56f2d9fb541a680d99cd2be45c25
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638789508127884730
+  platformSettingsDirtyTick: 638789498235634710
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,19 +123,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Num01
+  - name: board_new
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 2
+      x: 4
       y: 4
-      width: 14
-      height: 14
-    spriteID: 78575fb2d3a914d5e99d3ef5a15f4e70
+      width: 256
+      height: 144
+    spriteID: 732f63bf986d843168c3dab5cac33068
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,21 +147,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1819305161
-    name: Num01
+    guid: 1808529765
+    name: board_new
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Num06
+    - name: board_new
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 0
         y: 0
-        width: 11
-        height: 14
-      spriteId: 78575fb2d3a914d5e99d3ef5a15f4e70
+        width: 256
+        height: 144
+      spriteId: 732f63bf986d843168c3dab5cac33068
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -216,5 +216,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 14, y: 14}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 256, y: 144}
+  previousTextureSize: {x: 512, y: 256}
