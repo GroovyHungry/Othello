@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 665bd395e610b4a8ba1cdc3025531089
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pixelationShader: {fileID: 4800000, guid: edd700dba01f04a01b7a6f1ab5d27dc3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

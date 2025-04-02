@@ -188,6 +188,11 @@ public class OthelloManager : MonoBehaviour
             SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
         }
+
+        if(validCells.Count == 0)
+        {
+            
+        }
     }
     public int CountPieces(bool isWhite)
     {
