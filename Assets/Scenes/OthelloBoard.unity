@@ -922,6 +922,7 @@ MonoBehaviour:
   - {fileID: 3805357572249819145, guid: 5c4e009bb431e48faaec075aa15fd86a, type: 3}
   whiteHintSprite: {fileID: 1466534349645989513, guid: 5fdb6714484e14e5bbf5ba476e6df71b, type: 3}
   blackHintSprite: {fileID: 7117120919343822205, guid: ca2e7e485685b485685370b77cfbf786, type: 3}
+  gameover: {fileID: 0}
 --- !u!1 &1719429109
 GameObject:
   m_ObjectHideFlags: 0

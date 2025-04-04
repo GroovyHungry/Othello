@@ -11,8 +11,10 @@ public class OthelloManager : MonoBehaviour
     public static OthelloManager Instance;
     public static bool Waiting = false;
     public static bool initializing = false;
+    private bool previousWaiting = false;
 
     private bool isWhiteTurn = false;
+    public GameObject skipMessageObject;
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
     public Image whiteDigit1;
@@ -25,6 +27,8 @@ public class OthelloManager : MonoBehaviour
     private OthelloBoard board;
 
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
+    public Sprite gameover;
+    private int gameoverCounter;
 
     void Awake()
     {
@@ -73,7 +77,7 @@ public class OthelloManager : MonoBehaviour
 
         await PlaceInitialPiece(3, 4, blackPiecePrefab, waitTime);
         await PlaceInitialPiece(3, 3, whitePiecePrefab, waitTime);
-        await PlaceInitialPiece(4, 3, blackPiecePrefab, waitTime);
+        await PlaceInitialPiece(4, 3, whitePiecePrefab, waitTime);
         await PlaceInitialPiece(4, 4, whitePiecePrefab, waitTime);
 
         initializing = false;
@@ -145,12 +149,20 @@ public class OthelloManager : MonoBehaviour
     // 盤面の範囲チェック
     private bool IsValidPosition(int x, int y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
 
-    public void HighlightValidMoves()
+    private async UniTask ShowSkipMessage()
+    {
+        if (skipMessageObject != null)
+        {
+            skipMessageObject.SetActive(true);  // 表示
+            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5)); // 1.5秒待つ
+            skipMessageObject.SetActive(false); // 非表示
+        }
+    }
+    public async UniTask HighlightValidMoves()
     {
         List<OthelloCell> validCells = new List<OthelloCell>();
         List<OthelloCell> invalidCells = new List<OthelloCell>();
 
-        // すべての OthelloCell を取得
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
             if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
@@ -163,35 +175,44 @@ public class OthelloManager : MonoBehaviour
             }
         }
 
-        // 合法手 → 半透明のスプライトを設定
-        foreach (OthelloCell cell in validCells)
+        // ハイライト処理（省略）
+
+        if (validCells.Count == 0)
         {
-            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            gameoverCounter += 1;
 
-            // 白のターンなら白のスプライト、黒のターンなら黒のスプライト
-            sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
-
-            // 半透明に設定
-            if(isWhiteTurn)
+            if (gameoverCounter == 1)
             {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.3f);
-            }
-            else
-            {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
-            }
-        }
+                // 🧠 次のプレイヤーにも合法手がないなら、Skipも出さずに終了する
+                isWhiteTurn = !isWhiteTurn;
+                bool nextHasMove = false;
 
-        // 非合法手 → 透明にする
-        foreach (OthelloCell cell in invalidCells)
-        {
-            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
-        }
+                foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
+                {
+                    if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
+                    {
+                        nextHasMove = true;
+                        break;
+                    }
+                }
 
-        if(validCells.Count == 0)
+                if (nextHasMove)
+                {
+                    // ✅ 次のプレイヤーが打てる → SKIP表示する
+                    await ShowSkipMessage();
+                }
+                else
+                {
+                    // ❌ 次も打てない → 2連続スキップになるのでSKIPは出さず即終了
+                    gameoverCounter += 1;
+                }
+            }
+
+            // ゲームオーバー処理は Update() などで拾う（gameoverCounter == 2）
+        }
+        else
         {
-            
+            gameoverCounter = 0;
         }
     }
     public int CountPieces(bool isWhite)
@@ -274,8 +295,14 @@ public class OthelloManager : MonoBehaviour
 
         if (!initializing && !Waiting)
         {
-            HighlightValidMoves(); // ターンごとにハイライト更新
+            _ = HighlightValidMoves(); // ターンごとにハイライト更新
             UpdateScoreUI();
+        }
+        previousWaiting = Waiting;
+
+        if (gameoverCounter == 2)
+        {
+            Debug.Log("Gameover");
         }
 
         // Debug.Log($"White: {whiteCount}, Black: {blackCount}, Turn: {(isWhiteTurn ? "White" : "Black")}");
