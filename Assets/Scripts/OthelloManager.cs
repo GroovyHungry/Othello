@@ -24,6 +24,8 @@ public class OthelloManager : MonoBehaviour
     public Sprite[] numSprites;
     public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
     public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設定
+    public Sprite whiteStocks;
+    public Sprite blackStocks;
     private OthelloBoard board;
 
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
@@ -72,6 +74,7 @@ public class OthelloManager : MonoBehaviour
     // 初期配置
     private async UniTask InitializeBoard()
     {
+        
         initializing = true;
         float waitTime = 0.1f;
 
@@ -175,7 +178,22 @@ public class OthelloManager : MonoBehaviour
             }
         }
 
-        // ハイライト処理（省略）
+        // ✅ 合法手セル：ハイライト表示（半透明スプライト）
+        foreach (OthelloCell cell in validCells)
+        {
+            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
+
+            // 色を半透明に設定
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, isWhiteTurn ? 0.3f : 0.5f);
+        }
+
+        // ✅ 非合法手セル：透明にする
+        foreach (OthelloCell cell in invalidCells)
+        {
+            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+        }
 
         if (validCells.Count == 0)
         {
@@ -215,6 +233,7 @@ public class OthelloManager : MonoBehaviour
             gameoverCounter = 0;
         }
     }
+
     public int CountPieces(bool isWhite)
     {
         int whiteCount = 0;
