@@ -28,6 +28,7 @@ public class OthelloCell : MonoBehaviour
 
             // 盤面への配置
             OthelloManager.Instance.GetBoard().PlacePiece(x, y, piece, currentTag);
+            OthelloManager.Instance.ConsumeStock(currentTag);
 
             // ターン終了（交代）
             OthelloManager.Instance.EndTurn();

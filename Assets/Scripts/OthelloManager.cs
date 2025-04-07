@@ -23,14 +23,22 @@ public class OthelloManager : MonoBehaviour
     public Image blackDigit2;
     public Sprite[] numSprites;
     public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
-    public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設定
-    public Sprite whiteStocks;
-    public Sprite blackStocks;
+    public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設
     private OthelloBoard board;
 
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
     public Sprite gameover;
     private int gameoverCounter;
+    private int blackPlacedCount = 0;
+    private int whitePlacedCount = 0;
+
+    public GameObject blackStockPrefab;
+    public GameObject whiteStockPrefab;
+    public Transform blackStockParent;
+    public Transform whiteStockParent;
+
+    public List<GameObject> blackStocks = new List<GameObject>();
+    public List<GameObject> whiteStocks = new List<GameObject>();
 
     void Awake()
     {
@@ -42,7 +50,7 @@ public class OthelloManager : MonoBehaviour
 
     private async UniTaskVoid Start()
     {
-        // board = GetComponent<OthelloBoard>(); // 同じGameObjectにアタッチされたOthelloBoard参照
+        GenerateStockPieces();
         await InitializeBoard();
     }
 
@@ -72,9 +80,40 @@ public class OthelloManager : MonoBehaviour
     }
 
     // 初期配置
+    private void GenerateStockPieces()
+    {
+        int columns = 14; // 1行の個数
+        int rows = 4;     // 行数
+        int total = columns * rows; // = 56個
+
+        int spacingPxX = 2;
+        int spacingPxY = 12 + 2; // 14pxのスプライト + 2pxの間隔
+        float spacingX = spacingPxX / 16f; // PPU=16 → Unity単位に変換
+        float spacingY = spacingPxY / 16f;
+
+        Vector3 blackStartPos = blackStockParent.position;
+        Vector3 whiteStartPos = whiteStockParent.position;
+
+        for (int i = 0; i < total; i++)
+        {
+            int x = i % columns;
+            int y = i / columns;
+
+            // 黒コマの配置座標
+            Vector3 blackPos = blackStartPos + new Vector3(x * spacingX, -y * spacingY, 0);
+            GameObject black = Instantiate(blackStockPrefab, blackPos, Quaternion.identity, blackStockParent);
+            blackStocks.Add(black);
+
+            // 白コマの配置座標
+            Vector3 whitePos = whiteStartPos + new Vector3(x * spacingX, -y * spacingY, 0);
+            GameObject white = Instantiate(whiteStockPrefab, whitePos, Quaternion.identity, whiteStockParent);
+            whiteStocks.Add(white);
+        }
+    }
+
+
     private async UniTask InitializeBoard()
     {
-        
         initializing = true;
         float waitTime = 0.1f;
 
@@ -101,6 +140,24 @@ public class OthelloManager : MonoBehaviour
     public void EndTurn() => isWhiteTurn = !isWhiteTurn;
 
     // 合法手の判定
+
+    public void ConsumeStock(string tag)
+    {
+        int columns = 14;
+
+        if (tag == "Black" && blackPlacedCount < blackStocks.Count)
+        {
+            GameObject stock = blackStocks[blackPlacedCount];
+            stock.SetActive(false);
+            blackPlacedCount++;
+        }
+        else if (tag == "White" && whitePlacedCount < whiteStocks.Count)
+        {
+            GameObject stock = whiteStocks[whitePlacedCount];
+            stock.SetActive(false);
+            whitePlacedCount++;
+        }
+    }
     public bool IsValidMove(int x, int y, string currentTag)
     {
         if (!board.IsCellEmpty(x, y)) return false;
