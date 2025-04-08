@@ -14,7 +14,8 @@ public class OthelloManager : MonoBehaviour
     private bool previousWaiting = false;
 
     private bool isWhiteTurn = false;
-    public GameObject skipMessageObject;
+    public GameObject skipMessageWhite;
+    public GameObject skipMessageBlack;
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
     public Image whiteDigit1;
@@ -27,7 +28,7 @@ public class OthelloManager : MonoBehaviour
     private OthelloBoard board;
 
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
-    public Sprite gameover;
+    public GameObject gameover;
     private int gameoverCounter;
     private int blackPlacedCount = 0;
     private int whitePlacedCount = 0;
@@ -209,13 +210,22 @@ public class OthelloManager : MonoBehaviour
     // 盤面の範囲チェック
     private bool IsValidPosition(int x, int y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
 
-    private async UniTask ShowSkipMessage()
+    private async UniTask ShowSkipMessage(bool isWhite)
     {
-        if (skipMessageObject != null)
+        if (skipMessageBlack != null && skipMessageWhite != null)
         {
-            skipMessageObject.SetActive(true);  // 表示
-            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5)); // 1.5秒待つ
-            skipMessageObject.SetActive(false); // 非表示
+            if (isWhite)
+            {
+                skipMessageBlack.SetActive(true);  // 表示
+                await UniTask.Delay(System.TimeSpan.FromSeconds(2.0)); // 1.5秒待つ
+                skipMessageBlack.SetActive(false); // 非表示
+            }
+            else
+            {
+                skipMessageWhite.SetActive(true);  // 表示
+                await UniTask.Delay(System.TimeSpan.FromSeconds(2.0)); // 1.5秒待つ
+                skipMessageWhite.SetActive(false); // 非表示
+            }
         }
     }
     public async UniTask HighlightValidMoves()
@@ -274,7 +284,7 @@ public class OthelloManager : MonoBehaviour
                 if (nextHasMove)
                 {
                     // ✅ 次のプレイヤーが打てる → SKIP表示する
-                    await ShowSkipMessage();
+                    await ShowSkipMessage(isWhiteTurn);
                 }
                 else
                 {
@@ -379,6 +389,7 @@ public class OthelloManager : MonoBehaviour
         if (gameoverCounter == 2)
         {
             Debug.Log("Gameover");
+            gameover.SetActive(true);
         }
 
         // Debug.Log($"White: {whiteCount}, Black: {blackCount}, Turn: {(isWhiteTurn ? "White" : "Black")}");
