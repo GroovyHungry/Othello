@@ -14,6 +14,7 @@ public class OthelloCell : MonoBehaviour
     {
         if (OthelloManager.initializing) return;
         if (OthelloManager.Waiting) return;
+        if (OthelloManager.isAIPlaying) return;
 
         // 今のターンの色
         string currentTag = OthelloManager.Instance.IsWhiteTurn() ? "White" : "Black";
@@ -31,7 +32,7 @@ public class OthelloCell : MonoBehaviour
             OthelloManager.Instance.ConsumeStock(currentTag);
 
             // ターン終了（交代）
-            OthelloManager.Instance.EndTurn();
+            _ = OthelloManager.Instance.EndTurn();
 
             // 占有済み設定
             isOccupied = true;

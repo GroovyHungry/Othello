@@ -1,0 +1,50 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using UnityEngine.UI;
+public class CoinTossManager : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
+    public GameObject panel;
+    public Animator rotatingPieceAnimator;
+    public Button whiteButton;
+    public Button blackButton;
+    private string userChoice;
+
+    public async UniTask StartCoinToss()
+    {
+        panel.SetActive(true);
+
+        // ユーザー選択待ち
+        bool selected = false;
+        rotatingPieceAnimator.SetTrigger("StartSpin");
+        whiteButton.onClick.AddListener(() => { userChoice = "White"; selected = true; });
+        blackButton.onClick.AddListener(() => { userChoice = "Black"; selected = true; });
+
+        await UniTask.WaitUntil(() => selected);
+
+        // アニメーション再生
+        await UniTask.Delay(2000); // 2秒回転
+
+        // 結果決定
+        string result = Random.value < 0.5f ? "White" : "Black";
+        rotatingPieceAnimator.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
+
+        await UniTask.Delay(1000);
+        bool correct = (userChoice == result);
+
+        OthelloManager.Instance.SetFirstTurn(correct ? userChoice == "White" : userChoice != "White");
+
+        await UniTask.Delay(2000);
+        panel.SetActive(false);
+    }
+}

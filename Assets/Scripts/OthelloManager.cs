@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
+using System.Linq;
 
 public class OthelloManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class OthelloManager : MonoBehaviour
     private bool previousWaiting = false;
 
     private bool isWhiteTurn = false;
+    public static bool isAIPlaying = false;
+    public bool isAIOpponent = true;
+    public bool isAIWhite = true;
     public GameObject skipMessageWhite;
     public GameObject skipMessageBlack;
     public GameObject whitePiecePrefab;
@@ -53,6 +57,8 @@ public class OthelloManager : MonoBehaviour
     {
         GenerateStockPieces();
         await InitializeBoard();
+        HighlightValidMoves();
+        //await CoinTossManager.Instance.StartCoinToss();
     }
 
     public void UpdateScoreUI()
@@ -120,7 +126,7 @@ public class OthelloManager : MonoBehaviour
 
         await PlaceInitialPiece(3, 4, blackPiecePrefab, waitTime);
         await PlaceInitialPiece(3, 3, whitePiecePrefab, waitTime);
-        await PlaceInitialPiece(4, 3, whitePiecePrefab, waitTime);
+        await PlaceInitialPiece(4, 3, blackPiecePrefab, waitTime);
         await PlaceInitialPiece(4, 4, whitePiecePrefab, waitTime);
 
         initializing = false;
@@ -135,16 +141,40 @@ public class OthelloManager : MonoBehaviour
 
     // ターン情報
     public bool IsWhiteTurn() => isWhiteTurn;
+    public bool IsAIWhite() => isAIWhite;
+    public bool IsPlayerWhite() => !isAIWhite;
 
     public OthelloBoard GetBoard() => board; // boardを取得する公開メソッド
 
-    public void EndTurn() => isWhiteTurn = !isWhiteTurn;
+    public async UniTaskVoid EndTurn()
+    {
+        isWhiteTurn = !isWhiteTurn;
+
+        HighlightValidMoves();
+
+        bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
+        if (isAIOpponent && isAITurn)
+        {
+            await OthelloAI.Instance.PlayAITurn();
+        }
+    }
+    // public bool SetFirstTurn(string color)
+    // {
+    //     if (color == Black)
+    //     {
+    //         isWhiteTurn = false;
+    //     }
+    //     else
+    //     {
+    //         isWhiteTurn = true;
+    //     }
+    // }
 
     // 合法手の判定
 
     public void ConsumeStock(string tag)
     {
-        int columns = 14;
+        //int columns = 14;
 
         if (tag == "Black" && blackPlacedCount < blackStocks.Count)
         {
@@ -228,10 +258,10 @@ public class OthelloManager : MonoBehaviour
             }
         }
     }
-    public async UniTask HighlightValidMoves()
+    public void GetValidAndInvalidCells(out List<OthelloCell> validCells, out List<OthelloCell> invalidCells)
     {
-        List<OthelloCell> validCells = new List<OthelloCell>();
-        List<OthelloCell> invalidCells = new List<OthelloCell>();
+        validCells = new List<OthelloCell>();
+        invalidCells = new List<OthelloCell>();
 
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
@@ -244,23 +274,44 @@ public class OthelloManager : MonoBehaviour
                 invalidCells.Add(cell);
             }
         }
+    }
+    public async void HighlightValidMoves()
+    {
+        GetValidAndInvalidCells(out List<OthelloCell> validCells, out List<OthelloCell> invalidCells);
 
-        // ✅ 合法手セル：ハイライト表示（半透明スプライト）
-        foreach (OthelloCell cell in validCells)
+        bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
+
+        if (!isAIOpponent || (isAIOpponent && !isAITurn))
         {
-            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-            sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
+            // ハイライト表示
+            foreach (OthelloCell cell in validCells)
+            {
+                SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+                sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, isWhiteTurn ? 0.3f : 0.5f);
+            }
 
-            // 色を半透明に設定
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, isWhiteTurn ? 0.3f : 0.5f);
+            foreach (OthelloCell cell in invalidCells)
+            {
+                SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+            }
         }
-
-        // ✅ 非合法手セル：透明にする
-        foreach (OthelloCell cell in invalidCells)
+        else
         {
-            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+            // AIターン → 全部透明
+            foreach (var cell in validCells.Concat(invalidCells))
+            {
+                SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+            }
         }
+        await CheckSkipOrGameOver();
+    }
+
+    private async UniTask CheckSkipOrGameOver()
+    {
+        GetValidAndInvalidCells(out List<OthelloCell> validCells, out _);
 
         if (validCells.Count == 0)
         {
@@ -268,7 +319,6 @@ public class OthelloManager : MonoBehaviour
 
             if (gameoverCounter == 1)
             {
-                // 🧠 次のプレイヤーにも合法手がないなら、Skipも出さずに終了する
                 isWhiteTurn = !isWhiteTurn;
                 bool nextHasMove = false;
 
@@ -283,24 +333,19 @@ public class OthelloManager : MonoBehaviour
 
                 if (nextHasMove)
                 {
-                    // ✅ 次のプレイヤーが打てる → SKIP表示する
                     await ShowSkipMessage(isWhiteTurn);
                 }
                 else
                 {
-                    // ❌ 次も打てない → 2連続スキップになるのでSKIPは出さず即終了
                     gameoverCounter += 1;
                 }
             }
-
-            // ゲームオーバー処理は Update() などで拾う（gameoverCounter == 2）
         }
         else
         {
             gameoverCounter = 0;
         }
     }
-
     public int CountPieces(bool isWhite)
     {
         int whiteCount = 0;
@@ -381,7 +426,6 @@ public class OthelloManager : MonoBehaviour
 
         if (!initializing && !Waiting)
         {
-            _ = HighlightValidMoves(); // ターンごとにハイライト更新
             UpdateScoreUI();
         }
         previousWaiting = Waiting;
