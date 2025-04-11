@@ -3,11 +3,6 @@ using Cysharp.Threading.Tasks;
 
 public class OthelloCell : MonoBehaviour
 {
-    public GameObject whitePiecePrefab;
-    public GameObject blackPiecePrefab;
-
-    private bool isOccupied = false;
-
     public int x, y;
 
     private void OnMouseDown()
@@ -16,26 +11,12 @@ public class OthelloCell : MonoBehaviour
         if (OthelloManager.Waiting) return;
         if (OthelloManager.isAIPlaying) return;
 
-        // 今のターンの色
         string currentTag = OthelloManager.Instance.IsWhiteTurn() ? "White" : "Black";
 
-        // 合法手チェック
-        if (!isOccupied && OthelloManager.Instance.IsValidMove(x, y, currentTag))
+        if (OthelloManager.Instance.GetBoard().IsCellEmpty(x, y) && OthelloManager.Instance.IsValidMove(x, y, currentTag))
         {
-            // コマの生成
-            GameObject piecePrefab = (currentTag == "White") ? whitePiecePrefab : blackPiecePrefab;
-            GameObject piece = Instantiate(piecePrefab, transform.position, Quaternion.identity);
-            piece.tag = currentTag; // タグ設定（重要）
-
-            // 盤面への配置
-            OthelloManager.Instance.GetBoard().PlacePiece(x, y, piece, currentTag);
-            OthelloManager.Instance.ConsumeStock(currentTag);
-
-            // ターン終了（交代）
-            _ = OthelloManager.Instance.EndTurn();
-
-            // 占有済み設定
-            isOccupied = true;
+            Vector3 pos = transform.position;
+            _ = OthelloManager.Instance.PlacePieces(x, y, currentTag, pos);
         }
     }
 }

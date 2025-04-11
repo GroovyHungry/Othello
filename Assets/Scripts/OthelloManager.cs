@@ -55,10 +55,16 @@ public class OthelloManager : MonoBehaviour
 
     private async UniTaskVoid Start()
     {
+        await CoinTossManager.Instance.StartCoinToss();
+
         GenerateStockPieces();
         await InitializeBoard();
         HighlightValidMoves();
-        //await CoinTossManager.Instance.StartCoinToss();
+        bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
+        if (isAIOpponent && isAITurn)
+        {
+            await OthelloAI.Instance.PlayAITurn();
+        }
     }
 
     public void UpdateScoreUI()
@@ -77,6 +83,18 @@ public class OthelloManager : MonoBehaviour
 		digit1.sprite = numSprites[tens];
 		digit2.sprite = numSprites[ones];
 	}
+
+    public async UniTask PlacePieces(int x, int y, string tag, Vector3 position)
+    {
+        GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
+        GameObject piece = Instantiate(prefab, position, Quaternion.identity);
+        piece.tag = tag;
+
+        await board.PlacePiece(x, y, piece, tag);
+        ConsumeStock(tag);
+        await EndTurn();
+    }
+
 
     public void ShowFlipMarker(bool show)
     {
@@ -124,19 +142,22 @@ public class OthelloManager : MonoBehaviour
         initializing = true;
         float waitTime = 0.1f;
 
-        await PlaceInitialPiece(3, 4, blackPiecePrefab, waitTime);
-        await PlaceInitialPiece(3, 3, whitePiecePrefab, waitTime);
-        await PlaceInitialPiece(4, 3, blackPiecePrefab, waitTime);
-        await PlaceInitialPiece(4, 4, whitePiecePrefab, waitTime);
+        await PlaceInitialPiece(3, 4, blackPiecePrefab);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
+        await PlaceInitialPiece(3, 3, whitePiecePrefab);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
+        await PlaceInitialPiece(4, 3, blackPiecePrefab);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
+        await PlaceInitialPiece(4, 4, whitePiecePrefab);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
 
         initializing = false;
     }
 
-    private async UniTask PlaceInitialPiece(int x, int y, GameObject prefab, float waitTime)
+    private async UniTask PlaceInitialPiece(int x, int y, GameObject prefab)
     {
         GameObject piece = Instantiate(prefab, new Vector3(x - 3.5f, y - 3.5f, 0), Quaternion.identity);
         await board.PlacePiece(x, y, piece, piece.tag);
-        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
     }
 
     // ターン情報
@@ -146,7 +167,7 @@ public class OthelloManager : MonoBehaviour
 
     public OthelloBoard GetBoard() => board; // boardを取得する公開メソッド
 
-    public async UniTaskVoid EndTurn()
+    public async UniTask EndTurn()
     {
         isWhiteTurn = !isWhiteTurn;
 
@@ -169,8 +190,6 @@ public class OthelloManager : MonoBehaviour
     //         isWhiteTurn = true;
     //     }
     // }
-
-    // 合法手の判定
 
     public void ConsumeStock(string tag)
     {

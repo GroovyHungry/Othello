@@ -24,8 +24,6 @@ public class OthelloBoard : MonoBehaviour
         {
             await FlipPieces(piecesToFlip);
         }
-        // await FlipPieces(piecesToFlip);
-
         OthelloManager.Waiting = false;
     }
     // 指定座標が空かどうか
@@ -52,7 +50,7 @@ public class OthelloBoard : MonoBehaviour
     // 実際にひっくり返すコルーチン
     private async UniTask FlipPieces(List<GameObject> piecesToFlip)
     {
-        // float interval = 0.1f;
+        float interval = 0.1f;
 
         // 並列実行
         var flipTasks = new List<UniTask>();
@@ -60,7 +58,7 @@ public class OthelloBoard : MonoBehaviour
         {
             await piece.GetComponent<OthelloPiece>().Flip();
         }
-        // await UniTask.WhenAll(flipTasks); // 全ての反転が終わるまで待機
+        await UniTask.Delay(System.TimeSpan.FromSeconds(interval));
     }
 
     // ひっくり返せるコマをリストアップする

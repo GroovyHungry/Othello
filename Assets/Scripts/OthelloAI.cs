@@ -26,6 +26,7 @@ public class OthelloAI : MonoBehaviour
     public async UniTask PlayAITurn()
     {
         OthelloManager.isAIPlaying = true;
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.1f));
         string aiTag = OthelloManager.Instance.IsAIWhite() ? "White" :"Black";
 
         OthelloManager.Instance.GetValidAndInvalidCells(out List<OthelloCell> validCells, out _);
@@ -35,5 +36,11 @@ public class OthelloAI : MonoBehaviour
         {
             validMoves.Add(new Vector2Int(cell.x, cell.y));
         }
+        Vector2Int selected = validMoves[Random.Range(0, validMoves.Count)];
+        Vector3 pos = new Vector3(selected.x - 3.5f, selected.y - 3.5f, 0);
+
+        await OthelloManager.Instance.PlacePieces(selected.x, selected.y, aiTag, pos);
+
+        OthelloManager.isAIPlaying = false;
     }
 }
