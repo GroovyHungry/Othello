@@ -31,22 +31,18 @@ public class CoinTossManager : MonoBehaviour
         panel.SetActive(true);
 
         // CoinToss.Rebind(); // Animatorの状態リセット（オプション）
-        CoinToss.Play("spinning_piece_Clip");
+        CoinToss.Play("Spinning");
 
         // ユーザー選択待ち
         bool selected = false;
         //ここでCoinTossアニメを再生したい
         whiteButton.onClick.AddListener(() => { userChoice = "White"; selected = true; });
         blackButton.onClick.AddListener(() => { userChoice = "Black"; selected = true; });
-
         await UniTask.WaitUntil(() => selected);
-
-        // アニメーション再生
-        await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f)); // 2秒回転
 
         // 結果決定
         string result = Random.value < 0.5f ? "White" : "Black";
-        CoinToss.SetTrigger(result == "White" ? "Selected White" : "Selected Black");
+        CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
 
         await UniTask.Delay(System.TimeSpan.FromSeconds(2.5f));
         bool correct = (userChoice == result);
