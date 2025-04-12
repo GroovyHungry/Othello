@@ -325,7 +325,7 @@ public class OthelloManager : MonoBehaviour
             {
                 SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
                 sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, isWhiteTurn ? 0.3f : 0.5f);
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
             }
 
             foreach (OthelloCell cell in invalidCells)

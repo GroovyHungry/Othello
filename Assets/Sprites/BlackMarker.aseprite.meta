@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 93407c91c45b9410f8a47ab0d71e6a03
+guid: 448b9fdd48943784db5c44c6974b5c57
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -78,8 +78,8 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 8
-    spritePadding: 4
+    mosaicPadding: 4
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -91,14 +91,14 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 8
-    spritePadding: 4
+    mosaicPadding: 4
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638800702332290450
+  platformSettingsDirtyTick: 638801087726668701
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: BlackMarker
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -131,11 +131,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 10
-      y: 42
-      width: 14
-      height: 32
-    spriteID: 4d388bf78183b4f47bf9a273030bb7d9
+      x: 4
+      y: 4
+      width: 6
+      height: 6
+    spriteID: 9244fae3a2ad24b4a826d9629eb77765
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,90 +143,30 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 8, y: 49}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 9
-      y: 1
-      width: 14
-      height: 32
-    spriteID: 9dfcdf1c915f54d22a9edd64655e1814
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 8, y: 8}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 9
-      y: 76
-      width: 14
-      height: 32
-    spriteID: fc4a0a96eae0343e0861bd02ddfe4bb7
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 8, y: 83}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1201478719
+      value0: 4244767621
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: WhiteButtonPressed
+    name: BlackMarker
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: BlackMarker
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 9
-        y: 9
-        width: 14
-        height: 14
-      spriteId: 4d388bf78183b4f47bf9a273030bb7d9
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 10
-        y: 9
-        width: 13
-        height: 21
-      spriteId: 9dfcdf1c915f54d22a9edd64655e1814
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 10
-        y: 9
-        width: 13
-        height: 13
-      spriteId: fc4a0a96eae0343e0861bd02ddfe4bb7
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: 9244fae3a2ad24b4a826d9629eb77765
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -266,7 +206,19 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  - name: WebGL
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: iPhone
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 16384
@@ -281,5 +233,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
-  previousTextureSize: {x: 64, y: 128}
+  canvasSize: {x: 6, y: 6}
+  previousTextureSize: {x: 16, y: 16}

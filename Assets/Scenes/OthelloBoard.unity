@@ -186,8 +186,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: 23}
-  m_SizeDelta: {x: 48, y: 20}
+  m_AnchoredPosition: {x: 98, y: 39}
+  m_SizeDelta: {x: 28, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &61995446
 MonoBehaviour:
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8821866146825571515, guid: 71f6a5d777e8a4ac5b860795113d3c94, type: 3}
+  m_Sprite: {fileID: -6493501020624289800, guid: 20f67d876f62a2c49abd623f2f5cd0c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -261,8 +261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -98, y: -22}
-  m_SizeDelta: {x: 48, y: 20}
+  m_AnchoredPosition: {x: -98, y: -39}
+  m_SizeDelta: {x: 28, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132491426
 MonoBehaviour:
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7055626094798814010, guid: cdae1182f060849b89addede8386326a, type: 3}
+  m_Sprite: {fileID: 5817942205473369509, guid: a9a6b2fd9e98e224780941c1e04a3b9d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -587,10 +587,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 9197394841086433313, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
-    m_PressedSprite: {fileID: 4422757771640010257, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
-    m_SelectedSprite: {fileID: 4422757771640010257, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 4422757771640010257, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
+    m_PressedSprite: {fileID: 2410625089107396973, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
+    m_SelectedSprite: {fileID: 2410625089107396973, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
+    m_DisabledSprite: {fileID: -4158633895755970259, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7219134924186894706, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
+  m_Sprite: {fileID: -4158633895755970259, guid: 93407c91c45b9410f8a47ab0d71e6a03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -875,6 +875,8 @@ GameObject:
   - component: {fileID: 707575988}
   - component: {fileID: 707575990}
   - component: {fileID: 707575989}
+  - component: {fileID: 707575992}
+  - component: {fileID: 707575991}
   m_Layer: 0
   m_Name: CoinToss
   m_TagString: Untagged
@@ -882,21 +884,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &707575988
-Transform:
+--- !u!224 &707575988
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707575987}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -1440}
+  m_LocalPosition: {x: 0, y: 0, z: -1440}
   m_LocalScale: {x: 16, y: 16, z: 16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1245222995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 4}
+  m_SizeDelta: {x: 0.5, y: 0.8125}
+  m_Pivot: {x: 0.5, y: -0.07692308}
 --- !u!95 &707575989
 Animator:
   serializedVersion: 7
@@ -974,6 +980,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &707575991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707575987}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2811232332309948246, guid: 289b416ff965b419aa3fc4ba205d149e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &707575992
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707575987}
+  m_CullTransparentMesh: 1
 --- !u!1 &775971073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,8 +1309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98, y: 23}
-  m_SizeDelta: {x: 48, y: 20}
+  m_AnchoredPosition: {x: 98, y: 39}
+  m_SizeDelta: {x: 28, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1029839248
 MonoBehaviour:
@@ -1288,7 +1332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7055626094798814010, guid: cdae1182f060849b89addede8386326a, type: 3}
+  m_Sprite: {fileID: 5817942205473369509, guid: a9a6b2fd9e98e224780941c1e04a3b9d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1589,7 +1633,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 8003924257429042797, guid: b052cab40da17452c91c47bed84b747a, type: 3}
     m_PressedSprite: {fileID: 5643757751026874203, guid: b052cab40da17452c91c47bed84b747a, type: 3}
     m_SelectedSprite: {fileID: 5643757751026874203, guid: b052cab40da17452c91c47bed84b747a, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: -2344193107485861151, guid: b052cab40da17452c91c47bed84b747a, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1650,6 +1694,7 @@ GameObject:
   - component: {fileID: 1245222995}
   - component: {fileID: 1245222997}
   - component: {fileID: 1245222996}
+  - component: {fileID: 1245222998}
   m_Layer: 5
   m_Name: CoinTossPannel
   m_TagString: Untagged
@@ -1717,6 +1762,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245222994}
   m_CullTransparentMesh: 1
+--- !u!225 &1245222998
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245222994}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1300888786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,8 +1883,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97, y: -22}
-  m_SizeDelta: {x: 48, y: 20}
+  m_AnchoredPosition: {x: -98, y: -39}
+  m_SizeDelta: {x: 28, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346439915
 MonoBehaviour:
@@ -1849,7 +1906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8821866146825571515, guid: 71f6a5d777e8a4ac5b860795113d3c94, type: 3}
+  m_Sprite: {fileID: -6493501020624289800, guid: 20f67d876f62a2c49abd623f2f5cd0c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2265,8 +2322,8 @@ MonoBehaviour:
   - {fileID: 3805357572249819145, guid: a05ca9a58ad00444e98705224790de71, type: 3}
   - {fileID: 3805357572249819145, guid: 1065c4ea2cdf547a7bad8d9d03a4960e, type: 3}
   - {fileID: 3805357572249819145, guid: 5c4e009bb431e48faaec075aa15fd86a, type: 3}
-  whiteHintSprite: {fileID: 1466534349645989513, guid: 5fdb6714484e14e5bbf5ba476e6df71b, type: 3}
-  blackHintSprite: {fileID: 7117120919343822205, guid: ca2e7e485685b485685370b77cfbf786, type: 3}
+  whiteHintSprite: {fileID: 6925758410389416767, guid: 0d2054384d00738458da04a49a25af30, type: 3}
+  blackHintSprite: {fileID: 2769627125001076862, guid: 448b9fdd48943784db5c44c6974b5c57, type: 3}
   gameover: {fileID: 1561961842}
   blackStockPrefab: {fileID: 6658225762490503098, guid: c32d423fa8cce40cbac95d78b96aa286, type: 3}
   whiteStockPrefab: {fileID: 1236481488043663682, guid: eb621785920e04358a7f24f30851c20f, type: 3}
@@ -2302,6 +2359,7 @@ MonoBehaviour:
   CoinToss: {fileID: 707575989}
   whiteButton: {fileID: 428881919}
   blackButton: {fileID: 1244635543}
+  coinTossGroup: {fileID: 1245222998}
 --- !u!1 &1639703957
 GameObject:
   m_ObjectHideFlags: 0

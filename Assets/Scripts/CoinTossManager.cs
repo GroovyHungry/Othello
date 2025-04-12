@@ -11,6 +11,7 @@ public class CoinTossManager : MonoBehaviour
     public Button whiteButton;
     public Button blackButton;
     private string userChoice;
+    public CanvasGroup coinTossGroup;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -36,8 +37,18 @@ public class CoinTossManager : MonoBehaviour
         // ユーザー選択待ち
         bool selected = false;
         //ここでCoinTossアニメを再生したい
-        whiteButton.onClick.AddListener(() => { userChoice = "White"; selected = true; });
-        blackButton.onClick.AddListener(() => { userChoice = "Black"; selected = true; });
+        whiteButton.onClick.AddListener(() => {
+            userChoice = "White";
+            selected = true;
+            blackButton.interactable = false;
+        });
+
+        blackButton.onClick.AddListener(() => {
+            userChoice = "Black";
+            selected = true;
+            whiteButton.interactable = false;
+        });
+
         await UniTask.WaitUntil(() => selected);
 
         // 結果決定
@@ -48,7 +59,23 @@ public class CoinTossManager : MonoBehaviour
         bool correct = (userChoice == result);
 
         OthelloManager.Instance.isAIWhite = correct;
+        // await FadeOutPanel(coinTossGroup, 0.08f);
 
         panel.SetActive(false);
+    }
+    // フェードアウト関数
+    private async UniTask FadeOutPanel(CanvasGroup group, float stepInterval = 0.1f)
+    {
+        float[] steps = { 1f, 0.66f, 0.33f, 0f };
+
+        foreach (var alpha in steps)
+        {
+            group.alpha = alpha;
+            await UniTask.Delay(System.TimeSpan.FromSeconds(stepInterval));
+        }
+
+        group.interactable = false;
+        group.blocksRaycasts = false;
+        group.gameObject.SetActive(false); // optional
     }
 }
