@@ -12,6 +12,7 @@ public class CoinTossManager : MonoBehaviour
     public Button blackButton;
     private string userChoice;
     public CanvasGroup coinTossGroup;
+    public GameObject UI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -62,6 +63,7 @@ public class CoinTossManager : MonoBehaviour
         // await FadeOutPanel(coinTossGroup, 0.08f);
 
         panel.SetActive(false);
+        UI.SetActive(true);
     }
     // フェードアウト関数
     private async UniTask FadeOutPanel(CanvasGroup group, float stepInterval = 0.1f)

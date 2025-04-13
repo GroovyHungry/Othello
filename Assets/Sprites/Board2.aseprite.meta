@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32dc6285f64fc41b682acba516555a29
+guid: e5b340d0e6f529b41843a6cbd3a142fc
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638801982577566891
+  platformSettingsDirtyTick: 638801701162429462
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: VSAI
+  - name: Board2
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 64
-      height: 16
-    spriteID: 8acd12f4530cb462182724ed33cc968b
+      width: 256
+      height: 288
+    spriteID: ec07010d11b51284eb39291516a5d61a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,89 +144,29 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 28
-      width: 64
-      height: 16
-    spriteID: 6040b2b2686c92748be49eec1135cb12
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 28}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 52
-      width: 64
-      height: 16
-    spriteID: a975da46907d723408d439e3b0788652
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 52}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2429751725
+      value0: 1670522932
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: VSAI
+    name: Board2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frame_0
+    - name: Board2
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 64
-        height: 16
-      spriteId: 8acd12f4530cb462182724ed33cc968b
-    - name: Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 64
-        height: 16
-      spriteId: 6040b2b2686c92748be49eec1135cb12
-    - name: Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 64
-        height: 16
-      spriteId: a975da46907d723408d439e3b0788652
+        width: 256
+        height: 288
+      spriteId: ec07010d11b51284eb39291516a5d61a
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -293,5 +233,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 16}
-  previousTextureSize: {x: 128, y: 128}
+  canvasSize: {x: 256, y: 288}
+  previousTextureSize: {x: 512, y: 512}

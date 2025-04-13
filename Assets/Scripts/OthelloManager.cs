@@ -59,6 +59,10 @@ public class OthelloManager : MonoBehaviour
 
     private async UniTaskVoid Start()
     {
+        
+    }
+    public async UniTask StartGame()
+    {
         await CoinTossManager.Instance.StartCoinToss();
         ShowYouAndCPUUI();
 
@@ -71,6 +75,7 @@ public class OthelloManager : MonoBehaviour
             await OthelloAI.Instance.PlayAITurn();
         }
     }
+
 
     public void UpdateScoreUI()
 	{
