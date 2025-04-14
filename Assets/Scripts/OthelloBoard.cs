@@ -17,8 +17,6 @@ public class OthelloBoard : MonoBehaviour
         OthelloManager.Waiting = true;
 
         boardState[x, y] = piece;
-        await piece.GetComponent<OthelloPiece>().Place(); // アニメーション
-
         List<GameObject> piecesToFlip = CheckAndFlipPieces(x, y, tag);
         if (piecesToFlip.Count > 0)
         {

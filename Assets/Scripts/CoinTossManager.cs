@@ -28,7 +28,7 @@ public class CoinTossManager : MonoBehaviour
     void Update()
     {
     }
-    public async UniTask StartCoinToss()
+    public async UniTask StartCoinTossVsCPU()
     {
         panel.SetActive(true);
 
@@ -61,6 +61,25 @@ public class CoinTossManager : MonoBehaviour
 
         OthelloManager.Instance.isAIWhite = correct;
         // await FadeOutPanel(coinTossGroup, 0.08f);
+
+        panel.SetActive(false);
+        UI.SetActive(true);
+    }
+    public async UniTask StartCoinTossPvP()
+    {
+        panel.SetActive(true);
+        whiteButton.gameObject.SetActive(false);
+        blackButton.gameObject.SetActive(false);
+        CoinToss.Play("Spinning");
+
+        await UniTask.Delay(System.TimeSpan.FromSeconds(2.0f));
+
+        string result = Random.value < 0.5f ? "White" : "Black";
+        CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
+
+        await UniTask.Delay(System.TimeSpan.FromSeconds(2.0f));
+
+        OthelloManager.Instance.isWhiteTurn = (result == "White" ? true : false);
 
         panel.SetActive(false);
         UI.SetActive(true);

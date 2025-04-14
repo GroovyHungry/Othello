@@ -14,7 +14,7 @@ public class OthelloManager : MonoBehaviour
     public static bool initializing = false;
     private bool previousWaiting = false;
 
-    private bool isWhiteTurn = false;
+    public bool isWhiteTurn = false;
     public static bool isAIPlaying = false;
     public bool isAIOpponent = true;
     public bool isAIWhite = true;
@@ -22,6 +22,8 @@ public class OthelloManager : MonoBehaviour
     public GameObject youBlack;
     public GameObject cpuWhite;
     public GameObject cpuBlack;
+    public GameObject player1;
+    public GameObject player2;
     public GameObject skipMessageWhite;
     public GameObject skipMessageBlack;
     public GameObject whitePiecePrefab;
@@ -63,8 +65,17 @@ public class OthelloManager : MonoBehaviour
     }
     public async UniTask StartGame()
     {
-        await CoinTossManager.Instance.StartCoinToss();
-        ShowYouAndCPUUI();
+        if (isAIOpponent)
+        {
+            await CoinTossManager.Instance.StartCoinTossVsCPU();
+            ShowYouAndCPUUI();
+        }
+        else
+        {
+            await CoinTossManager.Instance.StartCoinTossPvP();
+            ShowP1AndP2();
+
+        }
 
         GenerateStockPieces();
         await InitializeBoard();
@@ -106,7 +117,11 @@ public class OthelloManager : MonoBehaviour
             youWhite.SetActive(true);
         }
     }
-
+    private void ShowP1AndP2()
+    {
+        player1.SetActive(true);
+        player2.SetActive(true);
+    }
     public async UniTask PlacePieces(int x, int y, string tag, Vector3 position)
     {
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;

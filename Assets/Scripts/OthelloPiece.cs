@@ -28,19 +28,19 @@ public class OthelloPiece : MonoBehaviour
         }
         return 0.5f;
     }
-    public async UniTask Place() // async化
-    {
-        if (gameObject.tag == "White")
-        {
-            animator.SetTrigger("PlaceWhiteTrigger");
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-        }
-        else
-        {
-            animator.SetTrigger("PlaceBlackTrigger");
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-        }
-    }
+    // public async UniTask Place() // async化
+    // {
+    //     if (gameObject.tag == "White")
+    //     {
+    //         // animator.SetTrigger("PlaceWhiteTrigger");
+    //         await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
+    //     }
+    //     else
+    //     {
+    //         // animator.SetTrigger("PlaceBlackTrigger");
+    //         await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
+    //     }
+    // }
 
     public async UniTask Flip()
     {
@@ -50,16 +50,16 @@ public class OthelloPiece : MonoBehaviour
             animator.SetTrigger("FlipWhiteToBlackTrigger"); // 白 → 黒
             gameObject.tag = "Black";
             spriteRenderer.sprite = blackSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-            animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.0f));
+            // animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
         }
         else
         {
             animator.SetTrigger("FlipBlackToWhiteTrigger"); // 黒 → 白
             gameObject.tag = "White";
             spriteRenderer.sprite = whiteSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-            animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.0f));
+            // animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
         }
     }
 }

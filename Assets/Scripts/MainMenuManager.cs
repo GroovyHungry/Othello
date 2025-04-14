@@ -15,12 +15,12 @@ public class MainMenuManage : MonoBehaviour
         pvpButton.onClick.AddListener(() => {
             OnModeSelected(false);
             cpuButton.interactable = false;
-            pvpButton.interactable = false;
+            // pvpButton.interactable = false;
         });
         cpuButton.onClick.AddListener(() => {
             OnModeSelected(true);
             pvpButton.interactable = false;
-            cpuButton.interactable = false;
+            // cpuButton.interactable = false;
         });
     }
 
