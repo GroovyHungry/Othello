@@ -4,7 +4,8 @@ using Cysharp.Threading.Tasks;
 
 public class OthelloBoard : MonoBehaviour
 {
-    private const int gridSize = 8;
+    public static OthelloBoard Instance;
+    public const int gridSize = 8;
     private static readonly int[,] directions = {
         { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
         { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }
@@ -48,7 +49,7 @@ public class OthelloBoard : MonoBehaviour
     // 実際にひっくり返すコルーチン
     private async UniTask FlipPieces(List<GameObject> piecesToFlip)
     {
-        float interval = 0.1f;
+        float interval = 0.0f;
 
         // 並列実行
         var flipTasks = new List<UniTask>();

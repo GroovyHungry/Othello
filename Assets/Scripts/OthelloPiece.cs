@@ -50,7 +50,7 @@ public class OthelloPiece : MonoBehaviour
             animator.SetTrigger("FlipWhiteToBlackTrigger"); // 白 → 黒
             gameObject.tag = "Black";
             spriteRenderer.sprite = blackSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.0f));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
             // animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
         }
         else
@@ -58,8 +58,21 @@ public class OthelloPiece : MonoBehaviour
             animator.SetTrigger("FlipBlackToWhiteTrigger"); // 黒 → 白
             gameObject.tag = "White";
             spriteRenderer.sprite = whiteSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.0f));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
             // animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
+        }
+    }
+    public async UniTask Remove()
+    {
+        if (gameObject.tag == "White")
+        {
+            animator.SetTrigger("RemoveWhitePiece");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
+        }
+        else
+        {
+            animator.SetTrigger("RemoveBlackPiece");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
         }
     }
 }

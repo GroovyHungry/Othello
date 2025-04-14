@@ -72,12 +72,12 @@ public class CoinTossManager : MonoBehaviour
         blackButton.gameObject.SetActive(false);
         CoinToss.Play("Spinning");
 
-        await UniTask.Delay(System.TimeSpan.FromSeconds(2.0f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.0f));
 
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
 
-        await UniTask.Delay(System.TimeSpan.FromSeconds(2.0f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(3.0f));
 
         OthelloManager.Instance.isWhiteTurn = (result == "White" ? true : false);
 

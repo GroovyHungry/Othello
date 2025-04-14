@@ -395,6 +395,7 @@ public class OthelloManager : MonoBehaviour
                 else
                 {
                     gameoverCounter += 1;
+                    // await ResultManager.Instance.RemoveAllPieces();
                 }
             }
         }
@@ -490,7 +491,7 @@ public class OthelloManager : MonoBehaviour
         if (gameoverCounter == 2)
         {
             Debug.Log("Gameover");
-            gameover.SetActive(true);
+            // gameover.SetActive(true);
         }
 
         // Debug.Log($"White: {whiteCount}, Black: {blackCount}, Turn: {(isWhiteTurn ? "White" : "Black")}");

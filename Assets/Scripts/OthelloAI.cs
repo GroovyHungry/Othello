@@ -26,7 +26,7 @@ public class OthelloAI : MonoBehaviour
     public async UniTask PlayAITurn()
     {
         OthelloManager.isAIPlaying = true;
-        await UniTask.Delay(System.TimeSpan.FromSeconds(0.1f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.4f));
         string aiTag = OthelloManager.Instance.IsAIWhite() ? "White" :"Black";
 
         OthelloManager.Instance.GetValidAndInvalidCells(out List<OthelloCell> validCells, out _);
