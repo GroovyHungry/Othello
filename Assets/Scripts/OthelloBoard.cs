@@ -12,6 +12,12 @@ public class OthelloBoard : MonoBehaviour
     };
     private GameObject[,] boardState = new GameObject[gridSize, gridSize];
 
+    private void Awake()
+	{
+		if (Instance == null) Instance = this;
+		else Destroy(gameObject);
+	}
+
     // コマを配置し、ひっくり返せる駒があれば反転処理
     public async UniTask PlacePiece(int x, int y, GameObject piece, string tag)
     {
@@ -30,6 +36,16 @@ public class OthelloBoard : MonoBehaviour
 
     // 指定座標のコマを取得
     public GameObject GetPiece(int x, int y) => boardState[x, y];
+    public void ClearBoardState()
+    {
+        for (int x = 0; x < gridSize; x++)
+        {
+            for (int y = 0; y < gridSize; y++)
+            {
+                boardState[x, y] = null;
+            }
+        }
+    }
 
     // ひっくり返す処理の開始
     // 同期で一括取得（変更なし）

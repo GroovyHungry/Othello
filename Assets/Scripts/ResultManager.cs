@@ -10,6 +10,11 @@ public class ResultManager : MonoBehaviour
     private int whiteScore;
     private int blackScore;
     private OthelloBoard board;
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
     void Start()
     {
         
@@ -25,17 +30,26 @@ public class ResultManager : MonoBehaviour
         whiteScore = OthelloManager.Instance.CountPieces(true);
         blackScore = OthelloManager.Instance.CountPieces(false);
 
+        List<GameObject> toDestroy = new List<GameObject>();
+
         List<GameObject> placedPieces = new List<GameObject>();
-        for (int x = 0; x >= 0 && x < OthelloBoard.gridSize; x++)
+        for (int y = 0; y < OthelloBoard.gridSize; y++)
         {
-            for (int y = 0; y >= 0 && y < OthelloBoard.gridSize; y++)
+            for (int x = 0; x < OthelloBoard.gridSize; x++)
             {
                 GameObject checkPiece = OthelloBoard.Instance.GetPiece(x, y);
                 if (checkPiece != null)
                 {
                     await checkPiece.GetComponent<OthelloPiece>().Remove();
+                    toDestroy.Add(checkPiece);
                 }
             }
         }
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
+        foreach (GameObject piece in toDestroy)
+        {
+            Object.Destroy(piece);
+        }
+        OthelloBoard.Instance.ClearBoardState();
     }
 }

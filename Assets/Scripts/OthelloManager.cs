@@ -124,12 +124,12 @@ public class OthelloManager : MonoBehaviour
     }
     public async UniTask PlacePieces(int x, int y, string tag, Vector3 position)
     {
+        ConsumeStock(tag);
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
         GameObject piece = Instantiate(prefab, position, Quaternion.identity);
         piece.tag = tag;
 
         await board.PlacePiece(x, y, piece, tag);
-        ConsumeStock(tag);
         await EndTurn();
     }
 
@@ -391,11 +391,13 @@ public class OthelloManager : MonoBehaviour
                 if (nextHasMove)
                 {
                     await ShowSkipMessage(isWhiteTurn);
+                    await UniTask.DelayFrame(1);
+				    HighlightValidMoves();
                 }
                 else
                 {
                     gameoverCounter += 1;
-                    // await ResultManager.Instance.RemoveAllPieces();
+                    await ResultManager.Instance.RemoveAllPieces();
                 }
             }
         }

@@ -36,6 +36,11 @@ public class OthelloAI : MonoBehaviour
         {
             validMoves.Add(new Vector2Int(cell.x, cell.y));
         }
+        if (validMoves.Count == 0)
+        {
+            OthelloManager.isAIPlaying = false;
+            return;
+        }
         Vector2Int selected = validMoves[Random.Range(0, validMoves.Count)];
         Vector3 pos = new Vector3(selected.x - 3.5f, selected.y - 3.5f, 0);
 

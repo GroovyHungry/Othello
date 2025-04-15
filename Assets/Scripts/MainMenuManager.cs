@@ -7,9 +7,15 @@ public class MainMenuManage : MonoBehaviour
     public GameObject menuPanel;
     public Button pvpButton;
     public Button cpuButton;
+    public Button settingButton;
     public Animator menuAnimator;
     public CameraMover cameraMover;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+	{
+		if (Instance == null) Instance = this;
+		else Destroy(gameObject);
+	}
     private void Start()
     {
         pvpButton.onClick.AddListener(() => {
@@ -21,6 +27,8 @@ public class MainMenuManage : MonoBehaviour
             OnModeSelected(true);
             pvpButton.interactable = false;
             // cpuButton.interactable = false;
+        });
+        settingButton.onClick.AddListener(() => {
         });
     }
 
