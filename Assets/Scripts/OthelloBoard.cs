@@ -71,9 +71,11 @@ public class OthelloBoard : MonoBehaviour
         var flipTasks = new List<UniTask>();
         foreach (GameObject piece in piecesToFlip)
         {
-            await piece.GetComponent<OthelloPiece>().Flip();
+            //await piece.GetComponent<OthelloPiece>().Flip();
+            flipTasks.Add(piece.GetComponent<OthelloPiece>().Flip());
         }
-        await UniTask.Delay(System.TimeSpan.FromSeconds(interval));
+        //await UniTask.Delay(System.TimeSpan.FromSeconds(interval));
+        await UniTask.WhenAll(flipTasks);
     }
 
     // ひっくり返せるコマをリストアップする

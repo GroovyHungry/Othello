@@ -62,17 +62,16 @@ public class OthelloPiece : MonoBehaviour
             // animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
         }
     }
-    public async UniTask Remove()
+    public async UniTask Remove(float delay)
     {
         if (gameObject.tag == "White")
         {
             animator.SetTrigger("RemoveWhitePiece");
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
         }
         else
         {
             animator.SetTrigger("RemoveBlackPiece");
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f));
         }
+        await UniTask.Delay(System.TimeSpan.FromSeconds(delay));
     }
 }

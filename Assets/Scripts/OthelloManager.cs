@@ -68,7 +68,7 @@ public class OthelloManager : MonoBehaviour
         if (isAIOpponent)
         {
             await CoinTossManager.Instance.StartCoinTossVsCPU();
-            ShowYouAndCPUUI();
+            // ShowYouAndCPUUI();
         }
         else
         {
@@ -397,7 +397,7 @@ public class OthelloManager : MonoBehaviour
                 else
                 {
                     gameoverCounter += 1;
-                    await ResultManager.Instance.RemoveAllPieces();
+                    await ResultManager.Instance.ShowResult();
                 }
             }
         }
