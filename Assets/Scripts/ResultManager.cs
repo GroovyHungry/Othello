@@ -57,31 +57,57 @@ public class ResultManager : MonoBehaviour
         int whiteScore = OthelloManager.Instance.CountPieces(true);
         int blackScore = OthelloManager.Instance.CountPieces(false);
 
-        int conpetitively = Math.Min(whiteScore, blackScore);
-        int difference = Math.Abs(whiteScore - blackScore);
+        int competitively = Math.Min(whiteScore, blackScore);
+        int difference = whiteScore - blackScore;
+        bool isWhiteWin = difference > 0;
 
         await RemoveAllPieces();
 
         List<Vector2Int> whitePos = new List<Vector2Int>();
         List<Vector2Int> blackPos = new List<Vector2Int>();
+        List<Vector2Int> differencesPos = new List<Vector2Int>();
         for (int i = 0; i < OthelloBoard.gridSize * OthelloBoard.gridSize; i++)
         {
             int x = i % OthelloBoard.gridSize;
             int y = i / OthelloBoard.gridSize;
-
-            if (i < whiteScore)
+            if (Math.Abs(difference) <= 10)
             {
-                whitePos.Add(new Vector2Int(x, y));
+                if (i < competitively)
+                {
+                    whitePos.Add(new Vector2Int(x, y));
+                    blackPos.Add(new Vector2Int((7 - x), (7 - y)));
+                }
+                if (isWhiteWin && i < (difference - competitively) && i >= competitively)
+                {
+                    differencesPos.Add(new Vector2Int(x, y));
+                }
+                else if (!isWhiteWin && i < -(difference + competitively) && i >= competitively)
+                {
+                    differencesPos.Add(new Vector2Int((7 - x), (7 - y)));
+                }
             }
-            if (i < blackScore)
+            else
             {
-                blackPos.Add(new Vector2Int((7 - x), (7 - y)));
+                if (i < whiteScore)
+                {
+                    whitePos.Add(new Vector2Int(x, y));
+                }
+                if (i < blackScore)
+                {
+                    blackPos.Add(new Vector2Int((7 - x), (7 - y)));
+                }
             }
         }
         await UniTask.WhenAll(
             PlaceSequentially(whitePos, OthelloManager.Instance.whitePiecePrefab),
             PlaceSequentially(blackPos, OthelloManager.Instance.blackPiecePrefab)
         );
+        if (differencesPos.Count > 0)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
+            GameObject prefab = isWhiteWin ? OthelloManager.Instance.whitePiecePrefab : OthelloManager.Instance.blackPiecePrefab;
+            await PlaceSequentially(differencesPos, prefab);
+        }
     }
     private async UniTask PlaceSequentially(List<Vector2Int> positions, GameObject prefab)
     {
@@ -89,7 +115,7 @@ public class ResultManager : MonoBehaviour
 
         foreach (var pos in positions)
         {
-            GameObject piece = Instantiate(prefab, new Vector3(pos.x - 3.5f, pos.y - 3.5f, 0), Quaternion.identity);
+            Instantiate(prefab, new Vector3(pos.x - 3.5f, pos.y - 3.5f, 0), Quaternion.identity);
             await UniTask.Delay(TimeSpan.FromSeconds(interval));
         }
     }

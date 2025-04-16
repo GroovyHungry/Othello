@@ -42,12 +42,11 @@ public class MainMenuManage : MonoBehaviour
         OthelloManager.Instance.isAIOpponent = isCPU;
 
 
-        menuAnimator.SetTrigger("Start"); // 例：フェードアウトアニメーション
+        menuAnimator.SetTrigger("Start");
         await UniTask.Delay(System.TimeSpan.FromSeconds(3.0f));
         menuPanel.SetActive(false);
         await cameraMover.MoveToGameView();
 
-        // 5. オセロゲーム開始
-        await OthelloManager.Instance.StartGame(); // ← これをOthelloManagerに追加する
+        await OthelloManager.Instance.StartGame();
     }
 }
