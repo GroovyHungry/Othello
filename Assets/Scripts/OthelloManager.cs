@@ -16,7 +16,7 @@ public class OthelloManager : MonoBehaviour
 
     public bool isWhiteTurn = false;
     public static bool isAIPlaying = false;
-    public bool isAIOpponent = true;
+    public static bool isAIOpponent = true;
     public bool isAIWhite = true;
     public GameObject youWhite;
     public GameObject youBlack;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 public class MainMenuManage : MonoBehaviour
 {
     public static MainMenuManage Instance;
@@ -9,7 +10,6 @@ public class MainMenuManage : MonoBehaviour
     public Button cpuButton;
     public Button settingButton;
     public Animator menuAnimator;
-    public CameraMover cameraMover;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
 	{
@@ -18,6 +18,7 @@ public class MainMenuManage : MonoBehaviour
 	}
     private void Start()
     {
+        Debug.Log("Start");
         pvpButton.onClick.AddListener(() => {
             OnModeSelected(false);
             cpuButton.interactable = false;
@@ -39,14 +40,13 @@ public class MainMenuManage : MonoBehaviour
     }
     private async void OnModeSelected(bool isCPU)
     {
-        OthelloManager.Instance.isAIOpponent = isCPU;
-
+        OthelloManager.isAIOpponent = isCPU;
 
         menuAnimator.SetTrigger("Start");
         await UniTask.Delay(System.TimeSpan.FromSeconds(3.0f));
         menuPanel.SetActive(false);
-        await cameraMover.MoveToGameView();
 
-        await OthelloManager.Instance.StartGame();
+        await SceneTransition.Instance.Transition("OthelloBoard");
+        // await OthelloManager.Instance.StartGame();
     }
 }
