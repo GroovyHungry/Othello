@@ -32,18 +32,15 @@ public class CoinTossManager : MonoBehaviour
     {
         panel.SetActive(true);
 
-        // CoinToss.Rebind(); // Animatorの状態リセット（オプション）
         CoinToss.Play("Spinning");
 
-        // ユーザー選択待ち
         bool selected = false;
-        //ここでCoinTossアニメを再生したい
+
         whiteButton.onClick.AddListener(() => {
             userChoice = "White";
             selected = true;
             blackButton.interactable = false;
         });
-
         blackButton.onClick.AddListener(() => {
             userChoice = "Black";
             selected = true;

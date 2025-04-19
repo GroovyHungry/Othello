@@ -30,5 +30,7 @@ public class SceneTransition : MonoBehaviour
         await SceneManager.LoadSceneAsync(nextSceneName);
 
         EffectAnimator.SetTrigger("FadeIn");
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
+        EffectImage.SetActive(false);
     }
 }

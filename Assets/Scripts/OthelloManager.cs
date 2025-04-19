@@ -61,7 +61,7 @@ public class OthelloManager : MonoBehaviour
 
     private async UniTaskVoid Start()
     {
-        
+        await StartGame();
     }
     public async UniTask StartGame()
     {
@@ -397,8 +397,11 @@ public class OthelloManager : MonoBehaviour
                 else
                 {
                     gameoverCounter += 1;
-                    await ResultManager.Instance.ShowResult();
                 }
+            }
+            if (gameoverCounter == 2)
+            {
+                await ResultManager.Instance.ShowResult();
             }
         }
         else
