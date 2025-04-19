@@ -12,7 +12,10 @@ public class ResultManager : MonoBehaviour
     // private int blackScore;
     // private int competitively;
     // private int difference;
-    private OthelloBoard board;
+    public GameObject BlackWins;
+    public GameObject WhiteWins;
+    public GameObject Draw;
+    
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -106,6 +109,25 @@ public class ResultManager : MonoBehaviour
             GameObject prefab = isWhiteWin ? OthelloManager.Instance.whitePiecePrefab : OthelloManager.Instance.blackPiecePrefab;
             await PlaceSequentially(differencesPos, prefab);
         }
+
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+
+        if (difference > 0)
+        {
+            WhiteWins.SetActive(true);
+            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
+        }
+        else if (difference < 0)
+        {
+            BlackWins.SetActive(true);
+            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
+        }
+        else if (difference == 0)
+        {
+            Draw.SetActive(true);
+            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
+        }
+        await SceneTransition.Instance.Transition("MainMenu");
     }
 
     private async UniTask PlaceSequentially(List<Vector2Int> positions, GameObject prefab)
