@@ -7,13 +7,11 @@ using System.Linq;
 
 public class OthelloManager : MonoBehaviour
 {
-    public GameObject flipMarker; // 反転中に表示するマーク
-
+    public GameObject flipMarker;
     public static OthelloManager Instance;
     public static bool Waiting = false;
     public static bool initializing = false;
     private bool previousWaiting = false;
-
     public bool isWhiteTurn = false;
     public static bool isAIPlaying = false;
     public static bool isAIOpponent = true;
@@ -36,21 +34,17 @@ public class OthelloManager : MonoBehaviour
     public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
     public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設
     private OthelloBoard board;
-
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
     public GameObject gameover;
     private int gameoverCounter;
     private int blackPlacedCount = 0;
     private int whitePlacedCount = 0;
-
     public GameObject blackStockPrefab;
     public GameObject whiteStockPrefab;
     public Transform blackStockParent;
     public Transform whiteStockParent;
-
     public List<GameObject> blackStocks = new List<GameObject>();
     public List<GameObject> whiteStocks = new List<GameObject>();
-
     void Awake()
     {
         if (Instance == null) Instance = this;

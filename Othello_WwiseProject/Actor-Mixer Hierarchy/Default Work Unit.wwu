@@ -58,6 +58,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Click" ID="{2C26C4C4-99ED-4418-B004-A7A6BFBBE5EF}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Click.wav</AudioFile>
 							<MediaIDList>

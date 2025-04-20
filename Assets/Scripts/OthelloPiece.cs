@@ -28,19 +28,19 @@ public class OthelloPiece : MonoBehaviour
         }
         return 0.5f;
     }
-    // public async UniTask Place() // async化
-    // {
-    //     if (gameObject.tag == "White")
-    //     {
-    //         // animator.SetTrigger("PlaceWhiteTrigger");
-    //         await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-    //     }
-    //     else
-    //     {
-    //         // animator.SetTrigger("PlaceBlackTrigger");
-    //         await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-    //     }
-    // }
+    public async UniTask Place() // async化
+    {
+        if (gameObject.tag == "White")
+        {
+            // animator.SetTrigger("PlaceWhiteTrigger");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
+        }
+        else
+        {
+            // animator.SetTrigger("PlaceBlackTrigger");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
+        }
+    }
 
     public async UniTask Flip()
     {
