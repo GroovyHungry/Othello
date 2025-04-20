@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}">
+					<ChildrenList>
+						<Action Name="" ID="{B0C0C283-D7A3-4E86-B4C0-881910A5AC40}" ShortID="619428853">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlacePiece_SE" ID="{F0619A86-DD8C-4E29-B3AD-F4E2272D69BB}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}">
+					<ChildrenList>
+						<Action Name="" ID="{075FBE18-16A2-4392-9AA6-D48F81DACA5F}" ShortID="629128075">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FlipPiece_SE" ID="{E41A29D4-1C38-4DF2-A671-3DF1108609C2}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="OnClick" ID="{ADDB94B6-D88F-4A4A-8399-0E6A9A5AC6FB}">
+					<ChildrenList>
+						<Action Name="" ID="{08655982-3FD1-4A94-A1F6-8E7527AAE3F4}" ShortID="882582501">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OnClick_SE" ID="{49A9C0F2-A0D3-409B-91D0-146220EB822F}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

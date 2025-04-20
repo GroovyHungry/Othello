@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	21544190	OnClick			\Default Work Unit\OnClick	
+	553056986	FlipPiece			\Default Work Unit\FlipPiece	
+	3631423584	PlacePiece			\Default Work Unit\PlacePiece	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	518452448	OnClick_SE	Y:\Othello\Othello_WwiseProject\.cache\CC\{CCBEDAD0-F5AA-A21A-F9B5-C4968B23097D}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnClick_SE		57224
+	601547594	PlacePiece_SE	Y:\Othello\Othello_WwiseProject\.cache\42\{42F8387E-9D21-8DF9-0C40-697FB30FE499}.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlacePiece_SE		83784
+	620090141	FlipPiece_SE	Y:\Othello\Othello_WwiseProject\.cache\98\{986AA65C-F19D-8FAC-5F28-B3B4E1E75C28}.wem		\Actor-Mixer Hierarchy\Default Work Unit\FlipPiece_SE		83784
+

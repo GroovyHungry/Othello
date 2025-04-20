@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="PlacePiece_SE" ID="{F0619A86-DD8C-4E29-B3AD-F4E2272D69BB}" ShortID="99565044">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="PlacePiece" ID="{14704E34-9C42-42E9-A376-B947376DA046}">
+							<Language>SFX</Language>
+							<AudioFile>PlacePiece.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="601547594"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="PlacePiece" ID="{14704E34-9C42-42E9-A376-B947376DA046}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FlipPiece_SE" ID="{E41A29D4-1C38-4DF2-A671-3DF1108609C2}" ShortID="358807875">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FlipPiece" ID="{86150539-7682-4AA4-81F3-5F072DFFE457}">
+							<Language>SFX</Language>
+							<AudioFile>FlipPiece.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="620090141"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FlipPiece" ID="{86150539-7682-4AA4-81F3-5F072DFFE457}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="OnClick_SE" ID="{49A9C0F2-A0D3-409B-91D0-146220EB822F}" ShortID="198318754">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Click" ID="{2C26C4C4-99ED-4418-B004-A7A6BFBBE5EF}">
+							<Language>SFX</Language>
+							<AudioFile>Click.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="518452448"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Click" ID="{2C26C4C4-99ED-4418-B004-A7A6BFBBE5EF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

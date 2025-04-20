@@ -1,0 +1,91 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2721636548",
+    "Type": "User",
+    "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
+    "Language": "SFX",
+    "Hash": "{9CBDC916-9DBC-6AA1-4A99-0AC4F6547C1E}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
+    "ShortName": "Othello",
+    "Path": "Othello.bnk",
+    "Media": [
+     {
+      "Id": "518452448",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Click.wav",
+      "CachePath": "CC/{CCBEDAD0-F5AA-A21A-F9B5-C4968B23097D}.wem"
+     },
+     {
+      "Id": "601547594",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PlacePiece.wav",
+      "CachePath": "42/{42F8387E-9D21-8DF9-0C40-697FB30FE499}.wem"
+     },
+     {
+      "Id": "620090141",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FlipPiece.wav",
+      "CachePath": "98/{986AA65C-F19D-8FAC-5F28-B3B4E1E75C28}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "553056986",
+      "Name": "FlipPiece",
+      "ObjectPath": "\\Events\\Default Work Unit\\FlipPiece",
+      "GUID": "{4611AE2A-BAD0-4C53-A77D-6A0833448620}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.47442177",
+      "DurationMax": "0.47442177",
+      "MediaRefs": [
+       {
+        "Id": "620090141"
+       }
+      ]
+     },
+     {
+      "Id": "21544190",
+      "Name": "OnClick",
+      "ObjectPath": "\\Events\\Default Work Unit\\OnClick",
+      "GUID": "{ADDB94B6-D88F-4A4A-8399-0E6A9A5AC6FB}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.32385486",
+      "DurationMax": "0.32385486",
+      "MediaRefs": [
+       {
+        "Id": "518452448"
+       }
+      ]
+     },
+     {
+      "Id": "3631423584",
+      "Name": "PlacePiece",
+      "ObjectPath": "\\Events\\Default Work Unit\\PlacePiece",
+      "GUID": "{1EB57AD8-8F19-4396-8A05-75D1285718CF}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.47442177",
+      "DurationMax": "0.47442177",
+      "MediaRefs": [
+       {
+        "Id": "601547594"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{30D3A199-12C1-FC61-073E-50479FBCCFA5}"
+ }
+}

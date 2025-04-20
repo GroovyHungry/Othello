@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{64688331-666C-449D-A61A-6D4265FE2C53}" SchemaVersion="123">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{64688331-666C-449D-A61A-6D4265FE2C53}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Othello" ID="{2407346C-6BAF-44BE-95AC-59006EC6F9CC}">
+					<ObjectInclusionList>
+						<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="OnClick" ID="{ADDB94B6-D88F-4A4A-8399-0E6A9A5AC6FB}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
