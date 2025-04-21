@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 318368646c669d44a61a6d4265fe2c53
     GuidInternal: 
-    m_lastTime: -8584563848190665146
+    m_lastTime: -8584563798493674697
     List:
     - name: Othello
       guid: 6c340724af6bbe4495ac59006ec6f9cc
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: e557fd1a95cbe04397f30cc6f1ce7680
     GuidInternal: 
-    m_lastTime: -8584563848190693645
+    m_lastTime: -8584563798493706711
     List:
     - name: FlipPiece
       guid: 2aae1146d0ba534ca77d6a0833448620
@@ -164,6 +164,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.47442177
       minDuration: 0.47442177
+    - name: PlayRotating
+      guid: fabbc23916b7fe44943b141d408f2d01
+      id: 2663994183
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: PlayRotating
+        ObjectType: 3
+        guid: fabbc23916b7fe44943b141d408f2d01
+      Path: Events/Default Work Unit/PlayRotating
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: StopRotating
+      guid: ea4a8ec42a751348bf9c32d85b1003ef
+      id: 3791290573
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: StopRotating
+        ObjectType: 3
+        guid: ea4a8ec42a751348bf9c32d85b1003ef
+      Path: Events/Default Work Unit/StopRotating
+      maxAttenuation: 0
+      maxDuration: 2.1687756
+      minDuration: 2.1687756
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
