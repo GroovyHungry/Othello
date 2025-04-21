@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using AK.Wwise;
 public class MainMenuManage : MonoBehaviour
 {
     public static MainMenuManage Instance;
@@ -22,11 +23,13 @@ public class MainMenuManage : MonoBehaviour
         pvpButton.onClick.AddListener(() => {
             OnModeSelected(false);
             cpuButton.interactable = false;
+            AkSoundEngine.PostEvent("OnClick", pvpButton.gameObject);
             // pvpButton.interactable = false;
         });
         cpuButton.onClick.AddListener(() => {
             OnModeSelected(true);
             pvpButton.interactable = false;
+            AkSoundEngine.PostEvent("OnClick", cpuButton.gameObject);
             // cpuButton.interactable = false;
         });
         settingButton.onClick.AddListener(() => {

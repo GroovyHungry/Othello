@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using AK.Wwise;
 
 public class OthelloPiece : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class OthelloPiece : MonoBehaviour
 
     public async UniTask Flip()
     {
+        AkSoundEngine.PostEvent("FlipPiece", gameObject);
+
         // float flipDuration = GetAnimationClipLength("FlipWhitePiece");
         if (gameObject.tag == "White")
         {

@@ -15,7 +15,10 @@ namespace AK
     {
         static const AkUniqueID FLIPPIECE = 553056986U;
         static const AkUniqueID ONCLICK = 21544190U;
+        static const AkUniqueID ONSELECT = 829756566U;
         static const AkUniqueID PLACEPIECE = 3631423584U;
+        static const AkUniqueID PLAYROTATING = 2663994183U;
+        static const AkUniqueID STOPROTATING = 3791290573U;
     } // namespace EVENTS
 
     namespace BANKS

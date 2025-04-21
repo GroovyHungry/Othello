@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using System.Linq;
+using AK.Wwise;
 
 public class OthelloManager : MonoBehaviour
 {
@@ -122,6 +123,8 @@ public class OthelloManager : MonoBehaviour
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
         GameObject piece = Instantiate(prefab, position, Quaternion.identity);
         piece.tag = tag;
+
+        AkSoundEngine.PostEvent("PlacePiece", piece);
 
         await board.PlacePiece(x, y, piece, tag);
         await EndTurn();

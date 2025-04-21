@@ -1,10 +1,16 @@
 Event	ID	Name			Wwise Object Path	Notes
 	21544190	OnClick			\Default Work Unit\OnClick	
 	553056986	FlipPiece			\Default Work Unit\FlipPiece	
+	829756566	OnSelect			\Default Work Unit\OnSelect	
+	2663994183	PlayRotating			\Default Work Unit\PlayRotating	
 	3631423584	PlacePiece			\Default Work Unit\PlacePiece	
+	3791290573	StopRotating			\Default Work Unit\StopRotating	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	147874160	CoinRotating	Y:\Othello\Othello_WwiseProject\.cache\F8\{F873B9CB-AB19-DCBB-1D3A-4D9FFE1A00BE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinRotating		382668
+	457644390	OnSelect_SE	Y:\Othello\Othello_WwiseProject\.cache\01\{01D0B4F7-088B-7DE0-A6F2-6767A88B69EE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnSelect_SE		44196
 	518452448	OnClick_SE	Y:\Othello\Othello_WwiseProject\.cache\CC\{CCBEDAD0-F5AA-A21A-F9B5-C4968B23097D}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnClick_SE		57224
 	601547594	PlacePiece_SE	Y:\Othello\Othello_WwiseProject\.cache\42\{42F8387E-9D21-8DF9-0C40-697FB30FE499}.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlacePiece_SE		83784
 	620090141	FlipPiece_SE	Y:\Othello\Othello_WwiseProject\.cache\98\{986AA65C-F19D-8FAC-5F28-B3B4E1E75C28}.wem		\Actor-Mixer Hierarchy\Default Work Unit\FlipPiece_SE		83784
+	715166129	CoinTossResult	Y:\Othello\Othello_WwiseProject\.cache\7B\{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinTossResult		382668
 

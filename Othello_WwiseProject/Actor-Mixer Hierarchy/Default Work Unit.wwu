@@ -73,6 +73,75 @@
 						<ActiveSource Name="Click" ID="{2C26C4C4-99ED-4418-B004-A7A6BFBBE5EF}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="OnSelect_SE" ID="{AF18BBF6-99C3-41E8-9D6E-8FD62CE5C5E6}" ShortID="30334540">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="OnSelect" ID="{25ECFE9D-6B9A-4585-A52D-B47870E48B37}">
+							<Language>SFX</Language>
+							<AudioFile>OnSelect.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="457644390"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="OnSelect" ID="{25ECFE9D-6B9A-4585-A52D-B47870E48B37}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="CoinRotating" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" ShortID="80283130">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="CoinToss" ID="{FBDB0655-D94B-44F7-A2F2-8D216EA3023D}">
+							<Language>SFX</Language>
+							<AudioFile>CoinToss.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="147874160"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="CoinToss" ID="{FBDB0655-D94B-44F7-A2F2-8D216EA3023D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="CoinTossResult" ID="{2D9C460D-6403-477B-957F-5A8A0152C19C}" ShortID="902488571">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="CoinTossResult" ID="{5465EE29-930C-4E70-AAB1-C17F5F5F128A}">
+							<Language>SFX</Language>
+							<AudioFile>CoinTossResult.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="715166129"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="CoinTossResult" ID="{5465EE29-930C-4E70-AAB1-C17F5F5F128A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

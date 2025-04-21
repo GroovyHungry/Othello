@@ -10,11 +10,27 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{9CBDC916-9DBC-6AA1-4A99-0AC4F6547C1E}",
+    "Hash": "{219804A5-8C72-EF29-5E99-D945F32007BB}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
     "Media": [
+     {
+      "Id": "147874160",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CoinToss.wav",
+      "CachePath": "F8/{F873B9CB-AB19-DCBB-1D3A-4D9FFE1A00BE}.wem"
+     },
+     {
+      "Id": "457644390",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "OnSelect.wav",
+      "CachePath": "01/{01D0B4F7-088B-7DE0-A6F2-6767A88B69EE}.wem"
+     },
      {
       "Id": "518452448",
       "Language": "SFX",
@@ -38,6 +54,14 @@
       "Location": "Memory",
       "ShortName": "FlipPiece.wav",
       "CachePath": "98/{986AA65C-F19D-8FAC-5F28-B3B4E1E75C28}.wem"
+     },
+     {
+      "Id": "715166129",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CoinTossResult.wav",
+      "CachePath": "7B/{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem"
      }
     ],
     "Events": [
@@ -70,6 +94,20 @@
       ]
      },
      {
+      "Id": "829756566",
+      "Name": "OnSelect",
+      "ObjectPath": "\\Events\\Default Work Unit\\OnSelect",
+      "GUID": "{16E3F885-4832-4C20-AA76-DDD239C47508}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.25",
+      "DurationMax": "0.25",
+      "MediaRefs": [
+       {
+        "Id": "457644390"
+       }
+      ]
+     },
+     {
       "Id": "3631423584",
       "Name": "PlacePiece",
       "ObjectPath": "\\Events\\Default Work Unit\\PlacePiece",
@@ -82,10 +120,36 @@
         "Id": "601547594"
        }
       ]
+     },
+     {
+      "Id": "2663994183",
+      "Name": "PlayRotating",
+      "ObjectPath": "\\Events\\Default Work Unit\\PlayRotating",
+      "GUID": "{39C2BBFA-B716-44FE-943B-141D408F2D01}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "147874160"
+       }
+      ]
+     },
+     {
+      "Id": "3791290573",
+      "Name": "StopRotating",
+      "ObjectPath": "\\Events\\Default Work Unit\\StopRotating",
+      "GUID": "{C48E4AEA-752A-4813-BF9C-32D85B1003EF}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.1687756",
+      "DurationMax": "2.1687756",
+      "MediaRefs": [
+       {
+        "Id": "715166129"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{1A5EB2CB-519B-B4E3-0688-6E5F0702B30F}"
+  "FileHash": "{FECC9367-8E32-916C-A50E-9043EA3F16F7}"
  }
 }

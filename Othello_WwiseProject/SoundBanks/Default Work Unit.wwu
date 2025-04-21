@@ -6,7 +6,10 @@
 				<SoundBank Name="Othello" ID="{2407346C-6BAF-44BE-95AC-59006EC6F9CC}">
 					<ObjectInclusionList>
 						<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayRotating" ID="{39C2BBFA-B716-44FE-943B-141D408F2D01}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopRotating" ID="{C48E4AEA-752A-4813-BF9C-32D85B1003EF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="OnClick" ID="{ADDB94B6-D88F-4A4A-8399-0E6A9A5AC6FB}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="OnSelect" ID="{16E3F885-4832-4C20-AA76-DDD239C47508}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

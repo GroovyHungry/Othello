@@ -36,6 +36,50 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="OnSelect" ID="{16E3F885-4832-4C20-AA76-DDD239C47508}">
+					<ChildrenList>
+						<Action Name="" ID="{4371004F-A926-4312-B279-B9F0F95E9F01}" ShortID="1004683434">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OnSelect_SE" ID="{AF18BBF6-99C3-41E8-9D6E-8FD62CE5C5E6}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayRotating" ID="{39C2BBFA-B716-44FE-943B-141D408F2D01}">
+					<ChildrenList>
+						<Action Name="" ID="{D2D615D8-D672-467D-8A3A-D0AEDB3F4141}" ShortID="929632201">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CoinRotating" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopRotating" ID="{C48E4AEA-752A-4813-BF9C-32D85B1003EF}">
+					<ChildrenList>
+						<Action Name="" ID="{A0CB5F10-B428-4571-887B-691F8135254F}" ShortID="512129732">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CoinRotating" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{74CF93F3-BD8D-4AC9-8C52-82EB722118C3}" ShortID="184630860">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CoinTossResult" ID="{2D9C460D-6403-477B-957F-5A8A0152C19C}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

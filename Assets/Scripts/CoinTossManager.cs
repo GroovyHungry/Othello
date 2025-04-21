@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
+using AK.Wwise;
 public class CoinTossManager : MonoBehaviour
 {
     public static CoinTossManager Instance;
@@ -13,6 +14,9 @@ public class CoinTossManager : MonoBehaviour
     private string userChoice;
     public CanvasGroup coinTossGroup;
     public GameObject UI;
+    public AK.Wwise.Event playLoopEvent;   // ループ用（Play_LoopingSFX）
+    public AK.Wwise.Event stopLoopEvent;   // 停止用（Stop_LoopingSFX）★
+    private uint loopPlayingId = AkSoundEngine.AK_INVALID_PLAYING_ID;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -33,6 +37,7 @@ public class CoinTossManager : MonoBehaviour
         panel.SetActive(true);
 
         CoinToss.Play("Spinning");
+        loopPlayingId = playLoopEvent.Post(gameObject);
 
         bool selected = false;
 
@@ -40,11 +45,13 @@ public class CoinTossManager : MonoBehaviour
             userChoice = "White";
             selected = true;
             blackButton.interactable = false;
+            AkSoundEngine.PostEvent("OnClick", whiteButton.gameObject);
         });
         blackButton.onClick.AddListener(() => {
             userChoice = "Black";
             selected = true;
             whiteButton.interactable = false;
+            AkSoundEngine.PostEvent("OnClick", blackButton.gameObject);
         });
 
         await UniTask.WaitUntil(() => selected);
@@ -52,8 +59,10 @@ public class CoinTossManager : MonoBehaviour
         // 結果決定
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f));
+        stopLoopEvent.Post(gameObject);
 
-        await UniTask.Delay(System.TimeSpan.FromSeconds(2.5f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
         bool correct = (userChoice == result);
 
         OthelloManager.Instance.isAIWhite = correct;
