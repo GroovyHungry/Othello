@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e4102de489644a1bca8e4433a7a8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: f7e1664c
+  triggerList: 
   useOtherObject: 0
   actionOnEventType: 0
   curveInterpolation: 4
@@ -2899,7 +2899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e4102de489644a1bca8e4433a7a8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: f7e1664c
+  triggerList: 
   useOtherObject: 0
   actionOnEventType: 0
   curveInterpolation: 4
@@ -3842,18 +3842,6 @@ MonoBehaviour:
   whiteStockParent: {fileID: 2086002782}
   blackStocks: []
   whiteStocks: []
-  othelloBank:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 2fa920c666c52405dbe085ea04ed3ad0, type: 2}
-  pieceDifferenceRTPC:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: a70a166c055e04111aacc81a55826770, type: 2}
-  playBGMEvent:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
 --- !u!114 &1688410760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4459,6 +4447,7 @@ MonoBehaviour:
   cpuButton: {fileID: 305718759}
   settingButton: {fileID: 661384196}
   menuAnimator: {fileID: 1095671519}
+  SettingPanel: {fileID: 0}
 --- !u!1001 &2961248409555890607
 PrefabInstance:
   m_ObjectHideFlags: 0

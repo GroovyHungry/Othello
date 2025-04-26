@@ -19,7 +19,7 @@
     "GUID": "{5D30317A-92AF-4E10-A735-CA1B470011F6}",
     "BasePlatform": "Windows",
     "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
-    "Path": "../../../../Othello_WwiseProject/GeneratedSoundBanks/Windows"
+    "Path": "."
    }
   ],
   "Languages": [
@@ -31,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{A6B8BC0D-CA50-F763-B346-235B58675FDE}"
+  "FileHash": "{F67180D0-A232-35DF-80EA-D0ADCFD2C3A5}"
  }
 }

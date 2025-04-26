@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{0D671F14-6058-0C33-8C64-676E2D9B5AF7}",
+    "Hash": "{BBF5772A-5467-EE4F-A703-C1E6F6B41FAD}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -133,7 +133,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "CointTossRotating.wav",
-      "CachePath": "A7/{A763E761-2851-9E0E-23C6-35DD3756A37D}.wem"
+      "CachePath": "13/{13123F54-29FF-1FD7-CDE1-92646A0FF7C4}.wem"
      }
     ],
     "Events": [
@@ -419,6 +419,6 @@
     ]
    }
   ],
-  "FileHash": "{94DF9FDA-1ACF-F81A-A770-62A42C8AB62B}"
+  "FileHash": "{0764623F-EE27-3596-D722-B2C893144A53}"
  }
 }

@@ -15,8 +15,15 @@ public class SettingManager : MonoBehaviour
     public RTPC seVolumeRTPC;
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-		else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // シーンを跨いでも残す
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         masterSlider.value = 5;
         bgmSlider.value = 5;
