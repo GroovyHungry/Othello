@@ -3,29 +3,14 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="PlacePiece_SE" ID="{F0619A86-DD8C-4E29-B3AD-F4E2272D69BB}" ShortID="99565044">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="PlacePiece" ID="{14704E34-9C42-42E9-A376-B947376DA046}">
-							<Language>SFX</Language>
-							<AudioFile>PlacePiece.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="601547594"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="PlacePiece" ID="{14704E34-9C42-42E9-A376-B947376DA046}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<Sound Name="FlipPiece_SE" ID="{E41A29D4-1C38-4DF2-A671-3DF1108609C2}" ShortID="358807875">
+					<PropertyList>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
@@ -36,6 +21,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="FlipPiece" ID="{86150539-7682-4AA4-81F3-5F072DFFE457}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-12.2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>FlipPiece.wav</AudioFile>
 							<MediaIDList>
@@ -59,8 +51,10 @@
 					<ChildrenList>
 						<AudioFileSource Name="Click" ID="{2C26C4C4-99ED-4418-B004-A7A6BFBBE5EF}">
 							<PropertyList>
-								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="FadeInDuration" Type="Real64" Value="0.00568694397500513"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.0690659180231735"/>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.129140375184179"/>
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Click.wav</AudioFile>
@@ -68,9 +62,20 @@
 								<MediaID ID="518452448"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="OnSelect" ID="{52A2B238-2378-4855-9813-B78E558E3CCF}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.137860082304527"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>OnSelect.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="618809538"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Click" ID="{2C26C4C4-99ED-4418-B004-A7A6BFBBE5EF}" Platform="Linked"/>
+						<ActiveSource Name="OnSelect" ID="{52A2B238-2378-4855-9813-B78E558E3CCF}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="OnSelect_SE" ID="{AF18BBF6-99C3-41E8-9D6E-8FD62CE5C5E6}" ShortID="30334540">
@@ -84,6 +89,15 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="OnSelect" ID="{25ECFE9D-6B9A-4585-A52D-B47870E48B37}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.145576131687243"/>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-3.5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>OnSelect.wav</AudioFile>
 							<MediaIDList>
@@ -109,15 +123,38 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="CoinToss" ID="{FBDB0655-D94B-44F7-A2F2-8D216EA3023D}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-7.7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>CoinToss.wav</AudioFile>
 							<MediaIDList>
 								<MediaID ID="147874160"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="CointTossRotating" ID="{8A1D3BBE-1955-4C4A-9742-59895820C348}">
+							<PropertyList>
+								<Property Name="LoopEnd" Type="Real64" Value="2.1018379929673"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-10.3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>CointTossRotating.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1042109001"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="CoinToss" ID="{FBDB0655-D94B-44F7-A2F2-8D216EA3023D}" Platform="Linked"/>
+						<ActiveSource Name="CointTossRotating" ID="{8A1D3BBE-1955-4C4A-9742-59895820C348}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="CoinTossResult" ID="{2D9C460D-6403-477B-957F-5A8A0152C19C}" ShortID="902488571">
@@ -140,6 +177,70 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="CoinTossResult" ID="{5465EE29-930C-4E70-AAB1-C17F5F5F128A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="PlacePiece_SE" ID="{F0619A86-DD8C-4E29-B3AD-F4E2272D69BB}" ShortID="99565044">
+					<PropertyList>
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX_Pieces" ID="{22129D96-3ABC-43D7-9BED-FFC2E5D7D725}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="PlacePiece" ID="{14704E34-9C42-42E9-A376-B947376DA046}">
+							<Language>SFX</Language>
+							<AudioFile>PlacePiece.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="601547594"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="PlacePiece" ID="{14704E34-9C42-42E9-A376-B947376DA046}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Slideer_SE" ID="{540E1826-D0A1-4FFB-8AF1-88F7B2F80AE5}" ShortID="158545840">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Scroll" ID="{0D6EA6C0-9C98-4CB4-B226-DC6A576AD782}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-5.3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Scroll.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="409938069"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Scroll" ID="{0D6EA6C0-9C98-4CB4-B226-DC6A576AD782}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

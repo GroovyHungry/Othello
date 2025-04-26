@@ -11,6 +11,7 @@ public class MainMenuManage : MonoBehaviour
     public Button cpuButton;
     public Button settingButton;
     public Animator menuAnimator;
+    public GameObject SettingPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
 	{
@@ -33,6 +34,9 @@ public class MainMenuManage : MonoBehaviour
             // cpuButton.interactable = false;
         });
         settingButton.onClick.AddListener(() => {
+            SettingPanel.SetActive(true);
+            settingButton.interactable = false;
+            AkSoundEngine.PostEvent("OnClick", settingButton.gameObject);
         });
     }
 

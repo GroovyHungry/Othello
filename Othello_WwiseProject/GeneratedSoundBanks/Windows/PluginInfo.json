@@ -4,6 +4,20 @@
   "BasePlatform": "Windows",
   "PluginLibs": [
    {
+    "LibName": "Wwise Compressor",
+    "LibId": "7077891",
+    "Type": "Effect",
+    "DLL": "AkCompressor",
+    "StaticLib": "AkCompressorFX"
+   },
+   {
+    "LibName": "Wwise Peak Limiter",
+    "LibId": "7208963",
+    "Type": "Effect",
+    "DLL": "AkPeakLimiter",
+    "StaticLib": "AkPeakLimiterFX"
+   },
+   {
     "LibName": "System",
     "LibId": "11403271",
     "Type": "AudioDevice"
@@ -14,6 +28,6 @@
     "Type": "AudioDevice"
    }
   ],
-  "FileHash": "{71F42CD2-2880-BF0B-D154-F41540A353AF}"
+  "FileHash": "{8567D979-F7F2-1DB1-7F49-031901A58DD0}"
  }
 }

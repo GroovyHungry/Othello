@@ -80,6 +80,42 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_BGM" ID="{0BA12D5D-CB5A-4389-85B3-395CA4180E5A}">
+					<ChildrenList>
+						<Action Name="" ID="{2C1F24C7-C9FE-4182-8896-E252B89F47E9}" ShortID="571411851">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_BGM" ID="{F5762F37-F77C-4D8C-98B9-BF1EDAA0A5C0}">
+					<ChildrenList>
+						<Action Name="" ID="{A54624A2-9889-4867-AA88-80836750FE3B}" ShortID="1063568812">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Slider" ID="{A661876C-C21C-4C86-B131-D0A9FD0EAEE9}">
+					<ChildrenList>
+						<Action Name="" ID="{3AA066B7-CA05-4ACD-BB7A-3F8759F68D54}" ShortID="586005212">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Slideer_SE" ID="{540E1826-D0A1-4FFB-8AF1-88F7B2F80AE5}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

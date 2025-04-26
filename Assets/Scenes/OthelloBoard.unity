@@ -3727,6 +3727,7 @@ GameObject:
   - component: {fileID: 1688410758}
   - component: {fileID: 1688410757}
   - component: {fileID: 1688410763}
+  - component: {fileID: 1688410764}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -3805,6 +3806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flipMarker: {fileID: 0}
   isWhiteTurn: 0
+  isWhiteFirst: 0
   isAIWhite: 0
   youWhite: {fileID: 132491424}
   youBlack: {fileID: 1029839246}
@@ -3840,6 +3842,18 @@ MonoBehaviour:
   whiteStockParent: {fileID: 2086002782}
   blackStocks: []
   whiteStocks: []
+  othelloBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2fa920c666c52405dbe085ea04ed3ad0, type: 2}
+  pieceDifferenceRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a70a166c055e04111aacc81a55826770, type: 2}
+  playBGMEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!114 &1688410760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3905,6 +3919,30 @@ MonoBehaviour:
   BlackWins: {fileID: 312602944}
   WhiteWins: {fileID: 1249004868}
   Draw: {fileID: 100543046}
+--- !u!114 &1688410764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688410755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39e5d3bb1c2b4126aacb71e3af6591d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &1698280765
 GameObject:
   m_ObjectHideFlags: 0

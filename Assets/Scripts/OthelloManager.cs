@@ -14,6 +14,7 @@ public class OthelloManager : MonoBehaviour
     public static bool initializing = false;
     private bool previousWaiting = false;
     public bool isWhiteTurn = false;
+    public bool isWhiteFirst = false;
     public static bool isAIPlaying = false;
     public static bool isAIOpponent = true;
     public bool isAIWhite = true;
@@ -71,6 +72,7 @@ public class OthelloManager : MonoBehaviour
             ShowP1AndP2();
 
         }
+        isWhiteFirst = isWhiteTurn;
 
         GenerateStockPieces();
         await InitializeBoard();
@@ -87,8 +89,6 @@ public class OthelloManager : MonoBehaviour
 	{
 		UpdateScore(CountPieces(true), whiteDigit1, whiteDigit2);
 		UpdateScore(CountPieces(false), blackDigit1, blackDigit2);
-        Debug.Log(CountPieces(true));
-        Debug.Log(CountPieces(false));
 	}
 
 	void UpdateScore(int score, Image digit1, Image digit2)
@@ -122,9 +122,8 @@ public class OthelloManager : MonoBehaviour
         ConsumeStock(tag);
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
         GameObject piece = Instantiate(prefab, position, Quaternion.identity);
+        piece.GetComponent<OthelloPiece>().InitState(x, y);
         piece.tag = tag;
-
-        AkSoundEngine.PostEvent("PlacePiece", piece);
 
         await board.PlacePiece(x, y, piece, tag);
         await EndTurn();
@@ -175,7 +174,7 @@ public class OthelloManager : MonoBehaviour
     private async UniTask InitializeBoard()
     {
         initializing = true;
-        float waitTime = 0.1f;
+        float waitTime = 0.05f;
 
         await PlaceInitialPiece(3, 4, blackPiecePrefab);
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
@@ -192,6 +191,7 @@ public class OthelloManager : MonoBehaviour
     private async UniTask PlaceInitialPiece(int x, int y, GameObject prefab)
     {
         GameObject piece = Instantiate(prefab, new Vector3(x - 3.5f, y - 3.5f, 0), Quaternion.identity);
+        piece.GetComponent<OthelloPiece>().InitState(x, y);
         await board.PlacePiece(x, y, piece, piece.tag);
     }
 
@@ -214,18 +214,6 @@ public class OthelloManager : MonoBehaviour
             await OthelloAI.Instance.PlayAITurn();
         }
     }
-    // public bool SetFirstTurn(string color)
-    // {
-    //     if (color == Black)
-    //     {
-    //         isWhiteTurn = false;
-    //     }
-    //     else
-    //     {
-    //         isWhiteTurn = true;
-    //     }
-    // }
-
     public void ConsumeStock(string tag)
     {
         //int columns = 14;
@@ -334,6 +322,11 @@ public class OthelloManager : MonoBehaviour
         GetValidAndInvalidCells(out List<OthelloCell> validCells, out List<OthelloCell> invalidCells);
 
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
+
+        if (isWhiteFirst == isWhiteTurn)
+        {
+            BGMController.Instance.ChangeBGM();
+        }
 
         if (!isAIOpponent || (isAIOpponent && !isAITurn))
         {
@@ -468,34 +461,10 @@ public class OthelloManager : MonoBehaviour
     // ターンごとの状況管理（駒数カウント）
     private void Update()
     {
-        int whiteCount = 0;
-        int blackCount = 0;
-
-        for (int x = 0; x < gridSize; x++)
-        {
-            for (int y = 0; y < gridSize; y++)
-            {
-                GameObject piece = board.GetPiece(x, y);
-                if (piece != null)
-                {
-                    if (piece.tag == "White") whiteCount++;
-                    else if (piece.tag == "Black") blackCount++;
-                }
-            }
-        }
-
         if (!initializing && !Waiting)
         {
             UpdateScoreUI();
         }
         previousWaiting = Waiting;
-
-        if (gameoverCounter == 2)
-        {
-            Debug.Log("Gameover");
-            // gameover.SetActive(true);
-        }
-
-        // Debug.Log($"White: {whiteCount}, Black: {blackCount}, Turn: {(isWhiteTurn ? "White" : "Black")}");
     }
 }

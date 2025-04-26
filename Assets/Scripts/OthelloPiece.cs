@@ -5,6 +5,8 @@ using AK.Wwise;
 
 public class OthelloPiece : MonoBehaviour
 {
+    public int state_X;
+    public int state_Y;
     private Animator animator;
     public Sprite whiteSprite;
     public Sprite blackSprite;
@@ -17,17 +19,10 @@ public class OthelloPiece : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         // float flipDuration = GetAnimationClipLength("FlipWhitePiece");
     }
-    private float GetAnimationClipLength(string animationName)
+    public void InitState(int x, int y)
     {
-        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
-        foreach(var clip in ac.animationClips)
-        {
-            if(clip.name == animationName)
-            {
-                return clip.length;
-            }
-        }
-        return 0.5f;
+        state_X = x;
+        state_Y = y;
     }
     public async UniTask Place() // async化
     {
@@ -45,24 +40,23 @@ public class OthelloPiece : MonoBehaviour
 
     public async UniTask Flip()
     {
-        AkSoundEngine.PostEvent("FlipPiece", gameObject);
-
         // float flipDuration = GetAnimationClipLength("FlipWhitePiece");
         if (gameObject.tag == "White")
         {
-            animator.SetTrigger("FlipWhiteToBlackTrigger"); // 白 → 黒
+            animator.SetTrigger("FlipWhiteToBlackTrigger");
             gameObject.tag = "Black";
             spriteRenderer.sprite = blackSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-            // animator.ResetTrigger("FlipWhiteToBlackTrigger"); // 🔥 ここでリセット
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
+            AkSoundEngine.PostEvent("PlacePiece", gameObject);
+
         }
         else
         {
-            animator.SetTrigger("FlipBlackToWhiteTrigger"); // 黒 → 白
+            animator.SetTrigger("FlipBlackToWhiteTrigger");
             gameObject.tag = "White";
             spriteRenderer.sprite = whiteSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-            // animator.ResetTrigger("FlipBlackToWhiteTrigger"); // 🔥 ここでリセット
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
+            AkSoundEngine.PostEvent("PlacePiece", gameObject);
         }
     }
     public async UniTask Remove(float delay)

@@ -6,6 +6,13 @@ public class OthelloCell : MonoBehaviour
 {
     public SpriteRenderer hoverFrame;
     public int x, y;
+    private void Update()
+    {
+        if (OthelloManager.initializing || OthelloManager.Waiting || OthelloManager.isAIPlaying)
+        {
+            hoverFrame.enabled = false;
+        }
+    }
 
     private void OnMouseEnter()
     {
@@ -16,7 +23,6 @@ public class OthelloCell : MonoBehaviour
         string currentTag = OthelloManager.Instance.IsWhiteTurn() ? "White" : "Black";
         if (OthelloManager.Instance.GetBoard().IsCellEmpty(x, y) && OthelloManager.Instance.IsValidMove(x, y, currentTag))
         {
-            Debug.Log($"Hover IN ({x},{y})");
             hoverFrame.enabled = true;
             AkSoundEngine.PostEvent("OnSelect", gameObject);
 
@@ -24,7 +30,6 @@ public class OthelloCell : MonoBehaviour
     }
     private void OnMouseExit()
     {
-        Debug.Log($"Hover OUT ({x},{y})");
         hoverFrame.enabled = false;
     }
     private void OnMouseDown()

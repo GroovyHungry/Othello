@@ -209,6 +209,12 @@
 								<Property Name="Threshold" Type="Real32" Value="-25"/>
 							</PropertyList>
 						</Effect>
+						<Effect Name="New_Peak_Limiter" ID="{9F4365B7-06BA-46B2-A8C3-78B7E5455A3B}" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+							<PropertyList>
+								<Property Name="ReleaseTime" Type="Real32" Value="0.05"/>
+								<Property Name="Threshold" Type="Real32" Value="-1"/>
+							</PropertyList>
+						</Effect>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Parametric EQ" ID="{DFCF119F-F31B-4A92-BDD4-B049BB5070CF}" ShortID="679384051">

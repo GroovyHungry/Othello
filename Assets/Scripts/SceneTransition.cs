@@ -23,14 +23,26 @@ public class SceneTransition : MonoBehaviour
     }
     public async UniTask Transition(string nextSceneName)
     {
-        EffectImage.SetActive(true);
-        EffectAnimator.SetTrigger("FadeOut");
-        await UniTask.Delay(TimeSpan.FromSeconds(1.0f)); // FadeOutの時間に合わせて調整
+        float speed = 1.0f;
+        await PlayFadeOut(speed);
 
+        BGMController.Instance.TransitionBGM(nextSceneName);
         await SceneManager.LoadSceneAsync(nextSceneName);
 
+        await PlayFadeIn(speed);
+    }
+    public async UniTask PlayFadeOut(float speed)
+    {
+        EffectImage.SetActive(true);
+        EffectAnimator.speed = speed;
+        EffectAnimator.SetTrigger("FadeOut");
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f/speed));
+    }
+    public async UniTask PlayFadeIn(float speed)
+    {
+        EffectAnimator.speed = speed;
         EffectAnimator.SetTrigger("FadeIn");
-        await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f/speed));
         EffectImage.SetActive(false);
     }
 }

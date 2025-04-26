@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using System.Linq;
+using System;
 
 public class OthelloBoard : MonoBehaviour
 {
     public static OthelloBoard Instance;
     public const int gridSize = 8;
-    private static readonly int[,] directions = {
-        { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
-        { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }
+    private static readonly (int dx,int dy)[] directions = {
+    ( 1, 0),(-1, 0),( 0, 1),( 0,-1),
+    ( 1, 1),(-1,-1),( 1,-1),(-1, 1),
     };
     private GameObject[,] boardState = new GameObject[gridSize, gridSize];
 
@@ -24,11 +26,9 @@ public class OthelloBoard : MonoBehaviour
         OthelloManager.Waiting = true;
 
         boardState[x, y] = piece;
-        List<GameObject> piecesToFlip = CheckAndFlipPieces(x, y, tag);
-        if (piecesToFlip.Count > 0)
-        {
-            await FlipPieces(piecesToFlip);
-        }
+        AkSoundEngine.PostEvent("PlacePiece", piece);
+        await UniTask.Delay(TimeSpan.FromSeconds(0.15f));
+        await CheckAndFlipPieces(x, y, tag);
         OthelloManager.Waiting = false;
     }
     // 指定座標が空かどうか
@@ -49,36 +49,41 @@ public class OthelloBoard : MonoBehaviour
 
     // ひっくり返す処理の開始
     // 同期で一括取得（変更なし）
-    private List<GameObject> CheckAndFlipPieces(int x, int y, string currentTag)
+    private async UniTask CheckAndFlipPieces(int x, int y, string currentTag)
     {
-        List<GameObject> piecesToFlip = new List<GameObject>();
+        List<List<GameObject>> byDir = new List<List<GameObject>>();
 
-        for (int i = 0; i < directions.GetLength(0); i++)
+        foreach (var (dx,dy) in directions)
         {
-            int dx = directions[i, 0];
-            int dy = directions[i, 1];
-            piecesToFlip.AddRange(GetFlippablePieces(x, y, dx, dy, currentTag));
+            var list = GetFlippablePieces(x, y, dx, dy, currentTag);
+            if (list.Count > 0) byDir.Add(list);
         }
+        if (byDir.Count == 0)return;
 
-        return piecesToFlip;
+        await FlipPieces(byDir);
     }
-    // 実際にひっくり返すコルーチン
-    private async UniTask FlipPieces(List<GameObject> piecesToFlip)
+    private async UniTask FlipPieces(List<List<GameObject>> byDir)
     {
-        float interval = 0.0f;
+        int maxLayer = byDir.Max(list => list.Count);
+        float startDelay = 0.1f;
+        float acceleration = 0.05f;
 
-        // 並列実行
-        var flipTasks = new List<UniTask>();
-        foreach (GameObject piece in piecesToFlip)
+        AkSoundEngine.PostEvent("FlipPiece", gameObject);
+        for (int layer = 0; layer < maxLayer; layer++)
         {
-            //await piece.GetComponent<OthelloPiece>().Flip();
-            flipTasks.Add(piece.GetComponent<OthelloPiece>().Flip());
+            var tasks = new List<UniTask>();
+            foreach (var list in byDir)
+            {
+                if (layer < list.Count)
+                    list[layer].GetComponent<OthelloPiece>().Flip().Forget();
+            }
+
+            float delay = Math.Max(0.01f, startDelay - acceleration * layer);
+            await UniTask.Delay(TimeSpan.FromSeconds(delay));
         }
-        //await UniTask.Delay(System.TimeSpan.FromSeconds(interval));
-        await UniTask.WhenAll(flipTasks);
+        await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
     }
 
-    // ひっくり返せるコマをリストアップする
     private List<GameObject> GetFlippablePieces(int x, int y, int dx, int dy, string currentTag)
     {
         List<GameObject> flippablePieces = new List<GameObject>();

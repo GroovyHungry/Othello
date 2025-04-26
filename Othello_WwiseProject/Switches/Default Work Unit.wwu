@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{D7F73B03-7D5F-48BF-A5C7-1AF6ADD53702}" SchemaVersion="123">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{D7F73B03-7D5F-48BF-A5C7-1AF6ADD53702}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{D7F73B03-7D5F-48BF-A5C7-1AF6ADD53702}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="SceneType" ID="{0C81B78A-C1B5-4EA9-9138-5760C862EF72}">
+					<ChildrenList>
+						<Switch Name="MainMenu" ID="{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"/>
+						<Switch Name="OthelloBoard" ID="{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

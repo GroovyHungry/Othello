@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{81B08EBC-9A5C-4B1B-A8E4-668781354AD3}" SchemaVersion="123">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{81B08EBC-9A5C-4B1B-A8E4-668781354AD3}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{81B08EBC-9A5C-4B1B-A8E4-668781354AD3}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="PieceDifference" ID="{76CD7197-266A-497C-B44B-03A45B4503D0}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="10"/>
+						<Property Name="Min" Type="Real64" Value="-10"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="BGM_Volume" ID="{849A9340-6FED-40B5-9940-F6A044A3BE5C}"/>
+				<GameParameter Name="SE_Volume" ID="{D2830B41-17BE-4CC4-B1B2-BD1AB556A567}"/>
+				<GameParameter Name="Master_Volume" ID="{932CA2D3-4529-4655-9ABB-4CEEFEE09E2B}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</GameParameters>
 </WwiseDocument>

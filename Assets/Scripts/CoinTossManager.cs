@@ -59,14 +59,13 @@ public class CoinTossManager : MonoBehaviour
         // 結果決定
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
-        await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.8f));
         stopLoopEvent.Post(gameObject);
-
         await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
+
         bool correct = (userChoice == result);
 
         OthelloManager.Instance.isAIWhite = correct;
-        // await FadeOutPanel(coinTossGroup, 0.08f);
 
         panel.SetActive(false);
         UI.SetActive(true);
@@ -77,13 +76,13 @@ public class CoinTossManager : MonoBehaviour
         whiteButton.gameObject.SetActive(false);
         blackButton.gameObject.SetActive(false);
         CoinToss.Play("Spinning");
-
-        await UniTask.Delay(System.TimeSpan.FromSeconds(0.0f));
+        loopPlayingId = playLoopEvent.Post(gameObject);
 
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
-
-        await UniTask.Delay(System.TimeSpan.FromSeconds(3.0f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.8f));
+        stopLoopEvent.Post(gameObject);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
 
         OthelloManager.Instance.isWhiteTurn = (result == "White" ? true : false);
 

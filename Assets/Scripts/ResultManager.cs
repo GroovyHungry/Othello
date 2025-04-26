@@ -15,7 +15,6 @@ public class ResultManager : MonoBehaviour
     public GameObject BlackWins;
     public GameObject WhiteWins;
     public GameObject Draw;
-    
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -33,9 +32,13 @@ public class ResultManager : MonoBehaviour
     }
     public async UniTask RemoveAllPieces()
     {
-        List<GameObject> toDestroy = new List<GameObject>();
-        float startDelay = 0.2f;
-        float acceleration = 0.01f; 
+        await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
+        // List<GameObject> toDestroy = new List<GameObject>();
+        // float startDelay = 0.2f;
+        // float acceleration = 0.01f;
+        float speed = 2.0f;
+        BGMController.Instance.StopBGM();
+        await SceneTransition.Instance.PlayFadeOut(speed);
         for (int i = 0; i < OthelloBoard.gridSize * OthelloBoard.gridSize; i++)
         {
             int x = i % OthelloBoard.gridSize;
@@ -43,17 +46,19 @@ public class ResultManager : MonoBehaviour
             GameObject checkedPiece = OthelloBoard.Instance.GetPiece(x, y);
             if (checkedPiece != null)
             {
-                float delay = Math.Max(0.05f, startDelay - acceleration * i);
-                await checkedPiece.GetComponent<OthelloPiece>().Remove(delay);
-                toDestroy.Add(checkedPiece);
+                // float delay = Math.Max(0.05f, startDelay - acceleration * i);
+                // await checkedPiece.GetComponent<OthelloPiece>().Remove(delay);
+                // toDestroy.Add(checkedPiece);
+                Destroy(checkedPiece);
             }
         }
-        await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
-        foreach (GameObject piece in toDestroy)
-        {
-            Destroy(piece);
-        }
+        // await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
+        // foreach (GameObject piece in toDestroy)
+        // {
+        //     Destroy(piece);
+        // }
         OthelloBoard.Instance.ClearBoardState();
+        await SceneTransition.Instance.PlayFadeIn(speed);
     }
     public async UniTask ShowResult()
     {
@@ -127,6 +132,7 @@ public class ResultManager : MonoBehaviour
             Draw.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
+        BGMController.Instance.PlayBGM();
         await SceneTransition.Instance.Transition("MainMenu");
     }
 
@@ -136,7 +142,8 @@ public class ResultManager : MonoBehaviour
 
         foreach (var pos in positions)
         {
-            Instantiate(prefab, new Vector3(pos.x - 3.5f, pos.y - 3.5f, 0), Quaternion.identity);
+            GameObject piece = Instantiate(prefab, new Vector3(pos.x - 3.5f, pos.y - 3.5f, 0), Quaternion.identity);
+            AkSoundEngine.PostEvent("PlacePiece", piece);
             await UniTask.Delay(TimeSpan.FromSeconds(interval));
         }
     }

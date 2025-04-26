@@ -10,18 +10,42 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{219804A5-8C72-EF29-5E99-D945F32007BB}",
+    "Hash": "{0D671F14-6058-0C33-8C64-676E2D9B5AF7}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
     "Media": [
      {
-      "Id": "147874160",
+      "Id": "88970139",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "CoinToss.wav",
-      "CachePath": "F8/{F873B9CB-AB19-DCBB-1D3A-4D9FFE1A00BE}.wem"
+      "ShortName": "Evolve BGM_Menu.wav",
+      "CachePath": "3A/{3A75C06D-C71A-779B-7AEF-EA99F5848A5B}.wem"
+     },
+     {
+      "Id": "291090476",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve BGM_+2.wav",
+      "CachePath": "43/{4365A2E0-645B-6826-3BE8-245004D9D97F}.wem"
+     },
+     {
+      "Id": "409938069",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Scroll.wav",
+      "CachePath": "A3/{A389892E-C6D3-15DC-CF22-02668BD41430}.wem"
+     },
+     {
+      "Id": "450641745",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve BGM_-2.wav",
+      "CachePath": "17/{17A9BC2E-F25F-F195-86D2-EBD00B8E058B}.wem"
      },
      {
       "Id": "457644390",
@@ -29,15 +53,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "OnSelect.wav",
-      "CachePath": "01/{01D0B4F7-088B-7DE0-A6F2-6767A88B69EE}.wem"
-     },
-     {
-      "Id": "518452448",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Click.wav",
-      "CachePath": "CC/{CCBEDAD0-F5AA-A21A-F9B5-C4968B23097D}.wem"
+      "CachePath": "C9/{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem"
      },
      {
       "Id": "601547594",
@@ -45,7 +61,15 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "PlacePiece.wav",
-      "CachePath": "42/{42F8387E-9D21-8DF9-0C40-697FB30FE499}.wem"
+      "CachePath": "3E/{3E908990-2D30-F477-4888-09919ADF7853}.wem"
+     },
+     {
+      "Id": "618809538",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "OnSelect.wav",
+      "CachePath": "37/{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem"
      },
      {
       "Id": "620090141",
@@ -53,7 +77,15 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FlipPiece.wav",
-      "CachePath": "98/{986AA65C-F19D-8FAC-5F28-B3B4E1E75C28}.wem"
+      "CachePath": "6E/{6EC8D726-F766-ACFD-A6E1-2FA22EC80B6B}.wem"
+     },
+     {
+      "Id": "702275725",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve BGM_-1.wav",
+      "CachePath": "1A/{1AF9ABCA-8BCB-3DFE-AAE6-18CE68A3FD3D}.wem"
      },
      {
       "Id": "715166129",
@@ -62,6 +94,46 @@
       "Location": "Memory",
       "ShortName": "CoinTossResult.wav",
       "CachePath": "7B/{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem"
+     },
+     {
+      "Id": "785695177",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve BGM_00.wav",
+      "CachePath": "16/{16C41AA6-A40A-A3B8-4C09-5217947BF17F}.wem"
+     },
+     {
+      "Id": "962452525",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve.wav",
+      "CachePath": "3A/{3ADEF430-2767-EA64-C178-5BB14062A35D}.wem"
+     },
+     {
+      "Id": "1001621796",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve BGM_+1.wav",
+      "CachePath": "E8/{E816E7CF-297D-A27D-FED9-537AD6069BD4}.wem"
+     },
+     {
+      "Id": "1013065261",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Evolve BGM_+3.wav",
+      "CachePath": "2A/{2A246B54-9F00-FB3C-BEDC-59B32E5F20EF}.wem"
+     },
+     {
+      "Id": "1042109001",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CointTossRotating.wav",
+      "CachePath": "A7/{A763E761-2851-9E0E-23C6-35DD3756A37D}.wem"
      }
     ],
     "Events": [
@@ -71,8 +143,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\FlipPiece",
       "GUID": "{4611AE2A-BAD0-4C53-A77D-6A0833448620}",
       "DurationType": "OneShot",
-      "DurationMin": "0.47442177",
-      "DurationMax": "0.47442177",
+      "DurationMin": "0.2711111",
+      "DurationMax": "0.2711111",
       "MediaRefs": [
        {
         "Id": "620090141"
@@ -85,11 +157,11 @@
       "ObjectPath": "\\Events\\Default Work Unit\\OnClick",
       "GUID": "{ADDB94B6-D88F-4A4A-8399-0E6A9A5AC6FB}",
       "DurationType": "OneShot",
-      "DurationMin": "0.32385486",
-      "DurationMax": "0.32385486",
+      "DurationMin": "0.13786009",
+      "DurationMax": "0.13786009",
       "MediaRefs": [
        {
-        "Id": "518452448"
+        "Id": "618809538"
        }
       ]
      },
@@ -99,8 +171,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\OnSelect",
       "GUID": "{16E3F885-4832-4C20-AA76-DDD239C47508}",
       "DurationType": "OneShot",
-      "DurationMin": "0.25",
-      "DurationMax": "0.25",
+      "DurationMin": "0.104423866",
+      "DurationMax": "0.104423866",
       "MediaRefs": [
        {
         "Id": "457644390"
@@ -113,11 +185,108 @@
       "ObjectPath": "\\Events\\Default Work Unit\\PlacePiece",
       "GUID": "{1EB57AD8-8F19-4396-8A05-75D1285718CF}",
       "DurationType": "OneShot",
-      "DurationMin": "0.47442177",
-      "DurationMax": "0.47442177",
+      "DurationMin": "0.2711111",
+      "DurationMax": "0.2711111",
       "MediaRefs": [
        {
         "Id": "601547594"
+       }
+      ]
+     },
+     {
+      "Id": "3126765036",
+      "Name": "Play_BGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_BGM",
+      "GUID": "{0BA12D5D-CB5A-4389-85B3-395CA4180E5A}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1208296407",
+         "Id": "3417685148",
+         "GUID": "{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "291090476"
+         },
+         {
+          "Id": "450641745"
+         },
+         {
+          "Id": "702275725"
+         },
+         {
+          "Id": "785695177"
+         },
+         {
+          "Id": "962452525"
+         },
+         {
+          "Id": "1001621796"
+         },
+         {
+          "Id": "1013065261"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1208296407",
+         "Id": "3604647259",
+         "GUID": "{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "88970139"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1208296407",
+         "Id": "3417685148",
+         "GUID": "{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "291090476"
+         },
+         {
+          "Id": "450641745"
+         },
+         {
+          "Id": "702275725"
+         },
+         {
+          "Id": "785695177"
+         },
+         {
+          "Id": "962452525"
+         },
+         {
+          "Id": "1001621796"
+         },
+         {
+          "Id": "1013065261"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1208296407",
+         "Id": "3604647259",
+         "GUID": "{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "88970139"
+         }
+        ]
        }
       ]
      },
@@ -129,7 +298,77 @@
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "147874160"
+        "Id": "1042109001"
+       }
+      ]
+     },
+     {
+      "Id": "697318834",
+      "Name": "Slider",
+      "ObjectPath": "\\Events\\Default Work Unit\\Slider",
+      "GUID": "{A661876C-C21C-4C86-B131-D0A9FD0EAEE9}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.1687756",
+      "DurationMax": "2.1687756",
+      "MediaRefs": [
+       {
+        "Id": "409938069"
+       }
+      ]
+     },
+     {
+      "Id": "1073466678",
+      "Name": "Stop_BGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_BGM",
+      "GUID": "{F5762F37-F77C-4D8C-98B9-BF1EDAA0A5C0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1208296407",
+         "Id": "3417685148",
+         "GUID": "{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "291090476"
+         },
+         {
+          "Id": "450641745"
+         },
+         {
+          "Id": "702275725"
+         },
+         {
+          "Id": "785695177"
+         },
+         {
+          "Id": "962452525"
+         },
+         {
+          "Id": "1001621796"
+         },
+         {
+          "Id": "1013065261"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1208296407",
+         "Id": "3604647259",
+         "GUID": "{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "88970139"
+         }
+        ]
        }
       ]
      },
@@ -147,9 +386,39 @@
        }
       ]
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "502851256",
+      "Name": "PieceDifference",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\PieceDifference",
+      "GUID": "{76CD7197-266A-497C-B44B-03A45B4503D0}"
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "1208296407",
+      "Name": "SceneType",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SceneType",
+      "GUID": "{0C81B78A-C1B5-4EA9-9138-5760C862EF72}",
+      "Switches": [
+       {
+        "Id": "3417685148",
+        "Name": "OthelloBoard",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SceneType\\OthelloBoard",
+        "GUID": "{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"
+       },
+       {
+        "Id": "3604647259",
+        "Name": "MainMenu",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SceneType\\MainMenu",
+        "GUID": "{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{D07A0677-B7F6-1875-D80F-30A646578483}"
+  "FileHash": "{E2B5BE3C-F8DC-ACCE-2A66-6481547B4616}"
  }
 }
