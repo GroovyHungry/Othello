@@ -18,7 +18,7 @@ public class SettingManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // シーンを跨いでも残す
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -42,11 +42,12 @@ public class SettingManager : MonoBehaviour
     }
     private void Start()
     {
+        settingPanel.SetActive(false);
     }
     public void OpenSettingPanel()
     {
         settingPanel.SetActive(true);
-        // OthelloManager.Waiting = true;
+        OthelloManager.Waiting = true;
     }
     public void CloseSetting()
     {
@@ -60,7 +61,7 @@ public class SettingManager : MonoBehaviour
         {
             OthelloManager.Instance.settingButtonInGame.interactable = true;
         }
-        // OthelloManager.Waiting = false;
+        OthelloManager.Waiting = false;
     }
     private void OnMasterVolumeChanged(float value)
     {

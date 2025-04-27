@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3380,7 +3380,6 @@ MonoBehaviour:
   blackStocks: []
   whiteStocks: []
   settingButtonInGame: {fileID: 1126314411}
-  SettingPanelPrefab: {fileID: 4212538625503426150, guid: 3d68134f7aa064020a232b692fef899c, type: 3}
 --- !u!114 &1688410760
 MonoBehaviour:
   m_ObjectHideFlags: 0
