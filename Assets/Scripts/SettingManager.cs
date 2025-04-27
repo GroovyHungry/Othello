@@ -31,18 +31,36 @@ public class SettingManager : MonoBehaviour
         masterSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
         bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
         seSlider.onValueChanged.AddListener(OnSEVolumeChanged);
+        SettingCloseButton.onClick.AddListener(CloseSetting);
+    }
+    private void OnDestroy()
+    {
+        masterSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
+        bgmSlider.onValueChanged.RemoveListener(OnBGMVolumeChanged);
+        seSlider.onValueChanged.RemoveListener(OnSEVolumeChanged);
+        SettingCloseButton.onClick.RemoveListener(CloseSetting);
     }
     private void Start()
     {
-        SettingCloseButton.onClick.AddListener(() => {
-            CloseSetting();
-        });
+    }
+    public void OpenSettingPanel()
+    {
+        settingPanel.SetActive(true);
+        // OthelloManager.Waiting = true;
     }
     public void CloseSetting()
     {
         AkSoundEngine.PostEvent("OnClick", SettingCloseButton.gameObject);
         settingPanel.SetActive(false);
-        MainMenuManage.Instance.settingButton.interactable = true;
+        if (MainMenuManager.Instance != null && MainMenuManager.Instance.settingButton != null)
+        {
+            MainMenuManager.Instance.settingButton.interactable = true;
+        }
+        if (OthelloManager.Instance != null && OthelloManager.Instance.settingButtonInGame != null)
+        {
+            OthelloManager.Instance.settingButtonInGame.interactable = true;
+        }
+        // OthelloManager.Waiting = false;
     }
     private void OnMasterVolumeChanged(float value)
     {

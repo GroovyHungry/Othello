@@ -16,7 +16,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+							<ObjectRef Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -45,7 +45,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+							<ObjectRef Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -84,7 +84,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+							<ObjectRef Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -118,7 +118,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+							<ObjectRef Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -163,7 +163,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+							<ObjectRef Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -220,7 +220,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+							<ObjectRef Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>

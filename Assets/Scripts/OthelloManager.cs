@@ -47,14 +47,20 @@ public class OthelloManager : MonoBehaviour
     public Transform whiteStockParent;
     public List<GameObject> blackStocks = new List<GameObject>();
     public List<GameObject> whiteStocks = new List<GameObject>();
-    void Awake()
+    public Button settingButtonInGame;
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
-        Application.targetFrameRate = 60; // フレームレートを60FPSに固定
+        Application.targetFrameRate = 60;
         board = GetComponent<OthelloBoard>();
-    }
 
+        settingButtonInGame.onClick.AddListener(OnSettingButtonClicked);
+    }
+    private void OnDestroy()
+    {
+        settingButtonInGame.onClick.RemoveListener(OnSettingButtonClicked);
+    }
     private async UniTaskVoid Start()
     {
         await StartGame();
@@ -83,8 +89,12 @@ public class OthelloManager : MonoBehaviour
             await OthelloAI.Instance.PlayAITurn();
         }
     }
-
-
+    private void OnSettingButtonClicked()
+    {
+        SettingManager.Instance.OpenSettingPanel();
+        settingButtonInGame.interactable = false;
+        AkSoundEngine.PostEvent("OnClick", settingButtonInGame.gameObject);
+    }
     public void UpdateScoreUI()
 	{
 		UpdateScore(CountPieces(true), whiteDigit1, whiteDigit2);

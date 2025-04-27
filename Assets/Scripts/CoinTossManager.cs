@@ -1,9 +1,9 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using AK.Wwise;
+
 public class CoinTossManager : MonoBehaviour
 {
     public static CoinTossManager Instance;
@@ -14,24 +14,42 @@ public class CoinTossManager : MonoBehaviour
     private string userChoice;
     public CanvasGroup coinTossGroup;
     public GameObject UI;
-    public AK.Wwise.Event playLoopEvent;   // ループ用（Play_LoopingSFX）
-    public AK.Wwise.Event stopLoopEvent;   // 停止用（Stop_LoopingSFX）★
+    public AK.Wwise.Event playLoopEvent;
+    public AK.Wwise.Event stopLoopEvent;
     private uint loopPlayingId = AkSoundEngine.AK_INVALID_PLAYING_ID;
+    private bool selected = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
-	{
-		if (Instance == null) Instance = this;
-		else Destroy(gameObject);
-	}
-    void Start()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        whiteButton.onClick.AddListener(OnWhiteButtonClicked);
+        blackButton.onClick.AddListener(OnBlackButtonClicked);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
+        whiteButton.onClick.RemoveListener(OnWhiteButtonClicked);
+        blackButton.onClick.RemoveListener(OnBlackButtonClicked);
     }
+
+    private void OnWhiteButtonClicked()
+    {
+        userChoice = "White";
+        selected = true;
+        blackButton.interactable = false;
+        AkSoundEngine.PostEvent("OnClick", whiteButton.gameObject);
+    }
+
+    private void OnBlackButtonClicked()
+    {
+        userChoice = "Black";
+        selected = true;
+        whiteButton.interactable = false;
+        AkSoundEngine.PostEvent("OnClick", blackButton.gameObject);
+    }
+
     public async UniTask StartCoinTossVsCPU()
     {
         panel.SetActive(true);
@@ -39,57 +57,46 @@ public class CoinTossManager : MonoBehaviour
         CoinToss.Play("Spinning");
         loopPlayingId = playLoopEvent.Post(gameObject);
 
-        bool selected = false;
-
-        whiteButton.onClick.AddListener(() => {
-            userChoice = "White";
-            selected = true;
-            blackButton.interactable = false;
-            AkSoundEngine.PostEvent("OnClick", whiteButton.gameObject);
-        });
-        blackButton.onClick.AddListener(() => {
-            userChoice = "Black";
-            selected = true;
-            whiteButton.interactable = false;
-            AkSoundEngine.PostEvent("OnClick", blackButton.gameObject);
-        });
+        selected = false;
 
         await UniTask.WaitUntil(() => selected);
 
-        // 結果決定
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
         await UniTask.Delay(System.TimeSpan.FromSeconds(1.8f));
+
         stopLoopEvent.Post(gameObject);
         await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
 
         bool correct = (userChoice == result);
-
         OthelloManager.Instance.isAIWhite = correct;
 
         panel.SetActive(false);
         UI.SetActive(true);
     }
+
     public async UniTask StartCoinTossPvP()
     {
         panel.SetActive(true);
         whiteButton.gameObject.SetActive(false);
         blackButton.gameObject.SetActive(false);
+
         CoinToss.Play("Spinning");
         loopPlayingId = playLoopEvent.Post(gameObject);
 
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
         await UniTask.Delay(System.TimeSpan.FromSeconds(1.8f));
+
         stopLoopEvent.Post(gameObject);
         await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
 
-        OthelloManager.Instance.isWhiteTurn = (result == "White" ? true : false);
+        OthelloManager.Instance.isWhiteTurn = (result == "White");
 
         panel.SetActive(false);
         UI.SetActive(true);
     }
-    // フェードアウト関数
+
     private async UniTask FadeOutPanel(CanvasGroup group, float stepInterval = 0.1f)
     {
         float[] steps = { 1f, 0.66f, 0.33f, 0f };
@@ -102,6 +109,6 @@ public class CoinTossManager : MonoBehaviour
 
         group.interactable = false;
         group.blocksRaycasts = false;
-        group.gameObject.SetActive(false); // optional
+        group.gameObject.SetActive(false);
     }
 }

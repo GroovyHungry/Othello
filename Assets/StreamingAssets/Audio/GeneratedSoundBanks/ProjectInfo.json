@@ -12,14 +12,14 @@
     "GUID": "{EBFE7497-B2F4-46A8-9D01-882A21F85BDB}",
     "BasePlatform": "Mac",
     "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
-    "Path": "../../../../Othello_WwiseProject/GeneratedSoundBanks/Mac"
+    "Path": "Mac"
    },
    {
     "Name": "Windows",
     "GUID": "{5D30317A-92AF-4E10-A735-CA1B470011F6}",
     "BasePlatform": "Windows",
     "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
-    "Path": "."
+    "Path": "Windows"
    }
   ],
   "Languages": [
@@ -31,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{F67180D0-A232-35DF-80EA-D0ADCFD2C3A5}"
+  "FileHash": "{A6F3E477-51B7-F009-35C9-BEA8EAE2E54D}"
  }
 }
