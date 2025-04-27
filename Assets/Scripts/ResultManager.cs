@@ -14,6 +14,8 @@ public class ResultManager : MonoBehaviour
     // private int difference;
     public GameObject BlackWins;
     public GameObject WhiteWins;
+    public GameObject WinEffect2;
+    public GameObject WinEffect1;
     public GameObject Draw;
     void Awake()
     {
@@ -120,16 +122,22 @@ public class ResultManager : MonoBehaviour
         if (difference > 0)
         {
             WhiteWins.SetActive(true);
+            WinEffect1.SetActive(true);
+            WinEffect2.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
         else if (difference < 0)
         {
             BlackWins.SetActive(true);
+            WinEffect1.SetActive(true);
+            WinEffect2.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
         else if (difference == 0)
         {
             Draw.SetActive(true);
+            WinEffect1.SetActive(true);
+            WinEffect2.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
         BGMController.Instance.PlayBGM();
