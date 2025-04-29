@@ -1,0 +1,42 @@
+Event	ID	Name			Wwise Object Path	Notes
+	21544190	OnClick			\Default Work Unit\OnClick	
+	553056986	FlipPiece			\Default Work Unit\FlipPiece	
+	697318834	Slider			\Default Work Unit\Slider	
+	822292684	Skip			\Default Work Unit\Skip	
+	829756566	OnSelect			\Default Work Unit\OnSelect	
+	1073466678	Stop_BGM			\Default Work Unit\Stop_BGM	
+	2663994183	PlayRotating			\Default Work Unit\PlayRotating	
+	3126765036	Play_BGM			\Default Work Unit\Play_BGM	
+	3631423584	PlacePiece			\Default Work Unit\PlacePiece	
+	3791290573	StopRotating			\Default Work Unit\StopRotating	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1208296407	SceneType			\Default Work Unit\SceneType	
+
+Switch	ID	Name	Switch Group			Notes
+	936499202	Result	SceneType			
+	3417685148	OthelloBoard	SceneType			
+	3604647259	MainMenu	SceneType			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	502851256	PieceDifference			\Default Work Unit\PieceDifference	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	88970139	BGM_Menu	Y:\Othello\Othello_WwiseProject\.cache\3A\{3A75C06D-C71A-779B-7AEF-EA99F5848A5B}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Menu_BGM\Menu\BGM_Menu		924464
+	291090476	BGM_+2	Y:\Othello\Othello_WwiseProject\.cache\43\{4365A2E0-645B-6826-3BE8-245004D9D97F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_+2		1815456
+	409938069	Slideer_SE	Y:\Othello\Othello_WwiseProject\.cache\A3\{A389892E-C6D3-15DC-CF22-02668BD41430}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Slideer_SE		382668
+	450641745	BGM_-2	Y:\Othello\Othello_WwiseProject\.cache\17\{17A9BC2E-F25F-F195-86D2-EBD00B8E058B}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_-2		1815456
+	457644390	OnSelect_SE	Y:\Othello\Othello_WwiseProject\.cache\C9\{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnSelect_SE		18516
+	601547594	PlacePiece_SE	Y:\Othello\Othello_WwiseProject\.cache\3E\{3E908990-2D30-F477-4888-09919ADF7853}.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlacePiece_SE		47920
+	618809538	OnClick_SE	Y:\Othello\Othello_WwiseProject\.cache\37\{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnClick_SE		24416
+	620090141	FlipPiece_SE	Y:\Othello\Othello_WwiseProject\.cache\6E\{6EC8D726-F766-ACFD-A6E1-2FA22EC80B6B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\FlipPiece_SE		47920
+	687681039	Skip_SE	Y:\Othello\Othello_WwiseProject\.cache\2A\{2A541B2D-F915-D366-7716-2B905F519AD1}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skip_SE		96136
+	702275725	BGM_-1	Y:\Othello\Othello_WwiseProject\.cache\1A\{1AF9ABCA-8BCB-3DFE-AAE6-18CE68A3FD3D}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_-1		1815456
+	715166129	CoinTossResult	Y:\Othello\Othello_WwiseProject\.cache\7B\{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinTossResult		382668
+	741705269	BGM_Result	Y:\Othello\Othello_WwiseProject\.cache\C3\{C32B57FF-3CB2-A5A2-2456-D8E328F782D7}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Result_BGM\Result1\BGM_Result		4012988
+	785695177	BGM_Base	Y:\Othello\Othello_WwiseProject\.cache\16\{16C41AA6-A40A-A3B8-4C09-5217947BF17F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_Base		1815456
+	962452525	BGM_-3	Y:\Othello\Othello_WwiseProject\.cache\3A\{3ADEF430-2767-EA64-C178-5BB14062A35D}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_-3		1848832
+	1001621796	BGM_+1	Y:\Othello\Othello_WwiseProject\.cache\E8\{E816E7CF-297D-A27D-FED9-537AD6069BD4}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_+1		1815456
+	1013065261	BGM_+3	Y:\Othello\Othello_WwiseProject\.cache\2A\{2A246B54-9F00-FB3C-BEDC-59B32E5F20EF}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_+3		1815456
+	1042109001	CoinRotating	Y:\Othello\Othello_WwiseProject\.cache\13\{13123F54-29FF-1FD7-CDE1-92646A0FF7C4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinRotating		382716
+
