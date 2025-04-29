@@ -7,6 +7,7 @@
 					<ChildrenList>
 						<Switch Name="MainMenu" ID="{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"/>
 						<Switch Name="OthelloBoard" ID="{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"/>
+						<Switch Name="Result" ID="{D308B017-FF4D-4768-AEA6-690635672069}"/>
 					</ChildrenList>
 				</SwitchGroup>
 			</ChildrenList>

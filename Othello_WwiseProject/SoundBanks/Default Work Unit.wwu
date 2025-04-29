@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="Othello" ID="{2407346C-6BAF-44BE-95AC-59006EC6F9CC}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Skip" ID="{19EB3D77-2F5F-40BC-834C-F01E977307C4}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_BGM" ID="{0BA12D5D-CB5A-4389-85B3-395CA4180E5A}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayRotating" ID="{39C2BBFA-B716-44FE-943B-141D408F2D01}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
