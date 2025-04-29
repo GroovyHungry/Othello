@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{2D33373F-6EC5-9CF8-32E3-3ECC76B8BEBB}",
+    "Hash": "{7B1383A8-8815-DC65-CF40-A380B359F968}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -494,6 +494,6 @@
     ]
    }
   ],
-  "FileHash": "{1E45679D-EDE9-3D22-33B7-A1558F83AD46}"
+  "FileHash": "{11B72381-11EE-DDC9-3BC4-DDB472F5D1D8}"
  }
 }
