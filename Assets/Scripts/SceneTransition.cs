@@ -24,11 +24,9 @@ public class SceneTransition : MonoBehaviour
     public async UniTask Transition(string nextSceneName)
     {
         float speed = 1.0f;
-        await PlayFadeOut(speed);
-
         BGMController.Instance.TransitionBGM(nextSceneName);
+        await PlayFadeOut(speed);
         await SceneManager.LoadSceneAsync(nextSceneName);
-
         await PlayFadeIn(speed);
     }
     public async UniTask PlayFadeOut(float speed)

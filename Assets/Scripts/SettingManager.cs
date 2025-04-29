@@ -6,6 +6,9 @@ public class SettingManager : MonoBehaviour
 {
     public static SettingManager Instance;
     public GameObject settingPanel;
+    public GameObject muteMaster;
+    public GameObject muteBGM;
+    public GameObject muteSE;
     public Slider masterSlider;
     public Slider bgmSlider;
     public Slider seSlider;
@@ -67,15 +70,39 @@ public class SettingManager : MonoBehaviour
     {
         float masterVolume = value * 10f;
         masterVolumeRTPC.SetGlobalValue(masterVolume);
+        if (value == 0)
+        {
+            muteMaster.SetActive(true);
+        }
+        else
+        {
+            muteMaster.SetActive(false);
+        }
     }
     private void OnBGMVolumeChanged(float value)
     {
         float bgmVolume = value * 10f;
         bgmVolumeRTPC.SetGlobalValue(bgmVolume);
+        if (value == 0)
+        {
+            muteBGM.SetActive(true);
+        }
+        else
+        {
+            muteBGM.SetActive(false);
+        }
     }
     private void OnSEVolumeChanged(float value)
     {
         float seVolume = value * 10f;
         seVolumeRTPC.SetGlobalValue(seVolume);
+        if (value == 0)
+        {
+            muteSE.SetActive(true);
+        }
+        else
+        {
+            muteSE.SetActive(false);
+        }
     }
 }

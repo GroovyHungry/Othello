@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
@@ -37,17 +38,30 @@ public class CoinTossManager : MonoBehaviour
     private void OnWhiteButtonClicked()
     {
         userChoice = "White";
+        if (!selected)
+        {
+            AkSoundEngine.PostEvent("OnClick", whiteButton.gameObject);
+        }
         selected = true;
+        whiteButton.interactable = false;
         blackButton.interactable = false;
+        whiteButton.GetComponent<EventTrigger>().enabled = false;
+        blackButton.GetComponent<EventTrigger>().enabled = false;
         AkSoundEngine.PostEvent("OnClick", whiteButton.gameObject);
     }
 
     private void OnBlackButtonClicked()
     {
         userChoice = "Black";
+        if (!selected)
+        {
+            AkSoundEngine.PostEvent("OnClick", blackButton.gameObject);
+        }
         selected = true;
         whiteButton.interactable = false;
-        AkSoundEngine.PostEvent("OnClick", blackButton.gameObject);
+        blackButton.interactable = false;
+        whiteButton.GetComponent<EventTrigger>().enabled = false;
+        blackButton.GetComponent<EventTrigger>().enabled = false;
     }
 
     public async UniTask StartCoinTossVsCPU()

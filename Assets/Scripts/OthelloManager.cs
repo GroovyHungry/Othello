@@ -135,6 +135,8 @@ public class OthelloManager : MonoBehaviour
         piece.GetComponent<OthelloPiece>().InitState(x, y);
         piece.tag = tag;
 
+        ClearHighlightedCells();
+
         await board.PlacePiece(x, y, piece, tag);
         await EndTurn();
     }
@@ -298,21 +300,22 @@ public class OthelloManager : MonoBehaviour
         if (isWhite)
         {
             skipMessageBlack.SetActive(true);
-            await UniTask.Delay(System.TimeSpan.FromSeconds(2.0));
+            AkSoundEngine.PostEvent("Skip", skipMessageBlack.gameObject);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5));
             skipMessageBlack.SetActive(false);
         }
         else
         {
             skipMessageWhite.SetActive(true);
-            await UniTask.Delay(System.TimeSpan.FromSeconds(2.0));
+            AkSoundEngine.PostEvent("Skip", skipMessageWhite.gameObject);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5));
             skipMessageWhite.SetActive(false);
         }
         Waiting = false;
     }
-    public void GetValidAndInvalidCells(out List<OthelloCell> validCells, out List<OthelloCell> invalidCells)
+    public void GetValidAndInvalidCells(out List<OthelloCell> validCells)
     {
         validCells = new List<OthelloCell>();
-        invalidCells = new List<OthelloCell>();
 
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
@@ -320,15 +323,11 @@ public class OthelloManager : MonoBehaviour
             {
                 validCells.Add(cell);
             }
-            else
-            {
-                invalidCells.Add(cell);
-            }
         }
     }
     public async void HighlightValidMoves()
     {
-        GetValidAndInvalidCells(out List<OthelloCell> validCells, out List<OthelloCell> invalidCells);
+        GetValidAndInvalidCells(out List<OthelloCell> validCells);
 
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
 
@@ -336,6 +335,8 @@ public class OthelloManager : MonoBehaviour
         {
             BGMController.Instance.ChangeBGM();
         }
+
+        // ClearHighlightedCells();
 
         if (!isAIOpponent || (isAIOpponent && !isAITurn))
         {
@@ -346,28 +347,21 @@ public class OthelloManager : MonoBehaviour
                 sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
             }
-
-            foreach (OthelloCell cell in invalidCells)
-            {
-                SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
-            }
-        }
-        else
-        {
-            // AIターン → 全部透明
-            foreach (var cell in validCells.Concat(invalidCells))
-            {
-                SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
-            }
         }
         await CheckSkipOrGameOver();
     }
-
+    public void ClearHighlightedCells()
+    {
+        var allCells = FindObjectsByType<OthelloCell>(FindObjectsSortMode.None);
+        foreach (var cell in allCells)
+        {
+            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
+        }
+    }
     private async UniTask CheckSkipOrGameOver()
     {
-        GetValidAndInvalidCells(out List<OthelloCell> validCells, out _);
+        GetValidAndInvalidCells(out List<OthelloCell> validCells);
 
         if (validCells.Count == 0)
         {

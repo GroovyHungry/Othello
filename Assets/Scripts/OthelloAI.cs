@@ -29,7 +29,7 @@ public class OthelloAI : MonoBehaviour
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.4f));
         string aiTag = OthelloManager.Instance.IsAIWhite() ? "White" :"Black";
 
-        OthelloManager.Instance.GetValidAndInvalidCells(out List<OthelloCell> validCells, out _);
+        OthelloManager.Instance.GetValidAndInvalidCells(out List<OthelloCell> validCells);
 
         List<Vector2Int> validMoves = new List<Vector2Int>();
         foreach (var cell in validCells)

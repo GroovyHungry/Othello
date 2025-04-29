@@ -243,6 +243,35 @@
 						<ActiveSource Name="Scroll" ID="{0D6EA6C0-9C98-4CB4-B226-DC6A576AD782}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Skip_SE" ID="{031419C4-4BBE-482E-9E50-418C499AC43B}" ShortID="534362315">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Skip" ID="{862A66A5-9AA6-41D3-8345-A6313D11F395}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-4.6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Skip.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="687681039"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Skip" ID="{862A66A5-9AA6-41D3-8345-A6313D11F395}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

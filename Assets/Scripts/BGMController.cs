@@ -54,9 +54,9 @@ public class BGMController : MonoBehaviour
             pieceDifferenceRTPC.SetGlobalValue(clamped);
         }
     }
-    public void TransitionBGM(string nextSceneName)
+    public void TransitionBGM(string trackName)
     {
-        AkSoundEngine.SetSwitch("SceneType", nextSceneName, gameObject);
+        AkSoundEngine.SetSwitch("SceneType", trackName, gameObject);
     }
 
 }

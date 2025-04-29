@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
     public Button settingButton;
     public Animator menuAnimator;
     public GameObject SettingPanel;
+    private bool selected = false;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -20,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
     }
     private void Start()
     {
+        selected = false;
         cpuButton.onClick.AddListener(OnCpuButtonClicked);
         pvpButton.onClick.AddListener(OnPvpButtonClicked);
         settingButton.onClick.AddListener(OnSettingButtonClicked);
@@ -32,26 +34,35 @@ public class MainMenuManager : MonoBehaviour
     }
     private async void OnPvpButtonClicked()
     {
-        pvpButton.interactable = false;
-        cpuButton.interactable = false;
-        settingButton.interactable = false;
-        pvpButton.GetComponent<EventTrigger>().enabled = false;
-        cpuButton.GetComponent<EventTrigger>().enabled = false;
-        settingButton.GetComponent<EventTrigger>().enabled = false;
-        AkSoundEngine.PostEvent("OnClick", pvpButton.gameObject);
-        await OnModeSelected(false);
+        if (!selected)
+        {
+            selected = true;
+            AkSoundEngine.PostEvent("OnClick", pvpButton.gameObject);
+            cpuButton.interactable = false;
+            pvpButton.interactable = false;
+            settingButton.interactable = false;
+            pvpButton.GetComponent<EventTrigger>().enabled = false;
+            cpuButton.GetComponent<EventTrigger>().enabled = false;
+            settingButton.GetComponent<EventTrigger>().enabled = false;
+            await OnModeSelected(false);
+        }
     }
 
     private async void OnCpuButtonClicked()
     {
-        cpuButton.interactable = false;
-        pvpButton.interactable = false;
-        settingButton.interactable = false;
-        cpuButton.GetComponent<EventTrigger>().enabled = false;
-        pvpButton.GetComponent<EventTrigger>().enabled = false;
-        settingButton.GetComponent<EventTrigger>().enabled = false;
-        AkSoundEngine.PostEvent("OnClick", cpuButton.gameObject);
-        await OnModeSelected(true);
+        if (!selected)
+        {
+            selected = true;
+            AkSoundEngine.PostEvent("OnClick", cpuButton.gameObject);
+            pvpButton.interactable = false;
+            cpuButton.interactable = false;
+            settingButton.interactable = false;
+            cpuButton.GetComponent<EventTrigger>().enabled = false;
+            pvpButton.GetComponent<EventTrigger>().enabled = false;
+            settingButton.GetComponent<EventTrigger>().enabled = false;
+            AkSoundEngine.PostEvent("OnClick", cpuButton.gameObject);
+            await OnModeSelected(true);
+        }
     }
 
     private void OnSettingButtonClicked()

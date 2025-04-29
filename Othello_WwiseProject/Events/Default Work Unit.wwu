@@ -116,6 +116,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Skip" ID="{19EB3D77-2F5F-40BC-834C-F01E977307C4}">
+					<ChildrenList>
+						<Action Name="" ID="{0C36102F-A96E-405B-91E0-0C96DF5D6E5C}" ShortID="415547940">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Skip_SE" ID="{031419C4-4BBE-482E-9E50-418C499AC43B}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

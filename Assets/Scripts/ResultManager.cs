@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -117,30 +118,27 @@ public class ResultManager : MonoBehaviour
             await PlaceSequentially(differencesPos, prefab);
         }
 
-        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+        await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
+        BGMController.Instance.PlayBGM();
+        BGMController.Instance.TransitionBGM("Result");
 
         if (difference > 0)
         {
             WhiteWins.SetActive(true);
-            WinEffect1.SetActive(true);
-            WinEffect2.SetActive(true);
-            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
         else if (difference < 0)
         {
             BlackWins.SetActive(true);
-            WinEffect1.SetActive(true);
-            WinEffect2.SetActive(true);
-            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
         else if (difference == 0)
         {
             Draw.SetActive(true);
-            WinEffect1.SetActive(true);
-            WinEffect2.SetActive(true);
-            await UniTask.Delay(TimeSpan.FromSeconds(3.0f));
         }
-        BGMController.Instance.PlayBGM();
+        WinEffect1.SetActive(true);
+        WinEffect2.SetActive(true);
+        OthelloManager.Instance.settingButtonInGame.interactable = false;
+        OthelloManager.Instance.settingButtonInGame.GetComponent<EventTrigger>().enabled = false;
+        await UniTask.WaitUntil(() => Input.GetMouseButtonDown(0));
         await SceneTransition.Instance.Transition("MainMenu");
     }
 
