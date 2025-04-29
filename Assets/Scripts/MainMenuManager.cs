@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnSettingButtonClicked()
     {
-        SettingPanel.SetActive(true);
+        SettingManager.Instance.OpenSettingPanel();
         settingButton.interactable = false;
         AkSoundEngine.PostEvent("OnClick", settingButton.gameObject);
     }

@@ -294,21 +294,20 @@ public class OthelloManager : MonoBehaviour
 
     private async UniTask ShowSkipMessage(bool isWhite)
     {
-        if (skipMessageBlack != null && skipMessageWhite != null)
+        Waiting = true;
+        if (isWhite)
         {
-            if (isWhite)
-            {
-                skipMessageBlack.SetActive(true);  // 表示
-                await UniTask.Delay(System.TimeSpan.FromSeconds(2.0)); // 1.5秒待つ
-                skipMessageBlack.SetActive(false); // 非表示
-            }
-            else
-            {
-                skipMessageWhite.SetActive(true);  // 表示
-                await UniTask.Delay(System.TimeSpan.FromSeconds(2.0)); // 1.5秒待つ
-                skipMessageWhite.SetActive(false); // 非表示
-            }
+            skipMessageBlack.SetActive(true);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(2.0));
+            skipMessageBlack.SetActive(false);
         }
+        else
+        {
+            skipMessageWhite.SetActive(true);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(2.0));
+            skipMessageWhite.SetActive(false);
+        }
+        Waiting = false;
     }
     public void GetValidAndInvalidCells(out List<OthelloCell> validCells, out List<OthelloCell> invalidCells)
     {
@@ -391,7 +390,7 @@ public class OthelloManager : MonoBehaviour
                 if (nextHasMove)
                 {
                     await ShowSkipMessage(isWhiteTurn);
-                    await UniTask.DelayFrame(1);
+                    // await UniTask.DelayFrame(1);
 				    HighlightValidMoves();
                 }
                 else
