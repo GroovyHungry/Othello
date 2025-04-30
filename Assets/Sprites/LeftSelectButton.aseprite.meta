@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e68c021949be474d8abb65ce4bf6024
+guid: 7901fe5b1bb921e469dac1761a4f6062
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638816348930118666
+  platformSettingsDirtyTick: 638816349299638847
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: MusicChanger
+  - name: Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 256
-      height: 144
-    spriteID: 8e05e20fabac646ad8df070dfac4845b
+      width: 8
+      height: 8
+    spriteID: f3823ad9288bd8c4485c5a82bcd87562
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,29 +144,89 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 20
+      width: 8
+      height: 8
+    spriteID: b374a6da31942294e96f25c31def937c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 20}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 4
+      width: 8
+      height: 8
+    spriteID: e661b21cb28e39148a8bb69c1d0f947e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3140213825
+      value0: 2839661845
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: MusicChanger
+    name: LeftSelectButton
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: MusicChanger
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 256
-        height: 144
-      spriteId: 8e05e20fabac646ad8df070dfac4845b
+        width: 8
+        height: 8
+      spriteId: f3823ad9288bd8c4485c5a82bcd87562
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 8
+        height: 8
+      spriteId: b374a6da31942294e96f25c31def937c
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 8
+        height: 8
+      spriteId: e661b21cb28e39148a8bb69c1d0f947e
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -233,5 +293,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 256, y: 144}
-  previousTextureSize: {x: 512, y: 256}
+  canvasSize: {x: 8, y: 8}
+  previousTextureSize: {x: 32, y: 32}

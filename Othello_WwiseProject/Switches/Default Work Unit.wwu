@@ -114,6 +114,12 @@
 						</Curve>
 					</SwitchOnRTPC>
 				</SwitchGroup>
+				<SwitchGroup Name="BGMSelect" ID="{B115EB3E-0867-4A0E-A1D9-4AC76F95EA4C}">
+					<ChildrenList>
+						<Switch Name="BGM_1" ID="{7C4D72B4-FA1F-48A1-8A3D-60E7DF425C89}"/>
+						<Switch Name="BGM_2" ID="{732B87B8-C467-4A4C-9DDA-500237D8628B}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>
