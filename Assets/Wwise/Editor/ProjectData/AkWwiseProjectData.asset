@@ -332,7 +332,7 @@ MonoBehaviour:
     ParentPath: Game Parameters/Default Work Unit
     guid: bc8eb0815c9a1b4ba8e4668781354ad3
     GuidInternal: 
-    m_lastTime: -8584559382718082947
+    m_lastTime: -8584556084400758364
     List:
     - name: BGM_Volume
       guid: 40939a84ed6fb5409940f6a044a3be5c
@@ -348,6 +348,20 @@ MonoBehaviour:
         ObjectType: 13
         guid: 40939a84ed6fb5409940f6a044a3be5c
       Path: Game Parameters/Default Work Unit/BGM_Volume
+    - name: GameProgress
+      guid: 9ce909867858284db8c1769d02e48b20
+      id: 1577714322
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: bc8eb0815c9a1b4ba8e4668781354ad3
+      - ElementName: GameProgress
+        ObjectType: 13
+        guid: 9ce909867858284db8c1769d02e48b20
+      Path: Game Parameters/Default Work Unit/GameProgress
     - name: Master_Volume
       guid: d3a22c93294555469abb4ceefee09e2b
       id: 4179668880
@@ -416,8 +430,204 @@ MonoBehaviour:
     ParentPath: Switches/Default Work Unit
     guid: 033bf7d75f7dbf48a5c71af6add53702
     GuidInternal: 
-    m_lastTime: -8584556516101677931
+    m_lastTime: -8584556084400845265
     List:
+    - name: Board_BGM_1
+      guid: 9a7895f97bfc374398241acc6c3e52fb
+      id: 405343424
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 033bf7d75f7dbf48a5c71af6add53702
+      - ElementName: Board_BGM_1
+        ObjectType: 11
+        guid: 9a7895f97bfc374398241acc6c3e52fb
+      Path: Switches/Default Work Unit/Board_BGM_1
+      values:
+      - name: BGM_M1
+        guid: e03dd6033fedf54c81b489102b8fdd04
+        id: 3080045118
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM_M1
+          ObjectType: 10
+          guid: e03dd6033fedf54c81b489102b8fdd04
+      - name: BGM_M2
+        guid: c3a343d69da5c04c8f440a310f28d932
+        id: 3080045117
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM_M2
+          ObjectType: 10
+          guid: c3a343d69da5c04c8f440a310f28d932
+      - name: BGM_M3
+        guid: 66082adf32cc164da491ceb32f746f34
+        id: 3080045116
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM_M3
+          ObjectType: 10
+          guid: 66082adf32cc164da491ceb32f746f34
+      - name: BGM_P1
+        guid: 532ae7b39db72f409cd05a7247950b92
+        id: 2861936041
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM_P1
+          ObjectType: 10
+          guid: 532ae7b39db72f409cd05a7247950b92
+      - name: BGM_P2
+        guid: c28483a3101a394a810b94308f807a16
+        id: 2861936042
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM_P2
+          ObjectType: 10
+          guid: c28483a3101a394a810b94308f807a16
+      - name: BGM_P3
+        guid: 84dec79bf0f3db488e9b62e928261f74
+        id: 2861936043
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM_P3
+          ObjectType: 10
+          guid: 84dec79bf0f3db488e9b62e928261f74
+      - name: BGM0
+        guid: bdf374bc5cdbb24bb87c2749a6937b6b
+        id: 1189781959
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_1
+          ObjectType: 11
+          guid: 9a7895f97bfc374398241acc6c3e52fb
+        - ElementName: BGM0
+          ObjectType: 10
+          guid: bdf374bc5cdbb24bb87c2749a6937b6b
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Board_BGM_2
+      guid: d10bf3bfe778964dbd75053f1e1afb27
+      id: 405343427
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 033bf7d75f7dbf48a5c71af6add53702
+      - ElementName: Board_BGM_2
+        ObjectType: 11
+        guid: d10bf3bfe778964dbd75053f1e1afb27
+      Path: Switches/Default Work Unit/Board_BGM_2
+      values:
+      - name: BGM_1
+        guid: 2ae5b890acb4d34488ddd356832ebd5e
+        id: 1264352073
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_2
+          ObjectType: 11
+          guid: d10bf3bfe778964dbd75053f1e1afb27
+        - ElementName: BGM_1
+          ObjectType: 10
+          guid: 2ae5b890acb4d34488ddd356832ebd5e
+      - name: BGM_2
+        guid: 75cb03eb0eac264eaf2927795a8af3b6
+        id: 1264352074
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_2
+          ObjectType: 11
+          guid: d10bf3bfe778964dbd75053f1e1afb27
+        - ElementName: BGM_2
+          ObjectType: 10
+          guid: 75cb03eb0eac264eaf2927795a8af3b6
+      - name: BGM_3
+        guid: 467b6a2ba0949b4b9c31c6ea6303d81f
+        id: 1264352075
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 033bf7d75f7dbf48a5c71af6add53702
+        - ElementName: Board_BGM_2
+          ObjectType: 11
+          guid: d10bf3bfe778964dbd75053f1e1afb27
+        - ElementName: BGM_3
+          ObjectType: 10
+          guid: 467b6a2ba0949b4b9c31c6ea6303d81f
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
     - name: SceneType
       guid: 8ab7810cb5c1a94e91385760c862ef72
       id: 1208296407
