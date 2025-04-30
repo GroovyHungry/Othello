@@ -10,6 +10,110 @@
 						<Switch Name="Result" ID="{D308B017-FF4D-4768-AEA6-690635672069}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="Board_BGM_2" ID="{BFF30BD1-78E7-4D96-BD75-053F1E1AFB27}">
+					<PropertyList>
+						<Property Name="UseGameParameter" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="BGM_1" ID="{90B8E52A-B4AC-44D3-88DD-D356832EBD5E}"/>
+						<Switch Name="BGM_2" ID="{EB03CB75-AC0E-4E26-AF29-27795A8AF3B6}"/>
+						<Switch Name="BGM_3" ID="{2B6A7B46-94A0-4B9B-9C31-C6EA6303D81F}"/>
+					</ChildrenList>
+					<SwitchOnRTPC>
+						<GameParameterRef Name="GameProgress" ID="{8609E99C-5878-4D28-B8C1-769D02E48B20}"/>
+						<Curve Name="" ID="{0F72B764-827B-435C-B8E9-877CC270C6E3}">
+							<PropertyList>
+								<Property Name="Flags" Type="int32" Value="65537"/>
+							</PropertyList>
+							<PointList>
+								<Point>
+									<XPos>0</XPos>
+									<YPos>1</YPos>
+									<Flags>5</Flags>
+								</Point>
+								<Point>
+									<XPos>20</XPos>
+									<YPos>2</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>40</XPos>
+									<YPos>3</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>64</XPos>
+									<YPos>0</YPos>
+									<Flags>37</Flags>
+								</Point>
+							</PointList>
+						</Curve>
+					</SwitchOnRTPC>
+				</SwitchGroup>
+				<SwitchGroup Name="Board_BGM_1" ID="{F995789A-FC7B-4337-9824-1ACC6C3E52FB}">
+					<PropertyList>
+						<Property Name="UseGameParameter" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="BGM0" ID="{BC74F3BD-DB5C-4BB2-B87C-2749A6937B6B}"/>
+						<Switch Name="BGM_P1" ID="{B3E72A53-B79D-402F-9CD0-5A7247950B92}"/>
+						<Switch Name="BGM_P2" ID="{A38384C2-1A10-4A39-810B-94308F807A16}"/>
+						<Switch Name="BGM_P3" ID="{9BC7DE84-F3F0-48DB-8E9B-62E928261F74}"/>
+						<Switch Name="BGM_M1" ID="{03D63DE0-ED3F-4CF5-81B4-89102B8FDD04}"/>
+						<Switch Name="BGM_M2" ID="{D643A3C3-A59D-4CC0-8F44-0A310F28D932}"/>
+						<Switch Name="BGM_M3" ID="{DF2A0866-CC32-4D16-A491-CEB32F746F34}"/>
+					</ChildrenList>
+					<SwitchOnRTPC>
+						<GameParameterRef Name="PieceDifference" ID="{76CD7197-266A-497C-B44B-03A45B4503D0}"/>
+						<Curve Name="" ID="{7C8FEF88-DD65-43FC-A098-33A7FBC23877}">
+							<PropertyList>
+								<Property Name="Flags" Type="int32" Value="65537"/>
+							</PropertyList>
+							<PointList>
+								<Point>
+									<XPos>-10</XPos>
+									<YPos>7</YPos>
+									<Flags>5</Flags>
+								</Point>
+								<Point>
+									<XPos>-9.999</XPos>
+									<YPos>6</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>-6</XPos>
+									<YPos>5</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>-3</XPos>
+									<YPos>1</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>4</XPos>
+									<YPos>2</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>7</XPos>
+									<YPos>3</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>9.999</XPos>
+									<YPos>4</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>10</XPos>
+									<YPos>0</YPos>
+									<Flags>37</Flags>
+								</Point>
+							</PointList>
+						</Curve>
+					</SwitchOnRTPC>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

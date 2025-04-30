@@ -13,6 +13,12 @@
 				<GameParameter Name="BGM_Volume" ID="{849A9340-6FED-40B5-9940-F6A044A3BE5C}"/>
 				<GameParameter Name="SE_Volume" ID="{D2830B41-17BE-4CC4-B1B2-BD1AB556A567}"/>
 				<GameParameter Name="Master_Volume" ID="{932CA2D3-4529-4655-9ABB-4CEEFEE09E2B}"/>
+				<GameParameter Name="GameProgress" ID="{8609E99C-5878-4D28-B8C1-769D02E48B20}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="64"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
