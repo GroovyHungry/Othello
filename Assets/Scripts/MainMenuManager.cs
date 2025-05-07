@@ -16,6 +16,10 @@ public class MainMenuManager : MonoBehaviour
     public Animator menuAnimator;
     public GameObject SettingPanel;
     private bool selected = false;
+    private string inputBuffer = "";
+    private float lastCharTime = -1f;
+    private const float bufferTimeout = 2f;
+    private const string unlockKeyword = "othello";
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -30,6 +34,38 @@ public class MainMenuManager : MonoBehaviour
         musicChangerButton.onClick.AddListener(OnMusicChangerButtonClicked);
         quietGameButton.onClick.AddListener(OnQuietGameButtonClicked);
     }
+    private void Update()
+    {
+        // 入力間隔が空いたらリセット
+        if (inputBuffer.Length > 0 && Time.time - lastCharTime > bufferTimeout)
+        {
+            inputBuffer = "";
+        }
+
+        foreach (char c in Input.inputString.ToLower())
+        {
+            if (char.IsLetter(c))
+            {
+                lastCharTime = Time.time;
+                inputBuffer += c;
+
+                // バッファが長すぎたら先頭を削る
+                if (inputBuffer.Length > unlockKeyword.Length)
+                {
+                    inputBuffer = inputBuffer.Substring(inputBuffer.Length - unlockKeyword.Length);
+                }
+
+                if (inputBuffer == unlockKeyword)
+                {
+                    PlayerPrefs.SetInt("Unlocked", 3);
+                    PlayerPrefs.Save();
+                    Debug.Log("Secret difficulty unlocked by keyword!");
+                    inputBuffer = "";
+                }
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         pvpButton.onClick.RemoveListener(OnPvpButtonClicked);

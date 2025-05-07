@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{285A1561-1C49-E3DE-1F77-DE3BAD8E4338}",
+    "Hash": "{B9C97E39-B22F-3654-6BC7-1BBD1FCE34DC}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "electrical_noise1.wav",
-      "CachePath": "E0/{E093A88A-E617-3F24-730D-BC2729EB1C77}.wem"
+      "CachePath": "93/{930B2489-875E-68F0-4553-5E966DD2C194}.wem"
      },
      {
       "Id": "154188979",
@@ -1107,6 +1107,6 @@
     ]
    }
   ],
-  "FileHash": "{2E4C76EC-A732-E290-DE07-466C8974DECB}"
+  "FileHash": "{EF926D84-F654-ABF5-FD20-222CD378C7F2}"
  }
 }

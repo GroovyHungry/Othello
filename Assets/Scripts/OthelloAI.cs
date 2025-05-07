@@ -69,11 +69,12 @@ public class OthelloAI : MonoBehaviour
     {
         OthelloManager.isAIPlaying = true;
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.4f));
-        GameObject board = OthelloBoard.Instance.GetBoardState();
+        GameObject[,] board = OthelloBoard.Instance.GetBoardState();
         string aiTag = OthelloManager.Instance.IsAIWhite() ? "White" :"Black";
 
 
         List<Vector2Int> validMoves = GetValidMoves(board, aiTag);
+        Debug.Log("Valid Moves: " + validMoves.Count);
         if (validMoves.Count == 0)
         {
             OthelloManager.isAIPlaying = false;
@@ -114,7 +115,7 @@ public class OthelloAI : MonoBehaviour
 
         foreach (var move in validMoves)
         {
-            int flipCountScore = OthelloBoard.Instance.CountFlippablePieces(move.x, move.y, aiTag);
+            int flipCountScore = CountFlippablePieces(move.x, move.y, aiTag);
             int positionScore = normalDifficultyTable[move.y, move.x];
             int totalScore = flipCountScore * weightFlip + positionScore * weightPos;
 
@@ -132,10 +133,11 @@ public class OthelloAI : MonoBehaviour
         string playerTag = aiTag == "White" ? "Black" : "White";
         int maxScore = int.MinValue;
         Vector2Int bestMove = validMoves[0];
+        GameObject[,] board = OthelloBoard.Instance.GetBoardState();
 
         foreach (var move in validMoves)
         {
-            var boardAfteraiMove = CloneBoardState();
+            var boardAfteraiMove = CloneBoardState(board);
             SimulateMove(boardAfteraiMove, move.x, move.y, aiTag);
 
             List<Vector2Int> playerMoves = GetValidMoves(boardAfteraiMove, playerTag);
@@ -144,7 +146,7 @@ public class OthelloAI : MonoBehaviour
             foreach (var playerMove in playerMoves)
             {
                 GameObject[,] boardAfterPlayer = CloneBoardState(boardAfteraiMove);
-                SimulateMove(boardAfterPlayer, oppMove.x, oppMove.y, playerTag);
+                SimulateMove(boardAfterPlayer, playerMove.x, playerMove.y, playerTag);
 
                 int score = EvaluateBoard(boardAfterPlayer, aiTag);
                 if (score < worstScore)
@@ -197,9 +199,8 @@ public class OthelloAI : MonoBehaviour
         }
         return count;
     }
-    private GameObject[,] CloneBoardState()
+    private GameObject[,] CloneBoardState(GameObject[,] original)
     {
-        GameObject original = OthelloBoard.Instance.GetBoardState();
         GameObject[,] clone = new GameObject[8, 8];
 
         for (int x = 0; x < 8; x++)
@@ -213,14 +214,14 @@ public class OthelloAI : MonoBehaviour
     }
     private void SimulateMove(GameObject[,] board, int x, int y, string tag)
     {
-        // コマを置く（仮の GameObject）
         GameObject fakePiece = new GameObject();
         fakePiece.tag = tag;
         board[x, y] = fakePiece;
 
         foreach (var dir in directions)
         {
-            int dx = dir[0], dy = dir[1];
+            int dx = dir.dx;
+            int dy = dir.dy;
             int checkX = x + dx;
             int checkY = y + dy;
             List<Vector2Int> toFlip = new List<Vector2Int>();
@@ -257,12 +258,12 @@ public class OthelloAI : MonoBehaviour
 
         for (int x = 0; x < 8; x++)
         {
-            for (int y = 0; y < 8; x++)
+            for (int y = 0; y < 8; y++)
             {
-                if(board[x, y] == null) continue;
-                if(OthelloBoard.Instance.IsValidMove(board, x, y, tag))
+                if(board[x, y] != null) continue;
+                if(OthelloBoard.Instance.IsValidMove(x, y, tag, board))
                 {
-                    validMoces.Add(new Vector2Int(x, y));
+                    validMoves.Add(new Vector2Int(x, y));
                 }
             }
         }
@@ -273,9 +274,9 @@ public class OthelloAI : MonoBehaviour
         int score = 0;
         string playerTag = aiTag == "White" ? "Black" : "White";
 
-        for (x = 0; x < 8; x++)
+        for (int x = 0; x < 8; x++)
         {
-            for (y = 0; x < 8; x++)
+            for (int y = 0; y < 8; y++)
             {
                 GameObject piece = board[x, y];
                 if (piece == null) continue;

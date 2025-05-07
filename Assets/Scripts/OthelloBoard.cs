@@ -37,7 +37,7 @@ public class OthelloBoard : MonoBehaviour
 
     // 指定座標のコマを取得
     public GameObject GetPiece(int x, int y) => boardState[x, y];
-    public GameObject GetBoardState() => boardState;
+    public GameObject[,] GetBoardState() => boardState;
     public void ClearBoardState()
     {
         for (int x = 0; x < gridSize; x++)
@@ -48,9 +48,9 @@ public class OthelloBoard : MonoBehaviour
             }
         }
     }
-    public bool IsValidMove(GameObject[,] board, int x, int y, string currentTag)
+    public bool IsValidMove(int x, int y, string currentTag, GameObject[,] board = null)
     {
-        // if (!othelloBoard.IsCellEmpty(x, y)) return false;
+        board ??= boardState;
         if (board[x, y] != null) return false;
 
         foreach (var(dx, dy) in directions)

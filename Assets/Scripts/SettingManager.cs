@@ -31,10 +31,6 @@ public class SettingManager : MonoBehaviour
         masterSlider.value = 5;
         bgmSlider.value = 5;
         seSlider.value = 5;
-        masterSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
-        bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
-        seSlider.onValueChanged.AddListener(OnSEVolumeChanged);
-        SettingCloseButton.onClick.AddListener(CloseSetting);
     }
     private void OnDestroy()
     {
@@ -46,9 +42,13 @@ public class SettingManager : MonoBehaviour
     private void Start()
     {
         settingPanel.SetActive(false);
-        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 5);
-        bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume", 5);
-        seSlider.value = PlayerPrefs.GetFloat("SEVolume", 5);
+        masterSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterVolume", 5));
+        bgmSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("BGMVolume", 5));
+        seSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SEVolume", 5));
+        masterSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
+        bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
+        seSlider.onValueChanged.AddListener(OnSEVolumeChanged);
+        SettingCloseButton.onClick.AddListener(CloseSetting);
     }
     public void OpenSettingPanel()
     {

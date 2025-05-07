@@ -359,14 +359,13 @@ public class OthelloManager : MonoBehaviour
             if (gameoverCounter == 1)
             {
                 isWhiteTurn = !isWhiteTurn;
-                GameObject[,] board = othelloBoard.GetBoardState();
                 bool nextHasMove = false;
 
                 for (int x = 0; x < 8; x++)
                 {
                     for (int y = 0; y < 8; y++)
                     {
-                        if (othelloBoard.IsValidMove(board, x, y, isWhiteTurn ? "White" : "Black"))
+                        if (othelloBoard.IsValidMove(x, y, isWhiteTurn ? "White" : "Black"))
                         {
                             nextHasMove = true;
                         }
