@@ -15,6 +15,8 @@ public class ResultManager : MonoBehaviour
     // private int difference;
     public GameObject BlackWins;
     public GameObject WhiteWins;
+    public GameObject youWin;
+    public GameObject youLose;
     public GameObject WinEffect2;
     public GameObject WinEffect1;
     public GameObject Draw;
@@ -61,6 +63,8 @@ public class ResultManager : MonoBehaviour
         //     Destroy(piece);
         // }
         OthelloBoard.Instance.ClearBoardState();
+        BGMController.Instance.ChangeBGM_1();
+        BGMController.Instance.ChangeBGM_2();
         await SceneTransition.Instance.PlayFadeIn(speed);
     }
     public async UniTask ShowResult()
@@ -120,24 +124,85 @@ public class ResultManager : MonoBehaviour
 
         await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
         BGMController.Instance.PlayBGM();
-        BGMController.Instance.TransitionBGM("Result");
 
-        if (difference > 0)
+        bool won = false;
+        if (OthelloManager.isAIOpponent)
         {
-            WhiteWins.SetActive(true);
+            if (difference > 0)
+            {
+                if (OthelloManager.Instance.isAIWhite)
+                {
+                    youLose.SetActive(true);
+                    BGMController.Instance.TransitionBGM("LoseResult");
+                }
+                else
+                {
+                    youWin.SetActive(true);
+                    WinEffect1.SetActive(true);
+                    WinEffect2.SetActive(true);
+                    BGMController.Instance.TransitionBGM("WinResult");
+                    won = true;
+                }
+            }
+            else if (difference < 0)
+            {
+                if (OthelloManager.Instance.isAIWhite)
+                {
+                    youWin.SetActive(true);
+                    WinEffect1.SetActive(true);
+                    WinEffect2.SetActive(true);
+                    BGMController.Instance.TransitionBGM("WinResult");
+                    won = true;
+                }
+                else
+                {
+                    youLose.SetActive(true);
+                    BGMController.Instance.TransitionBGM("LoseResult");
+                }
+            }
+            else if (difference == 0)
+            {
+                Draw.SetActive(true);
+            }
         }
-        else if (difference < 0)
+        else
         {
-            BlackWins.SetActive(true);
+            if (difference > 0)
+            {
+                WhiteWins.SetActive(true);
+                WinEffect1.SetActive(true);
+                WinEffect2.SetActive(true);
+                BGMController.Instance.TransitionBGM("WinResult");
+            }
+            else if (difference < 0)
+            {
+                BlackWins.SetActive(true);
+                WinEffect1.SetActive(true);
+                WinEffect2.SetActive(true);
+                BGMController.Instance.TransitionBGM("WinResult");
+            }
+            else if (difference == 0)
+            {
+                Draw.SetActive(true);
+            }
         }
-        else if (difference == 0)
+        string[] difficultyNames = new string[] { "easy", "normal", "hard", "secret" };
+        int unlocked = PlayerPrefs.GetInt("Unlocked", 0);
+        if (won)
         {
-            Draw.SetActive(true);
+            if (DifficultySelectManager.difficulty == difficultyNames[unlocked])
+            {
+                if (unlocked + 1 < difficultyNames.Length)
+                {
+                    PlayerPrefs.SetInt("Unlocked", unlocked + 1);
+                    PlayerPrefs.Save();
+                }
+            }
         }
-        WinEffect1.SetActive(true);
-        WinEffect2.SetActive(true);
         OthelloManager.Instance.settingButtonInGame.interactable = false;
         OthelloManager.Instance.settingButtonInGame.GetComponent<EventTrigger>().enabled = false;
+        OthelloManager.Instance.exitButton.interactable = false;
+        OthelloManager.Instance.exitButton.GetComponent<EventTrigger>().enabled = false;
         await UniTask.WaitUntil(() => Input.GetMouseButtonDown(0));
         await SceneTransition.Instance.Transition("MainMenu");
     }

@@ -33,9 +33,11 @@ public class OthelloBoard : MonoBehaviour
     }
     // 指定座標が空かどうか
     public bool IsCellEmpty(int x, int y) => boardState[x, y] == null;
+    public bool IsValidPosition(int x, int y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
 
     // 指定座標のコマを取得
     public GameObject GetPiece(int x, int y) => boardState[x, y];
+    public GameObject GetBoardState() => boardState;
     public void ClearBoardState()
     {
         for (int x = 0; x < gridSize; x++)
@@ -46,9 +48,34 @@ public class OthelloBoard : MonoBehaviour
             }
         }
     }
+    public bool IsValidMove(GameObject[,] board, int x, int y, string currentTag)
+    {
+        // if (!othelloBoard.IsCellEmpty(x, y)) return false;
+        if (board[x, y] != null) return false;
 
-    // ひっくり返す処理の開始
-    // 同期で一括取得（変更なし）
+        foreach (var(dx, dy) in directions)
+        {
+            int checkX = x + dx;
+            int checkY = y + dy;
+            bool foundOpponent = false;
+            while (IsValidPosition(checkX, checkY))
+            {
+                GameObject piece = board[checkX, checkY];
+                if (piece == null) break;
+                if (piece.tag != currentTag)
+                {
+                    foundOpponent = true;
+                }
+                else
+                {
+                    return foundOpponent;
+                }
+                checkX += dx;
+                checkY += dy;
+            }
+        }
+        return false;
+    }
     private async UniTask CheckAndFlipPieces(int x, int y, string currentTag)
     {
         List<List<GameObject>> byDir = new List<List<GameObject>>();
@@ -109,7 +136,6 @@ public class OthelloBoard : MonoBehaviour
             }
             else
             {
-                // 自分のコマにたどり着いた場合
                 if (foundOpponent)
                 {
                     // 挟めている場合、これまで追加した駒を返す
@@ -130,7 +156,4 @@ public class OthelloBoard : MonoBehaviour
         // 盤面の外まで到達した場合も無効
         return new List<GameObject>();
     }
-
-    // 盤面の範囲内かどうかチェック
-    private bool IsValidPosition(int x, int y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
 }

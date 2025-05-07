@@ -7,7 +7,8 @@
 					<ChildrenList>
 						<Switch Name="MainMenu" ID="{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"/>
 						<Switch Name="OthelloBoard" ID="{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"/>
-						<Switch Name="Result" ID="{D308B017-FF4D-4768-AEA6-690635672069}"/>
+						<Switch Name="WinResult" ID="{A328B956-A47B-403B-A6BE-1EED29339683}"/>
+						<Switch Name="LoseResult" ID="{48EBD203-1AEA-4FB4-A43D-380AAFDD6B28}"/>
 					</ChildrenList>
 				</SwitchGroup>
 				<SwitchGroup Name="Board_BGM_2" ID="{BFF30BD1-78E7-4D96-BD75-053F1E1AFB27}">
@@ -107,7 +108,7 @@
 								</Point>
 								<Point>
 									<XPos>10</XPos>
-									<YPos>0</YPos>
+									<YPos>4</YPos>
 									<Flags>37</Flags>
 								</Point>
 							</PointList>
@@ -115,10 +116,38 @@
 					</SwitchOnRTPC>
 				</SwitchGroup>
 				<SwitchGroup Name="BGMSelect" ID="{B115EB3E-0867-4A0E-A1D9-4AC76F95EA4C}">
+					<PropertyList>
+						<Property Name="UseGameParameter" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Switch Name="BGM_1" ID="{7C4D72B4-FA1F-48A1-8A3D-60E7DF425C89}"/>
 						<Switch Name="BGM_2" ID="{732B87B8-C467-4A4C-9DDA-500237D8628B}"/>
 					</ChildrenList>
+					<SwitchOnRTPC>
+						<GameParameterRef Name="BGM_Num" ID="{9234DC31-C7C9-4666-8342-9CDC5133BBEA}"/>
+						<Curve Name="" ID="{03617FCD-A165-417C-AFA9-8D26F7AE0AAC}">
+							<PropertyList>
+								<Property Name="Flags" Type="int32" Value="65537"/>
+							</PropertyList>
+							<PointList>
+								<Point>
+									<XPos>0</XPos>
+									<YPos>1</YPos>
+									<Flags>5</Flags>
+								</Point>
+								<Point>
+									<XPos>0.5</XPos>
+									<YPos>2</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>1</XPos>
+									<YPos>2</YPos>
+									<Flags>37</Flags>
+								</Point>
+							</PointList>
+						</Curve>
+					</SwitchOnRTPC>
 				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>

@@ -1,3 +1,22 @@
+Switch Group	ID	Name			Wwise Object Path	Notes
+	381628141	BGMSelect			\Default Work Unit\BGMSelect	
+	405343424	Board_BGM_1			\Default Work Unit\Board_BGM_1	
+	405343427	Board_BGM_2			\Default Work Unit\Board_BGM_2	
+
+Switch	ID	Name	Switch Group			Notes
+	1264352073	BGM_1	BGMSelect			
+	1264352074	BGM_2	BGMSelect			
+	1189781959	BGM0	Board_BGM_1			
+	2861936041	BGM_P1	Board_BGM_1			
+	2861936042	BGM_P2	Board_BGM_1			
+	2861936043	BGM_P3	Board_BGM_1			
+	3080045116	BGM_M3	Board_BGM_1			
+	3080045117	BGM_M2	Board_BGM_1			
+	3080045118	BGM_M1	Board_BGM_1			
+	1264352073	BGM_1	Board_BGM_2			
+	1264352074	BGM_2	Board_BGM_2			
+	1264352075	BGM_3	Board_BGM_2			
+
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	341651998	BGM_Volume			\Default Work Unit\BGM_Volume	
 	3295475282	SE_Volume			\Default Work Unit\SE_Volume	

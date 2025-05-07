@@ -46,6 +46,9 @@ public class SettingManager : MonoBehaviour
     private void Start()
     {
         settingPanel.SetActive(false);
+        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 5);
+        bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume", 5);
+        seSlider.value = PlayerPrefs.GetFloat("SEVolume", 5);
     }
     public void OpenSettingPanel()
     {
@@ -70,6 +73,7 @@ public class SettingManager : MonoBehaviour
     {
         float masterVolume = value * 10f;
         masterVolumeRTPC.SetGlobalValue(masterVolume);
+        PlayerPrefs.SetFloat("MasterVolume", value);
         if (value == 0)
         {
             muteMaster.SetActive(true);
@@ -83,6 +87,7 @@ public class SettingManager : MonoBehaviour
     {
         float bgmVolume = value * 10f;
         bgmVolumeRTPC.SetGlobalValue(bgmVolume);
+        PlayerPrefs.SetFloat("BGMVolume", value);
         if (value == 0)
         {
             muteBGM.SetActive(true);
@@ -96,6 +101,7 @@ public class SettingManager : MonoBehaviour
     {
         float seVolume = value * 10f;
         seVolumeRTPC.SetGlobalValue(seVolume);
+        PlayerPrefs.SetFloat("SEVolume", value);
         if (value == 0)
         {
             muteSE.SetActive(true);

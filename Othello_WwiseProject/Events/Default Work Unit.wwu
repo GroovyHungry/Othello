@@ -127,6 +127,38 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="StopAllSE" ID="{02AC7FC8-BD9B-474C-8DAF-B7E814F21E9F}">
+					<ChildrenList>
+						<Action Name="" ID="{4C34F47E-3675-4C96-B59A-16B3D7718425}" ShortID="788851629">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+							<ChildrenList>
+								<EventActionException Name="" ID="{B962E1D8-E459-49EB-A216-D0F41A812FAC}">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM" ID="{527C6964-198A-4E3C-824D-7E0531E102F2}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+										</Reference>
+									</ReferenceList>
+								</EventActionException>
+							</ChildrenList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Noise" ID="{60A215D5-0F39-46E0-B8A1-1C26B317BFD3}">
+					<ChildrenList>
+						<Action Name="" ID="{0162A160-397F-486C-998C-D01179BCEDF7}" ShortID="871879895">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Noise_SE" ID="{2944775E-5CE9-44C9-A0EF-DD1B73848E32}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

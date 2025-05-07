@@ -11,6 +11,8 @@ public class MainMenuManager : MonoBehaviour
     public Button pvpButton;
     public Button cpuButton;
     public Button settingButton;
+    public Button musicChangerButton;
+    public Button quietGameButton;
     public Animator menuAnimator;
     public GameObject SettingPanel;
     private bool selected = false;
@@ -25,12 +27,27 @@ public class MainMenuManager : MonoBehaviour
         cpuButton.onClick.AddListener(OnCpuButtonClicked);
         pvpButton.onClick.AddListener(OnPvpButtonClicked);
         settingButton.onClick.AddListener(OnSettingButtonClicked);
+        musicChangerButton.onClick.AddListener(OnMusicChangerButtonClicked);
+        quietGameButton.onClick.AddListener(OnQuietGameButtonClicked);
     }
     private void OnDestroy()
     {
         pvpButton.onClick.RemoveListener(OnPvpButtonClicked);
         cpuButton.onClick.RemoveListener(OnCpuButtonClicked);
         settingButton.onClick.RemoveListener(OnSettingButtonClicked);
+        musicChangerButton.onClick.RemoveListener(OnMusicChangerButtonClicked);
+        quietGameButton.onClick.RemoveListener(OnQuietGameButtonClicked);
+    }
+    public async UniTask QuietGame()
+    {
+        await SceneTransition.Instance.PlayFadeOut(1.0f);
+        Debug.Log("Quiet Game");
+        Application.Quit();
+    }
+    private void OnQuietGameButtonClicked()
+    {
+        DoubleCheckManager.Instance.OpenDoubleCheckPanel();
+        AkSoundEngine.PostEvent("OnClick", quietGameButton.gameObject);
     }
     private async void OnPvpButtonClicked()
     {
@@ -70,6 +87,11 @@ public class MainMenuManager : MonoBehaviour
         SettingManager.Instance.OpenSettingPanel();
         settingButton.interactable = false;
         AkSoundEngine.PostEvent("OnClick", settingButton.gameObject);
+    }
+    private void OnMusicChangerButtonClicked()
+    {
+        AkSoundEngine.PostEvent("OnClick", musicChangerButton.gameObject);
+        MusicChanger.Instance.OpenMusicChangerPanel();
     }
     private async UniTask OnModeSelected(bool isCPU)
     {

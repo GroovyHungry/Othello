@@ -35,7 +35,7 @@ public class OthelloManager : MonoBehaviour
     public Sprite[] numSprites;
     public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
     public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設
-    private OthelloBoard board;
+    private OthelloBoard othelloBoard;
     private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
     public GameObject gameover;
     private int gameoverCounter;
@@ -48,17 +48,20 @@ public class OthelloManager : MonoBehaviour
     public List<GameObject> blackStocks = new List<GameObject>();
     public List<GameObject> whiteStocks = new List<GameObject>();
     public Button settingButtonInGame;
+    public Button exitButton;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         Application.targetFrameRate = 60;
-        board = GetComponent<OthelloBoard>();
+        othelloBoard = GetComponent<OthelloBoard>();
 
         settingButtonInGame.onClick.AddListener(OnSettingButtonClicked);
+        exitButton.onClick.AddListener(OnExitButtonClicked);
     }
     private void OnDestroy()
     {
+        exitButton.onClick.RemoveListener(OnExitButtonClicked);
         settingButtonInGame.onClick.RemoveListener(OnSettingButtonClicked);
     }
     private async UniTaskVoid Start()
@@ -69,6 +72,7 @@ public class OthelloManager : MonoBehaviour
     {
         if (isAIOpponent)
         {
+            await DifficultySelectManager.Instance.StartDifficultySelect();
             await CoinTossManager.Instance.StartCoinTossVsCPU();
             // ShowYouAndCPUUI();
         }
@@ -89,8 +93,19 @@ public class OthelloManager : MonoBehaviour
             await OthelloAI.Instance.PlayAITurn();
         }
     }
+    public async UniTask ExitToMainMenu()
+    {
+        await SceneTransition.Instance.Transition("MainMenu");
+    }
+    private void OnExitButtonClicked()
+    {
+        Waiting = true;
+        DoubleCheckManager.Instance.OpenDoubleCheckPanel();
+        AkSoundEngine.PostEvent("OnClick", exitButton.gameObject);
+    }
     private void OnSettingButtonClicked()
     {
+        Waiting = true;
         SettingManager.Instance.OpenSettingPanel();
         settingButtonInGame.interactable = false;
         AkSoundEngine.PostEvent("OnClick", settingButtonInGame.gameObject);
@@ -137,7 +152,7 @@ public class OthelloManager : MonoBehaviour
 
         ClearHighlightedCells();
 
-        await board.PlacePiece(x, y, piece, tag);
+        await othelloBoard.PlacePiece(x, y, piece, tag);
         await EndTurn();
     }
 
@@ -204,15 +219,13 @@ public class OthelloManager : MonoBehaviour
     {
         GameObject piece = Instantiate(prefab, new Vector3(x - 3.5f, y - 3.5f, 0), Quaternion.identity);
         piece.GetComponent<OthelloPiece>().InitState(x, y);
-        await board.PlacePiece(x, y, piece, piece.tag);
+        await othelloBoard.PlacePiece(x, y, piece, piece.tag);
     }
 
     // ターン情報
     public bool IsWhiteTurn() => isWhiteTurn;
     public bool IsAIWhite() => isAIWhite;
     public bool IsPlayerWhite() => !isAIWhite;
-
-    public OthelloBoard GetBoard() => board; // boardを取得する公開メソッド
 
     public async UniTask EndTurn()
     {
@@ -228,8 +241,6 @@ public class OthelloManager : MonoBehaviour
     }
     public void ConsumeStock(string tag)
     {
-        //int columns = 14;
-
         if (tag == "Black" && blackPlacedCount < blackStocks.Count)
         {
             GameObject stock = blackStocks[blackPlacedCount];
@@ -243,56 +254,33 @@ public class OthelloManager : MonoBehaviour
             whitePlacedCount++;
         }
     }
-    public bool IsValidMove(int x, int y, string currentTag)
-    {
-        if (!board.IsCellEmpty(x, y)) return false;
-
-        int[,] directions = {
-            { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 },
-            { 1, 1 }, { -1, -1 }, { 1, -1 }, { -1, 1 }
-        };
-
-        for (int i = 0; i < directions.GetLength(0); i++)
-        {
-            int dx = directions[i, 0];
-            int dy = directions[i, 1];
-
-            if (CanFlipDirection(x, y, dx, dy, currentTag))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     // 指定方向で挟めるかチェック
-    private bool CanFlipDirection(int x, int y, int dx, int dy, string currentTag)
-    {
-        int checkX = x + dx;
-        int checkY = y + dy;
-        bool foundOpponent = false;
+    // private bool CanFlipDirection(int x, int y, int dx, int dy, string currentTag)
+    // {
+    //     int checkX = x + dx;
+    //     int checkY = y + dy;
+    //     bool foundOpponent = false;
 
-        while (IsValidPosition(checkX, checkY))
-        {
-            GameObject checkPiece = board.GetPiece(checkX, checkY);
-            if (checkPiece == null) return false;
+    //     while (IsValidPosition(checkX, checkY))
+    //     {
+    //         GameObject checkPiece = othelloBoard.GetPiece(checkX, checkY);
+    //         if (checkPiece == null) return false;
 
-            if (checkPiece.tag != currentTag)
-            {
-                foundOpponent = true;
-            }
-            else
-            {
-                return foundOpponent;
-            }
-            checkX += dx;
-            checkY += dy;
-        }
-        return false;
-    }
+    //         if (checkPiece.tag != currentTag)
+    //         {
+    //             foundOpponent = true;
+    //         }
+    //         else
+    //         {
+    //             return foundOpponent;
+    //         }
+    //         checkX += dx;
+    //         checkY += dy;
+    //     }
+    //     return false;
+    // }
 
-    // 盤面の範囲チェック
-    private bool IsValidPosition(int x, int y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
 
     private async UniTask ShowSkipMessage(bool isWhite)
     {
@@ -313,13 +301,13 @@ public class OthelloManager : MonoBehaviour
         }
         Waiting = false;
     }
-    public void GetValidAndInvalidCells(out List<OthelloCell> validCells)
+    public void GetValidCells(out List<OthelloCell> validCells)
     {
         validCells = new List<OthelloCell>();
 
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
-            if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
+            if (othelloBoard.IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
             {
                 validCells.Add(cell);
             }
@@ -327,14 +315,15 @@ public class OthelloManager : MonoBehaviour
     }
     public async void HighlightValidMoves()
     {
-        GetValidAndInvalidCells(out List<OthelloCell> validCells);
+        GetValidCells(out List<OthelloCell> validCells);
 
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
 
         if (isWhiteFirst == isWhiteTurn)
         {
-            BGMController.Instance.ChangeBGM();
+            BGMController.Instance.ChangeBGM_1();
         }
+        BGMController.Instance.ChangeBGM_2();
 
         // ClearHighlightedCells();
 
@@ -361,7 +350,7 @@ public class OthelloManager : MonoBehaviour
     }
     private async UniTask CheckSkipOrGameOver()
     {
-        GetValidAndInvalidCells(out List<OthelloCell> validCells);
+        GetValidCells(out List<OthelloCell> validCells);
 
         if (validCells.Count == 0)
         {
@@ -370,14 +359,17 @@ public class OthelloManager : MonoBehaviour
             if (gameoverCounter == 1)
             {
                 isWhiteTurn = !isWhiteTurn;
+                GameObject[,] board = othelloBoard.GetBoardState();
                 bool nextHasMove = false;
 
-                foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
+                for (int x = 0; x < 8; x++)
                 {
-                    if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
+                    for (int y = 0; y < 8; y++)
                     {
-                        nextHasMove = true;
-                        break;
+                        if (othelloBoard.IsValidMove(board, x, y, isWhiteTurn ? "White" : "Black"))
+                        {
+                            nextHasMove = true;
+                        }
                     }
                 }
 
@@ -410,7 +402,7 @@ public class OthelloManager : MonoBehaviour
         {
             for (int y = 0; y < gridSize; y++)
             {
-                GameObject piece = board.GetPiece(x, y);
+                GameObject piece = othelloBoard.GetPiece(x, y);
                 if (piece != null)
                 {
                     if (piece.tag == "White") whiteCount++;
@@ -427,41 +419,6 @@ public class OthelloManager : MonoBehaviour
             return blackCount;
         }
     }
-
-    // 合法手のハイライト表示
-    // public void HighlightValidMoves()
-    // {
-    //     List<OthelloCell> validCells = new List<OthelloCell>();
-    //     List<OthelloCell> invalidCells = new List<OthelloCell>();
-
-    //     foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
-    //     {
-    //         if (IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
-    //         {
-    //             validCells.Add(cell);
-    //         }
-    //         else
-    //         {
-    //             invalidCells.Add(cell);
-    //         }
-    //     }
-
-    //     // 合法手 → 不透明
-    //     foreach (OthelloCell cell in validCells)
-    //     {
-    //         SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-    //         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
-    //     }
-
-    //     // 非合法手 → 透明
-    //     foreach (OthelloCell cell in invalidCells)
-    //     {
-    //         SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
-    //         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
-    //     }
-    // }
-
-    // ターンごとの状況管理（駒数カウント）
     private void Update()
     {
         if (!initializing && !Waiting)

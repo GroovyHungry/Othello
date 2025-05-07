@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{12E2B74C-09F5-3451-BDCA-763DF1FA384E}",
+    "Hash": "{FB347928-F44D-4D3C-7203-15CD59BA852B}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -102,6 +102,18 @@
       "GUID": "{76CD7197-266A-497C-B44B-03A45B4503D0}"
      },
      {
+      "Id": "1577714322",
+      "Name": "GameProgress",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\GameProgress",
+      "GUID": "{8609E99C-5878-4D28-B8C1-769D02E48B20}"
+     },
+     {
+      "Id": "1791183640",
+      "Name": "BGM_Num",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGM_Num",
+      "GUID": "{9234DC31-C7C9-4666-8342-9CDC5133BBEA}"
+     },
+     {
       "Id": "3295475282",
       "Name": "SE_Volume",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\SE_Volume",
@@ -116,16 +128,127 @@
     ],
     "SwitchGroups": [
      {
+      "Id": "381628141",
+      "Name": "BGMSelect",
+      "ObjectPath": "\\Switches\\Default Work Unit\\BGMSelect",
+      "GUID": "{B115EB3E-0867-4A0E-A1D9-4AC76F95EA4C}",
+      "GameParameterRef": {
+       "Id": "1791183640"
+      },
+      "Switches": [
+       {
+        "Id": "1264352073",
+        "Name": "BGM_1",
+        "ObjectPath": "\\Switches\\Default Work Unit\\BGMSelect\\BGM_1",
+        "GUID": "{7C4D72B4-FA1F-48A1-8A3D-60E7DF425C89}"
+       },
+       {
+        "Id": "1264352074",
+        "Name": "BGM_2",
+        "ObjectPath": "\\Switches\\Default Work Unit\\BGMSelect\\BGM_2",
+        "GUID": "{732B87B8-C467-4A4C-9DDA-500237D8628B}"
+       }
+      ]
+     },
+     {
+      "Id": "405343424",
+      "Name": "Board_BGM_1",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1",
+      "GUID": "{F995789A-FC7B-4337-9824-1ACC6C3E52FB}",
+      "GameParameterRef": {
+       "Id": "502851256"
+      },
+      "Switches": [
+       {
+        "Id": "1189781959",
+        "Name": "BGM0",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM0",
+        "GUID": "{BC74F3BD-DB5C-4BB2-B87C-2749A6937B6B}"
+       },
+       {
+        "Id": "2861936041",
+        "Name": "BGM_P1",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM_P1",
+        "GUID": "{B3E72A53-B79D-402F-9CD0-5A7247950B92}"
+       },
+       {
+        "Id": "2861936042",
+        "Name": "BGM_P2",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM_P2",
+        "GUID": "{A38384C2-1A10-4A39-810B-94308F807A16}"
+       },
+       {
+        "Id": "2861936043",
+        "Name": "BGM_P3",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM_P3",
+        "GUID": "{9BC7DE84-F3F0-48DB-8E9B-62E928261F74}"
+       },
+       {
+        "Id": "3080045116",
+        "Name": "BGM_M3",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM_M3",
+        "GUID": "{DF2A0866-CC32-4D16-A491-CEB32F746F34}"
+       },
+       {
+        "Id": "3080045117",
+        "Name": "BGM_M2",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM_M2",
+        "GUID": "{D643A3C3-A59D-4CC0-8F44-0A310F28D932}"
+       },
+       {
+        "Id": "3080045118",
+        "Name": "BGM_M1",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_1\\BGM_M1",
+        "GUID": "{03D63DE0-ED3F-4CF5-81B4-89102B8FDD04}"
+       }
+      ]
+     },
+     {
+      "Id": "405343427",
+      "Name": "Board_BGM_2",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_2",
+      "GUID": "{BFF30BD1-78E7-4D96-BD75-053F1E1AFB27}",
+      "GameParameterRef": {
+       "Id": "1577714322"
+      },
+      "Switches": [
+       {
+        "Id": "1264352073",
+        "Name": "BGM_1",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_2\\BGM_1",
+        "GUID": "{90B8E52A-B4AC-44D3-88DD-D356832EBD5E}"
+       },
+       {
+        "Id": "1264352074",
+        "Name": "BGM_2",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_2\\BGM_2",
+        "GUID": "{EB03CB75-AC0E-4E26-AF29-27795A8AF3B6}"
+       },
+       {
+        "Id": "1264352075",
+        "Name": "BGM_3",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Board_BGM_2\\BGM_3",
+        "GUID": "{2B6A7B46-94A0-4B9B-9C31-C6EA6303D81F}"
+       }
+      ]
+     },
+     {
       "Id": "1208296407",
       "Name": "SceneType",
       "ObjectPath": "\\Switches\\Default Work Unit\\SceneType",
       "GUID": "{0C81B78A-C1B5-4EA9-9138-5760C862EF72}",
       "Switches": [
        {
-        "Id": "936499202",
-        "Name": "Result",
-        "ObjectPath": "\\Switches\\Default Work Unit\\SceneType\\Result",
-        "GUID": "{D308B017-FF4D-4768-AEA6-690635672069}"
+        "Id": "1631034009",
+        "Name": "LoseResult",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SceneType\\LoseResult",
+        "GUID": "{48EBD203-1AEA-4FB4-A43D-380AAFDD6B28}"
+       },
+       {
+        "Id": "3330790010",
+        "Name": "WinResult",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SceneType\\WinResult",
+        "GUID": "{A328B956-A47B-403B-A6BE-1EED29339683}"
        },
        {
         "Id": "3417685148",
@@ -144,6 +267,6 @@
     ]
    }
   ],
-  "FileHash": "{1279921F-DF2B-820C-F9FE-EC5D22E7F4A5}"
+  "FileHash": "{27C9C500-9DD9-9E89-4BBC-7F14465ACF35}"
  }
 }

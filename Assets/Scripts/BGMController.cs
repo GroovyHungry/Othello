@@ -7,6 +7,7 @@ public class BGMController : MonoBehaviour
     public static BGMController Instance;
     public Bank othelloBank;
     public RTPC pieceDifferenceRTPC;
+    public RTPC gameProgressRTPC;
     [SerializeField] AK.Wwise.Event playBGMEvent;
     [SerializeField] AK.Wwise.Event stopBGMEvent;
     private void Awake()
@@ -40,12 +41,11 @@ public class BGMController : MonoBehaviour
     {
         stopBGMEvent.Post(gameObject);
     }
-    public void ChangeBGM()
+    public void ChangeBGM_1()
     {
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "OthelloBoard")
         {
-            Debug.Log("Changed BGM");
             int whiteCount = OthelloManager.Instance.CountPieces(true);
             int blackCount = OthelloManager.Instance.CountPieces(false);
             int diff = blackCount - whiteCount;
@@ -54,9 +54,20 @@ public class BGMController : MonoBehaviour
             pieceDifferenceRTPC.SetGlobalValue(clamped);
         }
     }
+    public void ChangeBGM_2()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "OthelloBoard")
+        {
+            int whiteCount = OthelloManager.Instance.CountPieces(true);
+            int blackCount = OthelloManager.Instance.CountPieces(false);
+            int progress = blackCount + whiteCount;
+
+            gameProgressRTPC.SetGlobalValue(progress);
+        }
+    }
     public void TransitionBGM(string trackName)
     {
         AkSoundEngine.SetSwitch("SceneType", trackName, gameObject);
     }
-
 }

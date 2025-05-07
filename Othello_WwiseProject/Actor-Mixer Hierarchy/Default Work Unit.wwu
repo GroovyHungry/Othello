@@ -142,7 +142,7 @@
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 								<Property Name="VolumeOffset" Type="Real64">
 									<ValueList>
-										<Value>-10.3</Value>
+										<Value>-16.1</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -257,7 +257,7 @@
 							<PropertyList>
 								<Property Name="VolumeOffset" Type="Real64">
 									<ValueList>
-										<Value>-11.8</Value>
+										<Value>-16.1</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -270,6 +270,37 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Skip" ID="{862A66A5-9AA6-41D3-8345-A6313D11F395}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Noise_SE" ID="{2944775E-5CE9-44C9-A0EF-DD1B73848E32}" ShortID="788852265">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="electrical_noise1" ID="{4C9F69F7-123F-48C2-BB75-CF836624B8CE}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.458995245560202"/>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-7.2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>electrical_noise1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="138961027"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="electrical_noise1" ID="{4C9F69F7-123F-48C2-BB75-CF836624B8CE}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

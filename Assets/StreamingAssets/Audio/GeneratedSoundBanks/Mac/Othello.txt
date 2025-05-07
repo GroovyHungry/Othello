@@ -1,42 +1,67 @@
 Event	ID	Name			Wwise Object Path	Notes
 	21544190	OnClick			\Default Work Unit\OnClick	
+	33408553	Noise			\Default Work Unit\Noise	
 	553056986	FlipPiece			\Default Work Unit\FlipPiece	
 	697318834	Slider			\Default Work Unit\Slider	
 	822292684	Skip			\Default Work Unit\Skip	
 	829756566	OnSelect			\Default Work Unit\OnSelect	
 	1073466678	Stop_BGM			\Default Work Unit\Stop_BGM	
+	1135116198	StopAllSE			\Default Work Unit\StopAllSE	
 	2663994183	PlayRotating			\Default Work Unit\PlayRotating	
 	3126765036	Play_BGM			\Default Work Unit\Play_BGM	
 	3631423584	PlacePiece			\Default Work Unit\PlacePiece	
 	3791290573	StopRotating			\Default Work Unit\StopRotating	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
+	381628141	BGMSelect			\Default Work Unit\BGMSelect	
+	405343424	Board_BGM_1			\Default Work Unit\Board_BGM_1	
+	405343427	Board_BGM_2			\Default Work Unit\Board_BGM_2	
 	1208296407	SceneType			\Default Work Unit\SceneType	
 
 Switch	ID	Name	Switch Group			Notes
-	936499202	Result	SceneType			
+	1264352073	BGM_1	BGMSelect			
+	1264352074	BGM_2	BGMSelect			
+	1189781959	BGM0	Board_BGM_1			
+	2861936041	BGM_P1	Board_BGM_1			
+	2861936042	BGM_P2	Board_BGM_1			
+	2861936043	BGM_P3	Board_BGM_1			
+	3080045116	BGM_M3	Board_BGM_1			
+	3080045117	BGM_M2	Board_BGM_1			
+	3080045118	BGM_M1	Board_BGM_1			
+	1264352073	BGM_1	Board_BGM_2			
+	1264352074	BGM_2	Board_BGM_2			
+	1264352075	BGM_3	Board_BGM_2			
+	1631034009	LoseResult	SceneType			
+	3330790010	WinResult	SceneType			
 	3417685148	OthelloBoard	SceneType			
 	3604647259	MainMenu	SceneType			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	502851256	PieceDifference			\Default Work Unit\PieceDifference	
+	1577714322	GameProgress			\Default Work Unit\GameProgress	
+	1791183640	BGM_Num			\Default Work Unit\BGM_Num	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	88970139	BGM_Menu	D:\Project\Othello_WwiseProject\.cache\3A\{3A75C06D-C71A-779B-7AEF-EA99F5848A5B}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Menu_BGM\Menu\BGM_Menu		924464
-	291090476	BGM_+2	D:\Project\Othello_WwiseProject\.cache\43\{4365A2E0-645B-6826-3BE8-245004D9D97F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_+2		1815456
-	409938069	Slideer_SE	D:\Project\Othello_WwiseProject\.cache\A3\{A389892E-C6D3-15DC-CF22-02668BD41430}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Slideer_SE		382668
-	450641745	BGM_-2	D:\Project\Othello_WwiseProject\.cache\17\{17A9BC2E-F25F-F195-86D2-EBD00B8E058B}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_-2		1815456
-	457644390	OnSelect_SE	D:\Project\Othello_WwiseProject\.cache\C9\{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnSelect_SE		18516
-	601547594	PlacePiece_SE	D:\Project\Othello_WwiseProject\.cache\3E\{3E908990-2D30-F477-4888-09919ADF7853}.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlacePiece_SE		47920
-	618809538	OnClick_SE	D:\Project\Othello_WwiseProject\.cache\37\{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnClick_SE		24416
-	620090141	FlipPiece_SE	D:\Project\Othello_WwiseProject\.cache\6E\{6EC8D726-F766-ACFD-A6E1-2FA22EC80B6B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\FlipPiece_SE		47920
-	687681039	Skip_SE	D:\Project\Othello_WwiseProject\.cache\2A\{2A541B2D-F915-D366-7716-2B905F519AD1}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skip_SE		96136
-	702275725	BGM_-1	D:\Project\Othello_WwiseProject\.cache\1A\{1AF9ABCA-8BCB-3DFE-AAE6-18CE68A3FD3D}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_-1		1815456
-	715166129	CoinTossResult	D:\Project\Othello_WwiseProject\.cache\7B\{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinTossResult		382668
-	741705269	BGM_Result	D:\Project\Othello_WwiseProject\.cache\C3\{C32B57FF-3CB2-A5A2-2456-D8E328F782D7}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Result_BGM\Result1\BGM_Result		4012988
-	785695177	BGM_Base	D:\Project\Othello_WwiseProject\.cache\16\{16C41AA6-A40A-A3B8-4C09-5217947BF17F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_Base		1815456
-	962452525	BGM_-3	D:\Project\Othello_WwiseProject\.cache\3A\{3ADEF430-2767-EA64-C178-5BB14062A35D}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_-3		1848832
-	1001621796	BGM_+1	D:\Project\Othello_WwiseProject\.cache\E8\{E816E7CF-297D-A27D-FED9-537AD6069BD4}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_+1		1815456
-	1013065261	BGM_+3	D:\Project\Othello_WwiseProject\.cache\2A\{2A246B54-9F00-FB3C-BEDC-59B32E5F20EF}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Board_BGM\Board\BGM_+3		1815456
-	1042109001	CoinRotating	D:\Project\Othello_WwiseProject\.cache\13\{13123F54-29FF-1FD7-CDE1-92646A0FF7C4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinRotating		382716
+	99613987	Dont Explain2	Y:\Othello\Othello_WwiseProject\.cache\8C\{8C7F2188-B592-3CB5-596E-191AA538C980}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_2\BGM_2\BGM_2_1\Dont Explain2		2827208
+	138961027	Noise_SE	Y:\Othello\Othello_WwiseProject\.cache\E0\{E093A88A-E617-3F24-730D-BC2729EB1C77}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Noise_SE		81064
+	154188979	Evolve 29-Audio	Y:\Othello\Othello_WwiseProject\.cache\4F\{4F1472F0-F283-BC07-95F6-33FACDC51550}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM-3Playlist\BGM-3\Evolve 29-Audio		924464
+	297202389	Evolve 23-Audio	Y:\Othello\Othello_WwiseProject\.cache\B8\{B83FEDC6-3E46-BE2F-2EB1-DA1179E5423F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM0Playlist\BGM0\Evolve 23-Audio		924464
+	409938069	Slideer_SE	Y:\Othello\Othello_WwiseProject\.cache\A3\{A389892E-C6D3-15DC-CF22-02668BD41430}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Slideer_SE		382668
+	457644390	OnSelect_SE	Y:\Othello\Othello_WwiseProject\.cache\C9\{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnSelect_SE		18516
+	513787895	Evolve 27-Audio	Y:\Othello\Othello_WwiseProject\.cache\6C\{6CE4C24A-A5C4-F548-DF13-856C6A51C930}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM-1Playlist\BGM-1\Evolve 27-Audio		924464
+	559021974	Dont Explain1	Y:\Othello\Othello_WwiseProject\.cache\38\{38012F4B-4B7A-3053-2E29-BDCA4EB90500}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_2\BGM_1\BGM_1\Dont Explain1		1413652
+	601547594	PlacePiece_SE	Y:\Othello\Othello_WwiseProject\.cache\3E\{3E908990-2D30-F477-4888-09919ADF7853}.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlacePiece_SE		47920
+	618809538	OnClick_SE	Y:\Othello\Othello_WwiseProject\.cache\37\{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnClick_SE		24416
+	620090141	FlipPiece_SE	Y:\Othello\Othello_WwiseProject\.cache\6E\{6EC8D726-F766-ACFD-A6E1-2FA22EC80B6B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\FlipPiece_SE		47920
+	622354903	Dont Explain3	Y:\Othello\Othello_WwiseProject\.cache\1A\{1AD88BFF-D3A7-FE03-BE4F-77D90BB1F474}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_2\BGM_3\BGM_3_2\Dont Explain3		2827208
+	687681039	Skip_SE	Y:\Othello\Othello_WwiseProject\.cache\2A\{2A541B2D-F915-D366-7716-2B905F519AD1}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Skip_SE		96136
+	715166129	CoinTossResult	Y:\Othello\Othello_WwiseProject\.cache\7B\{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinTossResult		382668
+	741705269	BGM_Result	Y:\Othello\Othello_WwiseProject\.cache\C3\{C32B57FF-3CB2-A5A2-2456-D8E328F782D7}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Win_BGM\Result1\BGM_Result		4012988
+	832380714	Evolve 24-Audio	Y:\Othello\Othello_WwiseProject\.cache\53\{53989180-0778-E62D-DDC5-9153C3163975}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM+1PlayList\BGM+1\Evolve 24-Audio		924464
+	856795343	Evolve 28-Audio	Y:\Othello\Othello_WwiseProject\.cache\86\{86B4E977-6509-B6C6-69EF-42CE8C6A6D8F}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM-2Playlist\BGM-2\Evolve 28-Audio		924464
+	881448273	MenuBGM	Y:\Othello\Othello_WwiseProject\.cache\E9\{E9F49B7C-130F-9B2F-02E8-6F1B19F12464}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Menu_BGM\MenuBGM1\MenuBGM		2116896
+	946067939	New Music Track	Y:\Othello\Othello_WwiseProject\.cache\55\{55F523C1-F68B-A916-FFE5-F78025B66D46}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\Lose_BGM\LoseBGM2\New Music Track		1830844
+	1027749499	Evolve 25-Audio	Y:\Othello\Othello_WwiseProject\.cache\B5\{B519F897-E903-A957-A8BB-0D2C47E058A0}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM+2Playlist\BGM+2\Evolve 25-Audio		924464
+	1042109001	CoinRotating	Y:\Othello\Othello_WwiseProject\.cache\13\{13123F54-29FF-1FD7-CDE1-92646A0FF7C4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\CoinRotating		382716
+	1046037997	Evolve 26-Audio	Y:\Othello\Othello_WwiseProject\.cache\67\{6741EF9A-385A-F8E2-54C6-5D9275D3BA38}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM+3Playlist\BGM+3\Evolve 26-Audio		924464
 

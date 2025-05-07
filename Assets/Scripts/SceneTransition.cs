@@ -2,19 +2,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 using System;
+using AK.Wwise;
 
 public class SceneTransition : MonoBehaviour
 {
     public static SceneTransition Instance;
     public GameObject EffectImage;
-    public Animator EffectAnimator; // ← FadeImageに付いたAnimatorをアタッチ
+    public Animator EffectAnimator;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // シーンを跨いでも残す
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -26,6 +27,7 @@ public class SceneTransition : MonoBehaviour
         float speed = 1.0f;
         BGMController.Instance.TransitionBGM(nextSceneName);
         await PlayFadeOut(speed);
+        AkSoundEngine.PostEvent("StopAllSE", gameObject);
         await SceneManager.LoadSceneAsync(nextSceneName);
         await PlayFadeIn(speed);
     }
