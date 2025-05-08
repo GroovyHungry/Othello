@@ -44,24 +44,6 @@ public class ResultManager : MonoBehaviour
         float speed = 2.0f;
         BGMController.Instance.StopBGM();
         await SceneTransition.Instance.PlayFadeOut(speed);
-        for (int i = 0; i < OthelloBoard.gridSize * OthelloBoard.gridSize; i++)
-        {
-            int x = i % OthelloBoard.gridSize;
-            int y = i / OthelloBoard.gridSize;
-            GameObject checkedPiece = OthelloBoard.Instance.GetPiece(x, y);
-            if (checkedPiece != null)
-            {
-                // float delay = Math.Max(0.05f, startDelay - acceleration * i);
-                // await checkedPiece.GetComponent<OthelloPiece>().Remove(delay);
-                // toDestroy.Add(checkedPiece);
-                Destroy(checkedPiece);
-            }
-        }
-        // await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
-        // foreach (GameObject piece in toDestroy)
-        // {
-        //     Destroy(piece);
-        // }
         OthelloBoard.Instance.ClearBoardState();
         BGMController.Instance.ChangeBGM_1();
         BGMController.Instance.ChangeBGM_2();

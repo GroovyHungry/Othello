@@ -65,7 +65,7 @@ public class OthelloCell : MonoBehaviour
         if (OthelloBoard.Instance.IsCellEmpty(x, y) && OthelloBoard.Instance.IsValidMove(x, y, currentTag))
         {
             Vector3 pos = transform.position;
-            _ = OthelloManager.Instance.PlacePieces(x, y, currentTag, pos);
+            _ = OthelloManager.Instance.PlacePiece(x, y, currentTag, pos);
         }
     }
 }

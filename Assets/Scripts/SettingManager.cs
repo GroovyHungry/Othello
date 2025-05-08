@@ -49,6 +49,10 @@ public class SettingManager : MonoBehaviour
         bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
         seSlider.onValueChanged.AddListener(OnSEVolumeChanged);
         SettingCloseButton.onClick.AddListener(CloseSetting);
+
+        masterVolumeRTPC.SetGlobalValue(masterSlider.value * 10f);
+        bgmVolumeRTPC.SetGlobalValue(bgmSlider.value * 10f);
+        seSlider.SetValueWithoutNotify(seSlider.value * 10f);
     }
     public void OpenSettingPanel()
     {

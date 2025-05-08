@@ -19,6 +19,8 @@ public class OthelloAI : MonoBehaviour
         { -20, 0, 0, 0, 0, 0, 0, -20 },
         { 100, -20, 10, 5, 5, 10, -20, 100 }
     };
+    const int normalWeightFlip = 10;
+    const int normalWeightPos = 1;
     private static readonly int[,] hardDifficultyTable = new int[8,8]
     {
         { 30, -12, 0, -1, -1,  0, -12, 30 },
@@ -30,9 +32,7 @@ public class OthelloAI : MonoBehaviour
         { -12, -15, -3, -3, -3, -3, -15, -12 },
         { 30, -12, 0, -1, -1, 0, -12, 30 }
     };
-    const int weightFlip = 10;
-    const int weightPos = 1;
-
+    const int hardWeightFlip = 2;
     private static readonly int[,] openingTable = new int[8,8]
     {
         { 30, -12, 0, -1, -1,  0, -12, 30 },
@@ -69,38 +69,28 @@ public class OthelloAI : MonoBehaviour
     {
         OthelloManager.isAIPlaying = true;
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.4f));
-        GameObject[,] board = OthelloBoard.Instance.GetBoardState();
+        string[,] board = OthelloBoard.Instance.GetBoardState();
         string aiTag = OthelloManager.Instance.IsAIWhite() ? "White" :"Black";
 
 
         List<Vector2Int> validMoves = GetValidMoves(board, aiTag);
-        Debug.Log("Valid Moves: " + validMoves.Count);
         if (validMoves.Count == 0)
         {
             OthelloManager.isAIPlaying = false;
             return;
         }
 
-        Vector2Int aiMove = Vector2Int.zero;
-        if (difficulty == "easy")
+        Vector2Int aiMove = difficulty switch
         {
-            aiMove = EasyAI(validMoves);
-        }
-        else if (difficulty == "normal")
-        {
-            aiMove = NormalAI(validMoves, aiTag);
-        }
-        else if (difficulty == "hard")
-        {
-            aiMove = HardAI(validMoves);
-        }
-        else if (difficulty == "secret")
-        {
-            aiMove = SecretAI(validMoves);
-        }
+            "easy" => EasyAI(validMoves),
+            "normal" => NormalAI(validMoves, aiTag),
+            "hard" => HardAI(validMoves),
+            "secret" => SecretAI(validMoves),
+            _ => EasyAI(validMoves)
+        };
 
         Vector3 pos = new Vector3(aiMove.x - 3.5f, aiMove.y - 3.5f, 0);
-        await OthelloManager.Instance.PlacePieces(aiMove.x, aiMove.y, aiTag, pos);
+        await OthelloManager.Instance.PlacePiece(aiMove.x, aiMove.y, aiTag, pos);
 
         OthelloManager.isAIPlaying = false;
     }
@@ -112,12 +102,13 @@ public class OthelloAI : MonoBehaviour
     {
         int maxScore = int.MinValue;
         Vector2Int bestMove = validMoves[0];
+        string[,] board = OthelloBoard.Instance.GetBoardState();
 
         foreach (var move in validMoves)
         {
-            int flipCountScore = CountFlippablePieces(move.x, move.y, aiTag);
+            int flipCountScore = CountFlippablePieces(move.x, move.y, aiTag, board);
             int positionScore = normalDifficultyTable[move.y, move.x];
-            int totalScore = flipCountScore * weightFlip + positionScore * weightPos;
+            int totalScore = flipCountScore * normalWeightFlip + positionScore * normalWeightPos;
 
             if (totalScore > maxScore)
             {
@@ -133,22 +124,34 @@ public class OthelloAI : MonoBehaviour
         string playerTag = aiTag == "White" ? "Black" : "White";
         int maxScore = int.MinValue;
         Vector2Int bestMove = validMoves[0];
-        GameObject[,] board = OthelloBoard.Instance.GetBoardState();
+        string[,] board = OthelloBoard.Instance.GetBoardState();
 
         foreach (var move in validMoves)
         {
-            var boardAfteraiMove = CloneBoardState(board);
-            SimulateMove(boardAfteraiMove, move.x, move.y, aiTag);
+            var boardAfterAIMove = CloneBoardState(board);
+            int flipCountScoreAI = CountFlippablePieces(move.x, move.y, aiTag, boardAfterAIMove);
+            SimulateMove(boardAfterAIMove, move.x, move.y, aiTag);
 
-            List<Vector2Int> playerMoves = GetValidMoves(boardAfteraiMove, playerTag);
-
+            List<Vector2Int> playerMoves = GetValidMoves(boardAfterAIMove, playerTag);
+            if (playerMoves.Count == 0)
+            {
+                int score = EvaluateBoard(boardAfterAIMove, aiTag) + flipCountScoreAI;
+                if (score > maxScore)
+                {
+                    maxScore = score;
+                    bestMove = move;
+                }
+                continue;
+            }
             int worstScore = int.MaxValue;
             foreach (var playerMove in playerMoves)
             {
-                GameObject[,] boardAfterPlayer = CloneBoardState(boardAfteraiMove);
+                string[,] boardAfterPlayer = CloneBoardState(boardAfterAIMove);
+                int flipCountScorePlayer = CountFlippablePieces(playerMove.x, playerMove.y, playerTag, boardAfterPlayer);
                 SimulateMove(boardAfterPlayer, playerMove.x, playerMove.y, playerTag);
 
-                int score = EvaluateBoard(boardAfterPlayer, aiTag);
+                int score = EvaluateBoard(boardAfterPlayer, aiTag) + (flipCountScoreAI - flipCountScorePlayer);
+                Debug.Log($"Move: {move}, Player Move: {playerMove}, Score: {score}");
                 if (score < worstScore)
                 {
                     worstScore = score;
@@ -160,13 +163,14 @@ public class OthelloAI : MonoBehaviour
                 bestMove = move;
             }
         }
+        Debug.Log($"Best Move: {bestMove}, Score: {maxScore}");
         return bestMove;
     }
     private Vector2Int SecretAI(List<Vector2Int> validMoves)
     {
         return validMoves[Random.Range(0, validMoves.Count)];
     }
-    public int CountFlippablePieces(int x, int y, string currentTag)
+    public int CountFlippablePieces(int x, int y, string currentTag, string[,] board)
     {
         int count = 0;
 
@@ -178,12 +182,12 @@ public class OthelloAI : MonoBehaviour
 
             while (OthelloBoard.Instance.IsValidPosition(checkX, checkY))
             {
-                GameObject piece = OthelloBoard.Instance.GetPiece(checkX, checkY);
-                if (piece == null)
+                string state = board[checkX, checkY];
+                if (state == null)
                 {
                     break;
                 }
-                else if (piece.tag != currentTag)
+                else if (state != currentTag)
                 {
                     tempCount++;
                 }
@@ -199,9 +203,9 @@ public class OthelloAI : MonoBehaviour
         }
         return count;
     }
-    private GameObject[,] CloneBoardState(GameObject[,] original)
+    private string[,] CloneBoardState(string[,] original)
     {
-        GameObject[,] clone = new GameObject[8, 8];
+        string[,] clone = new string[8, 8];
 
         for (int x = 0; x < 8; x++)
         {
@@ -212,29 +216,25 @@ public class OthelloAI : MonoBehaviour
         }
         return clone;
     }
-    private void SimulateMove(GameObject[,] board, int x, int y, string tag)
+    private void SimulateMove(string[,] board, int x, int y, string tag)
     {
-        GameObject fakePiece = new GameObject();
-        fakePiece.tag = tag;
-        board[x, y] = fakePiece;
+        board[x, y] = tag;
 
-        foreach (var dir in directions)
+        foreach (var (dx, dy) in directions)
         {
-            int dx = dir.dx;
-            int dy = dir.dy;
             int checkX = x + dx;
             int checkY = y + dy;
             List<Vector2Int> toFlip = new List<Vector2Int>();
 
             while (OthelloBoard.Instance.IsValidPosition(checkX, checkY))
             {
-                GameObject current = board[checkX, checkY];
+                string current = board[checkX, checkY];
 
                 if (current == null)
                 {
                     break;
                 }
-                else if (current.tag != tag)
+                else if (current != tag)
                 {
                     toFlip.Add(new Vector2Int(checkX, checkY));
                 }
@@ -242,7 +242,7 @@ public class OthelloAI : MonoBehaviour
                 {
                     foreach (var pos in toFlip)
                     {
-                        board[pos.x, pos.y].tag = tag;
+                        board[pos.x, pos.y] = tag;
                     }
                     break;
                 }
@@ -252,7 +252,7 @@ public class OthelloAI : MonoBehaviour
             }
         }
     }
-    private List<Vector2Int> GetValidMoves(GameObject[,] board, string tag)
+    private List<Vector2Int> GetValidMoves(string[,] board, string tag)
     {
         List<Vector2Int> validMoves = new List<Vector2Int>();
 
@@ -269,7 +269,7 @@ public class OthelloAI : MonoBehaviour
         }
         return validMoves;
     }
-    private int EvaluateBoard(GameObject[,] board, string aiTag)
+    private int EvaluateBoard(string[,] board, string aiTag)
     {
         int score = 0;
         string playerTag = aiTag == "White" ? "Black" : "White";
@@ -278,13 +278,13 @@ public class OthelloAI : MonoBehaviour
         {
             for (int y = 0; y < 8; y++)
             {
-                GameObject piece = board[x, y];
+                string piece = board[x, y];
                 if (piece == null) continue;
-                if (piece.tag == aiTag)
+                if (piece == aiTag)
                 {
                     score += hardDifficultyTable[x, y];
                 }
-                else if (piece.tag == playerTag)
+                else if (piece == playerTag)
                 {
                     score -= hardDifficultyTable[x, y];
                 }

@@ -95,6 +95,7 @@ public class OthelloManager : MonoBehaviour
     }
     public async UniTask ExitToMainMenu()
     {
+        othelloBoard.ClearBoardState();
         await SceneTransition.Instance.Transition("MainMenu");
     }
     private void OnExitButtonClicked()
@@ -142,17 +143,19 @@ public class OthelloManager : MonoBehaviour
         player1.SetActive(true);
         player2.SetActive(true);
     }
-    public async UniTask PlacePieces(int x, int y, string tag, Vector3 position)
+    public async UniTask PlacePiece(int x, int y, string tag, Vector3 position)
     {
+        Waiting = true;
         ConsumeStock(tag);
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
         GameObject piece = Instantiate(prefab, position, Quaternion.identity);
         piece.GetComponent<OthelloPiece>().InitState(x, y);
         piece.tag = tag;
-
+        AkSoundEngine.PostEvent("PlacePiece", piece);
         ClearHighlightedCells();
-
-        await othelloBoard.PlacePiece(x, y, piece, tag);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.15f));
+        await othelloBoard.ApplyMove(x, y, piece, tag);
+        Waiting = false;
         await EndTurn();
     }
 
@@ -219,7 +222,8 @@ public class OthelloManager : MonoBehaviour
     {
         GameObject piece = Instantiate(prefab, new Vector3(x - 3.5f, y - 3.5f, 0), Quaternion.identity);
         piece.GetComponent<OthelloPiece>().InitState(x, y);
-        await othelloBoard.PlacePiece(x, y, piece, piece.tag);
+        AkSoundEngine.PostEvent("PlacePiece", piece);
+        await othelloBoard.ApplyMove(x, y, piece, piece.tag);
     }
 
     // ターン情報
@@ -264,7 +268,7 @@ public class OthelloManager : MonoBehaviour
 
     //     while (IsValidPosition(checkX, checkY))
     //     {
-    //         GameObject checkPiece = othelloBoard.GetPiece(checkX, checkY);
+    //         GameObject checkPiece = othelloBoard.GetState(checkX, checkY);
     //         if (checkPiece == null) return false;
 
     //         if (checkPiece.tag != currentTag)
@@ -401,11 +405,11 @@ public class OthelloManager : MonoBehaviour
         {
             for (int y = 0; y < gridSize; y++)
             {
-                GameObject piece = othelloBoard.GetPiece(x, y);
+                string piece = othelloBoard.GetState(x, y);
                 if (piece != null)
                 {
-                    if (piece.tag == "White") whiteCount++;
-                    else if (piece.tag == "Black") blackCount++;
+                    if (piece == "White") whiteCount++;
+                    else if (piece == "Black") blackCount++;
                 }
             }
         }
