@@ -205,17 +205,13 @@ public class OthelloAI : MonoBehaviour
     }
     private string[,] CloneBoardState(string[,] original)
     {
-<<<<<<< HEAD
         string[,] clone = new string[8, 8];
-=======
-        var clone = new string[8, 8];
->>>>>>> 322acd8a1410616ecfe7167955303a443a51dac0
 
         for (int x = 0; x < 8; x++)
         {
             for (int y = 0; y < 8; y++)
             {
-                clone[x, y] = original[x, y] != null ? original[x, y].tag : null;
+                clone[x, y] = original[x, y];
             }
         }
         return clone;
@@ -228,7 +224,7 @@ public class OthelloAI : MonoBehaviour
         {
             int checkX = x + dx;
             int checkY = y + dy;
-            var toFlip = new List<int, int>();
+            List<Vector2Int> toFlip = new List<Vector2Int>();
 
             while (OthelloBoard.Instance.IsValidPosition(checkX, checkY))
             {
@@ -236,22 +232,17 @@ public class OthelloAI : MonoBehaviour
 
                 if (current == null)
                 {
-                    toFlip.Clear();
                     break;
                 }
                 else if (current != tag)
                 {
-                    toFlip.Add((checkX, checkY));
+                    toFlip.Add(new Vector2Int(checkX, checkY));
                 }
                 else
                 {
-                    foreach (var (cx, cy) in toFlip)
+                    foreach (var pos in toFlip)
                     {
-<<<<<<< HEAD
                         board[pos.x, pos.y] = tag;
-=======
-                        board[cx, cy] = tag;
->>>>>>> 322acd8a1410616ecfe7167955303a443a51dac0
                     }
                     break;
                 }
