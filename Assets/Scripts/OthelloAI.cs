@@ -201,48 +201,45 @@ public class OthelloAI : MonoBehaviour
     }
     private GameObject[,] CloneBoardState(GameObject[,] original)
     {
-        GameObject[,] clone = new GameObject[8, 8];
+        var clone = new string[8, 8];
 
         for (int x = 0; x < 8; x++)
         {
             for (int y = 0; y < 8; y++)
             {
-                clone[x, y] = original[x, y];
+                clone[x, y] = original[x, y] != null ? original[x, y].tag : null;
             }
         }
         return clone;
     }
     private void SimulateMove(GameObject[,] board, int x, int y, string tag)
     {
-        GameObject fakePiece = new GameObject();
-        fakePiece.tag = tag;
-        board[x, y] = fakePiece;
+        board[x, y] = tag;
 
-        foreach (var dir in directions)
+        foreach (var (dx, dy) in directions)
         {
-            int dx = dir.dx;
-            int dy = dir.dy;
             int checkX = x + dx;
             int checkY = y + dy;
-            List<Vector2Int> toFlip = new List<Vector2Int>();
+            var toFlip = new List<int, int>();
 
             while (OthelloBoard.Instance.IsValidPosition(checkX, checkY))
             {
-                GameObject current = board[checkX, checkY];
+                string current = board[checkX, checkY];
 
                 if (current == null)
                 {
+                    toFlip.Clear();
                     break;
                 }
-                else if (current.tag != tag)
+                else if (current != tag)
                 {
-                    toFlip.Add(new Vector2Int(checkX, checkY));
+                    toFlip.Add((checkX, checkY));
                 }
                 else
                 {
-                    foreach (var pos in toFlip)
+                    foreach (var (cx, cy) in toFlip)
                     {
-                        board[pos.x, pos.y].tag = tag;
+                        board[cx, cy] = tag;
                     }
                     break;
                 }
