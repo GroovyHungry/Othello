@@ -69,5 +69,7 @@ public class BGMController : MonoBehaviour
     public void TransitionBGM(string trackName)
     {
         AkSoundEngine.SetSwitch("SceneType", trackName, gameObject);
+        ChangeBGM_1();
+        ChangeBGM_2();
     }
 }

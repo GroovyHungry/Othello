@@ -52,7 +52,7 @@ public class SettingManager : MonoBehaviour
 
         masterVolumeRTPC.SetGlobalValue(masterSlider.value * 10f);
         bgmVolumeRTPC.SetGlobalValue(bgmSlider.value * 10f);
-        seSlider.SetValueWithoutNotify(seSlider.value * 10f);
+        seVolumeRTPC.SetGlobalValue(seSlider.value * 10f);
     }
     public void OpenSettingPanel()
     {

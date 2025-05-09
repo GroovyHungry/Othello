@@ -92,9 +92,13 @@ public class MainMenuManager : MonoBehaviour
             cpuButton.interactable = false;
             pvpButton.interactable = false;
             settingButton.interactable = false;
+            musicChangerButton.interactable = false;
+            quietGameButton.interactable = false;
             pvpButton.GetComponent<EventTrigger>().enabled = false;
             cpuButton.GetComponent<EventTrigger>().enabled = false;
             settingButton.GetComponent<EventTrigger>().enabled = false;
+            musicChangerButton.GetComponent<EventTrigger>().enabled = false;
+            quietGameButton.GetComponent<EventTrigger>().enabled = false;
             await OnModeSelected(false);
         }
     }
@@ -108,10 +112,13 @@ public class MainMenuManager : MonoBehaviour
             pvpButton.interactable = false;
             cpuButton.interactable = false;
             settingButton.interactable = false;
+            musicChangerButton.interactable = false;
+            quietGameButton.interactable = false;
             cpuButton.GetComponent<EventTrigger>().enabled = false;
             pvpButton.GetComponent<EventTrigger>().enabled = false;
             settingButton.GetComponent<EventTrigger>().enabled = false;
-            AkSoundEngine.PostEvent("OnClick", cpuButton.gameObject);
+            musicChangerButton.GetComponent<EventTrigger>().enabled = false;
+            quietGameButton.GetComponent<EventTrigger>().enabled = false;
             await OnModeSelected(true);
         }
     }

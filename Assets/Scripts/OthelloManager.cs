@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using System.Linq;
 using AK.Wwise;
+using Cysharp.Threading.Tasks.Triggers;
 
 public class OthelloManager : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class OthelloManager : MonoBehaviour
         {
             await DifficultySelectManager.Instance.StartDifficultySelect();
             await CoinTossManager.Instance.StartCoinTossVsCPU();
-            // ShowYouAndCPUUI();
+            ShowYouAndCPUUI();
         }
         else
         {
@@ -84,7 +85,7 @@ public class OthelloManager : MonoBehaviour
         }
         isWhiteFirst = isWhiteTurn;
 
-        GenerateStockPieces();
+        await GenerateStockPieces();
         await InitializeBoard();
         HighlightValidMoves();
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
@@ -96,6 +97,7 @@ public class OthelloManager : MonoBehaviour
     public async UniTask ExitToMainMenu()
     {
         othelloBoard.ClearBoardState();
+        ClearHighlightedCells();
         await SceneTransition.Instance.Transition("MainMenu");
     }
     private void OnExitButtonClicked()
@@ -146,7 +148,7 @@ public class OthelloManager : MonoBehaviour
     public async UniTask PlacePiece(int x, int y, string tag, Vector3 position)
     {
         Waiting = true;
-        ConsumeStock(tag);
+        await ConsumeStock(tag);
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
         GameObject piece = Instantiate(prefab, position, Quaternion.identity);
         piece.GetComponent<OthelloPiece>().InitState(x, y);
@@ -169,15 +171,16 @@ public class OthelloManager : MonoBehaviour
     }
 
     // 初期配置
-    private void GenerateStockPieces()
+    private async UniTask GenerateStockPieces()
     {
-        int columns = 14; // 1行の個数
-        int rows = 4;     // 行数
-        int total = columns * rows; // = 56個
+        Waiting = true;
+        int columns = 14;
+        int rows = 4;
+        int total = columns * rows;
 
         int spacingPxX = 2;
-        int spacingPxY = 12 + 2; // 14pxのスプライト + 2pxの間隔
-        float spacingX = spacingPxX / 16f; // PPU=16 → Unity単位に変換
+        int spacingPxY = 12 + 2;
+        float spacingX = spacingPxX / 16f;
         float spacingY = spacingPxY / 16f;
 
         Vector3 blackStartPos = blackStockParent.position;
@@ -197,15 +200,17 @@ public class OthelloManager : MonoBehaviour
             Vector3 whitePos = whiteStartPos + new Vector3(x * spacingX, -y * spacingY, 0);
             GameObject white = Instantiate(whiteStockPrefab, whitePos, Quaternion.identity, whiteStockParent);
             whiteStocks.Add(white);
+
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.0001f));
         }
+        Waiting = false;
     }
 
 
     private async UniTask InitializeBoard()
     {
         initializing = true;
-        float waitTime = 0.05f;
-
+        float waitTime = 0.1f;
         await PlaceInitialPiece(3, 4, blackPiecePrefab);
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
         await PlaceInitialPiece(3, 3, whitePiecePrefab);
@@ -243,17 +248,23 @@ public class OthelloManager : MonoBehaviour
             await OthelloAI.Instance.PlayAITurn();
         }
     }
-    public void ConsumeStock(string tag)
+    public async UniTask ConsumeStock(string tag)
     {
         if (tag == "Black" && blackPlacedCount < blackStocks.Count)
         {
             GameObject stock = blackStocks[blackPlacedCount];
+            var animator = stock.GetComponent<Animator>();
+            animator.SetTrigger("consume");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
             stock.SetActive(false);
             blackPlacedCount++;
         }
         else if (tag == "White" && whitePlacedCount < whiteStocks.Count)
         {
             GameObject stock = whiteStocks[whitePlacedCount];
+            var animator = stock.GetComponent<Animator>();
+            animator.SetTrigger("consume");
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
             stock.SetActive(false);
             whitePlacedCount++;
         }
