@@ -427,6 +427,8 @@ public class OthelloManager : MonoBehaviour
         if (!initializing && !Waiting)
         {
             UpdateScoreUI();
+            // Debug.Log("black"+CountPieces(false));
+            // Debug.Log("white"+CountPieces(true));
         }
         previousWaiting = Waiting;
     }

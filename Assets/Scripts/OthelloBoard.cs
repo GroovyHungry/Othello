@@ -84,7 +84,8 @@ public class OthelloBoard : MonoBehaviour
                 }
                 else
                 {
-                    return foundOpponent;
+                    if (foundOpponent) return true;
+                    break;
                 }
                 checkX += dx;
                 checkY += dy;

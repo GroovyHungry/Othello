@@ -36,7 +36,6 @@ public class MainMenuManager : MonoBehaviour
     }
     private void Update()
     {
-        // 入力間隔が空いたらリセット
         if (inputBuffer.Length > 0 && Time.time - lastCharTime > bufferTimeout)
         {
             inputBuffer = "";
@@ -49,7 +48,6 @@ public class MainMenuManager : MonoBehaviour
                 lastCharTime = Time.time;
                 inputBuffer += c;
 
-                // バッファが長すぎたら先頭を削る
                 if (inputBuffer.Length > unlockKeyword.Length)
                 {
                     inputBuffer = inputBuffer.Substring(inputBuffer.Length - unlockKeyword.Length);
