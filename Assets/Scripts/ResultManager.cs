@@ -51,8 +51,8 @@ public class ResultManager : MonoBehaviour
     }
     public async UniTask ShowResult()
     {
-        int whiteScore = OthelloManager.Instance.CountPieces(true);
-        int blackScore = OthelloManager.Instance.CountPieces(false);
+        int whiteScore = OthelloBoard.Instance.CountPieces(true);
+        int blackScore = OthelloBoard.Instance.CountPieces(false);
 
         int competitively = Math.Min(whiteScore, blackScore);
         int difference = whiteScore - blackScore;

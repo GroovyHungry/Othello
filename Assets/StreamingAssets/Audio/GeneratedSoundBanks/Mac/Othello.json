@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{B9C97E39-B22F-3654-6BC7-1BBD1FCE34DC}",
+    "Hash": "{ADF03249-854D-0029-D297-07949DFDAD35}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -54,6 +54,14 @@
       "Location": "Memory",
       "ShortName": "Scroll.wav",
       "CachePath": "A3/{A389892E-C6D3-15DC-CF22-02668BD41430}.wem"
+     },
+     {
+      "Id": "457575499",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Stock.wav",
+      "CachePath": "B7/{B7DEF0DD-9401-88F0-2800-CE7AABFD6252}.wem"
      },
      {
       "Id": "457644390",
@@ -711,6 +719,20 @@
       ]
      },
      {
+      "Id": "1401519777",
+      "Name": "Stock",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stock",
+      "GUID": "{EA2C025D-CE6E-4B1A-8EFC-4B4D9B2BAB5B}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.13555555",
+      "DurationMax": "0.13555555",
+      "MediaRefs": [
+       {
+        "Id": "457575499"
+       }
+      ]
+     },
+     {
       "Id": "1073466678",
       "Name": "Stop_BGM",
       "ObjectPath": "\\Events\\Default Work Unit\\Stop_BGM",
@@ -1107,6 +1129,6 @@
     ]
    }
   ],
-  "FileHash": "{EF926D84-F654-ABF5-FD20-222CD378C7F2}"
+  "FileHash": "{CAA5FFEB-3199-DD7F-3185-3A6D8A3D2342}"
  }
 }

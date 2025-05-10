@@ -21,18 +21,6 @@ public class OthelloAI : MonoBehaviour
     };
     const int normalWeightFlip = 10;
     const int normalWeightPos = 1;
-    private static readonly int[,] hardDifficultyTable = new int[8,8]
-    {
-        { 30, -12, 0, -1, -1,  0, -12, 30 },
-        { -12, -15, -3, -3, -3, -3, -15, -12 },
-        { 0, -3,  0, -1, -1,  0, -3,  0 },
-        { -1, -3, -1, -1, -1, -1, -3, -1 },
-        { -1, -3, -1, -1, -1, -1, -3, -1 },
-        { 0, -3,  0, -1, -1,  0, -3,  0 },
-        { -12, -15, -3, -3, -3, -3, -15, -12 },
-        { 30, -12, 0, -1, -1, 0, -12, 30 }
-    };
-    const int hardWeightFlip = 2;
     private static readonly int[,] openingTable = new int[8,8]
     {
         { 30, -12, 0, -1, -1,  0, -12, 30 },
@@ -57,6 +45,9 @@ public class OthelloAI : MonoBehaviour
         { 20, -3, 11, 8, 8, 11, -3, 20 }
     };
     private static readonly int[,] endgameTable = new int[8,8];
+    const int openingFlipWeight = 3;
+    const int midgameFlipWeight = 10;
+    const int endgameFlipWeight = 12;
     private static readonly (int dx,int dy)[] directions = {
     ( 1, 0),(-1, 0),( 0, 1),( 0,-1),
     ( 1, 1),(-1,-1),( 1,-1),(-1, 1),};
@@ -68,7 +59,7 @@ public class OthelloAI : MonoBehaviour
     public async UniTask PlayAITurn()
     {
         OthelloManager.isAIPlaying = true;
-        await UniTask.Delay(System.TimeSpan.FromSeconds(0.4f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
         string[,] board = OthelloBoard.Instance.GetBoardState();
         string aiTag = OthelloManager.Instance.IsAIWhite() ? "White" :"Black";
 
@@ -125,6 +116,10 @@ public class OthelloAI : MonoBehaviour
         int maxScore = int.MinValue;
         Vector2Int bestMove = validMoves[0];
         string[,] board = OthelloBoard.Instance.GetBoardState();
+        int turn = OthelloBoard.Instance.CountPieces(true) + OthelloBoard.Instance.CountPieces(false);
+
+        int[,] table = turn < 20 ? openingTable : turn < 50 ? midgameTable : endgameTable;
+        int flipWeight = turn < 20 ? openingFlipWeight : turn < 50 ? midgameFlipWeight : endgameFlipWeight;
 
         foreach (var move in validMoves)
         {
@@ -135,7 +130,7 @@ public class OthelloAI : MonoBehaviour
             List<Vector2Int> playerMoves = GetValidMoves(boardAfterAIMove, playerTag);
             if (playerMoves.Count == 0)
             {
-                int score = EvaluateBoard(boardAfterAIMove, aiTag) + flipCountScoreAI;
+                int score = EvaluateBoard(boardAfterAIMove, aiTag, table) + flipCountScoreAI * flipWeight;
                 if (score > maxScore)
                 {
                     maxScore = score;
@@ -150,7 +145,7 @@ public class OthelloAI : MonoBehaviour
                 int flipCountScorePlayer = CountFlippablePieces(playerMove.x, playerMove.y, playerTag, boardAfterPlayer);
                 SimulateMove(boardAfterPlayer, playerMove.x, playerMove.y, playerTag);
 
-                int score = EvaluateBoard(boardAfterPlayer, aiTag) + (flipCountScoreAI - flipCountScorePlayer);
+                int score = EvaluateBoard(boardAfterPlayer, aiTag, table) + (flipCountScoreAI - flipCountScorePlayer) * flipWeight;
                 Debug.Log($"Move: {move}, Player Move: {playerMove}, Score: {score}");
                 if (score < worstScore)
                 {
@@ -269,7 +264,7 @@ public class OthelloAI : MonoBehaviour
         }
         return validMoves;
     }
-    private int EvaluateBoard(string[,] board, string aiTag)
+    private int EvaluateBoard(string[,] board, string aiTag, int[,] table)
     {
         int score = 0;
         string playerTag = aiTag == "White" ? "Black" : "White";
@@ -282,11 +277,11 @@ public class OthelloAI : MonoBehaviour
                 if (piece == null) continue;
                 if (piece == aiTag)
                 {
-                    score += hardDifficultyTable[x, y];
+                    score += table[y, x];
                 }
                 else if (piece == playerTag)
                 {
-                    score -= hardDifficultyTable[x, y];
+                    score -= table[y, x];
                 }
             }
         }

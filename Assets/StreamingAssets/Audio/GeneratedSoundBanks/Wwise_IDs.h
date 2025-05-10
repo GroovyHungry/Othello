@@ -22,6 +22,7 @@ namespace AK
         static const AkUniqueID PLAYROTATING = 2663994183U;
         static const AkUniqueID SKIP = 822292684U;
         static const AkUniqueID SLIDER = 697318834U;
+        static const AkUniqueID STOCK = 1401519777U;
         static const AkUniqueID STOP_BGM = 1073466678U;
         static const AkUniqueID STOPALLSE = 1135116198U;
         static const AkUniqueID STOPROTATING = 3791290573U;

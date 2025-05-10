@@ -46,8 +46,8 @@ public class BGMController : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "OthelloBoard")
         {
-            int whiteCount = OthelloManager.Instance.CountPieces(true);
-            int blackCount = OthelloManager.Instance.CountPieces(false);
+            int whiteCount = OthelloBoard.Instance.CountPieces(true);
+            int blackCount = OthelloBoard.Instance.CountPieces(false);
             int diff = blackCount - whiteCount;
             float clamped = Mathf.Clamp(diff, -10, 10);
 
@@ -59,8 +59,8 @@ public class BGMController : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "OthelloBoard")
         {
-            int whiteCount = OthelloManager.Instance.CountPieces(true);
-            int blackCount = OthelloManager.Instance.CountPieces(false);
+            int whiteCount = OthelloBoard.Instance.CountPieces(true);
+            int blackCount = OthelloBoard.Instance.CountPieces(false);
             int progress = blackCount + whiteCount;
 
             gameProgressRTPC.SetGlobalValue(progress);

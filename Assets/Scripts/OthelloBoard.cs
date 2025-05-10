@@ -163,4 +163,29 @@ public class OthelloBoard : MonoBehaviour
         }
         return new List<Vector2Int>();
     }
+        public int CountPieces(bool isWhite)
+    {
+        int whiteCount = 0;
+        int blackCount = 0;
+        for (int x = 0; x < gridSize; x++)
+        {
+            for (int y = 0; y < gridSize; y++)
+            {
+                string piece = boardState[x, y];
+                if (piece != null)
+                {
+                    if (piece == "White") whiteCount++;
+                    else if (piece == "Black") blackCount++;
+                }
+            }
+        }
+        if (isWhite)
+        {
+            return whiteCount;
+        }
+        else
+        {
+            return blackCount;
+        }
+    }
 }

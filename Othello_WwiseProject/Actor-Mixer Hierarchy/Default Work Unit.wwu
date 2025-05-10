@@ -303,6 +303,35 @@
 						<ActiveSource Name="electrical_noise1" ID="{4C9F69F7-123F-48C2-BB75-CF836624B8CE}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Stock_SE" ID="{42D5F6CF-550A-4F32-858D-544159B6559E}" ShortID="273053113">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Stock" ID="{0A6A4122-C231-418F-8253-B21D3C58C1BC}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>-6.5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Stock.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="457575499"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Stock" ID="{0A6A4122-C231-418F-8253-B21D3C58C1BC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

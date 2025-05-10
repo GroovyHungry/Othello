@@ -115,8 +115,8 @@ public class OthelloManager : MonoBehaviour
     }
     public void UpdateScoreUI()
 	{
-		UpdateScore(CountPieces(true), whiteDigit1, whiteDigit2);
-		UpdateScore(CountPieces(false), blackDigit1, blackDigit2);
+		UpdateScore(othelloBoard.CountPieces(true), whiteDigit1, whiteDigit2);
+		UpdateScore(othelloBoard.CountPieces(false), blackDigit1, blackDigit2);
 	}
 
 	void UpdateScore(int score, Image digit1, Image digit2)
@@ -148,13 +148,13 @@ public class OthelloManager : MonoBehaviour
     public async UniTask PlacePiece(int x, int y, string tag, Vector3 position)
     {
         Waiting = true;
+        ClearHighlightedCells();
         await ConsumeStock(tag);
         GameObject prefab = (tag == "White") ? whitePiecePrefab : blackPiecePrefab;
         GameObject piece = Instantiate(prefab, position, Quaternion.identity);
         piece.GetComponent<OthelloPiece>().InitState(x, y);
         piece.tag = tag;
         AkSoundEngine.PostEvent("PlacePiece", piece);
-        ClearHighlightedCells();
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.15f));
         await othelloBoard.ApplyMove(x, y, piece, tag);
         Waiting = false;
@@ -200,6 +200,8 @@ public class OthelloManager : MonoBehaviour
             Vector3 whitePos = whiteStartPos + new Vector3(x * spacingX, -y * spacingY, 0);
             GameObject white = Instantiate(whiteStockPrefab, whitePos, Quaternion.identity, whiteStockParent);
             whiteStocks.Add(white);
+
+            AkSoundEngine.PostEvent("Stock", white);
 
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.0001f));
         }
@@ -406,31 +408,6 @@ public class OthelloManager : MonoBehaviour
         else
         {
             gameoverCounter = 0;
-        }
-    }
-    public int CountPieces(bool isWhite)
-    {
-        int whiteCount = 0;
-        int blackCount = 0;
-        for (int x = 0; x < gridSize; x++)
-        {
-            for (int y = 0; y < gridSize; y++)
-            {
-                string piece = othelloBoard.GetState(x, y);
-                if (piece != null)
-                {
-                    if (piece == "White") whiteCount++;
-                    else if (piece == "Black") blackCount++;
-                }
-            }
-        }
-        if (isWhite)
-        {
-            return whiteCount;
-        }
-        else
-        {
-            return blackCount;
         }
     }
     private void Update()

@@ -159,6 +159,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Stock" ID="{EA2C025D-CE6E-4B1A-8EFC-4B4D9B2BAB5B}">
+					<ChildrenList>
+						<Action Name="" ID="{7288C25A-138F-44C3-8E05-77B18C4DE11F}" ShortID="234933054">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Stock_SE" ID="{42D5F6CF-550A-4F32-858D-544159B6559E}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
