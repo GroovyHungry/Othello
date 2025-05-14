@@ -5148,7 +5148,6 @@ MonoBehaviour:
   CoinToss: {fileID: 707575989}
   whiteButton: {fileID: 428881919}
   blackButton: {fileID: 1244635543}
-  coinTossGroup: {fileID: 1245222998}
   UI: {fileID: 956325647}
   playLoopEvent:
     idInternal: 0
@@ -5187,9 +5186,9 @@ MonoBehaviour:
   normalButton: {fileID: 1638058720}
   hardButton: {fileID: 366687901}
   errorButton: {fileID: 2108231707}
-  DifficultySelectPanel: {fileID: 1306866985}
-  NormalBoard: {fileID: 1688410755}
-  BrokenBoard: {fileID: 998939747}
+  difficultySelectPanel: {fileID: 1306866985}
+  normalBoard: {fileID: 1688410755}
+  brokenBoard: {fileID: 998939747}
 --- !u!114 &1957474895
 MonoBehaviour:
   m_ObjectHideFlags: 0

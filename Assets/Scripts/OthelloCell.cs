@@ -21,19 +21,39 @@ public class OthelloCell : MonoBehaviour
         if (IsMouseOver())
         {
             string currentTag = OthelloManager.Instance.IsWhiteTurn() ? "White" : "Black";
-            if (OthelloBoard.Instance.IsCellEmpty(x, y) && OthelloBoard.Instance.IsValidMove(x, y, currentTag))
+            if (DifficultySelect.difficulty == "secret")
             {
-                if (!isHovering)
+                if (OthelloBoard.Instance.IsCellEmpty(x, y))
                 {
-                    hoverFrame.enabled = true;
-                    AkSoundEngine.PostEvent("OnSelect", gameObject);
-                    isHovering = true;
+                    if (!isHovering)
+                    {
+                        hoverFrame.enabled = true;
+                        AkSoundEngine.PostEvent("OnSelect", gameObject);
+                        isHovering = true;
+                    }
+                }
+                else
+                {
+                    hoverFrame.enabled = false;
+                    isHovering = false;
                 }
             }
             else
             {
-                hoverFrame.enabled = false;
-                isHovering = false;
+                if (OthelloBoard.Instance.IsCellEmpty(x, y) && OthelloBoard.Instance.IsValidMove(x, y, currentTag))
+                {
+                    if (!isHovering)
+                    {
+                        hoverFrame.enabled = true;
+                        AkSoundEngine.PostEvent("OnSelect", gameObject);
+                        isHovering = true;
+                    }
+                }
+                else
+                {
+                    hoverFrame.enabled = false;
+                    isHovering = false;
+                }
             }
         }
         else
@@ -42,7 +62,6 @@ public class OthelloCell : MonoBehaviour
             isHovering = false;
         }
     }
-
     private bool IsMouseOver()
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -66,6 +85,13 @@ public class OthelloCell : MonoBehaviour
         {
             Vector3 pos = transform.position;
             _ = OthelloManager.Instance.PlacePiece(x, y, currentTag, pos);
+        }
+        else
+        {
+            if (OthelloBoard.Instance.IsCellEmpty(x, y) && DifficultySelect.difficulty == "secret")
+            {
+                AkSoundEngine.PostEvent("InvalidMove", gameObject);
+            }
         }
     }
 }

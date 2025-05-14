@@ -170,6 +170,48 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="InvalidMove" ID="{D0BC85A8-C46E-496C-80B4-9A8796F3B8D8}">
+					<ChildrenList>
+						<Action Name="" ID="{F0CECC55-05DB-474A-A69F-5F2F403607D8}" ShortID="531618565">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Invalid_Move_SE" ID="{F325D958-706B-4287-ADF9-D9E1A025D08A}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SetLPF" ID="{ECA3FCBA-434D-45B7-9FA7-27AFF3DA7B4C}">
+					<ChildrenList>
+						<Action Name="" ID="{5C69A124-83CD-46EF-92F4-AE311BD929BE}" ShortID="1037445612">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="43"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+								</Reference>
+								<Reference Name="TargetEffect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="Dual_Filters_Narrow_Bandwidth" ID="{A24607C6-04E1-4D41-B513-28C0914D138D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ResetLPF" ID="{E4E26596-921E-4BBC-831F-FA82B52125D0}">
+					<ChildrenList>
+						<Action Name="" ID="{44A5086E-417D-4F80-9680-1AA306828A9F}" ShortID="42014797">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="44"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

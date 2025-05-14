@@ -874,7 +874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 366128775}
   m_Layer: 0
-  m_Name: DoubleCheckBPanel
+  m_Name: DoubleCheckPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1951,7 +1951,7 @@ GameObject:
   - component: {fileID: 877274869}
   - component: {fileID: 877274868}
   m_Layer: 0
-  m_Name: MusicChanger
+  m_Name: BGMController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3632,7 +3632,7 @@ GameObject:
   - component: {fileID: 1806245037}
   - component: {fileID: 1806245038}
   m_Layer: 5
-  m_Name: MusicChanger
+  m_Name: BGMController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3674,14 +3674,14 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 2fa920c666c52405dbe085ea04ed3ad0, type: 2}
-  musicChangerPanel: {fileID: 877274866}
+  bgmControllerPanel: {fileID: 877274866}
   selectRightButton: {fileID: 320687754}
   selectLeftButton: {fileID: 878029862}
   NumBox: {fileID: 1903670648}
   numSprites:
   - {fileID: 3805357572249819145, guid: 08dc7de034480441fbc6409d03b0eacd, type: 3}
   - {fileID: 3805357572249819145, guid: 3aa5467973ee74e4c9460e1b3ca5fc5d, type: 3}
-  musicChangerCloseButton: {fileID: 1190458906}
+  bgmControllerCloseButton: {fileID: 1190458906}
   maxBGMNum: 1
   minBGMNum: 0
   BGMNumRTPC:

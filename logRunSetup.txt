@@ -2750,7 +2750,7 @@ Assets\Scripts\CoinTossManager.cs(19,34): warning CS0618: 'AkSoundEngine' is obs
 
 Assets\Scripts\TitleSoundPlayer.cs(9,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 
-Assets\Scripts\BGMController.cs(28,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
+Assets\Scripts\AudioManager.cs(28,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 
 Assets\Scripts\TitleSoundPlayer.cs(13,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 
@@ -2758,7 +2758,7 @@ Assets\Scripts\OthelloCell.cs(27,13): warning CS0618: 'AkSoundEngine' is obsolet
 
 Assets\Scripts\SettingManager.cs(36,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 
-Assets\Scripts\BGMController.cs(59,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
+Assets\Scripts\AudioManager.cs(59,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 
 Assets\Scripts\MainMenuManager.cs(27,13): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 
@@ -2796,11 +2796,11 @@ Assets\Wwise\MonoBehaviour\Runtime\AkAmbient.cs(122,19): warning CS0109: The mem
 Assets\Others\PixelationRenderFeature.cs(24,24): warning CS0672: Member 'PixelationRenderFeature.PixelationPass.Execute(ScriptableRenderContext, ref RenderingData)' overrides obsolete member 'ScriptableRenderPass.Execute(ScriptableRenderContext, ref RenderingData)'. Add the Obsolete attribute to 'PixelationRenderFeature.PixelationPass.Execute(ScriptableRenderContext, ref RenderingData)'.
 Assets\Scripts\CoinTossManager.cs(19,34): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\TitleSoundPlayer.cs(9,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
-Assets\Scripts\BGMController.cs(28,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
+Assets\Scripts\AudioManager.cs(28,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\TitleSoundPlayer.cs(13,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\OthelloCell.cs(27,13): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\SettingManager.cs(36,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
-Assets\Scripts\BGMController.cs(59,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
+Assets\Scripts\AudioManager.cs(59,9): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\MainMenuManager.cs(27,13): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\MainMenuManager.cs(33,13): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'
 Assets\Scripts\MainMenuManager.cs(39,13): warning CS0618: 'AkSoundEngine' is obsolete: 'This functionality is deprecated as of Wwise v2024.1.0 and will be removed in a future release.'

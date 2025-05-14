@@ -1,13 +1,16 @@
 Event	ID	Name			Wwise Object Path	Notes
 	21544190	OnClick			\Default Work Unit\OnClick	
 	33408553	Noise			\Default Work Unit\Noise	
+	295458119	SetLPF			\Default Work Unit\SetLPF	
 	553056986	FlipPiece			\Default Work Unit\FlipPiece	
 	697318834	Slider			\Default Work Unit\Slider	
 	822292684	Skip			\Default Work Unit\Skip	
 	829756566	OnSelect			\Default Work Unit\OnSelect	
 	1073466678	Stop_BGM			\Default Work Unit\Stop_BGM	
+	1119405073	InvalidMove			\Default Work Unit\InvalidMove	
 	1135116198	StopAllSE			\Default Work Unit\StopAllSE	
 	1401519777	Stock			\Default Work Unit\Stock	
+	2009384228	ResetLPF			\Default Work Unit\ResetLPF	
 	2663994183	PlayRotating			\Default Work Unit\PlayRotating	
 	3126765036	Play_BGM			\Default Work Unit\Play_BGM	
 	3631423584	PlacePiece			\Default Work Unit\PlacePiece	
@@ -42,6 +45,9 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	1577714322	GameProgress			\Default Work Unit\GameProgress	
 	1791183640	BGM_Num			\Default Work Unit\BGM_Num	
 
+Effect plug-ins	ID	Name	Type				Notes
+	4239446561	Dual_Filters_Narrow_Bandwidth	Wwise Parametric EQ			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	99613987	Dont Explain2	Y:\Othello\Othello_WwiseProject\.cache\8C\{8C7F2188-B592-3CB5-596E-191AA538C980}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_2\BGM_2\BGM_2_1\Dont Explain2		2827208
 	138961027	Noise_SE	Y:\Othello\Othello_WwiseProject\.cache\93\{930B2489-875E-68F0-4553-5E966DD2C194}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Noise_SE		81064
@@ -52,6 +58,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	457644390	OnSelect_SE	Y:\Othello\Othello_WwiseProject\.cache\C9\{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnSelect_SE		18516
 	513787895	Evolve 27-Audio	Y:\Othello\Othello_WwiseProject\.cache\6C\{6CE4C24A-A5C4-F548-DF13-856C6A51C930}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM-1Playlist\BGM-1\Evolve 27-Audio		924464
 	559021974	Dont Explain1	Y:\Othello\Othello_WwiseProject\.cache\38\{38012F4B-4B7A-3053-2E29-BDCA4EB90500}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_2\BGM_1\BGM_1\Dont Explain1		1413652
+	585915434	Invalid_Move_SE	Y:\Othello\Othello_WwiseProject\.cache\AE\{AEE13232-9158-94C9-C9B5-C0EC7AB8F98B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Invalid_Move_SE		24008
 	601547594	PlacePiece_SE	Y:\Othello\Othello_WwiseProject\.cache\3E\{3E908990-2D30-F477-4888-09919ADF7853}.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlacePiece_SE		47920
 	618809538	OnClick_SE	Y:\Othello\Othello_WwiseProject\.cache\37\{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnClick_SE		24416
 	620090141	FlipPiece_SE	Y:\Othello\Othello_WwiseProject\.cache\6E\{6EC8D726-F766-ACFD-A6E1-2FA22EC80B6B}.wem		\Actor-Mixer Hierarchy\Default Work Unit\FlipPiece_SE		47920

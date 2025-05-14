@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 191d1d3929e99b409424a705a8072ed1
     GuidInternal: 
-    m_lastTime: -8584559382718578334
+    m_lastTime: -8584543877914860340
     List:
     - name: BGM
       guid: 64697c528a193c4e824d7e0531e102f2
@@ -120,7 +120,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 318368646c669d44a61a6d4265fe2c53
     GuidInternal: 
-    m_lastTime: -8584552221035681247
+    m_lastTime: -8584543876176150817
     List:
     - name: Othello
       guid: 6c340724af6bbe4495ac59006ec6f9cc
@@ -148,7 +148,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: e557fd1a95cbe04397f30cc6f1ce7680
     GuidInternal: 
-    m_lastTime: -8584552221037872813
+    m_lastTime: -8584543865607498696
     List:
     - name: FlipPiece
       guid: 2aae1146d0ba534ca77d6a0833448620
@@ -167,6 +167,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.2711111
       minDuration: 0.2711111
+    - name: InvalidMove
+      guid: a885bcd06ec46c4980b49a8796f3b8d8
+      id: 1119405073
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: InvalidMove
+        ObjectType: 3
+        guid: a885bcd06ec46c4980b49a8796f3b8d8
+      Path: Events/Default Work Unit/InvalidMove
+      maxAttenuation: 0
+      maxDuration: 0.13555555
+      minDuration: 0.13555555
     - name: Noise
       guid: d515a260390fe046b8a11c26b317bfd3
       id: 33408553
@@ -269,6 +286,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: ResetLPF
+      guid: 9665e2e41e92bc4b831ffa82b52125d0
+      id: 2009384228
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: ResetLPF
+        ObjectType: 3
+        guid: 9665e2e41e92bc4b831ffa82b52125d0
+      Path: Events/Default Work Unit/ResetLPF
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: SetLPF
+      guid: bafca3ec4d43b7459fa727aff3da7b4c
+      id: 295458119
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: SetLPF
+        ObjectType: 3
+        guid: bafca3ec4d43b7459fa727aff3da7b4c
+      Path: Events/Default Work Unit/SetLPF
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Skip
       guid: 773deb195f2fbc40834cf01e977307c4
       id: 822292684
@@ -303,6 +354,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.1687756
       minDuration: 2.1687756
+    - name: Stock
+      guid: 5d022cea6ece1a4b8efc4b4d9b2bab5b
+      id: 1401519777
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: Stock
+        ObjectType: 3
+        guid: 5d022cea6ece1a4b8efc4b4d9b2bab5b
+      Path: Events/Default Work Unit/Stock
+      maxAttenuation: 0
+      maxDuration: 0.13555555
+      minDuration: 0.13555555
     - name: Stop_BGM
       guid: 372f76f57cf78c4d98b9bf1edaa0a5c0
       id: 1073466678

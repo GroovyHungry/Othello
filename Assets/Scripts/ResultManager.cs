@@ -42,11 +42,11 @@ public class ResultManager : MonoBehaviour
         // float startDelay = 0.2f;
         // float acceleration = 0.01f;
         float speed = 2.0f;
-        BGMController.Instance.StopBGM();
+        AudioManager.Instance.StopBGM();
         await SceneTransition.Instance.PlayFadeOut(speed);
         OthelloBoard.Instance.ClearBoardState();
-        BGMController.Instance.ChangeBGM_1();
-        BGMController.Instance.ChangeBGM_2();
+        AudioManager.Instance.ChangeBGM_1();
+        AudioManager.Instance.ChangeBGM_2();
         await SceneTransition.Instance.PlayFadeIn(speed);
     }
     public async UniTask ShowResult()
@@ -105,7 +105,7 @@ public class ResultManager : MonoBehaviour
         }
 
         await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
-        BGMController.Instance.PlayBGM();
+        AudioManager.Instance.PlayBGM();
 
         bool won = false;
         if (OthelloManager.isAIOpponent)
@@ -115,14 +115,14 @@ public class ResultManager : MonoBehaviour
                 if (OthelloManager.Instance.isAIWhite)
                 {
                     youLose.SetActive(true);
-                    BGMController.Instance.TransitionBGM("LoseResult");
+                    AudioManager.Instance.TransitionBGM("LoseResult");
                 }
                 else
                 {
                     youWin.SetActive(true);
                     WinEffect1.SetActive(true);
                     WinEffect2.SetActive(true);
-                    BGMController.Instance.TransitionBGM("WinResult");
+                    AudioManager.Instance.TransitionBGM("WinResult");
                     won = true;
                 }
             }
@@ -133,13 +133,13 @@ public class ResultManager : MonoBehaviour
                     youWin.SetActive(true);
                     WinEffect1.SetActive(true);
                     WinEffect2.SetActive(true);
-                    BGMController.Instance.TransitionBGM("WinResult");
+                    AudioManager.Instance.TransitionBGM("WinResult");
                     won = true;
                 }
                 else
                 {
                     youLose.SetActive(true);
-                    BGMController.Instance.TransitionBGM("LoseResult");
+                    AudioManager.Instance.TransitionBGM("LoseResult");
                 }
             }
             else if (difference == 0)
@@ -154,14 +154,14 @@ public class ResultManager : MonoBehaviour
                 WhiteWins.SetActive(true);
                 WinEffect1.SetActive(true);
                 WinEffect2.SetActive(true);
-                BGMController.Instance.TransitionBGM("WinResult");
+                AudioManager.Instance.TransitionBGM("WinResult");
             }
             else if (difference < 0)
             {
                 BlackWins.SetActive(true);
                 WinEffect1.SetActive(true);
                 WinEffect2.SetActive(true);
-                BGMController.Instance.TransitionBGM("WinResult");
+                AudioManager.Instance.TransitionBGM("WinResult");
             }
             else if (difference == 0)
             {
@@ -172,7 +172,7 @@ public class ResultManager : MonoBehaviour
         int unlocked = PlayerPrefs.GetInt("Unlocked", 0);
         if (won)
         {
-            if (DifficultySelectManager.difficulty == difficultyNames[unlocked])
+            if (DifficultySelect.difficulty == difficultyNames[unlocked])
             {
                 if (unlocked + 1 < difficultyNames.Length)
                 {

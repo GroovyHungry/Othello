@@ -1,75 +1,175 @@
 using UnityEngine;
-using System.Linq;
+using UnityEngine.UI;
 using AK.Wwise;
-using UnityEngine.SceneManagement;
+
+/// <summary>
+/// BGM選曲パネルの表示・操作と選択されたBGM番号に応じたRTPC値の更新を管理するクラス
+/// </summary>
 public class BGMController : MonoBehaviour
 {
+    /// <summary>
+    /// グローバルアクセス用インスタンス
+    /// </summary>
     public static BGMController Instance;
+
+    /// <summary>
+    /// Wwiseサウンドバンク
+    /// </summary>
     public Bank othelloBank;
-    public RTPC pieceDifferenceRTPC;
-    public RTPC gameProgressRTPC;
-    [SerializeField] AK.Wwise.Event playBGMEvent;
-    [SerializeField] AK.Wwise.Event stopBGMEvent;
+
+    /// <summary>
+    /// BGM選曲パネルのルート GameObject
+    /// </summary>
+    public GameObject bgmControllerPanel;
+
+    /// <summary>
+    /// BGM番号を変更するボタン
+    /// </summary>
+    public Button selectRightButton; // 次へ
+    public Button selectLeftButton; // 前へ
+
+    /// <summary>
+    /// 選択中のBGM番号を表示するImageコンポーネント
+    /// </summary>
+    public Image NumBox;
+
+    /// <summary>
+    /// BGM番号ごとの表示用スプライト配列
+    /// </summary>
+    public Sprite[] numSprites;
+
+    /// <summary>
+    /// BGM選曲パネルを閉じるボタン
+    /// </summary>
+    public Button bgmControllerCloseButton;
+
+    /// <summary>
+    /// 選択可能な最大BGM番号
+    /// </summary>
+    public int maxBGMNum = 1;
+
+    /// <summary>
+    /// 選択可能な最小BGM番号
+    /// </summary>
+    public int minBGMNum = 0;
+
+    /// <summary>
+    /// 現在選択中のBGM番号
+    /// </summary>
+    public static int BGMNum = 0;
+
+    /// <summary>
+    /// 選択されたBGM番号を管理するWwise RTPC
+    /// </summary>
+    public RTPC BGMNumRTPC;
+
+    /// <summary>
+    /// インスタンス設定とUIイベントリスナーの登録を行う
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // シーンを跨いでも残す
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+        selectLeftButton.onClick.AddListener(SelectRight);
+        selectRightButton.onClick.AddListener(SelectLeft);
+        bgmControllerCloseButton.onClick.AddListener(CloseBGMController);
+
+    /// <summary>
+    /// パネルを非表示にし，Wwiseバンクをロードする
+    /// </summary>
     }
     void Start()
     {
+        bgmControllerPanel.SetActive(false);
         othelloBank.Load();
-        PlayBGM();
-        AkSoundEngine.SetSwitch("SceneType", "MainMenu", gameObject);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void PlayBGM()
-    {
-        playBGMEvent.Post(gameObject);
-    }
-    public void StopBGM()
-    {
-        stopBGMEvent.Post(gameObject);
-    }
-    public void ChangeBGM_1()
-    {
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == "OthelloBoard")
-        {
-            int whiteCount = OthelloBoard.Instance.CountPieces(true);
-            int blackCount = OthelloBoard.Instance.CountPieces(false);
-            int diff = blackCount - whiteCount;
-            float clamped = Mathf.Clamp(diff, -10, 10);
 
-            pieceDifferenceRTPC.SetGlobalValue(clamped);
-        }
-    }
-    public void ChangeBGM_2()
+    /// <summary>
+    /// UIイベントリスナーの解除
+    /// </summary>
+    private void OnDestroy()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == "OthelloBoard")
-        {
-            int whiteCount = OthelloBoard.Instance.CountPieces(true);
-            int blackCount = OthelloBoard.Instance.CountPieces(false);
-            int progress = blackCount + whiteCount;
+        selectLeftButton.onClick.RemoveListener(SelectRight);
+        selectRightButton.onClick.RemoveListener(SelectLeft);
+        bgmControllerCloseButton.onClick.RemoveListener(CloseBGMController);
+    }
 
-            gameProgressRTPC.SetGlobalValue(progress);
-        }
-    }
-    public void TransitionBGM(string trackName)
+    /// <summary>
+    /// BGM選曲パネルを開き，現在のBGM番号を表示更新する
+    /// </summary>
+    public void OpenBGMControllerPanel()
     {
-        AkSoundEngine.SetSwitch("SceneType", trackName, gameObject);
-        ChangeBGM_1();
-        ChangeBGM_2();
+        AkSoundEngine.PostEvent("SetLPF", gameObject);
+        UpdateBGMNum(BGMNum);
+        bgmControllerPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// 選択中のBGM番号をRTPCに設定する
+    /// </summary>
+    public void ChangeMusic()
+    {
+        BGMNumRTPC.SetGlobalValue(BGMNum);
+    }
+
+    /// <summary>
+    /// BGM番号を増加させ，範囲外なら最小値に戻し，RTPCと表示を更新する
+    /// </summary>
+    private void SelectRight()
+    {
+        AkSoundEngine.PostEvent("OnClick", selectRightButton.gameObject);
+        if (BGMNum == maxBGMNum)
+        {
+            BGMNum = 0;
+        }
+        else
+        {
+            BGMNum ++;
+        }
+        ChangeMusic();
+        UpdateBGMNum(BGMNum);
+    }
+
+    /// <summary>
+    /// BGM番号を減少させ，範囲外なら最大値に戻し，RTPCと表示を更新する
+    /// </summary>
+    private void SelectLeft()
+    {
+        AkSoundEngine.PostEvent("OnClick", selectLeftButton.gameObject);
+        if (BGMNum == minBGMNum)
+        {
+            BGMNum = maxBGMNum;
+        }
+        else
+        {
+            BGMNum --;
+        }
+        ChangeMusic();
+        UpdateBGMNum(BGMNum);
+    }
+
+    /// <summary>
+    /// 指定されたBGM番号に対応するスプライトをNumBoxに適用する
+    /// </summary>
+    private void UpdateBGMNum(int BGMNum)
+    {
+        NumBox.sprite = numSprites[BGMNum];
+    }
+
+    /// <summary>
+    /// BGM選曲パネルを閉じ、クリック音を再生する
+    /// </summary>
+    public void CloseBGMController()
+    {
+        AkSoundEngine.PostEvent("ResetLPF", gameObject);
+        AkSoundEngine.PostEvent("OnClick", bgmControllerCloseButton.gameObject);
+        bgmControllerPanel.SetActive(false);
     }
 }

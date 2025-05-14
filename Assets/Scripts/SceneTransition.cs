@@ -25,7 +25,7 @@ public class SceneTransition : MonoBehaviour
     public async UniTask Transition(string nextSceneName)
     {
         float speed = 1.0f;
-        BGMController.Instance.TransitionBGM(nextSceneName);
+        AudioManager.Instance.TransitionBGM(nextSceneName);
         await PlayFadeOut(speed);
         AkSoundEngine.PostEvent("StopAllSE", gameObject);
         await SceneManager.LoadSceneAsync(nextSceneName);

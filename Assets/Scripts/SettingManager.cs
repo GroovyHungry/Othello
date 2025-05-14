@@ -56,11 +56,13 @@ public class SettingManager : MonoBehaviour
     }
     public void OpenSettingPanel()
     {
+        AkSoundEngine.PostEvent("SetLPF", gameObject);
         settingPanel.SetActive(true);
         OthelloManager.Waiting = true;
     }
     public void CloseSetting()
     {
+        AkSoundEngine.PostEvent("ResetLPF", gameObject);
         AkSoundEngine.PostEvent("OnClick", SettingCloseButton.gameObject);
         settingPanel.SetActive(false);
         if (MainMenuManager.Instance != null && MainMenuManager.Instance.settingButton != null)

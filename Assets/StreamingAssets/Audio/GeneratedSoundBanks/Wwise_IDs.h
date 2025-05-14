@@ -14,12 +14,15 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID FLIPPIECE = 553056986U;
+        static const AkUniqueID INVALIDMOVE = 1119405073U;
         static const AkUniqueID NOISE = 33408553U;
         static const AkUniqueID ONCLICK = 21544190U;
         static const AkUniqueID ONSELECT = 829756566U;
         static const AkUniqueID PLACEPIECE = 3631423584U;
         static const AkUniqueID PLAY_BGM = 3126765036U;
         static const AkUniqueID PLAYROTATING = 2663994183U;
+        static const AkUniqueID RESETLPF = 2009384228U;
+        static const AkUniqueID SETLPF = 295458119U;
         static const AkUniqueID SKIP = 822292684U;
         static const AkUniqueID SLIDER = 697318834U;
         static const AkUniqueID STOCK = 1401519777U;

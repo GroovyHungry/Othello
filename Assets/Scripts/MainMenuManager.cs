@@ -31,7 +31,7 @@ public class MainMenuManager : MonoBehaviour
         cpuButton.onClick.AddListener(OnCpuButtonClicked);
         pvpButton.onClick.AddListener(OnPvpButtonClicked);
         settingButton.onClick.AddListener(OnSettingButtonClicked);
-        musicChangerButton.onClick.AddListener(OnMusicChangerButtonClicked);
+        musicChangerButton.onClick.AddListener(OnBGMControllerButtonClicked);
         quietGameButton.onClick.AddListener(OnQuietGameButtonClicked);
     }
     private void Update()
@@ -69,7 +69,7 @@ public class MainMenuManager : MonoBehaviour
         pvpButton.onClick.RemoveListener(OnPvpButtonClicked);
         cpuButton.onClick.RemoveListener(OnCpuButtonClicked);
         settingButton.onClick.RemoveListener(OnSettingButtonClicked);
-        musicChangerButton.onClick.RemoveListener(OnMusicChangerButtonClicked);
+        musicChangerButton.onClick.RemoveListener(OnBGMControllerButtonClicked);
         quietGameButton.onClick.RemoveListener(OnQuietGameButtonClicked);
     }
     public async UniTask QuietGame()
@@ -80,7 +80,7 @@ public class MainMenuManager : MonoBehaviour
     }
     private void OnQuietGameButtonClicked()
     {
-        DoubleCheckManager.Instance.OpenDoubleCheckPanel();
+        DoubleCheck.Instance.OpenDoubleCheckPanel();
         AkSoundEngine.PostEvent("OnClick", quietGameButton.gameObject);
     }
     private async void OnPvpButtonClicked()
@@ -129,10 +129,10 @@ public class MainMenuManager : MonoBehaviour
         settingButton.interactable = false;
         AkSoundEngine.PostEvent("OnClick", settingButton.gameObject);
     }
-    private void OnMusicChangerButtonClicked()
+    private void OnBGMControllerButtonClicked()
     {
         AkSoundEngine.PostEvent("OnClick", musicChangerButton.gameObject);
-        MusicChanger.Instance.OpenMusicChangerPanel();
+        BGMController.Instance.OpenBGMControllerPanel();
     }
     private async UniTask OnModeSelected(bool isCPU)
     {

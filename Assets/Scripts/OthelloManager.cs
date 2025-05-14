@@ -71,9 +71,10 @@ public class OthelloManager : MonoBehaviour
     }
     public async UniTask StartGame()
     {
+        initializing = true;
         if (isAIOpponent)
         {
-            await DifficultySelectManager.Instance.StartDifficultySelect();
+            await DifficultySelect.Instance.StartDifficultySelect();
             await CoinTossManager.Instance.StartCoinTossVsCPU();
             ShowYouAndCPUUI();
         }
@@ -87,7 +88,11 @@ public class OthelloManager : MonoBehaviour
 
         await GenerateStockPieces();
         await InitializeBoard();
-        HighlightValidMoves();
+        if (DifficultySelect.difficulty != "secret")
+        {
+            HighlightValidMoves();
+        }
+        initializing = false;
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
         if (isAIOpponent && isAITurn)
         {
@@ -103,7 +108,7 @@ public class OthelloManager : MonoBehaviour
     private void OnExitButtonClicked()
     {
         Waiting = true;
-        DoubleCheckManager.Instance.OpenDoubleCheckPanel();
+        DoubleCheck.Instance.OpenDoubleCheckPanel();
         AkSoundEngine.PostEvent("OnClick", exitButton.gameObject);
     }
     private void OnSettingButtonClicked()
@@ -211,7 +216,6 @@ public class OthelloManager : MonoBehaviour
 
     private async UniTask InitializeBoard()
     {
-        initializing = true;
         float waitTime = 0.1f;
         await PlaceInitialPiece(3, 4, blackPiecePrefab);
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
@@ -221,8 +225,6 @@ public class OthelloManager : MonoBehaviour
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
         await PlaceInitialPiece(4, 4, whitePiecePrefab);
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
-
-        initializing = false;
     }
 
     private async UniTask PlaceInitialPiece(int x, int y, GameObject prefab)
@@ -242,7 +244,10 @@ public class OthelloManager : MonoBehaviour
     {
         isWhiteTurn = !isWhiteTurn;
 
-        HighlightValidMoves();
+        if (DifficultySelect.difficulty != "secret")
+        {
+            HighlightValidMoves();
+        }
 
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
         if (isAIOpponent && isAITurn)
@@ -338,9 +343,9 @@ public class OthelloManager : MonoBehaviour
 
         if (isWhiteFirst == isWhiteTurn)
         {
-            BGMController.Instance.ChangeBGM_1();
+            AudioManager.Instance.ChangeBGM_1();
         }
-        BGMController.Instance.ChangeBGM_2();
+        AudioManager.Instance.ChangeBGM_2();
 
         // ClearHighlightedCells();
 
@@ -393,7 +398,10 @@ public class OthelloManager : MonoBehaviour
                 {
                     await ShowSkipMessage(isWhiteTurn);
                     // await UniTask.DelayFrame(1);
-				    HighlightValidMoves();
+				    if (DifficultySelect.difficulty != "secret")
+        {
+            HighlightValidMoves();
+        }
                 }
                 else
                 {
