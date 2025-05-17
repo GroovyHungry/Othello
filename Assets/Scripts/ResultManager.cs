@@ -61,6 +61,8 @@ public class ResultManager : MonoBehaviour
 
         await RemoveAllPieces();
 
+        OthelloManager.Waiting = true;
+
         List<Vector2Int> whitePos = new List<Vector2Int>();
         List<Vector2Int> blackPos = new List<Vector2Int>();
         List<Vector2Int> differencesPos = new List<Vector2Int>();
@@ -187,6 +189,7 @@ public class ResultManager : MonoBehaviour
         OthelloManager.Instance.exitButton.GetComponent<EventTrigger>().enabled = false;
         await UniTask.WaitUntil(() => Input.GetMouseButtonDown(0));
         await SceneTransition.Instance.Transition("MainMenu");
+        OthelloManager.Waiting = false;
     }
 
     private async UniTask PlaceSequentially(List<Vector2Int> positions, GameObject prefab)

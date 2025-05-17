@@ -68,7 +68,7 @@ public class DoubleCheck : MonoBehaviour
     /// </summary>
     public void OpenDoubleCheckPanel()
     {
-        AkSoundEngine.PostEvent("SetLPF", gameObject);
+        AkSoundEngine.PostEvent("SetFilter", gameObject);
         OthelloManager.Waiting = true;
         doubleCheckPanel.SetActive(true);
     }
@@ -78,7 +78,7 @@ public class DoubleCheck : MonoBehaviour
     /// </summary>
     public async void OnYesButtonClicked()
     {
-        AkSoundEngine.PostEvent("ResetLPF", gameObject);
+        AkSoundEngine.PostEvent("ResetFilter", gameObject);
         AkSoundEngine.PostEvent("OnClick", yesButton.gameObject);
         doubleCheckPanel.SetActive(false);
 
@@ -88,11 +88,11 @@ public class DoubleCheck : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "OthelloBoard")
         {
-            OthelloManager.Instance.ExitToMainMenu();
+            await OthelloManager.Instance.ExitToMainMenu();
         }
         else if (sceneName == "MainMenu")
         {
-            MainMenuManager.Instance.QuietGame();
+            await MainMenuManager.Instance.QuietGame();
         }
     }
 
@@ -101,7 +101,7 @@ public class DoubleCheck : MonoBehaviour
     /// </summary>
     public void OnNoButtonClicked()
     {
-        AkSoundEngine.PostEvent("ResetLPF", gameObject);
+        AkSoundEngine.PostEvent("ResetFilter", gameObject);
         AkSoundEngine.PostEvent("OnClick", noButton.gameObject);
         OthelloManager.Waiting = false;
         doubleCheckPanel.SetActive(false);

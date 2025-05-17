@@ -23,31 +23,49 @@ public class OthelloAI : MonoBehaviour
     const int normalWeightPos = 1;
     private static readonly int[,] openingTable = new int[8,8]
     {
-        { 30, -12, 0, -1, -1,  0, -12, 30 },
-        { -12, -15, -3, -3, -3, -3, -15, -12 },
-        { 0, -3,  0, -1, -1,  0, -3,  0 },
-        { -1, -3, -1, -1, -1, -1, -3, -1 },
-        { -1, -3, -1, -1, -1, -1, -3, -1 },
-        { 0, -3,  0, -1, -1,  0, -3,  0 },
-        { -12, -15, -3, -3, -3, -3, -15, -12 },
-        { 30, -12, 0, -1, -1, 0, -12, 30 }
+        {  28,  -9,  -1,   3,   1,  -3,  -9,  28 },
+        { -14, -18,   0,  -4,   1,   0, -16, -14 },
+        {   0,   0,  -5,  -1,   4,   0,  -5,   3 },
+        {   2,  -5,   2,   1,  -1,   3,   0,  -1 },
+        {   0,  -4,   2,  -1,  -2,   0,   0,  -2 },
+        {   1,  -4,  -2,   1,  -2,  -3,  -5,   4 },
+        { -12, -18,  -6,  -2,  -4,  -1, -14, -11 },
+        {  30, -11,   3,  -5,   3,  -4, -11,  32 },
     };
+    private static readonly float openingWeightFlip     =  8.27f;
+    private static readonly float openingWeightMobility =  1.00f;
+    private static readonly float openingWeightDiff     =  0.22f;
 
     private static readonly int[,] midgameTable = new int[8,8]
     {
-        { 20, -3, 11, 8, 8, 11, -3, 20 },
-        { -3, -7, -4, 1, 1, -4, -7, -3 },
-        { 11, -4, 2, 2, 2, 2, -4, 11 },
-        { 8, 1, 2, -3, -3, 2, 1, 8 },
-        { 8, 1, 2, -3, -3, 2, 1, 8 },
-        { 11, -4, 2, 2, 2, 2, -4, 11 },
-        { -3, -7, -4, 1, 1, -4, -7, -3 },
-        { 20, -3, 11, 8, 8, 11, -3, 20 }
+        { 23,  -4,  11,   5,  11,  10,  -4,  21 },
+        { -6,  -5,  -7,   1,   4,  -3, -10,  -2 },
+        {  7,  -4,   5,   6,  -1,   5,  -8,  11 },
+        {  9,   4,   6,  -1,  -1,   1,  -2,   8 },
+        {  6,  -2,  -1,  -2,   0,   0,  -2,  10 },
+        { 12,  -7,   2,   0,   1,   1,  -4,  11 },
+        { -4,  -3,  -2,   2,   4,  -3,  -6,  -7 },
+        { 17,  -3,  14,  10,  10,  13,  -3,  22 },
     };
-    private static readonly int[,] endgameTable = new int[8,8];
-    const int openingFlipWeight = 3;
-    const int midgameFlipWeight = 10;
-    const int endgameFlipWeight = 12;
+    private static readonly float midgameWeightFlip     =  8.99f;
+    private static readonly float midgameWeightMobility =  0.48f;
+    private static readonly float midgameWeightDiff     =  0.45f;
+
+    private static readonly int[,] endgameTable = new int[8,8]
+    {
+        {  2,   3,   2,   0,   2,   5,   4,  -2 },
+        {  3,   3,  -2,   2,   1,  -3,  -3,   2 },
+        {  0,   0,  -1,   4,  -2,   2,  -1,  -2 },
+        { -3,  -1,  -2,  -1,   5,   2,  -1,  -2 },
+        { -1,  -1,   3,   0,  -3,   0,   2,   4 },
+        { -1,   3,  -3,  -1,   0,  -1,   0,   1 },
+        {  0,   4,   4,  -1,  -2,  -3,  -2,  -4 },
+        {  0,  -4,   1,   1,  -5,   1,  -3,   0 },
+    };
+    private static readonly float endgameWeightFlip     =  7.97f;
+    private static readonly float endgameWeightMobility =  0.60f;
+    private static readonly float endgameWeightDiff     =  0.70f;
+    private enum Phase {Opening, Midgame, Endgame}
     private static readonly (int dx,int dy)[] directions = {
     ( 1, 0),(-1, 0),( 0, 1),( 0,-1),
     ( 1, 1),(-1,-1),( 1,-1),(-1, 1),};
@@ -113,14 +131,9 @@ public class OthelloAI : MonoBehaviour
     {
         string aiTag = OthelloManager.Instance.isAIWhite ? "White" : "Black";
         string playerTag = aiTag == "White" ? "Black" : "White";
-        int maxScore = int.MinValue;
+        float maxScore = float.MinValue;
         Vector2Int bestMove = validMoves[0];
         string[,] board = OthelloBoard.Instance.GetBoardState();
-        int turn = OthelloBoard.Instance.CountPieces(true) + OthelloBoard.Instance.CountPieces(false);
-
-        int[,] table = turn < 20 ? openingTable : turn < 50 ? midgameTable : endgameTable;
-        int flipWeight = turn < 20 ? openingFlipWeight : turn < 50 ? midgameFlipWeight : endgameFlipWeight;
-
         foreach (var move in validMoves)
         {
             var boardAfterAIMove = CloneBoardState(board);
@@ -130,26 +143,25 @@ public class OthelloAI : MonoBehaviour
             List<Vector2Int> playerMoves = GetValidMoves(boardAfterAIMove, playerTag);
             if (playerMoves.Count == 0)
             {
-                int score = EvaluateBoard(boardAfterAIMove, aiTag, table) + flipCountScoreAI * flipWeight;
-                if (score > maxScore)
+                float aiScore = EvaluateMove(move.x, move.y, flipCountScoreAI, boardAfterAIMove, aiTag);
+                if (aiScore > maxScore)
                 {
-                    maxScore = score;
+                    maxScore = aiScore;
                     bestMove = move;
                 }
                 continue;
             }
-            int worstScore = int.MaxValue;
+            float worstScore = float.MaxValue;
             foreach (var playerMove in playerMoves)
             {
                 string[,] boardAfterPlayer = CloneBoardState(boardAfterAIMove);
                 int flipCountScorePlayer = CountFlippablePieces(playerMove.x, playerMove.y, playerTag, boardAfterPlayer);
                 SimulateMove(boardAfterPlayer, playerMove.x, playerMove.y, playerTag);
 
-                int score = EvaluateBoard(boardAfterPlayer, aiTag, table) + (flipCountScoreAI - flipCountScorePlayer) * flipWeight;
-                Debug.Log($"Move: {move}, Player Move: {playerMove}, Score: {score}");
-                if (score < worstScore)
+                float playerScore = -EvaluateMove(playerMove.x, playerMove.y, flipCountScorePlayer, boardAfterPlayer, playerTag);
+                if (playerScore < worstScore)
                 {
-                    worstScore = score;
+                    worstScore = playerScore;
                 }
             }
             if (worstScore > maxScore)
@@ -264,27 +276,53 @@ public class OthelloAI : MonoBehaviour
         }
         return validMoves;
     }
-    private int EvaluateBoard(string[,] board, string aiTag, int[,] table)
+    private float EvaluateMove(int x, int y, int flipCount, string[,] board, string aiTag)
     {
-        int score = 0;
-        string playerTag = aiTag == "White" ? "Black" : "White";
-
-        for (int x = 0; x < 8; x++)
+        Phase phase = GetPhase();
+        int[,] table;
+        float wFlip, wMob, wDiff;
+        switch (phase)
         {
-            for (int y = 0; y < 8; y++)
-            {
-                string piece = board[x, y];
-                if (piece == null) continue;
-                if (piece == aiTag)
-                {
-                    score += table[y, x];
-                }
-                else if (piece == playerTag)
-                {
-                    score -= table[y, x];
-                }
-            }
+            case Phase.Opening:
+                table = openingTable;
+                wFlip = openingWeightFlip;
+                wMob = openingWeightMobility;
+                wDiff = openingWeightDiff;
+                break;
+            case Phase.Midgame:
+                table = midgameTable;
+                wFlip = midgameWeightFlip;
+                wMob = midgameWeightMobility;
+                wDiff = midgameWeightDiff;
+                break;
+            case Phase.Endgame:
+                table = endgameTable;
+                wFlip = endgameWeightFlip;
+                wMob = endgameWeightMobility;
+                wDiff = endgameWeightDiff;
+                break;
+                default:
+                // 想定外のフェーズが来たら例外を投げて検知できるように
+                throw new System.ArgumentOutOfRangeException(nameof(phase), phase, "Unknown phase");
         }
-        return score;
+        string playerTag = aiTag == "White" ? "Black" : "White";
+        int myMobility = GetValidMoves(board, aiTag).Count;
+        int opponentMobility = GetValidMoves(board, playerTag).Count;
+
+        int myCount = OthelloBoard.Instance.CountPieces(aiTag == "White");
+        int opponentCount = OthelloBoard.Instance.CountPieces(playerTag == "White");
+
+        float idxScore = table[y, x];
+        float flipScore = flipCount * wFlip;
+        float mobilityScore = (myMobility - opponentMobility) * wMob;
+        float diffScore = (myCount - opponentCount) * wDiff;
+        return idxScore + flipScore + mobilityScore + diffScore;
+    }
+    private Phase GetPhase()
+    {
+        int turn = OthelloBoard.Instance.CountPieces(true) + OthelloBoard.Instance.CountPieces(false) - 4;
+        if (turn < 20) return Phase.Opening;
+        if (turn < 50) return Phase.Midgame;
+        return Phase.Endgame;
     }
 }

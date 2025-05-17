@@ -88,10 +88,7 @@ public class OthelloManager : MonoBehaviour
 
         await GenerateStockPieces();
         await InitializeBoard();
-        if (DifficultySelect.difficulty != "secret")
-        {
-            HighlightValidMoves();
-        }
+        HighlightValidMoves();
         initializing = false;
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
         if (isAIOpponent && isAITurn)
@@ -244,11 +241,7 @@ public class OthelloManager : MonoBehaviour
     {
         isWhiteTurn = !isWhiteTurn;
 
-        if (DifficultySelect.difficulty != "secret")
-        {
-            HighlightValidMoves();
-        }
-
+        HighlightValidMoves();
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
         if (isAIOpponent && isAITurn)
         {
@@ -349,7 +342,7 @@ public class OthelloManager : MonoBehaviour
 
         // ClearHighlightedCells();
 
-        if (!isAIOpponent || (isAIOpponent && !isAITurn))
+        if ((!isAIOpponent || (isAIOpponent && !isAITurn)) && DifficultySelect.difficulty != "secret")
         {
             // ハイライト表示
             foreach (OthelloCell cell in validCells)
@@ -398,10 +391,7 @@ public class OthelloManager : MonoBehaviour
                 {
                     await ShowSkipMessage(isWhiteTurn);
                     // await UniTask.DelayFrame(1);
-				    if (DifficultySelect.difficulty != "secret")
-        {
-            HighlightValidMoves();
-        }
+                    HighlightValidMoves();
                 }
                 else
                 {

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{3BB81BFB-DBD8-BEDB-EB04-A43593744032}",
+    "Hash": "{C3ACE45F-9BA0-3819-ABB1-E85A7CDCFDD3}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -725,9 +725,9 @@
       ]
      },
      {
-      "Id": "2009384228",
-      "Name": "ResetLPF",
-      "ObjectPath": "\\Events\\Default Work Unit\\ResetLPF",
+      "Id": "880567608",
+      "Name": "ResetFilter",
+      "ObjectPath": "\\Events\\Default Work Unit\\ResetFilter",
       "GUID": "{E4E26596-921E-4BBC-831F-FA82B52125D0}",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
@@ -936,9 +936,9 @@
       ]
      },
      {
-      "Id": "295458119",
-      "Name": "SetLPF",
-      "ObjectPath": "\\Events\\Default Work Unit\\SetLPF",
+      "Id": "3080081805",
+      "Name": "SetFilter",
+      "ObjectPath": "\\Events\\Default Work Unit\\SetFilter",
       "GUID": "{ECA3FCBA-434D-45B7-9FA7-27AFF3DA7B4C}",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
@@ -1600,6 +1600,6 @@
     ]
    }
   ],
-  "FileHash": "{B633379E-89BB-E46D-0242-30E54751CBA7}"
+  "FileHash": "{4351F5AF-3C94-F9A0-4BA2-1BD00C715739}"
  }
 }

@@ -163,7 +163,7 @@ public class OthelloBoard : MonoBehaviour
         }
         return new List<Vector2Int>();
     }
-        public int CountPieces(bool isWhite)
+    public int CountPieces(bool isWhite)
     {
         int whiteCount = 0;
         int blackCount = 0;

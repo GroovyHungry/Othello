@@ -181,7 +181,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="SetLPF" ID="{ECA3FCBA-434D-45B7-9FA7-27AFF3DA7B4C}">
+				<Event Name="SetFilter" ID="{ECA3FCBA-434D-45B7-9FA7-27AFF3DA7B4C}">
 					<ChildrenList>
 						<Action Name="" ID="{5C69A124-83CD-46EF-92F4-AE311BD929BE}" ShortID="1037445612">
 							<PropertyList>
@@ -198,7 +198,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="ResetLPF" ID="{E4E26596-921E-4BBC-831F-FA82B52125D0}">
+				<Event Name="ResetFilter" ID="{E4E26596-921E-4BBC-831F-FA82B52125D0}">
 					<ChildrenList>
 						<Action Name="" ID="{44A5086E-417D-4F80-9680-1AA306828A9F}" ShortID="42014797">
 							<PropertyList>

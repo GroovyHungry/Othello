@@ -106,7 +106,7 @@ public class BGMController : MonoBehaviour
     /// </summary>
     public void OpenBGMControllerPanel()
     {
-        AkSoundEngine.PostEvent("SetLPF", gameObject);
+        AkSoundEngine.PostEvent("SetFilter", gameObject);
         UpdateBGMNum(BGMNum);
         bgmControllerPanel.SetActive(true);
     }
@@ -168,7 +168,7 @@ public class BGMController : MonoBehaviour
     /// </summary>
     public void CloseBGMController()
     {
-        AkSoundEngine.PostEvent("ResetLPF", gameObject);
+        AkSoundEngine.PostEvent("ResetFilter", gameObject);
         AkSoundEngine.PostEvent("OnClick", bgmControllerCloseButton.gameObject);
         bgmControllerPanel.SetActive(false);
     }
