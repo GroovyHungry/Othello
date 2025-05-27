@@ -1057,6 +1057,10 @@ MonoBehaviour:
   quietGameButton: {fileID: 719233808}
   menuAnimator: {fileID: 962878340}
   SettingPanel: {fileID: 167489647895869411}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
 --- !u!1 &469264942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectImage: {fileID: 924154497}
   EffectAnimator: {fileID: 924154499}
+  StopAllSE:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f96bf40e554ba42d2875e047a3eae266, type: 2}
 --- !u!114 &769493772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,6 +1521,18 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 549546a82ca4f4048b2c4246a5c52eae, type: 2}
+  SetFilter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4d2e39a61c5d44e2091a4d4fc2aefe49, type: 2}
+  ResetFilter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 992804d7b1f524c76991fbebcdd9f425, type: 2}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
 --- !u!114 &769493773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,6 +1548,18 @@ MonoBehaviour:
   doubleCheckPanel: {fileID: 366128774}
   yesButton: {fileID: 1477891727}
   noButton: {fileID: 261561123}
+  SetFilter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4d2e39a61c5d44e2091a4d4fc2aefe49, type: 2}
+  ResetFilter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 992804d7b1f524c76991fbebcdd9f425, type: 2}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
 --- !u!1 &786931832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,6 +2503,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44756357b2b1f4df1b3c08341bd0722b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlipPiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5d58c24029d1b43ca9dd3b0970dcb829, type: 2}
+  PlacePiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e4fefdd3476e642e4a23e1e5759e0e66, type: 2}
 --- !u!114 &962878342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3688,6 +3728,18 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: d9ec6ee36b2b448db84789b8467c0df6, type: 2}
+  SetFilter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4d2e39a61c5d44e2091a4d4fc2aefe49, type: 2}
+  ResetFilter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 992804d7b1f524c76991fbebcdd9f425, type: 2}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
 --- !u!1 &1903670646
 GameObject:
   m_ObjectHideFlags: 0

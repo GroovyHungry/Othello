@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{C3ACE45F-9BA0-3819-ABB1-E85A7CDCFDD3}",
+    "Hash": "{5406D2D0-21F1-A6AB-58BC-5CDD22D068EA}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -40,12 +40,36 @@
       "CachePath": "4F/{4F1472F0-F283-BC07-95F6-33FACDC51550}.wem"
      },
      {
+      "Id": "248190996",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "stop_music 34-record-scratches-31350.wav",
+      "CachePath": "E4/{E45015AC-4CF7-1D85-1FDC-223CB1F83053}.wem"
+     },
+     {
+      "Id": "257655840",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "place_l 32-wood-door-knock-106669 (1).wav",
+      "CachePath": "F0/{F015B9CD-801B-3F61-7860-4538F9DFE7A6}.wem"
+     },
+     {
       "Id": "297202389",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 23-Audio.wav",
       "CachePath": "B8/{B83FEDC6-3E46-BE2F-2EB1-DA1179E5423F}.wem"
+     },
+     {
+      "Id": "317781010",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Flip Main Sample.wav",
+      "CachePath": "7F/{7F26A4BB-047C-5844-FACA-74BDB144D21B}.wem"
      },
      {
       "Id": "409938069",
@@ -72,12 +96,36 @@
       "CachePath": "C9/{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem"
      },
      {
+      "Id": "473972063",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "drum_rolls.wav",
+      "CachePath": "21/{21D717C6-6ED1-FAE4-C643-BF7D9589C641}.wem"
+     },
+     {
       "Id": "513787895",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 27-Audio.wav",
       "CachePath": "6C/{6CE4C24A-A5C4-F548-DF13-856C6A51C930}.wem"
+     },
+     {
+      "Id": "539488075",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "place_l 31-wood-door-knock-106669 (1).wav",
+      "CachePath": "4D/{4D3A0131-4186-8B16-0126-6888C14ACFE5}.wem"
+     },
+     {
+      "Id": "543812774",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "place_h 25-light-switch-flip-1-101983.wav",
+      "CachePath": "BC/{BC231348-91C9-5B15-B2B0-C0550538CD73}.wem"
      },
      {
       "Id": "559021974",
@@ -88,6 +136,14 @@
       "CachePath": "38/{38012F4B-4B7A-3053-2E29-BDCA4EB90500}.wem"
      },
      {
+      "Id": "561644764",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "stop_music 35-record-scratches-31350.wav",
+      "CachePath": "54/{5443DA73-0289-F739-5C08-48AAE346B684}.wem"
+     },
+     {
       "Id": "585915434",
       "Language": "SFX",
       "Streaming": "false",
@@ -96,12 +152,12 @@
       "CachePath": "AE/{AEE13232-9158-94C9-C9B5-C0EC7AB8F98B}.wem"
      },
      {
-      "Id": "601547594",
+      "Id": "613430007",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "PlacePiece.wav",
-      "CachePath": "3E/{3E908990-2D30-F477-4888-09919ADF7853}.wem"
+      "ShortName": "place_h 26-light-switch-flip-1-101983.wav",
+      "CachePath": "97/{97E9D187-16FF-0643-998D-263982DBA587}.wem"
      },
      {
       "Id": "618809538",
@@ -112,20 +168,20 @@
       "CachePath": "37/{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem"
      },
      {
-      "Id": "620090141",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "FlipPiece.wav",
-      "CachePath": "6E/{6EC8D726-F766-ACFD-A6E1-2FA22EC80B6B}.wem"
-     },
-     {
       "Id": "622354903",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Dont Explain3.wav",
       "CachePath": "1A/{1AD88BFF-D3A7-FE03-BE4F-77D90BB1F474}.wem"
+     },
+     {
+      "Id": "634790168",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "place_h 27-light-switch-flip-1-101983.wav",
+      "CachePath": "C8/{C8CF82EC-46B8-FE7A-3D93-91C3235AE6E8}.wem"
      },
      {
       "Id": "687681039",
@@ -142,6 +198,14 @@
       "Location": "Memory",
       "ShortName": "CoinTossResult.wav",
       "CachePath": "7B/{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem"
+     },
+     {
+      "Id": "741175921",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "place_h 28-light-switch-flip-1-101983.wav",
+      "CachePath": "C6/{C63FCEF1-0239-6275-4B04-00F5EBF7D65D}.wem"
      },
      {
       "Id": "741705269",
@@ -166,6 +230,22 @@
       "Location": "Memory",
       "ShortName": "Evolve 28-Audio.wav",
       "CachePath": "86/{86B4E977-6509-B6C6-69EF-42CE8C6A6D8F}.wem"
+     },
+     {
+      "Id": "871549907",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Flip Main Sample-1.wav",
+      "CachePath": "88/{88071042-1CF8-B384-DA26-CB0350547CD9}.wem"
+     },
+     {
+      "Id": "874645959",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "place_l 30-wood-door-knock-106669 (1).wav",
+      "CachePath": "B9/{B9607C25-C61D-8A99-0E2F-528C1CA225E5}.wem"
      },
      {
       "Id": "881448273",
@@ -222,16 +302,33 @@
     },
     "Events": [
      {
+      "Id": "2627577308",
+      "Name": "Drum_Rolls",
+      "ObjectPath": "\\Events\\Default Work Unit\\Drum_Rolls",
+      "GUID": "{311FA68E-510E-4868-A6D6-E3760907A208}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.2442029",
+      "DurationMax": "3.2442029",
+      "MediaRefs": [
+       {
+        "Id": "473972063"
+       }
+      ]
+     },
+     {
       "Id": "553056986",
       "Name": "FlipPiece",
       "ObjectPath": "\\Events\\Default Work Unit\\FlipPiece",
       "GUID": "{4611AE2A-BAD0-4C53-A77D-6A0833448620}",
       "DurationType": "OneShot",
-      "DurationMin": "0.2711111",
-      "DurationMax": "0.2711111",
+      "DurationMin": "0.1804907",
+      "DurationMax": "0.19039105",
       "MediaRefs": [
        {
-        "Id": "620090141"
+        "Id": "317781010"
+       },
+       {
+        "Id": "871549907"
        }
       ]
      },
@@ -297,11 +394,29 @@
       "ObjectPath": "\\Events\\Default Work Unit\\PlacePiece",
       "GUID": "{1EB57AD8-8F19-4396-8A05-75D1285718CF}",
       "DurationType": "OneShot",
-      "DurationMin": "0.2711111",
-      "DurationMax": "0.2711111",
+      "DurationMin": "5.232638",
+      "DurationMax": "5.873438",
       "MediaRefs": [
        {
-        "Id": "601547594"
+        "Id": "257655840"
+       },
+       {
+        "Id": "539488075"
+       },
+       {
+        "Id": "543812774"
+       },
+       {
+        "Id": "613430007"
+       },
+       {
+        "Id": "634790168"
+       },
+       {
+        "Id": "741175921"
+       },
+       {
+        "Id": "874645959"
        }
       ]
      },
@@ -1437,6 +1552,23 @@
         "Id": "715166129"
        }
       ]
+     },
+     {
+      "Id": "3245760336",
+      "Name": "Vinyl_Noise",
+      "ObjectPath": "\\Events\\Default Work Unit\\Vinyl_Noise",
+      "GUID": "{D4B36FC5-BBA8-4DDF-8D23-F406F09D13CB}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.6777551",
+      "DurationMax": "0.6777551",
+      "MediaRefs": [
+       {
+        "Id": "248190996"
+       },
+       {
+        "Id": "561644764"
+       }
+      ]
      }
     ],
     "GameParameters": [
@@ -1600,6 +1732,6 @@
     ]
    }
   ],
-  "FileHash": "{4351F5AF-3C94-F9A0-4BA2-1BD00C715739}"
+  "FileHash": "{953B74B2-36BC-637D-065A-A8E3597D094C}"
  }
 }

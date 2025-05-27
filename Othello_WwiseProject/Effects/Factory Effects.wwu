@@ -212,7 +212,7 @@
 						<Effect Name="New_Peak_Limiter" ID="{9F4365B7-06BA-46B2-A8C3-78B7E5455A3B}" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
 							<PropertyList>
 								<Property Name="ReleaseTime" Type="Real32" Value="0.05"/>
-								<Property Name="Threshold" Type="Real32" Value="-1"/>
+								<Property Name="Threshold" Type="Real32" Value="-3"/>
 							</PropertyList>
 						</Effect>
 					</ChildrenList>

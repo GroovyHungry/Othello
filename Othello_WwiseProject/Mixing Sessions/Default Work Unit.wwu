@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{C8C5DCDA-F70B-4F0B-9CC7-40AF1CFB9AAB}" SchemaVersion="123">
 	<MixingSessions>
-		<WorkUnit Name="Default Work Unit" ID="{C8C5DCDA-F70B-4F0B-9CC7-40AF1CFB9AAB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{C8C5DCDA-F70B-4F0B-9CC7-40AF1CFB9AAB}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="Pieces" ID="{3E864FC5-C6B8-4367-8ADD-A912C5007539}">
+					<ObjectList>
+						<ObjectRef Name="PlacePiece" ID="{AA1E6A0A-2E84-4EB0-B9A9-A4527526DED2}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+						<ObjectRef Name="PlacePiece_H_SE" ID="{C64211FC-D0E7-460E-A710-516B7F8B4F2D}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+						<ObjectRef Name="PlacePiece_L_SE" ID="{ACAB90A8-D83F-4694-9E22-26796E26ED94}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+						<ObjectRef Name="FlipPiece_SE" ID="{F2D06FAB-99DD-40B3-B9CF-3029CE7830B9}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+						<ObjectRef Name="Flip_00" ID="{382DF064-E2B7-4AD7-9874-1A4A4241948A}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+						<ObjectRef Name="Flip_01" ID="{A098C373-C9F7-41BA-8381-5E6408D21648}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
 	</MixingSessions>
 </WwiseDocument>

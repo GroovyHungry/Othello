@@ -184,6 +184,14 @@ MonoBehaviour:
   hoverFrame: {fileID: 425859210870668377}
   x: 0
   y: 0
+  OnSelect:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: da568afd389e4419db572f1e6fbc22b0, type: 2}
+  InvalidMove:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 54941eaa671b34ff1baa311a99f3c30f, type: 2}
 --- !u!212 &-4798826550283187701
 SpriteRenderer:
   m_ObjectHideFlags: 0

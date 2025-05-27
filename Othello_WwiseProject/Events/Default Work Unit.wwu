@@ -5,10 +5,17 @@
 			<ChildrenList>
 				<Event Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}">
 					<ChildrenList>
-						<Action Name="" ID="{B0C0C283-D7A3-4E86-B4C0-881910A5AC40}" ShortID="619428853">
+						<Action Name="" ID="{BF8208A8-6D67-442B-B52F-7E0354E8DA1C}" ShortID="220087144">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="PlacePiece_SE" ID="{F0619A86-DD8C-4E29-B3AD-F4E2272D69BB}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+									<ObjectRef Name="PlacePiece_H_SE" ID="{C64211FC-D0E7-460E-A710-516B7F8B4F2D}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{796CDE58-EDD4-4274-A1C2-875A561E4852}" ShortID="209403672">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlacePiece_L_SE" ID="{ACAB90A8-D83F-4694-9E22-26796E26ED94}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -19,7 +26,7 @@
 						<Action Name="" ID="{075FBE18-16A2-4392-9AA6-D48F81DACA5F}" ShortID="629128075">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="FlipPiece_SE" ID="{E41A29D4-1C38-4DF2-A671-3DF1108609C2}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+									<ObjectRef Name="FlipPiece_SE" ID="{F2D06FAB-99DD-40B3-B9CF-3029CE7830B9}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -52,7 +59,7 @@
 						<Action Name="" ID="{D2D615D8-D672-467D-8A3A-D0AEDB3F4141}" ShortID="929632201">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="CoinRotating" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+									<ObjectRef Name="CoinRotating_SE" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -67,14 +74,14 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="CoinRotating" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+									<ObjectRef Name="CoinRotating_SE" ID="{5814B1C6-E358-4010-B35B-0017515F4C23}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 						<Action Name="" ID="{74CF93F3-BD8D-4AC9-8C52-82EB722118C3}" ShortID="184630860">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="CoinTossResult" ID="{2D9C460D-6403-477B-957F-5A8A0152C19C}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+									<ObjectRef Name="CoinTossResult_SE" ID="{2D9C460D-6403-477B-957F-5A8A0152C19C}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -207,6 +214,28 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Vinyl_Noise" ID="{D4B36FC5-BBA8-4DDF-8D23-F406F09D13CB}">
+					<ChildrenList>
+						<Action Name="" ID="{64B2E638-E23E-4FBB-9E53-FB0EEFA10CE3}" ShortID="532024545">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Vinyl_Noise_SE" ID="{E6ABA967-6E60-4561-8B12-42FD83699F6F}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Drum_Rolls" ID="{311FA68E-510E-4868-A6D6-E3760907A208}">
+					<ChildrenList>
+						<Action Name="" ID="{6E5DD18F-BBD5-40B5-A23C-5AF5D2EF2D57}" ShortID="323070191">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drum_Rolls" ID="{D6466D15-0EFD-48D1-801D-ED9A610084EC}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

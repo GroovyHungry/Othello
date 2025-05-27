@@ -5132,6 +5132,18 @@ MonoBehaviour:
   WinEffect2: {fileID: 1004334178}
   WinEffect1: {fileID: 980564724}
   Draw: {fileID: 100543046}
+  PlacePiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e4fefdd3476e642e4a23e1e5759e0e66, type: 2}
+  VinylNoise:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e8db08c7e55a84cdda2363c02838dba0, type: 2}
+  DrumRolls:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3a66c91d066a74a0d85208aec0ef78ec, type: 2}
 --- !u!114 &1957474892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5157,6 +5169,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: c76b026c852d14342b99d80b4693b7ea, type: 2}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
 --- !u!114 &1957474893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5189,6 +5205,14 @@ MonoBehaviour:
   difficultySelectPanel: {fileID: 1306866985}
   normalBoard: {fileID: 1688410755}
   brokenBoard: {fileID: 998939747}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
+  Noise:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 1cc1d5fffc22b48dfab2c6b50f65e0c2, type: 2}
 --- !u!114 &1957474895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5241,6 +5265,22 @@ MonoBehaviour:
   whiteStocks: []
   settingButtonInGame: {fileID: 1126314411}
   exitButton: {fileID: 1346686573}
+  OnClick:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 272c720231b8c46feb3a7ad04db79089, type: 2}
+  Place:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e4fefdd3476e642e4a23e1e5759e0e66, type: 2}
+  Stock:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f5a48fc6c1bc344e992fe7c1586b97b1, type: 2}
+  Skip:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ac9dd3d30739b4f2ea9fa3e58a00798a, type: 2}
 --- !u!114 &1957474896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5253,6 +5293,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5300410e9f6725f408ef2b372539796b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlipPiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5d58c24029d1b43ca9dd3b0970dcb829, type: 2}
+  PlacePiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e4fefdd3476e642e4a23e1e5759e0e66, type: 2}
 --- !u!114 &1957474897
 MonoBehaviour:
   m_ObjectHideFlags: 0

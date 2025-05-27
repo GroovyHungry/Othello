@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID DRUM_ROLLS = 2627577308U;
         static const AkUniqueID FLIPPIECE = 553056986U;
         static const AkUniqueID INVALIDMOVE = 1119405073U;
         static const AkUniqueID NOISE = 33408553U;
@@ -29,6 +30,7 @@ namespace AK
         static const AkUniqueID STOP_BGM = 1073466678U;
         static const AkUniqueID STOPALLSE = 1135116198U;
         static const AkUniqueID STOPROTATING = 3791290573U;
+        static const AkUniqueID VINYL_NOISE = 3245760336U;
     } // namespace EVENTS
 
     namespace SWITCHES
@@ -108,7 +110,8 @@ namespace AK
         static const AkUniqueID BGM = 412724365U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID SE = 1584861537U;
-        static const AkUniqueID SFX_PIECES = 687647236U;
+        static const AkUniqueID SFX_FLIP = 2927051940U;
+        static const AkUniqueID SFX_PLACE = 62226778U;
     } // namespace BUSSES
 
     namespace AUDIO_DEVICES

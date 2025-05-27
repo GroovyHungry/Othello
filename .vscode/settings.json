@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Project.sln"
+    "dotnet.defaultSolution": "Othello.sln"
 }

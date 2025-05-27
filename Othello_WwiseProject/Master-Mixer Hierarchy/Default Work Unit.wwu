@@ -53,7 +53,7 @@
 						</Bus>
 						<Bus Name="SE" ID="{3A6B655A-F020-49AD-A121-21E881E282EE}">
 							<ChildrenList>
-								<Bus Name="SFX_Pieces" ID="{22129D96-3ABC-43D7-9BED-FFC2E5D7D725}">
+								<Bus Name="SFX_Place" ID="{22129D96-3ABC-43D7-9BED-FFC2E5D7D725}">
 									<ObjectLists>
 										<ObjectList Name="Effects">
 											<Reference>
@@ -73,6 +73,48 @@
 														<ReferenceList>
 															<Reference Name="Effect" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
 																<ObjectRef Name="Hard_Knee_Minus_3dB_RMS" ID="{D083BAE5-F9EF-426B-A311-D9DF8DFE8807}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</Bus>
+								<Bus Name="SFX_Flip" ID="{D50A74C4-A839-4F44-8B4C-DD9AD9A77F3D}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{7AC893E7-B758-4D01-A28A-A62AEBA7AA4C}" ShortID="880837231">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom CreatedFrom="{9F4365B7-06BA-46B2-A8C3-78B7E5455A3B}">
+																	<Effect Name="New_Peak_Limiter (Custom)" ID="{9E182BA3-8224-4E52-B02E-FA908DD1E34C}" ShortID="215244215" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+																		<PropertyList>
+																			<Property Name="ReleaseTime" Type="Real32" Value="0.05"/>
+																			<Property Name="Threshold" Type="Real32" Value="-21"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{1948B634-B64D-425B-ACCB-6CAAD6A06051}" ShortID="443982506">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom CreatedFrom="{D083BAE5-F9EF-426B-A311-D9DF8DFE8807}">
+																	<Effect Name="Hard_Knee_Minus_3dB_RMS (Custom)" ID="{763A150D-8F04-401F-8B8F-34091763D746}" ShortID="430718787" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+																		<PropertyList>
+																			<Property Name="Ratio" Type="Real32" Value="8"/>
+																			<Property Name="Threshold" Type="Real32" Value="-3"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
 															</Reference>
 														</ReferenceList>
 													</EffectSlot>
@@ -124,6 +166,19 @@
 						</Bus>
 					</ChildrenList>
 					<ObjectLists>
+						<ObjectList Name="Effects">
+							<Reference>
+								<Local>
+									<EffectSlot Name="" ID="{04A02A0C-4AD8-4138-B6B9-B534F8F3EE0D}" ShortID="708029077">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+												<ObjectRef Name="New_Peak_Limiter" ID="{9F4365B7-06BA-46B2-A8C3-78B7E5455A3B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</Local>
+							</Reference>
+						</ObjectList>
 						<ObjectList Name="RTPC">
 							<Reference>
 								<Local>

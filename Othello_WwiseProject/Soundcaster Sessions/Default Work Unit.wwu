@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{7D99D106-3AFB-4A41-A294-836AA2D13878}" SchemaVersion="123">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{7D99D106-3AFB-4A41-A294-836AA2D13878}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{7D99D106-3AFB-4A41-A294-836AA2D13878}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Pieces" ID="{BCC448CB-FDCC-45C4-85BF-CB6DE732A886}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BGM_Num" ID="{9234DC31-C7C9-4666-8342-9CDC5133BBEA}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="PieceDifference" ID="{76CD7197-266A-497C-B44B-03A45B4503D0}"/>
+							<Value>10</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="BGM_P3" ID="{9BC7DE84-F3F0-48DB-8E9B-62E928261F74}"/>
+						<CurrentSwitchRef Name="BGM_1" ID="{7C4D72B4-FA1F-48A1-8A3D-60E7DF425C89}"/>
+						<CurrentSwitchRef Name="BGM_3" ID="{2B6A7B46-94A0-4B9B-9C31-C6EA6303D81F}"/>
+						<CurrentSwitchRef Name="MainMenu" ID="{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

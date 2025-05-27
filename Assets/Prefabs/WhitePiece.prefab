@@ -129,6 +129,14 @@ MonoBehaviour:
   state_Y: 0
   whiteSprite: {fileID: 1466534349645989513, guid: 5fdb6714484e14e5bbf5ba476e6df71b, type: 3}
   blackSprite: {fileID: 7117120919343822205, guid: ca2e7e485685b485685370b77cfbf786, type: 3}
+  PlacePiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e4fefdd3476e642e4a23e1e5759e0e66, type: 2}
+  FlipPiece:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5d58c24029d1b43ca9dd3b0970dcb829, type: 2}
 --- !u!111 &-5366068966630263786
 Animation:
   m_ObjectHideFlags: 0
