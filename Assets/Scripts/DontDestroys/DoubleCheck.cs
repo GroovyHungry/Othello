@@ -59,6 +59,8 @@ public class DoubleCheck : MonoBehaviour
     {
         yesButton.onClick.AddListener(OnYesButtonClicked);
         noButton.onClick.AddListener(OnNoButtonClicked);
+
+        doubleCheckPanel.SetActive(false);
     }
 
     /// <summary>

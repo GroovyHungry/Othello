@@ -180,7 +180,7 @@ public class CoinTossManager : MonoBehaviour
         await UniTask.Delay(System.TimeSpan.FromSeconds(1.0f));
 
         // 先手を設定
-        OthelloManager.Instance.isWhiteTurn = (result == "White");
+        OthelloManager.isWhiteTurn = (result == "White");
 
         // コイントス終了
         panel.SetActive(false);

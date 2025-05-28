@@ -14,7 +14,7 @@ public class OthelloManager : MonoBehaviour
     public static bool Waiting = false;
     public static bool initializing = false;
     private bool previousWaiting = false;
-    public bool isWhiteTurn = false;
+    public static bool isWhiteTurn = false;
     public bool isWhiteFirst = false;
     public static bool isAIPlaying = false;
     public static bool isAIOpponent = true;
@@ -235,11 +235,6 @@ public class OthelloManager : MonoBehaviour
         Place.Post(piece);
         await othelloBoard.ApplyMove(x, y, piece, piece.tag);
     }
-
-    // ターン情報
-    public bool IsWhiteTurn() => isWhiteTurn;
-    public bool IsAIWhite() => isAIWhite;
-    public bool IsPlayerWhite() => !isAIWhite;
 
     public async UniTask EndTurn()
     {

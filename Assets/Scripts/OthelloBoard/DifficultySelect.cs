@@ -160,7 +160,7 @@ public class DifficultySelect : MonoBehaviour
     }
 
     /// <summary>
-    /// 難易度選択パネルを表示し、ユーザーが選択するまで待機する
+    /// 難易度選択パネルを表示し，ユーザーが選択するまで待機する
     /// </summary>
     public async UniTask StartDifficultySelect()
     {

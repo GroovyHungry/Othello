@@ -100,9 +100,6 @@ public class SettingManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        // 初期非表示
-        settingPanel.SetActive(false);
-
         // 保存値を読み込んでスライダーに反映（通知なし）
         masterSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterVolume", 5));
         bgmSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("BGMVolume", 5));
@@ -114,12 +111,15 @@ public class SettingManager : MonoBehaviour
         seSlider.onValueChanged.AddListener(OnSEVolumeChanged);
 
         // クローズボタン登録
-        SettingCloseButton.onClick.AddListener(CloseSetting);
+        settingCloseButton.onClick.AddListener(CloseSetting);
 
         // 初期RTPC設定
         masterVolumeRTPC.SetGlobalValue(masterSlider.value * 10f);
         bgmVolumeRTPC.SetGlobalValue(bgmSlider.value * 10f);
         seVolumeRTPC.SetGlobalValue(seSlider.value * 10f);
+
+        // 初期非表示
+        settingPanel.SetActive(false);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public class SettingManager : MonoBehaviour
         masterSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
         bgmSlider.onValueChanged.RemoveListener(OnBGMVolumeChanged);
         seSlider.onValueChanged.RemoveListener(OnSEVolumeChanged);
-        SettingCloseButton.onClick.RemoveListener(CloseSetting);
+        settingCloseButton.onClick.RemoveListener(CloseSetting);
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public class SettingManager : MonoBehaviour
     public void CloseSetting()
     {
         ResetFilter.Post(gameObject);
-        OnClick.Post(SettingCloseButton.gameObject);
+        OnClick.Post(settingCloseButton.gameObject);
         settingPanel.SetActive(false);
         if (MainMenuManager.Instance != null && MainMenuManager.Instance.settingButton != null)
         {

@@ -1,16 +1,32 @@
 using UnityEngine;
 
+/// <summary>
+/// 8x8 のオセロ盤を動的に生成するクラス
+/// </summary>
 public class OthelloGrid : MonoBehaviour
 {
+    /// <summary>
+    /// セルプレハブ
+    /// </summary>
     public GameObject cellPrefab; // `Cell` のプレハブ
+
+    /// <summary>
+    /// 盤面のサイズ (8×8)
+    /// </summary>
     private int gridSize = 8; // 8×8 のオセロ盤
 
-    void Start()
+    /// <summary>
+    /// ゲーム開始時にグリッドを生成する
+    /// </summary>
+    private void Start()
     {
         GenerateGrid();
     }
 
-    void GenerateGrid()
+    /// <summary>
+    /// セルの座標と名前を設定して盤面に配置する
+    /// </summary>
+    private void GenerateGrid()
     {
         float offset = (gridSize - 1) / 2.0f;
 
@@ -23,7 +39,7 @@ public class OthelloGrid : MonoBehaviour
                 cell.name = $"Cell ({x},{y})";
 
                 OthelloCell cellScript = cell.GetComponent<OthelloCell>();
-                if(cellScript != null)
+                if (cellScript != null)
                 {
                     cellScript.x = x;
                     cellScript.y = y;
