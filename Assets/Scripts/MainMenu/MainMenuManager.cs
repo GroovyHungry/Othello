@@ -81,6 +81,11 @@ public class MainMenuManager : MonoBehaviour
     private bool selected = false;
 
     /// <summary>
+    /// Wwiseイベント
+    /// </summary>
+    [SerializeField] private AK.Wwise.Event TitleSound;
+
+    /// <summary>
     /// インスタンス設定と初期リスナー設定を行う
     /// </summary>
     private void Awake()
@@ -243,6 +248,7 @@ public class MainMenuManager : MonoBehaviour
     {
         OthelloManager.isAIOpponent = isCPU;
         menuAnimator.SetTrigger("Start");
+        TitleSound.Post(gameObject);
         await UniTask.Delay(System.TimeSpan.FromSeconds(3.0f));
         await SceneTransition.Instance.Transition("OthelloBoard");
     }

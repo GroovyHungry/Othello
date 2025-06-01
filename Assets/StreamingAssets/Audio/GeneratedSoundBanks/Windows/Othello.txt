@@ -6,6 +6,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	822292684	Skip			\Default Work Unit\Skip	
 	829756566	OnSelect			\Default Work Unit\OnSelect	
 	880567608	ResetFilter			\Default Work Unit\ResetFilter	
+	962309722	TitleSound			\Default Work Unit\TitleSound	
 	1073466678	Stop_BGM			\Default Work Unit\Stop_BGM	
 	1119405073	InvalidMove			\Default Work Unit\InvalidMove	
 	1135116198	StopAllSE			\Default Work Unit\StopAllSE	
@@ -61,7 +62,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	409938069	Slideer_SE	Y:\Othello\Othello_WwiseProject\.cache\A3\{A389892E-C6D3-15DC-CF22-02668BD41430}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\Slideer_SE		382668
 	457575499	Stock_SE	Y:\Othello\Othello_WwiseProject\.cache\B7\{B7DEF0DD-9401-88F0-2800-CE7AABFD6252}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\Stock_SE		24008
 	457644390	OnSelect_SE	Y:\Othello\Othello_WwiseProject\.cache\C9\{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\OnSelect_SE		18516
-	473972063	Drum_Rolls	Y:\Othello\Othello_WwiseProject\.cache\21\{21D717C6-6ED1-FAE4-C643-BF7D9589C641}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\Drum_Rolls		572372
+	473972063	Drum_Rolls	Y:\Othello\Othello_WwiseProject\.cache\2A\{2AF77661-92A2-AFE3-DAC2-833FF569FE19}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\Drum_Rolls		572372
 	513787895	Evolve 27-Audio	Y:\Othello\Othello_WwiseProject\.cache\6C\{6CE4C24A-A5C4-F548-DF13-856C6A51C930}.wem		\Interactive Music Hierarchy\Default Work Unit\GameBGM\BoardBGM\Board_BGM_1\BGM-1Playlist\BGM-1\Evolve 27-Audio		924464
 	539488075	Place_l_01	Y:\Othello\Othello_WwiseProject\.cache\4D\{4D3A0131-4186-8B16-0126-6888C14ACFE5}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\PlacePiece\PlacePiece_L_SE\Place_l_01		47380
 	543812774	Place_h_03	Y:\Othello\Othello_WwiseProject\.cache\BC\{BC231348-91C9-5B15-B2B0-C0550538CD73}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SE\PlacePiece\PlacePiece_H_SE\Place_h_03		978020

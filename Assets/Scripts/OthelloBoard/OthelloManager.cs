@@ -1,24 +1,29 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
-using System.Linq;
 using AK.Wwise;
-using Cysharp.Threading.Tasks.Triggers;
 
+/// <summary>
+/// オセロゲームを管理するクラス
+/// </summary>
 public class OthelloManager : MonoBehaviour
 {
-    public GameObject flipMarker;
+    /// <summary>
+    /// グローバルアクセス用インスタンス
+    /// </summary>
     public static OthelloManager Instance;
-    public static bool Waiting = false;
-    public static bool initializing = false;
-    private bool previousWaiting = false;
-    public static bool isWhiteTurn = false;
-    public bool isWhiteFirst = false;
-    public static bool isAIPlaying = false;
-    public static bool isAIOpponent = true;
-    public bool isAIWhite = true;
+
+    /// <summary>
+    /// 盤面サイズ
+    /// </summary>
+    private const int gridSize = 8;
+
+    /// <summary>
+    /// Inspector 割り当て用GameObject, UI, イベント
+    /// </summary>
+    public GameObject whitePiecePrefab;
+    public GameObject blackPiecePrefab;
     public GameObject youWhite;
     public GameObject youBlack;
     public GameObject cpuWhite;
@@ -27,21 +32,6 @@ public class OthelloManager : MonoBehaviour
     public GameObject player2;
     public GameObject skipMessageWhite;
     public GameObject skipMessageBlack;
-    public GameObject whitePiecePrefab;
-    public GameObject blackPiecePrefab;
-    public Image whiteDigit1;
-    public Image whiteDigit2;
-    public Image blackDigit1;
-    public Image blackDigit2;
-    public Sprite[] numSprites;
-    public Sprite whiteHintSprite; // 半透明の白スプライトをInspectorで設定
-    public Sprite blackHintSprite; // 半透明の黒スプライトをInspectorで設
-    private OthelloBoard othelloBoard;
-    private const int gridSize = 8; // 盤面サイズ (ハイライト等に使用)
-    public GameObject gameover;
-    private int gameoverCounter;
-    private int blackPlacedCount = 0;
-    private int whitePlacedCount = 0;
     public GameObject blackStockPrefab;
     public GameObject whiteStockPrefab;
     public Transform blackStockParent;
@@ -50,49 +40,112 @@ public class OthelloManager : MonoBehaviour
     public List<GameObject> whiteStocks = new List<GameObject>();
     public Button settingButtonInGame;
     public Button exitButton;
+    public Sprite whiteHintSprite;
+    public Sprite blackHintSprite;
+
+    // public Image whiteDigit1;
+    // public Image whiteDigit2;
+    // public Image blackDigit1;
+    // public Image blackDigit2;
+    // public Sprite[] numSprites;
+
+    /// <summary>
+    /// Wwiseイベント
+    /// </summary>
     [SerializeField] private AK.Wwise.Event OnClick;
     [SerializeField] private AK.Wwise.Event Place;
     [SerializeField] private AK.Wwise.Event Stock;
     [SerializeField] private AK.Wwise.Event Skip;
+
+    /// <summary>
+    /// 内部状態（ターン管理やプレイ状況管理）
+    /// </summary>
+    public static bool Waiting = false;
+    public static bool initializing = false;
+    public static bool isWhiteTurn = false;
+    public static bool isAIPlaying = false;
+    public static bool isAIOpponent = true;
+    public bool isWhiteFirst = false;
+    public bool isAIWhite = true;
+    private OthelloBoard othelloBoard;
+    private int gameoverCounter;
+    private int blackPlacedCount = 0;
+    private int whitePlacedCount = 0;
+
+    /// <summary>
+    /// インスタンスを設定
+    /// </summary>
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
         Application.targetFrameRate = 60;
         othelloBoard = GetComponent<OthelloBoard>();
 
         settingButtonInGame.onClick.AddListener(OnSettingButtonClicked);
         exitButton.onClick.AddListener(OnExitButtonClicked);
     }
+
+    /// <summary>
+    /// リスナー解除
+    /// </summary>
     private void OnDestroy()
     {
         exitButton.onClick.RemoveListener(OnExitButtonClicked);
         settingButtonInGame.onClick.RemoveListener(OnSettingButtonClicked);
     }
+
+    /// <summary>
+    /// ゲーム開始
+    /// </summary>
     private async UniTaskVoid Start()
     {
         await StartGame();
     }
+
+    /// <summary>
+    /// 毎フレームスコア更新
+    /// 現在は未使用
+    /// </summary>
+    private void Update()
+    {
+        // if (!initializing && !Waiting)
+        // {
+        //     UpdateScoreUI();
+        // }
+    }
+
+    /// <summary>
+    /// ゲーム開始処理
+    /// </summary>
     public async UniTask StartGame()
     {
         initializing = true;
+
         if (isAIOpponent)
         {
+            ///難易度選択
             await DifficultySelect.Instance.StartDifficultySelect();
+            ///コイントスを行う
             await CoinTossManager.Instance.StartCoinTossVsCPU();
             ShowYouAndCPUUI();
         }
         else
         {
+            ///PvPであれば難易度選択を飛ばす
             await CoinTossManager.Instance.StartCoinTossPvP();
             ShowP1AndP2();
-
         }
-        isWhiteFirst = isWhiteTurn;
 
+        isWhiteFirst = isWhiteTurn;
+        ///駒のストックを生成
         await GenerateStockPieces();
+        ///盤面の初期設定
         await InitializeBoard();
+        ///有効手ハイライト
         HighlightValidMoves();
+
         initializing = false;
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
         if (isAIOpponent && isAITurn)
@@ -100,18 +153,30 @@ public class OthelloManager : MonoBehaviour
             await OthelloAI.Instance.PlayAITurn();
         }
     }
+
+    /// <summary>
+    /// メインメニューへ戻る処理
+    /// </summary>
     public async UniTask ExitToMainMenu()
     {
+        await SceneTransition.Instance.Transition("MainMenu");
         othelloBoard.ClearBoardState();
         ClearHighlightedCells();
-        await SceneTransition.Instance.Transition("MainMenu");
     }
+
+    /// <summary>
+    /// Exitボタン押下時処理
+    /// </summary>
     private void OnExitButtonClicked()
     {
         Waiting = true;
         DoubleCheck.Instance.OpenDoubleCheckPanel();
         OnClick.Post(exitButton.gameObject);
     }
+
+    /// <summary>
+    /// Settingボタン押下時処理
+    /// </summary>
     private void OnSettingButtonClicked()
     {
         Waiting = true;
@@ -119,20 +184,32 @@ public class OthelloManager : MonoBehaviour
         settingButtonInGame.interactable = false;
         OnClick.Post(settingButtonInGame.gameObject);
     }
-    public void UpdateScoreUI()
-	{
-		UpdateScore(othelloBoard.CountPieces(true), whiteDigit1, whiteDigit2);
-		UpdateScore(othelloBoard.CountPieces(false), blackDigit1, blackDigit2);
-	}
 
-	void UpdateScore(int score, Image digit1, Image digit2)
-	{
-		int tens = score / 10;
-		int ones = score % 10;
+    // /// <summary>
+    // /// スコアUI更新
+    // /// 未使用状態
+    // /// </summary>
+    // public void UpdateScoreUI()
+    // {
+    //     UpdateScore(othelloBoard.CountPieces(true), whiteDigit1, whiteDigit2);
+    //     UpdateScore(othelloBoard.CountPieces(false), blackDigit1, blackDigit2);
+    // }
 
-		digit1.sprite = numSprites[tens];
-		digit2.sprite = numSprites[ones];
-	}
+    // /// <summary>
+    // /// スコア更新補助
+    // /// 現在未使用
+    // /// </summary>
+    // private void UpdateScore(int score, Image digit1, Image digit2)
+    // {
+    //     int tens = score / 10;
+    //     int ones = score % 10;
+    //     digit1.sprite = numSprites[tens];
+    //     digit2.sprite = numSprites[ones];
+    // }
+
+    /// <summary>
+    /// プレイヤーとCPUを表示
+    /// </summary>
     private void ShowYouAndCPUUI()
     {
         if (isAIWhite)
@@ -146,11 +223,23 @@ public class OthelloManager : MonoBehaviour
             youWhite.SetActive(true);
         }
     }
+
+    /// <summary>
+    /// P1/P2の表示
+    /// </summary>
     private void ShowP1AndP2()
     {
         player1.SetActive(true);
         player2.SetActive(true);
     }
+
+    /// <summary>
+    /// コマ配置処理
+    /// </summary>
+    /// <param name="x">配置する列インデックス</param>
+    /// <param name="y">配置する行インデックス</param>
+    /// <param name="tag">駒の色タグ ("White" または "Black")</param>
+    /// <param name="position">配置位置のワールド座標</param>
     public async UniTask PlacePiece(int x, int y, string tag, Vector3 position)
     {
         Waiting = true;
@@ -167,54 +256,34 @@ public class OthelloManager : MonoBehaviour
         await EndTurn();
     }
 
-
-    public void ShowFlipMarker(bool show)
-    {
-        if (flipMarker != null)
-        {
-            flipMarker.SetActive(show);
-        }
-    }
-
-    // 初期配置
+    /// <summary>
+    /// ストック駒生成
+    /// </summary>
     private async UniTask GenerateStockPieces()
     {
         Waiting = true;
-        int columns = 14;
-        int rows = 4;
-        int total = columns * rows;
-
-        int spacingPxX = 2;
-        int spacingPxY = 12 + 2;
-        float spacingX = spacingPxX / 16f;
-        float spacingY = spacingPxY / 16f;
-
-        Vector3 blackStartPos = blackStockParent.position;
-        Vector3 whiteStartPos = whiteStockParent.position;
-
+        int columns = 14, rows = 4, total = columns * rows;
+        float spacingX = 2f / 16f, spacingY = 14f / 16f;
+        Vector3 blackStart = blackStockParent.position;
+        Vector3 whiteStart = whiteStockParent.position;
         for (int i = 0; i < total; i++)
         {
-            int x = i % columns;
-            int y = i / columns;
-
-            // 黒コマの配置座標
-            Vector3 blackPos = blackStartPos + new Vector3(x * spacingX, -y * spacingY, 0);
+            int x = i % columns, y = i / columns;
+            Vector3 blackPos = blackStart + new Vector3(x * spacingX, -y * spacingY, 0);
+            Vector3 whitePos = whiteStart + new Vector3(x * spacingX, -y * spacingY, 0);
             GameObject black = Instantiate(blackStockPrefab, blackPos, Quaternion.identity, blackStockParent);
             blackStocks.Add(black);
-
-            // 白コマの配置座標
-            Vector3 whitePos = whiteStartPos + new Vector3(x * spacingX, -y * spacingY, 0);
             GameObject white = Instantiate(whiteStockPrefab, whitePos, Quaternion.identity, whiteStockParent);
             whiteStocks.Add(white);
-
             Stock.Post(white);
-
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.0001f));
         }
         Waiting = false;
     }
 
-
+    /// <summary>
+    /// 初期コマ配置
+    /// </summary>
     private async UniTask InitializeBoard()
     {
         float waitTime = 0.1f;
@@ -225,9 +294,14 @@ public class OthelloManager : MonoBehaviour
         await PlaceInitialPiece(4, 3, blackPiecePrefab);
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
         await PlaceInitialPiece(4, 4, whitePiecePrefab);
-        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
     }
 
+    /// <summary>
+    /// 初期コマ配置補助
+    /// </summary>
+    /// <param name="x">列インデックス</param>
+    /// <param name="y">行インデックス</param>
+    /// <param name="prefab">配置する駒のプレハブ</param>
     private async UniTask PlaceInitialPiece(int x, int y, GameObject prefab)
     {
         GameObject piece = Instantiate(prefab, new Vector3(x - 3.5f, y - 3.5f, 0), Quaternion.identity);
@@ -236,66 +310,43 @@ public class OthelloManager : MonoBehaviour
         await othelloBoard.ApplyMove(x, y, piece, piece.tag);
     }
 
+    /// <summary>
+    /// ターン終了処理
+    /// </summary>
     public async UniTask EndTurn()
     {
         isWhiteTurn = !isWhiteTurn;
-
         HighlightValidMoves();
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
-        if (isAIOpponent && isAITurn)
-        {
-            await OthelloAI.Instance.PlayAITurn();
-        }
+        if (isAIOpponent && isAITurn) await OthelloAI.Instance.PlayAITurn();
     }
+
+    /// <summary>
+    /// 駒ストック消費
+    /// </summary>
+    /// <param name="tag">消費する駒の色タグ</param>
     public async UniTask ConsumeStock(string tag)
     {
         if (tag == "Black" && blackPlacedCount < blackStocks.Count)
         {
-            GameObject stock = blackStocks[blackPlacedCount];
-            var animator = stock.GetComponent<Animator>();
-            animator.SetTrigger("consume");
+            var stock = blackStocks[blackPlacedCount++];
+            stock.GetComponent<Animator>().SetTrigger("consume");
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
             stock.SetActive(false);
-            blackPlacedCount++;
         }
         else if (tag == "White" && whitePlacedCount < whiteStocks.Count)
         {
-            GameObject stock = whiteStocks[whitePlacedCount];
-            var animator = stock.GetComponent<Animator>();
-            animator.SetTrigger("consume");
+            var stock = whiteStocks[whitePlacedCount++];
+            stock.GetComponent<Animator>().SetTrigger("consume");
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
             stock.SetActive(false);
-            whitePlacedCount++;
         }
     }
 
-    // 指定方向で挟めるかチェック
-    // private bool CanFlipDirection(int x, int y, int dx, int dy, string currentTag)
-    // {
-    //     int checkX = x + dx;
-    //     int checkY = y + dy;
-    //     bool foundOpponent = false;
-
-    //     while (IsValidPosition(checkX, checkY))
-    //     {
-    //         GameObject checkPiece = othelloBoard.GetState(checkX, checkY);
-    //         if (checkPiece == null) return false;
-
-    //         if (checkPiece.tag != currentTag)
-    //         {
-    //             foundOpponent = true;
-    //         }
-    //         else
-    //         {
-    //             return foundOpponent;
-    //         }
-    //         checkX += dx;
-    //         checkY += dy;
-    //     }
-    //     return false;
-    // }
-
-
+    /// <summary>
+    /// Skipメッセージ表示
+    /// </summary>
+    /// <param name="isWhite">現在のターンが白かどうか</param>
     private async UniTask ShowSkipMessage(bool isWhite)
     {
         Waiting = true;
@@ -303,118 +354,93 @@ public class OthelloManager : MonoBehaviour
         {
             skipMessageBlack.SetActive(true);
             Skip.Post(skipMessageBlack.gameObject);
-            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f));
             skipMessageBlack.SetActive(false);
         }
         else
         {
             skipMessageWhite.SetActive(true);
             Skip.Post(skipMessageWhite.gameObject);
-            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f));
             skipMessageWhite.SetActive(false);
         }
         Waiting = false;
     }
+
+    /// <summary>
+    /// 合法手取得
+    /// </summary>
+    /// <param name="validCells">合法手のセルリスト出力パラメータ</param>
     public void GetValidCells(out List<OthelloCell> validCells)
     {
         validCells = new List<OthelloCell>();
-
         foreach (OthelloCell cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
             if (othelloBoard.IsValidMove(cell.x, cell.y, isWhiteTurn ? "White" : "Black"))
-            {
                 validCells.Add(cell);
-            }
         }
     }
+
+    /// <summary>
+    /// ハイライト表示
+    /// </summary>
     public async void HighlightValidMoves()
     {
         GetValidCells(out List<OthelloCell> validCells);
-
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
-
-        if (isWhiteFirst == isWhiteTurn)
-        {
-            AudioManager.Instance.ChangeBGM_1();
-        }
+        if (isWhiteFirst == isWhiteTurn) AudioManager.Instance.ChangeBGM_1();
         AudioManager.Instance.ChangeBGM_2();
-
-        // ClearHighlightedCells();
-
-        if ((!isAIOpponent || (isAIOpponent && !isAITurn)) && DifficultySelect.difficulty != "secret")
+        if ((!isAIOpponent || !isAITurn) && DifficultySelect.difficulty != "secret")
         {
-            // ハイライト表示
             foreach (OthelloCell cell in validCells)
             {
-                SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+                var sr = cell.GetComponent<SpriteRenderer>();
                 sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
             }
         }
         await CheckSkipOrGameOver();
     }
+
+    /// <summary>
+    /// ハイライトクリア
+    /// </summary>
     public void ClearHighlightedCells()
     {
-        var allCells = FindObjectsByType<OthelloCell>(FindObjectsSortMode.None);
-        foreach (var cell in allCells)
+        foreach (var cell in FindObjectsByType<OthelloCell>(FindObjectsSortMode.None))
         {
-            SpriteRenderer sr = cell.GetComponent<SpriteRenderer>();
+            var sr = cell.GetComponent<SpriteRenderer>();
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.0f);
         }
     }
+
+    /// <summary>
+    /// ゲームオーバー判定
+    /// </summary>
     private async UniTask CheckSkipOrGameOver()
     {
         GetValidCells(out List<OthelloCell> validCells);
-
         if (validCells.Count == 0)
         {
-            gameoverCounter += 1;
-
+            gameoverCounter++;
             if (gameoverCounter == 1)
             {
                 isWhiteTurn = !isWhiteTurn;
                 bool nextHasMove = false;
-
-                for (int x = 0; x < 8; x++)
-                {
-                    for (int y = 0; y < 8; y++)
-                    {
+                for (int x = 0; x < gridSize; x++)
+                    for (int y = 0; y < gridSize; y++)
                         if (othelloBoard.IsValidMove(x, y, isWhiteTurn ? "White" : "Black"))
-                        {
                             nextHasMove = true;
-                        }
-                    }
-                }
-
                 if (nextHasMove)
                 {
                     await ShowSkipMessage(isWhiteTurn);
-                    // await UniTask.DelayFrame(1);
                     HighlightValidMoves();
                 }
-                else
-                {
-                    gameoverCounter += 1;
-                }
+                else gameoverCounter++;
             }
             if (gameoverCounter == 2)
-            {
                 await ResultManager.Instance.ShowResult();
-            }
         }
-        else
-        {
-            gameoverCounter = 0;
-        }
-    }
-    private void Update()
-    {
-        if (!initializing && !Waiting)
-        {
-            UpdateScoreUI();
-            // Debug.Log("black"+CountPieces(false));
-            // Debug.Log("white"+CountPieces(true));
-        }
-        previousWaiting = Waiting;
+        else gameoverCounter = 0;
     }
 }

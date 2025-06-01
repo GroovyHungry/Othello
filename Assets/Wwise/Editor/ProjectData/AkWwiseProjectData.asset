@@ -140,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 318368646c669d44a61a6d4265fe2c53
     GuidInternal: 
-    m_lastTime: -8584532901610157333
+    m_lastTime: -8584531102454899764
     List:
     - name: Othello
       guid: 6c340724af6bbe4495ac59006ec6f9cc
@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: e557fd1a95cbe04397f30cc6f1ce7680
     GuidInternal: 
-    m_lastTime: -8584532901610199441
+    m_lastTime: -8584529273076394513
     List:
     - name: Drum_Rolls
       guid: 8ea61f310e516848a6d6e3760907a208
@@ -459,6 +459,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.1687756
       minDuration: 2.1687756
+    - name: TitleSound
+      guid: 0868558e59eb2a479a65053622ebec89
+      id: 962309722
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: TitleSound
+        ObjectType: 3
+        guid: 0868558e59eb2a479a65053622ebec89
+      Path: Events/Default Work Unit/TitleSound
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Vinyl_Noise
       guid: c56fb3d4a8bbdf4d8d23f406f09d13cb
       id: 3245760336

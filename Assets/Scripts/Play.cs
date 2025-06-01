@@ -1,13 +1,22 @@
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
+/// <summary>
+/// プレイのデータをUnity上でのプレイ時削除する
+/// ビルド版では使われない
+/// </summary>
 public static class PlayerPrefsAutoClear
 {
-    // Play モードでシーン読み込み前に呼ばれる
+    ///エディタでのPlay時にデータ削除
+    #if UNITY_EDITOR
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    static void ClearOnPlay()
+    static void ClearOnPlayEditorOnly()
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        Debug.Log("▶ PlayerPrefs を自動クリアしました");
+        Debug.Log("▶ Unity エディタ上の Play 実行前に PlayerPrefs をクリアしました");
     }
+    #endif
 }

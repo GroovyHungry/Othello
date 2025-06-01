@@ -1,49 +1,73 @@
 using UnityEngine;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using AK.Wwise;
 
+/// <summary>
+/// オセロの駒一つを管理するクラス
+/// </summary>
 public class OthelloPiece : MonoBehaviour
 {
+    /// <summary>
+    /// 列インデックス
+    /// </summary>
     public int state_X;
+
+    /// <summary>
+    /// 行インデックス
+    /// </summary>
     public int state_Y;
+
+    /// <summary>
+    /// Animatorコンポーネント
+    /// </summary>
     private Animator animator;
+
+    /// <summary>
+    /// SpriteRendererコンポーネント
+    /// </summary>
+    private SpriteRenderer spriteRenderer;
+
+    /// <summary>
+    /// 白駒スプライト
+    /// </summary>
     public Sprite whiteSprite;
+
+    /// <summary>
+    /// 黒駒スプライト
+    /// </summary>
     public Sprite blackSprite;
 
-    private SpriteRenderer spriteRenderer;
+    /// <summary>
+    /// Wwiseイベント
+    /// </summary>
     [SerializeField] private AK.Wwise.Event PlacePiece;
     [SerializeField] private AK.Wwise.Event FlipPiece;
 
+    /// <summary>
+    /// コンポーネント取得
+    /// </summary>
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // float flipDuration = GetAnimationClipLength("FlipWhitePiece");
     }
+
+    /// <summary>
+    /// 駒の初期位置を設定する
+    /// </summary>
+    /// <param name="x">列インデックス</param>
+    /// <param name="y">行インデックス</param>
     public void InitState(int x, int y)
     {
         state_X = x;
         state_Y = y;
     }
-    public async UniTask Place() // async化
-    {
-        if (gameObject.tag == "White")
-        {
-            // animator.SetTrigger("PlaceWhiteTrigger");
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-        }
-        else
-        {
-            // animator.SetTrigger("PlaceBlackTrigger");
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f));
-        }
-    }
 
+    /// <summary>
+    /// 駒を裏返すアニメーションと音声
+    /// </summary>
     public async UniTask Flip()
     {
-        // float flipDuration = GetAnimationClipLength("FlipWhitePiece");
-        Debug.Log("Flip");
         FlipPiece.Post(gameObject);
         if (gameObject.tag == "White")
         {
@@ -52,7 +76,6 @@ public class OthelloPiece : MonoBehaviour
             spriteRenderer.sprite = blackSprite;
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
             PlacePiece.Post(gameObject);
-
         }
         else
         {
@@ -62,17 +85,5 @@ public class OthelloPiece : MonoBehaviour
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
             PlacePiece.Post(gameObject);
         }
-    }
-    public async UniTask Remove(float delay)
-    {
-        if (gameObject.tag == "White")
-        {
-            animator.SetTrigger("RemoveWhitePiece");
-        }
-        else
-        {
-            animator.SetTrigger("RemoveBlackPiece");
-        }
-        await UniTask.Delay(System.TimeSpan.FromSeconds(delay));
     }
 }

@@ -78,6 +78,7 @@ public class DifficultySelect : MonoBehaviour
     private void Start()
     {
         int unlocked = PlayerPrefs.GetInt("Unlocked", 0);
+        PlayerPrefs.Save();
 
         // 全ボタンを一旦非表示
         easyButton.gameObject.SetActive(false);

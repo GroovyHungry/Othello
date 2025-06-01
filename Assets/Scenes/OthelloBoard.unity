@@ -2813,6 +2813,7 @@ GameObject:
   - component: {fileID: 1068571600}
   - component: {fileID: 1068571602}
   - component: {fileID: 1068571601}
+  - component: {fileID: 1068571603}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -2847,10 +2848,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.033333335
+    y: 0.03333333
+    width: 0.9333334
+    height: 0.93333334
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2970,6 +2971,30 @@ MonoBehaviour:
   scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!114 &1068571603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068571596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 16
+  m_RefResolutionX: 256
+  m_RefResolutionY: 144
+  m_CropFrame: 3
+  m_GridSnapping: 1
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &1126314408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,7 +3033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 58}
+  m_AnchoredPosition: {x: 108, y: 58}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1126314410
@@ -3960,7 +3985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93, y: 58}
+  m_AnchoredPosition: {x: 87, y: 58}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346686573
@@ -5079,10 +5104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 256, y: 144}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -5225,10 +5250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149daf00ff1daa3428e341bb7c4d0858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipMarker: {fileID: 0}
-  isWhiteTurn: 0
-  isWhiteFirst: 0
-  isAIWhite: 0
+  whitePiecePrefab: {fileID: 5437276141327510056, guid: 13aad453b4c24d64b83f038a54b73594, type: 3}
+  blackPiecePrefab: {fileID: 7924353096850009660, guid: c13e265720bfcf14488ea85ac262b5df, type: 3}
   youWhite: {fileID: 132491424}
   youBlack: {fileID: 1029839246}
   cpuWhite: {fileID: 1346439913}
@@ -5237,26 +5260,6 @@ MonoBehaviour:
   player2: {fileID: 1330965170}
   skipMessageWhite: {fileID: 476065521}
   skipMessageBlack: {fileID: 212879717}
-  whitePiecePrefab: {fileID: 5437276141327510056, guid: 13aad453b4c24d64b83f038a54b73594, type: 3}
-  blackPiecePrefab: {fileID: 7924353096850009660, guid: c13e265720bfcf14488ea85ac262b5df, type: 3}
-  whiteDigit1: {fileID: 1194661268}
-  whiteDigit2: {fileID: 969946110}
-  blackDigit1: {fileID: 1300888788}
-  blackDigit2: {fileID: 1904403172}
-  numSprites:
-  - {fileID: 3805357572249819145, guid: 08dc7de034480441fbc6409d03b0eacd, type: 3}
-  - {fileID: 3805357572249819145, guid: 3aa5467973ee74e4c9460e1b3ca5fc5d, type: 3}
-  - {fileID: 3805357572249819145, guid: 44a5f1e7c666b496e88ef830abc9daf1, type: 3}
-  - {fileID: 3805357572249819145, guid: 0b90d90dc5b374aebb9ada7836b7ec7f, type: 3}
-  - {fileID: 3805357572249819145, guid: 9f13225de477749de9f6a97ec994e94b, type: 3}
-  - {fileID: 3805357572249819145, guid: 8dfd5755ee4094e2cb201c1cacaee104, type: 3}
-  - {fileID: 3805357572249819145, guid: 98422198b957c48e0b8448c49802f9fe, type: 3}
-  - {fileID: 3805357572249819145, guid: a05ca9a58ad00444e98705224790de71, type: 3}
-  - {fileID: 3805357572249819145, guid: 1065c4ea2cdf547a7bad8d9d03a4960e, type: 3}
-  - {fileID: 3805357572249819145, guid: 5c4e009bb431e48faaec075aa15fd86a, type: 3}
-  whiteHintSprite: {fileID: 6925758410389416767, guid: 0d2054384d00738458da04a49a25af30, type: 3}
-  blackHintSprite: {fileID: 2769627125001076862, guid: 448b9fdd48943784db5c44c6974b5c57, type: 3}
-  gameover: {fileID: 0}
   blackStockPrefab: {fileID: 6658225762490503098, guid: c32d423fa8cce40cbac95d78b96aa286, type: 3}
   whiteStockPrefab: {fileID: 1236481488043663682, guid: eb621785920e04358a7f24f30851c20f, type: 3}
   blackStockParent: {fileID: 1639703958}
@@ -5265,6 +5268,8 @@ MonoBehaviour:
   whiteStocks: []
   settingButtonInGame: {fileID: 1126314411}
   exitButton: {fileID: 1346686573}
+  whiteHintSprite: {fileID: 6925758410389416767, guid: 0d2054384d00738458da04a49a25af30, type: 3}
+  blackHintSprite: {fileID: 2769627125001076862, guid: 448b9fdd48943784db5c44c6974b5c57, type: 3}
   OnClick:
     idInternal: 0
     valueGuidInternal: 
@@ -5281,6 +5286,8 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ac9dd3d30739b4f2ea9fa3e58a00798a, type: 2}
+  isWhiteFirst: 0
+  isAIWhite: 0
 --- !u!114 &1957474896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5293,14 +5300,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5300410e9f6725f408ef2b372539796b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlipPiece:
+  flipPieceEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 5d58c24029d1b43ca9dd3b0970dcb829, type: 2}
-  PlacePiece:
+    WwiseObjectReference: {fileID: 0}
+  placePieceEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: e4fefdd3476e642e4a23e1e5759e0e66, type: 2}
+    WwiseObjectReference: {fileID: 0}
 --- !u!114 &1957474897
 MonoBehaviour:
   m_ObjectHideFlags: 0

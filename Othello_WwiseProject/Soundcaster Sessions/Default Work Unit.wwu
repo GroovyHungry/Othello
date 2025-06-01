@@ -29,7 +29,7 @@
 						<CurrentSwitchRef Name="BGM_P3" ID="{9BC7DE84-F3F0-48DB-8E9B-62E928261F74}"/>
 						<CurrentSwitchRef Name="BGM_1" ID="{7C4D72B4-FA1F-48A1-8A3D-60E7DF425C89}"/>
 						<CurrentSwitchRef Name="BGM_3" ID="{2B6A7B46-94A0-4B9B-9C31-C6EA6303D81F}"/>
-						<CurrentSwitchRef Name="MainMenu" ID="{1DAF1579-5E2A-477B-A1FA-E2603213EEFB}"/>
+						<CurrentSwitchRef Name="LoseResult" ID="{48EBD203-1AEA-4FB4-A43D-380AAFDD6B28}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>

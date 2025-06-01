@@ -155,6 +155,7 @@ public class OthelloAI : MonoBehaviour
         OthelloManager.isAIPlaying = true;
         await UniTask.Delay(System.TimeSpan.FromSeconds(0.2));
 
+        /// ボードの状況に応じてAIが操作
         string[,] board = OthelloBoard.Instance.GetBoardState();
         string aiTag = OthelloManager.Instance.isAIWhite ? "White" : "Black";
         List<Vector2Int> validMoves = GetValidMoves(board, aiTag);
@@ -200,8 +201,11 @@ public class OthelloAI : MonoBehaviour
 
         foreach (var move in validMoves)
         {
+            ///ひっくり返せる駒の数をカウント
             int flipCountScore = CountFlippablePieces(move.x, move.y, aiTag, board);
+            ///駒を置く場所の評価
             int positionScore  = normalDifficultyTable[move.y, move.x];
+            ///それぞれに固有重みをかけて合算評価
             int totalScore     = flipCountScore * normalWeightFlip + positionScore * normalWeightPos;
             if (totalScore > maxScore)
             {
@@ -218,16 +222,19 @@ public class OthelloAI : MonoBehaviour
     /// <param name="validMoves">合法手のリスト</param>
     private Vector2Int HardAI(List<Vector2Int> validMoves)
     {
-        string aiTag     = OthelloManager.Instance.isAIWhite ? "White" : "Black";
+        string aiTag = OthelloManager.Instance.isAIWhite ? "White" : "Black";
         string playerTag = aiTag == "White" ? "Black" : "White";
-        float maxScore   = float.MinValue;
+        float maxScore = float.MinValue;
         Vector2Int bestMove = validMoves[0];
         string[,] board = OthelloBoard.Instance.GetBoardState();
 
         foreach (var move in validMoves)
         {
+            ///ゲームのボードへの影響を避けるためにボード状況を複製
             var boardAfterAIMove = CloneBoardState(board);
+            ///flipA = AIがひっくり返せる枚数
             int flipA = CountFlippablePieces(move.x, move.y, aiTag, boardAfterAIMove);
+            ///盤面をひっくり返すシミュレーション
             SimulateMove(boardAfterAIMove, move.x, move.y, aiTag);
             List<Vector2Int> playerMoves = GetValidMoves(boardAfterAIMove, playerTag);
             float score;
@@ -240,10 +247,12 @@ public class OthelloAI : MonoBehaviour
                 float worst = float.MaxValue;
                 foreach (var pm in playerMoves)
                 {
+                    ///AIがプレイヤーの次の手を予測
                     var boardAfterPM = CloneBoardState(boardAfterAIMove);
                     int flipP = CountFlippablePieces(pm.x, pm.y, playerTag, boardAfterPM);
                     SimulateMove(boardAfterPM, pm.x, pm.y, playerTag);
                     float ps = -EvaluateMove(pm.x, pm.y, flipP, boardAfterPM, playerTag);
+                    ///プレイヤーが最も最善を打つと仮定した場合の最高スコア
                     if (ps < worst) worst = ps;
                 }
                 score = worst;
@@ -258,11 +267,12 @@ public class OthelloAI : MonoBehaviour
     }
 
     /// <summary>
-    /// シークレット難易度：easyAIと同じランダム選択
+    /// シークレット難易度：hardAIと同じランダム選択
+    /// 一度後回しに
     /// </summary>
     private Vector2Int SecretAI(List<Vector2Int> validMoves)
     {
-        return EasyAI(validMoves);
+        return HardAI(validMoves);
     }
 
     /// <summary>
@@ -291,7 +301,7 @@ public class OthelloAI : MonoBehaviour
     }
 
     /// <summary>
-    /// 盤面状態をディープコピーする
+    /// 盤面状態をディープコピーする（元ボードへの影響を避けるため）
     /// </summary>
     /// <param name="original">コピー元の盤面状態配列</param>
     private string[,] CloneBoardState(string[,] original)
@@ -350,6 +360,7 @@ public class OthelloAI : MonoBehaviour
     /// <param name="aiTag">AIの駒色</param>
     private float EvaluateMove(int x, int y, int flipCount, string[,] board, string aiTag)
     {
+        ///盤面の進み具合で分岐
         Phase phase = GetPhase();
         int[,] table; float wf, wm, wd;
         switch(phase)

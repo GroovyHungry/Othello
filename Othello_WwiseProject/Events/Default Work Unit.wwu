@@ -196,7 +196,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 								</Reference>
 								<Reference Name="TargetEffect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 									<ObjectRef Name="Dual_Filters_Narrow_Bandwidth" ID="{A24607C6-04E1-4D41-B513-28C0914D138D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
@@ -213,7 +213,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="GameBGM" ID="{F7C44017-375A-48E4-845D-999276F9ADFE}" WorkUnitID="{7F83587D-CF7C-4D8E-ABE7-A0AAB9BDD0E6}"/>
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -236,6 +236,65 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Drum_Rolls" ID="{D6466D15-0EFD-48D1-801D-ED9A610084EC}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TitleSound" ID="{8E556808-EB59-472A-9A65-053622EBEC89}">
+					<ChildrenList>
+						<Action Name="" ID="{E523238F-1281-432D-BD27-F6B3F4A43AC8}" ShortID="99918655">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="41"/>
+								<Property Name="Delay" Type="Real64" Value="0.4"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{70987023-6E03-46B7-8AA1-9A7C063065BB}" ShortID="589346118">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="41"/>
+								<Property Name="Delay" Type="Real64" Value="0.6"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{77514888-3FA2-4FE1-BED6-DAD347709F8D}" ShortID="170621570">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="41"/>
+								<Property Name="Delay" Type="Real64" Value="0.9"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{177E68BF-477E-43E2-80BA-145FC1863672}" ShortID="854236922">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="41"/>
+								<Property Name="Delay" Type="Real64" Value="1.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B5A31202-D407-4D04-927F-CE439B1198C1}" ShortID="770856686">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="41"/>
+								<Property Name="Delay" Type="Real64" Value="1.4"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

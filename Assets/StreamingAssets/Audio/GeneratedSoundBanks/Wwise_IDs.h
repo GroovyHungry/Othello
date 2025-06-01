@@ -30,6 +30,7 @@ namespace AK
         static const AkUniqueID STOP_BGM = 1073466678U;
         static const AkUniqueID STOPALLSE = 1135116198U;
         static const AkUniqueID STOPROTATING = 3791290573U;
+        static const AkUniqueID TITLESOUND = 962309722U;
         static const AkUniqueID VINYL_NOISE = 3245760336U;
     } // namespace EVENTS
 

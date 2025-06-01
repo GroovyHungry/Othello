@@ -2,48 +2,69 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using Unity.Collections;
 using System;
 
+/// <summary>
+/// ゲーム終了時の結果表示とその演出を管理するクラス
+/// </summary>
 public class ResultManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// グローバルアクセス用インスタンス
+    /// </summary>
     public static ResultManager Instance;
-    // private int whiteScore;
-    // private int blackScore;
-    // private int competitively;
-    // private int difference;
+
+    /// <summary>
+    /// 黒勝利表示用GameObject（PvP用）
+    /// </summary>
     public GameObject BlackWins;
+    /// <summary>
+    /// 白勝利表示用GameObject（PvP用）
+    /// </summary>
     public GameObject WhiteWins;
+    /// <summary>
+    /// プレイヤー勝利表示用GameObject（CPU戦用）
+    /// </summary>
     public GameObject youWin;
+    /// <summary>
+    /// プレイヤー敗北表示用GameObject（CPU戦用）
+    /// </summary>
     public GameObject youLose;
+    /// <summary>
+    /// 勝利エフェクトパーツ1
+    /// </summary>
     public GameObject WinEffect2;
+    /// <summary>
+    /// 勝利エフェクトパーツ2
+    /// </summary>
     public GameObject WinEffect1;
+    /// <summary>
+    /// 引き分け表示用GameObject
+    /// </summary>
     public GameObject Draw;
+
+    /// <summary>
+    /// Wwiseイベント
+    /// </summary>
     [SerializeField] private AK.Wwise.Event PlacePiece;
     [SerializeField] private AK.Wwise.Event VinylNoise;
     [SerializeField] private AK.Wwise.Event DrumRolls;
-    void Awake()
+
+    /// <summary>
+    /// インスタンス設定
+    /// </summary>
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// 全駒を削除しフェード演出で結果画面に以降する
+    /// </summary>
     public async UniTask RemoveAllPieces()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
-        // List<GameObject> toDestroy = new List<GameObject>();
-        // float startDelay = 0.2f;
-        // float acceleration = 0.01f;
         float speed = 2.0f;
         AudioManager.Instance.StopBGM();
         VinylNoise.Post(gameObject);
@@ -53,6 +74,10 @@ public class ResultManager : MonoBehaviour
         AudioManager.Instance.ChangeBGM_2();
         await SceneTransition.Instance.PlayFadeIn(speed);
     }
+
+    /// <summary>
+    /// ゲーム結果を判定し，演出を表示する
+    /// </summary>
     public async UniTask ShowResult()
     {
         int whiteScore = OthelloBoard.Instance.CountPieces(true);
@@ -76,6 +101,7 @@ public class ResultManager : MonoBehaviour
             int x = i % OthelloBoard.gridSize;
             int y = i / OthelloBoard.gridSize;
 
+            ///駒数の差が10以下の時は特殊演出
             if (diffAbs <= 10)
             {
                 if (i < competitively)
@@ -98,11 +124,14 @@ public class ResultManager : MonoBehaviour
             }
         }
 
+        ///白黒を上下から設置しながら結果を表示
         await UniTask.WhenAll(
             PlaceSequentially(whitePos, OthelloManager.Instance.whitePiecePrefab),
             PlaceSequentially(blackPos, OthelloManager.Instance.blackPiecePrefab)
         );
 
+        ///特殊演出時
+        ///一瞬間を置きドラムロール後に結果表示
         if (differencesPos.Count > 0)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
@@ -112,10 +141,13 @@ public class ResultManager : MonoBehaviour
             await PlaceSequentially(differencesPos, prefab);
         }
 
+        ///BGM再生
         await UniTask.Delay(TimeSpan.FromSeconds(2.0f));
         AudioManager.Instance.PlayBGM();
 
         bool won = false;
+        ///AI戦の時
+        ///勝敗引の表示
         if (OthelloManager.isAIOpponent)
         {
             if (difference > 0)
@@ -150,11 +182,13 @@ public class ResultManager : MonoBehaviour
                     AudioManager.Instance.TransitionBGM("LoseResult");
                 }
             }
-            else if (difference == 0)
+            else
             {
                 Draw.SetActive(true);
             }
         }
+        ///PvPの時
+        ///どちらの色の勝ちかを表示
         else
         {
             if (difference > 0)
@@ -171,11 +205,13 @@ public class ResultManager : MonoBehaviour
                 WinEffect2.SetActive(true);
                 AudioManager.Instance.TransitionBGM("WinResult");
             }
-            else if (difference == 0)
+            else
             {
                 Draw.SetActive(true);
             }
         }
+
+        ///AI戦の時，AIに勝利したら次の難易度を解放
         string[] difficultyNames = new string[] { "easy", "normal", "hard", "secret" };
         int unlocked = PlayerPrefs.GetInt("Unlocked", 0);
         if (won)
@@ -189,6 +225,8 @@ public class ResultManager : MonoBehaviour
                 }
             }
         }
+
+        ///ボタンを無効化し，入力待ち
         OthelloManager.Instance.settingButtonInGame.interactable = false;
         OthelloManager.Instance.settingButtonInGame.GetComponent<EventTrigger>().enabled = false;
         OthelloManager.Instance.exitButton.interactable = false;
@@ -198,6 +236,11 @@ public class ResultManager : MonoBehaviour
         OthelloManager.Waiting = false;
     }
 
+    /// <summary>
+    /// 結果表示のために駒を順次配置する
+    /// </summary>
+    /// <param name="positions">配置するセル座標のリスト</param>
+    /// <param name="prefab">配置する駒のプレハブ</param>
     private async UniTask PlaceSequentially(List<Vector2Int> positions, GameObject prefab)
     {
         float interval = 0.08f;
