@@ -17,7 +17,7 @@
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="BGM_Num" ID="{9234DC31-C7C9-4666-8342-9CDC5133BBEA}"/>
-							<Value>0</Value>
+							<Value>1</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="PieceDifference" ID="{76CD7197-266A-497C-B44B-03A45B4503D0}"/>
@@ -27,9 +27,9 @@
 					<CurrentStateList ShowAll="true"/>
 					<CurrentSwitchList ShowAll="true">
 						<CurrentSwitchRef Name="BGM_P3" ID="{9BC7DE84-F3F0-48DB-8E9B-62E928261F74}"/>
-						<CurrentSwitchRef Name="BGM_1" ID="{7C4D72B4-FA1F-48A1-8A3D-60E7DF425C89}"/>
+						<CurrentSwitchRef Name="BGM_2" ID="{732B87B8-C467-4A4C-9DDA-500237D8628B}"/>
 						<CurrentSwitchRef Name="BGM_3" ID="{2B6A7B46-94A0-4B9B-9C31-C6EA6303D81F}"/>
-						<CurrentSwitchRef Name="LoseResult" ID="{48EBD203-1AEA-4FB4-A43D-380AAFDD6B28}"/>
+						<CurrentSwitchRef Name="OthelloBoard" ID="{FAEBF88B-807F-45D9-9B04-128DF258D6AC}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>

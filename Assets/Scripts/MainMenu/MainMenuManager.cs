@@ -66,9 +66,10 @@ public class MainMenuManager : MonoBehaviour
     private const float bufferTimeout = 2f;
 
     /// <summary>
-    /// シークレットアンロック用キーワード
+    /// 難易度アンロック・削除用隠しキーワード
     /// </summary>
     private const string unlockKeyword = "othello";
+    private const string deleteKeyword = "delete";
 
     /// <summary>
     /// クリック音再生用Wwiseイベント
@@ -134,11 +135,18 @@ public class MainMenuManager : MonoBehaviour
                 {
                     inputBuffer = inputBuffer.Substring(inputBuffer.Length - unlockKeyword.Length);
                 }
-                if (inputBuffer == unlockKeyword)
+                if (inputBuffer.EndsWith(unlockKeyword))
                 {
                     PlayerPrefs.SetInt("Unlocked", 3);
                     PlayerPrefs.Save();
-                    Debug.Log("Secret difficulty unlocked by keyword!");
+                    Debug.Log("All difficulty unlocked by keyword!");
+                    inputBuffer = string.Empty;
+                }
+                if (inputBuffer.EndsWith(deleteKeyword))
+                {
+                    PlayerPrefs.SetInt("Unlocked", 0);
+                    PlayerPrefs.Save();
+                    Debug.Log("All difficulty deleted by keyword!");
                     inputBuffer = string.Empty;
                 }
             }
@@ -249,7 +257,7 @@ public class MainMenuManager : MonoBehaviour
         OthelloManager.isAIOpponent = isCPU;
         menuAnimator.SetTrigger("Start");
         TitleSound.Post(gameObject);
-        await UniTask.Delay(System.TimeSpan.FromSeconds(3.0f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(2.5f));
         await SceneTransition.Instance.Transition("OthelloBoard");
     }
 }

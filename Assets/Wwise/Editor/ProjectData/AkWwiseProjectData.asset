@@ -140,7 +140,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 318368646c669d44a61a6d4265fe2c53
     GuidInternal: 
-    m_lastTime: -8584531102454899764
+    m_lastTime: -8584517983973148396
     List:
     - name: Othello
       guid: 6c340724af6bbe4495ac59006ec6f9cc
@@ -168,7 +168,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: e557fd1a95cbe04397f30cc6f1ce7680
     GuidInternal: 
-    m_lastTime: -8584529273076394513
+    m_lastTime: -8584517983973292219
     List:
     - name: Drum_Rolls
       guid: 8ea61f310e516848a6d6e3760907a208
@@ -202,8 +202,25 @@ MonoBehaviour:
         guid: 2aae1146d0ba534ca77d6a0833448620
       Path: Events/Default Work Unit/FlipPiece
       maxAttenuation: 0
-      maxDuration: 0.19039105
-      minDuration: 0.1804907
+      maxDuration: 0.49039108
+      minDuration: 0.4804907
+    - name: Fuzz
+      guid: fdfce2958b838341965c6ba7fb241163
+      id: 2678292266
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: Fuzz
+        ObjectType: 3
+        guid: fdfce2958b838341965c6ba7fb241163
+      Path: Events/Default Work Unit/Fuzz
+      maxAttenuation: 0
+      maxDuration: 7
+      minDuration: 7
     - name: InvalidMove
       guid: a885bcd06ec46c4980b49a8796f3b8d8
       id: 1119405073
@@ -287,8 +304,8 @@ MonoBehaviour:
         guid: d87ab51e198f96438a0575d1285718cf
       Path: Events/Default Work Unit/PlacePiece
       maxAttenuation: 0
-      maxDuration: 5.873438
-      minDuration: 5.232638
+      maxDuration: 6.173438
+      minDuration: 5.532638
     - name: Play_BGM
       guid: 5d2da10b5acb894385b3395ca4180e5a
       id: 3126765036
@@ -439,6 +456,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: c87fac029bbd4c478dafb7e814f21e9f
       Path: Events/Default Work Unit/StopAllSE
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: StopFuzz
+      guid: a10d76c4d5fb0c4e8bf28ad79a34cd6e
+      id: 3185958082
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e557fd1a95cbe04397f30cc6f1ce7680
+      - ElementName: StopFuzz
+        ObjectType: 3
+        guid: a10d76c4d5fb0c4e8bf28ad79a34cd6e
+      Path: Events/Default Work Unit/StopFuzz
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0

@@ -100,6 +100,7 @@ public class OthelloCell : MonoBehaviour
         // 合法手なら駒を配置
         if (OthelloBoard.Instance.IsCellEmpty(x, y) && OthelloBoard.Instance.IsValidMove(x, y, currentTag))
         {
+            OthelloManager.Instance.placedFlag = true;
             OnSelect.Post(gameObject);
             Vector3 pos = transform.position;
             _ = OthelloManager.Instance.PlacePiece(x, y, currentTag, pos);

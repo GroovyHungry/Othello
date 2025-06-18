@@ -142,7 +142,7 @@ public class CoinTossManager : MonoBehaviour
         // 結果をランダムに決定
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
-        await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.4f));
 
         // ループ音停止
         stopLoopEvent.Post(gameObject);
@@ -173,7 +173,7 @@ public class CoinTossManager : MonoBehaviour
         // 結果をランダムに決定
         string result = Random.value < 0.5f ? "White" : "Black";
         CoinToss.SetTrigger(result == "White" ? "ShowWhite" : "ShowBlack");
-        await UniTask.Delay(System.TimeSpan.FromSeconds(1.5f));
+        await UniTask.Delay(System.TimeSpan.FromSeconds(1.4f));
 
         // ループ音停止
         stopLoopEvent.Post(gameObject);

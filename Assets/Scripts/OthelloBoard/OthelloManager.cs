@@ -20,7 +20,7 @@ public class OthelloManager : MonoBehaviour
     private const int gridSize = 8;
 
     /// <summary>
-    /// Inspector 割り当て用GameObject, UI, イベント
+    /// GameObject, UI, イベント
     /// </summary>
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
@@ -34,6 +34,7 @@ public class OthelloManager : MonoBehaviour
     public GameObject skipMessageBlack;
     public GameObject blackStockPrefab;
     public GameObject whiteStockPrefab;
+    public GameObject FuzzEffect;
     public Transform blackStockParent;
     public Transform whiteStockParent;
     public List<GameObject> blackStocks = new List<GameObject>();
@@ -42,6 +43,8 @@ public class OthelloManager : MonoBehaviour
     public Button exitButton;
     public Sprite whiteHintSprite;
     public Sprite blackHintSprite;
+    public bool placedFlag = true;
+    private float timer = 0f;
 
     // public Image whiteDigit1;
     // public Image whiteDigit2;
@@ -56,6 +59,8 @@ public class OthelloManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event Place;
     [SerializeField] private AK.Wwise.Event Stock;
     [SerializeField] private AK.Wwise.Event Skip;
+    [SerializeField] private AK.Wwise.Event Fuzz;
+    [SerializeField] private AK.Wwise.Event StopFuzz;
 
     /// <summary>
     /// 内部状態（ターン管理やプレイ状況管理）
@@ -101,19 +106,35 @@ public class OthelloManager : MonoBehaviour
     /// </summary>
     private async UniTaskVoid Start()
     {
+        placedFlag = true;
         await StartGame();
     }
 
     /// <summary>
-    /// 毎フレームスコア更新
-    /// 現在は未使用
+    /// 難易度シークレットでの特殊ゲーム処理
+    /// シークレット難易度に限り，5秒以内にコマを置けなければゲームオーバー
     /// </summary>
-    private void Update()
+    private async void Update()
     {
-        // if (!initializing && !Waiting)
-        // {
-        //     UpdateScoreUI();
-        // }
+        Debug.Log(placedFlag);
+        if (DifficultySelect.difficulty == "secret")
+        {
+            if (placedFlag)
+            {
+                StopFuzz.Post(gameObject);
+                FuzzEffect.SetActive(false);
+                timer = 0f;
+            }
+            else if (!placedFlag)
+            {
+                timer += Time.deltaTime;
+                if (timer >= 5.0f)
+                {
+                    timer = 0;
+                    ExitToMainMenu();
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -162,6 +183,7 @@ public class OthelloManager : MonoBehaviour
         await SceneTransition.Instance.Transition("MainMenu");
         othelloBoard.ClearBoardState();
         ClearHighlightedCells();
+        DifficultySelect.difficulty = "easy";
     }
 
     /// <summary>
@@ -386,6 +408,7 @@ public class OthelloManager : MonoBehaviour
     /// </summary>
     public async void HighlightValidMoves()
     {
+        Debug.Log("ハイライト");
         GetValidCells(out List<OthelloCell> validCells);
         bool isAITurn = (isWhiteTurn && isAIWhite) || (!isWhiteTurn && !isAIWhite);
         if (isWhiteFirst == isWhiteTurn) AudioManager.Instance.ChangeBGM_1();
@@ -398,6 +421,12 @@ public class OthelloManager : MonoBehaviour
                 sr.sprite = isWhiteTurn ? whiteHintSprite : blackHintSprite;
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1.0f);
             }
+        }
+        else if ((!isAIOpponent || !isAITurn) && DifficultySelect.difficulty == "secret")
+        {
+            FuzzEffect.SetActive(true);
+            placedFlag = false;
+            Fuzz.Post(gameObject);
         }
         await CheckSkipOrGameOver();
     }

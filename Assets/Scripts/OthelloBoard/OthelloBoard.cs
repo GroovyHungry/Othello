@@ -37,11 +37,11 @@ public class OthelloBoard : MonoBehaviour
     /// </summary>
     private GameObject[,] pieceObjects = new GameObject[gridSize, gridSize];
 
-    /// <summary>
-    /// Wwiseイベント
-    /// </summary>
-    [SerializeField] private AK.Wwise.Event flipPieceEvent;
-    [SerializeField] private AK.Wwise.Event placePieceEvent;
+    // /// <summary>
+    // /// Wwiseイベント
+    // /// </summary>
+    // [SerializeField] private AK.Wwise.Event flipPieceEvent;
+    // [SerializeField] private AK.Wwise.Event placePieceEvent;
 
     /// <summary>
     /// インスタンスを設定

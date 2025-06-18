@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2407346C-6BAF-44BE-95AC-59006EC6F9CC}",
     "Language": "SFX",
-    "Hash": "{819F3C3D-7D68-B161-B41A-F799E57ADD04}",
+    "Hash": "{3A974816-BBF1-F934-FC6A-FD018CABCD3F}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Othello",
     "ShortName": "Othello",
     "Path": "Othello.bnk",
@@ -21,7 +21,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Dont Explain2.wav",
-      "CachePath": "8C/{8C7F2188-B592-3CB5-596E-191AA538C980}.wem"
+      "CachePath": "5C/{5CB7D55C-F119-EA33-B0A6-590BC1BF9179}.wem"
      },
      {
       "Id": "138961027",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "electrical_noise1.wav",
-      "CachePath": "93/{930B2489-875E-68F0-4553-5E966DD2C194}.wem"
+      "CachePath": "D7/{D720A203-925B-B3C1-0CC9-952F00B7032D}.wem"
      },
      {
       "Id": "154188979",
@@ -37,7 +37,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 29-Audio.wav",
-      "CachePath": "4F/{4F1472F0-F283-BC07-95F6-33FACDC51550}.wem"
+      "CachePath": "8C/{8CE2DA4D-B085-E5DA-DAA7-C5A82AB0C31B}.wem"
      },
      {
       "Id": "248190996",
@@ -45,7 +45,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "stop_music 34-record-scratches-31350.wav",
-      "CachePath": "E4/{E45015AC-4CF7-1D85-1FDC-223CB1F83053}.wem"
+      "CachePath": "53/{531BEECA-01A4-CB69-2DE1-1793197DB3F4}.wem"
      },
      {
       "Id": "257655840",
@@ -53,7 +53,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_l 32-wood-door-knock-106669 (1).wav",
-      "CachePath": "F0/{F015B9CD-801B-3F61-7860-4538F9DFE7A6}.wem"
+      "CachePath": "62/{625656A2-CECB-4939-8138-00893EB3AC14}.wem"
      },
      {
       "Id": "297202389",
@@ -61,7 +61,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 23-Audio.wav",
-      "CachePath": "B8/{B83FEDC6-3E46-BE2F-2EB1-DA1179E5423F}.wem"
+      "CachePath": "AC/{ACBFD2CA-57FB-FD98-6862-CF8A602DAC86}.wem"
      },
      {
       "Id": "317781010",
@@ -69,7 +69,15 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Flip Main Sample.wav",
-      "CachePath": "7F/{7F26A4BB-047C-5844-FACA-74BDB144D21B}.wem"
+      "CachePath": "DE/{DEF201C6-6969-9361-BE0C-55A97D3C29EC}.wem"
+     },
+     {
+      "Id": "383027989",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "white-noise-soft-333297.wav",
+      "CachePath": "F7/{F735817E-A2C7-ECC0-7240-00378908DF2C}.wem"
      },
      {
       "Id": "409938069",
@@ -77,7 +85,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Scroll.wav",
-      "CachePath": "A3/{A389892E-C6D3-15DC-CF22-02668BD41430}.wem"
+      "CachePath": "5E/{5E8C5A47-2FFA-D976-D062-7F020CB22CB1}.wem"
      },
      {
       "Id": "457575499",
@@ -85,7 +93,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Stock.wav",
-      "CachePath": "B7/{B7DEF0DD-9401-88F0-2800-CE7AABFD6252}.wem"
+      "CachePath": "EA/{EADFADC9-DB46-257E-C3B3-870F4014323D}.wem"
      },
      {
       "Id": "457644390",
@@ -93,7 +101,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "OnSelect.wav",
-      "CachePath": "C9/{C956891F-2EAC-F3AE-D3BC-8C759F1609AE}.wem"
+      "CachePath": "DF/{DFE1D219-E21E-A3D3-6279-3D1430E38565}.wem"
      },
      {
       "Id": "473972063",
@@ -101,7 +109,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "drum_rolls.wav",
-      "CachePath": "2A/{2AF77661-92A2-AFE3-DAC2-833FF569FE19}.wem"
+      "CachePath": "35/{35EE5F16-48EA-9C36-300D-C707598CED64}.wem"
      },
      {
       "Id": "513787895",
@@ -109,7 +117,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 27-Audio.wav",
-      "CachePath": "6C/{6CE4C24A-A5C4-F548-DF13-856C6A51C930}.wem"
+      "CachePath": "05/{05AD7CB4-B509-FE91-3BC1-2051083BA168}.wem"
      },
      {
       "Id": "539488075",
@@ -117,7 +125,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_l 31-wood-door-knock-106669 (1).wav",
-      "CachePath": "4D/{4D3A0131-4186-8B16-0126-6888C14ACFE5}.wem"
+      "CachePath": "80/{802C4C22-28DC-62DE-D6B8-71D7C74A5598}.wem"
      },
      {
       "Id": "543812774",
@@ -125,7 +133,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_h 25-light-switch-flip-1-101983.wav",
-      "CachePath": "BC/{BC231348-91C9-5B15-B2B0-C0550538CD73}.wem"
+      "CachePath": "E9/{E99C4644-40E6-83D5-7D02-67960EA2A0A9}.wem"
      },
      {
       "Id": "559021974",
@@ -133,7 +141,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Dont Explain1.wav",
-      "CachePath": "38/{38012F4B-4B7A-3053-2E29-BDCA4EB90500}.wem"
+      "CachePath": "05/{05D00C7D-5C23-B804-81FC-5F7610F433D8}.wem"
      },
      {
       "Id": "561644764",
@@ -141,7 +149,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "stop_music 35-record-scratches-31350.wav",
-      "CachePath": "54/{5443DA73-0289-F739-5C08-48AAE346B684}.wem"
+      "CachePath": "03/{032AF58B-0149-2F7A-55E4-747556384BC3}.wem"
      },
      {
       "Id": "585915434",
@@ -149,7 +157,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "false_move.wav",
-      "CachePath": "AE/{AEE13232-9158-94C9-C9B5-C0EC7AB8F98B}.wem"
+      "CachePath": "E9/{E92BD4B5-5E79-872D-4872-652FAB7D5A9C}.wem"
      },
      {
       "Id": "613430007",
@@ -157,7 +165,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_h 26-light-switch-flip-1-101983.wav",
-      "CachePath": "97/{97E9D187-16FF-0643-998D-263982DBA587}.wem"
+      "CachePath": "57/{57B704D8-6195-8E46-7579-B62DF512BC14}.wem"
      },
      {
       "Id": "618809538",
@@ -165,7 +173,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "OnSelect.wav",
-      "CachePath": "37/{37AF2953-9EC2-9E5C-09FB-3C72DC174877}.wem"
+      "CachePath": "46/{46330A36-D123-DDF8-9DB5-112495217844}.wem"
      },
      {
       "Id": "622354903",
@@ -173,7 +181,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Dont Explain3.wav",
-      "CachePath": "1A/{1AD88BFF-D3A7-FE03-BE4F-77D90BB1F474}.wem"
+      "CachePath": "28/{286BBFFA-DB99-E3A5-FF32-5A451B2A2994}.wem"
      },
      {
       "Id": "634790168",
@@ -181,7 +189,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_h 27-light-switch-flip-1-101983.wav",
-      "CachePath": "C8/{C8CF82EC-46B8-FE7A-3D93-91C3235AE6E8}.wem"
+      "CachePath": "4E/{4E1B3E42-FEEF-63E5-6FBC-F92BF32085F8}.wem"
      },
      {
       "Id": "687681039",
@@ -189,7 +197,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Skip.wav",
-      "CachePath": "2A/{2A541B2D-F915-D366-7716-2B905F519AD1}.wem"
+      "CachePath": "0D/{0DC17B23-2385-71D8-9354-A25D8737645C}.wem"
      },
      {
       "Id": "715166129",
@@ -197,7 +205,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "CoinTossResult.wav",
-      "CachePath": "7B/{7B4CFE67-0A08-E8A3-3814-2BD2F1EAFE20}.wem"
+      "CachePath": "A3/{A39738A1-86F0-F8A8-D296-D85B7C05D88F}.wem"
      },
      {
       "Id": "741175921",
@@ -205,7 +213,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_h 28-light-switch-flip-1-101983.wav",
-      "CachePath": "C6/{C63FCEF1-0239-6275-4B04-00F5EBF7D65D}.wem"
+      "CachePath": "9F/{9F463056-DB3B-4EA8-930C-8E0006376470}.wem"
      },
      {
       "Id": "741705269",
@@ -213,7 +221,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "outro.wav",
-      "CachePath": "C3/{C32B57FF-3CB2-A5A2-2456-D8E328F782D7}.wem"
+      "CachePath": "A7/{A7B9451E-F9B9-1BD3-8003-A65D8A018DAF}.wem"
      },
      {
       "Id": "832380714",
@@ -221,7 +229,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 24-Audio.wav",
-      "CachePath": "53/{53989180-0778-E62D-DDC5-9153C3163975}.wem"
+      "CachePath": "1E/{1EED15E6-6331-3FF9-8D56-FF7AB4FABF52}.wem"
      },
      {
       "Id": "856795343",
@@ -229,7 +237,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 28-Audio.wav",
-      "CachePath": "86/{86B4E977-6509-B6C6-69EF-42CE8C6A6D8F}.wem"
+      "CachePath": "36/{36F8B794-95F6-D985-E06D-CC81A756AF57}.wem"
      },
      {
       "Id": "871549907",
@@ -237,7 +245,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Flip Main Sample-1.wav",
-      "CachePath": "88/{88071042-1CF8-B384-DA26-CB0350547CD9}.wem"
+      "CachePath": "7B/{7B5C5BC8-BC6F-81C9-7CEA-B97E2E5FE4BA}.wem"
      },
      {
       "Id": "874645959",
@@ -245,7 +253,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "place_l 30-wood-door-knock-106669 (1).wav",
-      "CachePath": "B9/{B9607C25-C61D-8A99-0E2F-528C1CA225E5}.wem"
+      "CachePath": "43/{433016B7-BCAA-2853-390F-52F6966E53BC}.wem"
      },
      {
       "Id": "881448273",
@@ -253,7 +261,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MenuBGM.wav",
-      "CachePath": "E9/{E9F49B7C-130F-9B2F-02E8-6F1B19F12464}.wem"
+      "CachePath": "2B/{2BBF648D-9578-FD85-B283-FAB1574E586E}.wem"
      },
      {
       "Id": "946067939",
@@ -261,7 +269,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "LoseBGM.wav",
-      "CachePath": "55/{55F523C1-F68B-A916-FFE5-F78025B66D46}.wem"
+      "CachePath": "6C/{6CA650AE-4BD1-06CF-0965-F24115578FFD}.wem"
      },
      {
       "Id": "1027749499",
@@ -269,7 +277,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 25-Audio.wav",
-      "CachePath": "B5/{B519F897-E903-A957-A8BB-0D2C47E058A0}.wem"
+      "CachePath": "47/{47746BAF-AED0-A8EE-EC25-C8803F1155BE}.wem"
      },
      {
       "Id": "1042109001",
@@ -277,7 +285,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "CointTossRotating.wav",
-      "CachePath": "13/{13123F54-29FF-1FD7-CDE1-92646A0FF7C4}.wem"
+      "CachePath": "D9/{D914D27F-A669-048D-5589-7306C5268E5D}.wem"
      },
      {
       "Id": "1046037997",
@@ -285,7 +293,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Evolve 26-Audio.wav",
-      "CachePath": "67/{6741EF9A-385A-F8E2-54C6-5D9275D3BA38}.wem"
+      "CachePath": "1D/{1DCA305D-2579-78FE-0075-7CD24750DCF3}.wem"
      }
     ],
     "Plugins": {
@@ -321,14 +329,28 @@
       "ObjectPath": "\\Events\\Default Work Unit\\FlipPiece",
       "GUID": "{4611AE2A-BAD0-4C53-A77D-6A0833448620}",
       "DurationType": "OneShot",
-      "DurationMin": "0.1804907",
-      "DurationMax": "0.19039105",
+      "DurationMin": "0.4804907",
+      "DurationMax": "0.49039108",
       "MediaRefs": [
        {
         "Id": "317781010"
        },
        {
         "Id": "871549907"
+       }
+      ]
+     },
+     {
+      "Id": "2678292266",
+      "Name": "Fuzz",
+      "ObjectPath": "\\Events\\Default Work Unit\\Fuzz",
+      "GUID": "{95E2FCFD-838B-4183-965C-6BA7FB241163}",
+      "DurationType": "OneShot",
+      "DurationMin": "7",
+      "DurationMax": "7",
+      "MediaRefs": [
+       {
+        "Id": "383027989"
        }
       ]
      },
@@ -394,8 +416,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\PlacePiece",
       "GUID": "{1EB57AD8-8F19-4396-8A05-75D1285718CF}",
       "DurationType": "OneShot",
-      "DurationMin": "5.232638",
-      "DurationMax": "5.873438",
+      "DurationMin": "5.532638",
+      "DurationMax": "6.173438",
       "MediaRefs": [
        {
         "Id": "257655840"
@@ -1138,6 +1160,21 @@
       "DurationMax": "0"
      },
      {
+      "Id": "3185958082",
+      "Name": "StopFuzz",
+      "ObjectPath": "\\Events\\Default Work Unit\\StopFuzz",
+      "GUID": "{C4760DA1-FBD5-4E0C-8BF2-8AD79A34CD6E}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "383027989"
+       }
+      ]
+     },
+     {
       "Id": "3791290573",
       "Name": "StopRotating",
       "ObjectPath": "\\Events\\Default Work Unit\\StopRotating",
@@ -1353,6 +1390,6 @@
     ]
    }
   ],
-  "FileHash": "{450F76D9-12DD-B549-E4A6-63160DDB21D3}"
+  "FileHash": "{725F7773-E1A8-90E4-888F-D37F2AC523F2}"
  }
 }

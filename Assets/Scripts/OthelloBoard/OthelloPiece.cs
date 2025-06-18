@@ -74,7 +74,7 @@ public class OthelloPiece : MonoBehaviour
             animator.SetTrigger("FlipWhiteToBlackTrigger");
             gameObject.tag = "Black";
             spriteRenderer.sprite = blackSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.1f));
             PlacePiece.Post(gameObject);
         }
         else
@@ -82,7 +82,7 @@ public class OthelloPiece : MonoBehaviour
             animator.SetTrigger("FlipBlackToWhiteTrigger");
             gameObject.tag = "White";
             spriteRenderer.sprite = whiteSprite;
-            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f));
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.1f));
             PlacePiece.Post(gameObject);
         }
     }

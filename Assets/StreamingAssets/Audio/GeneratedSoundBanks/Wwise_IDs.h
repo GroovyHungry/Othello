@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID DRUM_ROLLS = 2627577308U;
         static const AkUniqueID FLIPPIECE = 553056986U;
+        static const AkUniqueID FUZZ = 2678292266U;
         static const AkUniqueID INVALIDMOVE = 1119405073U;
         static const AkUniqueID NOISE = 33408553U;
         static const AkUniqueID ONCLICK = 21544190U;
@@ -29,6 +30,7 @@ namespace AK
         static const AkUniqueID STOCK = 1401519777U;
         static const AkUniqueID STOP_BGM = 1073466678U;
         static const AkUniqueID STOPALLSE = 1135116198U;
+        static const AkUniqueID STOPFUZZ = 3185958082U;
         static const AkUniqueID STOPROTATING = 3791290573U;
         static const AkUniqueID TITLESOUND = 962309722U;
         static const AkUniqueID VINYL_NOISE = 3245760336U;

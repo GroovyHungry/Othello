@@ -6,6 +6,9 @@
 				<Event Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}">
 					<ChildrenList>
 						<Action Name="" ID="{BF8208A8-6D67-442B-B52F-7E0354E8DA1C}" ShortID="220087144">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.3"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="PlacePiece_H_SE" ID="{C64211FC-D0E7-460E-A710-516B7F8B4F2D}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
@@ -13,6 +16,9 @@
 							</ReferenceList>
 						</Action>
 						<Action Name="" ID="{796CDE58-EDD4-4274-A1C2-875A561E4852}" ShortID="209403672">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.3"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="PlacePiece_L_SE" ID="{ACAB90A8-D83F-4694-9E22-26796E26ED94}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
@@ -24,6 +30,9 @@
 				<Event Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}">
 					<ChildrenList>
 						<Action Name="" ID="{075FBE18-16A2-4392-9AA6-D48F81DACA5F}" ShortID="629128075">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.3"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="FlipPiece_SE" ID="{F2D06FAB-99DD-40B3-B9CF-3029CE7830B9}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
@@ -193,6 +202,13 @@
 						<Action Name="" ID="{5C69A124-83CD-46EF-92F4-AE311BD929BE}" ShortID="1037445612">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="43"/>
+								<Property Name="Delay" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{A8C631B8-7ACF-4F7F-BA50-02A174A06E64}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -246,7 +262,7 @@
 						<Action Name="" ID="{E523238F-1281-432D-BD27-F6B3F4A43AC8}" ShortID="99918655">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="41"/>
-								<Property Name="Delay" Type="Real64" Value="0.4"/>
+								<Property Name="Delay" Type="Real64" Value="0.1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -257,7 +273,7 @@
 						<Action Name="" ID="{70987023-6E03-46B7-8AA1-9A7C063065BB}" ShortID="589346118">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="41"/>
-								<Property Name="Delay" Type="Real64" Value="0.6"/>
+								<Property Name="Delay" Type="Real64" Value="0.3"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -268,7 +284,7 @@
 						<Action Name="" ID="{77514888-3FA2-4FE1-BED6-DAD347709F8D}" ShortID="170621570">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="41"/>
-								<Property Name="Delay" Type="Real64" Value="0.9"/>
+								<Property Name="Delay" Type="Real64" Value="0.6"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -279,7 +295,7 @@
 						<Action Name="" ID="{177E68BF-477E-43E2-80BA-145FC1863672}" ShortID="854236922">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="41"/>
-								<Property Name="Delay" Type="Real64" Value="1.1"/>
+								<Property Name="Delay" Type="Real64" Value="0.8"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -290,11 +306,46 @@
 						<Action Name="" ID="{B5A31202-D407-4D04-927F-CE439B1198C1}" ShortID="770856686">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="41"/>
-								<Property Name="Delay" Type="Real64" Value="1.4"/>
+								<Property Name="Delay" Type="Real64" Value="1.1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fuzz" ID="{95E2FCFD-838B-4183-965C-6BA7FB241163}">
+					<ChildrenList>
+						<Action Name="" ID="{8BCDE519-C430-48CA-92F4-9F6216019DF7}" ShortID="334754336">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fuzz_SE" ID="{A2D8EF65-E887-4218-BF64-E5FCFEEA6DA0}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{81229919-6207-46FA-B1D8-60A38673154B}" ShortID="215882263">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fuzz_SE" ID="{A2D8EF65-E887-4218-BF64-E5FCFEEA6DA0}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopFuzz" ID="{C4760DA1-FBD5-4E0C-8BF2-8AD79A34CD6E}">
+					<ChildrenList>
+						<Action Name="" ID="{972ED367-7B0B-47FE-9C03-4EE831DFDF3E}" ShortID="442012760">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fuzz_SE" ID="{A2D8EF65-E887-4218-BF64-E5FCFEEA6DA0}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

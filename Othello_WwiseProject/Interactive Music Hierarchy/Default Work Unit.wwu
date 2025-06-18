@@ -13,7 +13,7 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
+							<ObjectRef Name="BGM" ID="{2AB5BBEB-CCEA-4501-BD37-C7CDDE7EDCB0}" WorkUnitID="{45317697-AF10-4EF7-BF4A-434767D27B08}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="BGM" ID="{527C6964-198A-4E3C-824D-7E0531E102F2}" WorkUnitID="{391D1D19-E929-409B-9424-A705A8072ED1}"/>

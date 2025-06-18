@@ -4,8 +4,16 @@
 		<WorkUnit Name="Default Work Unit" ID="{64688331-666C-449D-A61A-6D4265FE2C53}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="Othello" ID="{2407346C-6BAF-44BE-95AC-59006EC6F9CC}">
+					<PropertyList>
+						<Property Name="Maximum" Type="int32">
+							<ValueList>
+								<Value>10000000</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="Skip" ID="{19EB3D77-2F5F-40BC-834C-F01E977307C4}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Fuzz_SE" ID="{A2D8EF65-E887-4218-BF64-E5FCFEEA6DA0}" WorkUnitID="{E5549686-1BA9-4A09-B51E-98FEF9168B33}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_BGM" ID="{0BA12D5D-CB5A-4389-85B3-395CA4180E5A}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlacePiece" ID="{1EB57AD8-8F19-4396-8A05-75D1285718CF}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayRotating" ID="{39C2BBFA-B716-44FE-943B-141D408F2D01}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
@@ -24,6 +32,7 @@
 						<ObjectRef Name="FlipPiece" ID="{4611AE2A-BAD0-4C53-A77D-6A0833448620}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Slider" ID="{A661876C-C21C-4C86-B131-D0A9FD0EAEE9}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Vinyl_Noise" ID="{D4B36FC5-BBA8-4DDF-8D23-F406F09D13CB}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopFuzz" ID="{C4760DA1-FBD5-4E0C-8BF2-8AD79A34CD6E}" WorkUnitID="{1AFD57E5-CB95-43E0-97F3-0CC6F1CE7680}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

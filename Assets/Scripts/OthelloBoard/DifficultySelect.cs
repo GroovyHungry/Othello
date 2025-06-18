@@ -102,7 +102,7 @@ public class DifficultySelect : MonoBehaviour
             hardButton.gameObject.SetActive(true);
             hardButton.onClick.AddListener(OnHardButtonClicked);
         }
-        if (unlocked >= 3)
+        if (unlocked >= 3 && BGMController.BGMNum == 1)
         {
             errorButton.SetActive(true);
         }
